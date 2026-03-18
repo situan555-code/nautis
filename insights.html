@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights — [AGENCY]</title>
+  <meta name="description" content="Points of view on digital transformation, 3D commerce, revenue operations, and AI automation for industrial brands.">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- Page Hero -->
+  <section class="page-hero" id="insights-hero">
+    <div class="glow-orb glow-orb--cyan" style="width:400px;height:400px;top:-15%;right:20%;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="label">Insights</span>
+      <h1>Points of view.</h1>
+      <p class="lead">Long-form thinking on what's broken in industrial commerce — and how to fix it.</p>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="section" id="insights-content">
+    <div class="container">
+      <div class="filter-tabs reveal" id="insight-filters">
+        <button class="filter-tab is-active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="martech">MarTech</button>
+        <button class="filter-tab" data-filter="3d">3D Commerce</button>
+        <button class="filter-tab" data-filter="revops">RevOps</button>
+        <button class="filter-tab" data-filter="ai">AI</button>
+        <button class="filter-tab" data-filter="strategy">Strategy</button>
+      </div>
+
+      <div class="grid grid--3" id="insights-grid">
+
+        <!-- Article 1 — Featured -->
+        <div class="card insight-card reveal" data-category="martech" id="insight-erp" style="grid-column:span 2;">
+          <div class="insight-card__image" style="height:280px;">📐</div>
+          <div class="insight-card__body">
+            <div class="insight-card__meta">
+              <span class="tag">MarTech</span>
+              <span>12 min read</span>
+            </div>
+            <h3 class="insight-card__title">Why Your $2M ERP Integration Is Failing (And How to Fix It in 90 Days)</h3>
+            <p class="insight-card__excerpt">You hired a "Magento partner." They promised a 6-month integration timeline. It's been 18 months, you've burned through $2M, and your inventory still doesn't sync with your website. Here's why this keeps happening — and the exact playbook to get it to the finish line.</p>
+            <a href="#" class="btn btn--ghost">Read Article</a>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="card insight-card reveal reveal--delay-1" data-category="3d" id="insight-photoshoot">
+          <div class="insight-card__image">📷</div>
+          <div class="insight-card__body">
+            <div class="insight-card__meta">
+              <span class="tag">3D Commerce</span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="insight-card__title">The Death of the Product Photoshoot: How 3D Pipelines Save 70%</h3>
+            <p class="insight-card__excerpt">If you're still renting studios and hiring stylists for catalog photography, you're burning money. Here's the math on PBR rendering pipelines.</p>
+            <a href="#" class="btn btn--ghost">Read Article</a>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="card insight-card reveal" data-category="strategy" id="insight-fractional">
+          <div class="insight-card__image">🏛️</div>
+          <div class="insight-card__body">
+            <div class="insight-card__meta">
+              <span class="tag">Strategy</span>
+              <span>10 min read</span>
+            </div>
+            <h3 class="insight-card__title">What a Fractional CDO Actually Does (And Why Legacy Brands Need One)</h3>
+            <p class="insight-card__excerpt">You don't need another agency. You need an executive-level technologist embedded in your operation. Here's what that engagement looks like from week one.</p>
+            <a href="#" class="btn btn--ghost">Read Article</a>
+          </div>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="card insight-card reveal reveal--delay-1" data-category="revops" id="insight-whale">
+          <div class="insight-card__image">🐋</div>
+          <div class="insight-card__body">
+            <div class="insight-card__meta">
+              <span class="tag">RevOps</span>
+              <span>15 min read</span>
+            </div>
+            <h3 class="insight-card__title">Dealer Rationalization: The $500K Conversation Nobody Wants to Have</h3>
+            <p class="insight-card__excerpt">Your bottom 40% of dealers are costing you more to service than they bring in revenue. Here's the Whale Curve analysis that proves it — and the framework to act on it.</p>
+            <a href="#" class="btn btn--ghost">Read Article</a>
+          </div>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="card insight-card reveal reveal--delay-2" data-category="ai" id="insight-copilot">
+          <div class="insight-card__image">🤖</div>
+          <div class="insight-card__body">
+            <div class="insight-card__meta">
+              <span class="tag">AI</span>
+              <span>7 min read</span>
+            </div>
+            <h3 class="insight-card__title">Your Content Agency Is Obsolete: Building a Brand Copilot That Actually Knows Your Voice</h3>
+            <p class="insight-card__excerpt">Generic ChatGPT outputs are making your brand sound like everyone else's. Here's how private LLMs trained on your data produce content that's actually on-brand.</p>
+            <a href="#" class="btn btn--ghost">Read Article</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner section" id="insights-cta">
+    <div class="container">
+      <div class="reveal">
+        <span class="label" style="display:block;margin-bottom:var(--space-6);">Want More?</span>
+        <h2>Get the playbook in person.</h2>
+        <p>These articles are the appetizer. The Audit is the full meal — customized to your company, your stack, and your revenue goals.</p>
+        <a href="contact.html" class="btn btn--primary btn--lg" id="insights-cta-btn">Start with an Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/shared.js"></script>
+  <script>
+    initShared('insights');
+
+    // Filter logic
+    const filters = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.insight-card');
+
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filters.forEach(f => f.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category.includes(filter)) {
+            card.style.display = '';
+            card.style.opacity = '1';
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => { card.style.display = 'none'; }, 300);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

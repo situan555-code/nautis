@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — [AGENCY]</title>
+  <meta name="description" content="Start with an Audit. Book a discovery call with [AGENCY] — Digital Transformation & Revenue Operations for industrial brands.">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- Page Hero -->
+  <section class="page-hero" id="contact-hero">
+    <div class="glow-orb glow-orb--cyan" style="width:400px;height:400px;top:-10%;left:40%;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <span class="label">Contact</span>
+      <h1>Start the conversation.</h1>
+      <p class="lead">No sales pitch. No obligation. Just a clear-eyed look at where your revenue architecture stands.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section" id="contact-form-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="reveal">
+          <h2 style="margin-bottom:var(--space-2);">Tell us about your company.</h2>
+          <p style="margin-bottom:var(--space-8);">We'll respond within one business day with next steps or a calendar link.</p>
+
+          <form id="contact-form" action="#" method="post">
+            <div class="grid grid--2" style="gap:var(--space-4);">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="John">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Work Email *</label>
+              <input type="email" id="email" name="email" required placeholder="john@company.com">
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company Name *</label>
+              <input type="text" id="company" name="company" required placeholder="Acme Manufacturing">
+            </div>
+
+            <div class="grid grid--2" style="gap:var(--space-4);">
+              <div class="form-group">
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+              </div>
+              <div class="form-group">
+                <label for="interest">What are you most interested in?</label>
+                <select id="interest" name="interest">
+                  <option value="" disabled selected>Select one...</option>
+                  <option value="audit">The Audit ($3K–$10K)</option>
+                  <option value="build">A Build Project ($20K–$100K+)</option>
+                  <option value="retainer">Growth Retainer ($5K–$15K/mo)</option>
+                  <option value="3d">3D Configurator / Kiosk</option>
+                  <option value="ai">AI / Automation</option>
+                  <option value="unsure">Not Sure Yet — Let's Talk</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your challenge.</label>
+              <textarea id="message" name="message" placeholder="What's broken? What's the goal? What have you already tried?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg" id="submit-btn" style="width:100%;justify-content:center;">
+              Send Message
+            </button>
+            <p style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-3);text-align:center;">We'll never share your info. No spam. Ever.</p>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="contact-sidebar reveal reveal--delay-1">
+          <div class="card contact-sidebar__card">
+            <h4>📧 Email Direct</h4>
+            <a href="mailto:hello@agency.com">hello@agency.com</a>
+          </div>
+
+          <div class="card contact-sidebar__card">
+            <h4>📞 Call</h4>
+            <a href="tel:+15550000000">(555) 000-0000</a>
+            <p style="margin-top:var(--space-2);">Mon–Fri, 9am–5pm ET</p>
+          </div>
+
+          <div class="card contact-sidebar__card">
+            <h4>🔗 Connect</h4>
+            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn →</a>
+          </div>
+
+          <div class="card contact-sidebar__card" style="background:linear-gradient(160deg,rgba(0,229,255,0.04),transparent);border-color:rgba(0,229,255,0.15);">
+            <h4 style="color:var(--color-accent);">💡 Prefer to schedule directly?</h4>
+            <p>Skip the form and grab a 30-minute discovery call on our calendar.</p>
+            <a href="#" class="btn btn--primary" style="margin-top:var(--space-4);width:100%;justify-content:center;" id="calendly-cta">Book a Call</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background:var(--color-surface);border-top:1px solid var(--color-border);">
+    <div class="container container--sm">
+      <div class="section-header text-center reveal">
+        <span class="label">FAQ</span>
+        <h2>Common questions.</h2>
+      </div>
+
+      <div class="accordion reveal" style="margin-top:var(--space-8);">
+        <div class="accordion__item">
+          <button class="accordion__trigger" id="faq-1">
+            <span>What does The Audit actually include?</span>
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p>A comprehensive assessment of your MarTech stack, CRM pipeline, digital storefront, and competitive landscape. We map every system, every data flow, and every leak. Deliverable: an executive-ready strategic roadmap with prioritized recommendations, projected ROI, and a build timeline.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" id="faq-2">
+            <span>How quickly can we start?</span>
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p>Most Audit engagements begin within 1–2 weeks of signing. Build projects depend on scope, but we typically have capacity for new projects within 3–4 weeks. Retainer engagements start the first of the following month.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" id="faq-3">
+            <span>Do you work with companies outside of manufacturing?</span>
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p>Our deepest expertise is in manufacturing, B2B wholesale, and heavy-inventory retail. However, the revenue operations and AI automation pillars apply broadly. If you sell physical products through complex distribution — we should talk.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" id="faq-4">
+            <span>Are you a solo operation or a team?</span>
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p>Core strategy, architecture, and technical leadership come from a single deeply experienced practitioner. For production-scale builds, we bring in vetted specialist partners for specific verticals (iOS development, large-format video, industrial design). You get one accountable point of contact with access to world-class execution.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion__item">
+          <button class="accordion__trigger" id="faq-5">
+            <span>What's the minimum engagement?</span>
+            <span class="accordion__icon">+</span>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              <p>The Audit starts at $3K. That's the minimum. We don't do one-off tasks, hourly consulting, or "quick fixes." Every engagement starts with a proper diagnosis, because guessing is expensive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/shared.js"></script>
+  <script>
+    initShared('contact');
+
+    // Accordion
+    document.querySelectorAll('.accordion__trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        const body = item.querySelector('.accordion__body');
+        const isOpen = item.classList.contains('is-open');
+
+        item.closest('.accordion').querySelectorAll('.accordion__item').forEach(i => {
+          i.classList.remove('is-open');
+          i.querySelector('.accordion__body').style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Form handler (placeholder)
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sent ✓';
+      btn.style.background = 'linear-gradient(135deg, #00c853, #00e676)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
