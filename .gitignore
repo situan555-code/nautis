@@ -1,5 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Vite
+.vite/
+
 # macOS
 .DS_Store
 ._*
 .AppleDouble
 .LSOverride
+.Spotlight-V100
+.Trashes
+
+# Editors
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Stitch MCP artifacts
+.stitch-mcp/
+stitch-preview.html
+stitch_test_screen.png

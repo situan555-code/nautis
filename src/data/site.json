@@ -1,0 +1,31 @@
+{
+  "site": {
+    "name": "[AGENCY]",
+    "tagline": "Digital Transformation & Revenue Operations",
+    "description": "Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.",
+    "email": "hello@agency.com",
+    "url": "#",
+    "linkedin": "https://linkedin.com",
+    "copyright": "[AGENCY]"
+  },
+  "nav": [
+    { "id": "home",         "label": "Home",         "href": "/index.html" },
+    { "id": "services",     "label": "Services",     "href": "/services.html" },
+    { "id": "case-studies",  "label": "Case Studies",  "href": "/case-studies.html" },
+    { "id": "about",        "label": "About",        "href": "/about.html" },
+    { "id": "engagement",   "label": "How We Work",   "href": "/engagement.html" },
+    { "id": "insights",     "label": "Insights",     "href": "/insights.html" }
+  ],
+  "services": [
+    { "id": "martech", "label": "MarTech & Data" },
+    { "id": "3d",      "label": "3D Commerce" },
+    { "id": "revops",  "label": "Revenue Ops" },
+    { "id": "ai",      "label": "Applied AI" },
+    { "id": "brand",   "label": "Brand Strategy" }
+  ],
+  "platforms": [
+    "Acumatica", "NetSuite", "Magento", "Shopify Plus", "BigCommerce",
+    "Pimberly", "Salsify", "Akeneo", "Three.js / WebGL", "Next.js / React",
+    "Klaviyo", "HubSpot", "Swift / RoomPlan", "Python / Node.js"
+  ]
+}

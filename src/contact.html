@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — [AGENCY]</title>
-  <meta name="description" content="Start with an Audit. Book a discovery call with [AGENCY] — Digital Transformation & Revenue Operations for industrial brands.">
-  <link rel="stylesheet" href="css/design-system.css">
-  <link rel="stylesheet" href="css/pages.css">
+  {{> head pageTitle="Contact" }}
+  <link rel="stylesheet" href="/css/pages.css">
 </head>
 <body>
+
+  {{> nav activePage="contact" }}
 
   <!-- Page Hero -->
   <section class="page-hero" id="contact-hero">
@@ -180,42 +178,8 @@
     </div>
   </section>
 
-  <script src="js/shared.js"></script>
-  <script>
-    initShared('contact');
+  {{> footer }}
 
-    // Accordion
-    document.querySelectorAll('.accordion__trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const item = trigger.parentElement;
-        const body = item.querySelector('.accordion__body');
-        const isOpen = item.classList.contains('is-open');
-
-        item.closest('.accordion').querySelectorAll('.accordion__item').forEach(i => {
-          i.classList.remove('is-open');
-          i.querySelector('.accordion__body').style.maxHeight = null;
-        });
-
-        if (!isOpen) {
-          item.classList.add('is-open');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
-      });
-    });
-
-    // Form handler (placeholder)
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      btn.textContent = 'Sent ✓';
-      btn.style.background = 'linear-gradient(135deg, #00c853, #00e676)';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Send Message';
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
-    });
-  </script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

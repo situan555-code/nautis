@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insights — [AGENCY]</title>
-  <meta name="description" content="Points of view on digital transformation, 3D commerce, revenue operations, and AI automation for industrial brands.">
-  <link rel="stylesheet" href="css/design-system.css">
-  <link rel="stylesheet" href="css/pages.css">
+  {{> head pageTitle="Insights" }}
+  <link rel="stylesheet" href="/css/pages.css">
 </head>
 <body>
+
+  {{> nav activePage="insights" }}
 
   <!-- Page Hero -->
   <section class="page-hero" id="insights-hero">
@@ -115,36 +113,13 @@
         <span class="label" style="display:block;margin-bottom:var(--space-6);">Want More?</span>
         <h2>Get the playbook in person.</h2>
         <p>These articles are the appetizer. The Audit is the full meal — customized to your company, your stack, and your revenue goals.</p>
-        <a href="contact.html" class="btn btn--primary btn--lg" id="insights-cta-btn">Start with an Audit</a>
+        <a href="/contact.html" class="btn btn--primary btn--lg" id="insights-cta-btn">Start with an Audit</a>
       </div>
     </div>
   </section>
 
-  <script src="js/shared.js"></script>
-  <script>
-    initShared('insights');
+  {{> footer }}
 
-    // Filter logic
-    const filters = document.querySelectorAll('.filter-tab');
-    const cards = document.querySelectorAll('.insight-card');
-
-    filters.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filters.forEach(f => f.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        const filter = btn.dataset.filter;
-
-        cards.forEach(card => {
-          if (filter === 'all' || card.dataset.category.includes(filter)) {
-            card.style.display = '';
-            card.style.opacity = '1';
-          } else {
-            card.style.opacity = '0';
-            setTimeout(() => { card.style.display = 'none'; }, 300);
-          }
-        });
-      });
-    });
-  </script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

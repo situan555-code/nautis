@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services — [AGENCY]</title>
-  <meta name="description" content="Five integrated service pillars: MarTech, 3D Commerce, Revenue Operations, Applied AI, and Brand Strategy. We architect the entire revenue system.">
-  <link rel="stylesheet" href="css/design-system.css">
-  <link rel="stylesheet" href="css/pages.css">
+  {{> head pageTitle="Services" }}
+  <link rel="stylesheet" href="/css/pages.css">
 </head>
 <body>
+
+  {{> nav activePage="services" }}
 
   <!-- Page Hero -->
   <section class="page-hero" id="services-hero">
@@ -425,44 +423,13 @@
         <span class="label" style="display:block;margin-bottom:var(--space-6);">Where to Begin</span>
         <h2>Every system starts with a diagnosis.</h2>
         <p>Our Audit maps your entire revenue architecture — the tools, the data flows, the leaks — and delivers a strategic roadmap in 2–4 weeks.</p>
-        <a href="contact.html" class="btn btn--primary btn--lg" id="services-bottom-cta">Start with an Audit</a>
+        <a href="/contact.html" class="btn btn--primary btn--lg" id="services-bottom-cta">Start with an Audit</a>
       </div>
     </div>
   </section>
 
-  <script src="js/shared.js"></script>
-  <script>
-    initShared('services');
+  {{> footer }}
 
-    // Accordion logic
-    document.querySelectorAll('.accordion__trigger').forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const item = trigger.parentElement;
-        const body = item.querySelector('.accordion__body');
-        const isOpen = item.classList.contains('is-open');
-
-        // Close all in same accordion
-        item.closest('.accordion').querySelectorAll('.accordion__item').forEach(i => {
-          i.classList.remove('is-open');
-          i.querySelector('.accordion__body').style.maxHeight = null;
-        });
-
-        if (!isOpen) {
-          item.classList.add('is-open');
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
-      });
-    });
-
-    // Auto-open if hash matches
-    if (window.location.hash) {
-      const target = document.querySelector(window.location.hash);
-      if (target) {
-        setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 500);
-      }
-    }
-  </script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

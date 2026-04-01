@@ -1,0 +1,33 @@
+<!-- ============================================================
+     HEAD PARTIAL — Shared <head> content for all pages
+     Variables: pageTitle, pageDescription, pageCSS (optional extra stylesheet)
+     ============================================================ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}</title>
+<meta name="description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.{{/if}}">
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}">
+<meta property="og:description" content="We architect the entire revenue system for industrial brands — from ERP integrations to 3D product configurators.">
+<meta property="og:type" content="website">
+
+<!-- Preconnect for fonts (non-blocking) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<!-- Design System -->
+<link rel="stylesheet" href="/css/design-system.css">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{site.name}}",
+  "description": "Digital Transformation & Revenue Operations Consultancy for legacy B2B and manufacturing companies.",
+  "url": "#",
+  "serviceType": ["MarTech Consulting", "3D Commerce", "Revenue Operations", "AI Automation", "Brand Strategy"]
+}
+</script>

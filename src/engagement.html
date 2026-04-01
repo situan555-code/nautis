@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How We Work — [AGENCY]</title>
-  <meta name="description" content="Three ways to work with [AGENCY]: The Audit, The Build, and the Growth Retainer. Every engagement starts with a diagnosis.">
-  <link rel="stylesheet" href="css/design-system.css">
-  <link rel="stylesheet" href="css/pages.css">
+  {{> head pageTitle="How We Work" }}
+  <link rel="stylesheet" href="/css/pages.css">
 </head>
 <body>
+
+  {{> nav activePage="engagement" }}
 
   <!-- Page Hero -->
   <section class="page-hero" id="engagement-hero">
@@ -74,7 +72,7 @@
             <li>Prioritized strategic roadmap</li>
             <li>Executive-ready presentation</li>
           </ul>
-          <a href="contact.html" class="btn btn--secondary" style="margin-top:auto;" id="tier-audit-cta">Start an Audit</a>
+          <a href="/contact.html" class="btn btn--secondary" style="margin-top:auto;" id="tier-audit-cta">Start an Audit</a>
         </div>
 
         <!-- Tier 2 -->
@@ -92,7 +90,7 @@
             <li>Training & handoff documentation</li>
             <li>90-day post-launch support</li>
           </ul>
-          <a href="contact.html" class="btn btn--primary" style="margin-top:auto;" id="tier-build-cta">Scope a Build</a>
+          <a href="/contact.html" class="btn btn--primary" style="margin-top:auto;" id="tier-build-cta">Scope a Build</a>
         </div>
 
         <!-- Tier 3 -->
@@ -110,7 +108,7 @@
             <li>Competitive intelligence reports</li>
             <li>Priority access to Build projects</li>
           </ul>
-          <a href="contact.html" class="btn btn--secondary" style="margin-top:auto;" id="tier-growth-cta">Discuss a Retainer</a>
+          <a href="/contact.html" class="btn btn--secondary" style="margin-top:auto;" id="tier-growth-cta">Discuss a Retainer</a>
         </div>
 
       </div>
@@ -155,12 +153,13 @@
         <span class="label" style="display:block;margin-bottom:var(--space-6);">Start Here</span>
         <h2>Every engagement begins<br>with a conversation.</h2>
         <p>No commitment. No sales pitch. Just a clear diagnosis of where your revenue architecture stands — and where it could go.</p>
-        <a href="contact.html" class="btn btn--primary btn--lg" id="engagement-bottom-cta">Book a Discovery Call</a>
+        <a href="/contact.html" class="btn btn--primary btn--lg" id="engagement-bottom-cta">Book a Discovery Call</a>
       </div>
     </div>
   </section>
 
-  <script src="js/shared.js"></script>
-  <script>initShared('engagement');</script>
+  {{> footer }}
+
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — [AGENCY]</title>
-  <meta name="description" content="The philosophy behind [AGENCY]. We don't sell hours — we sell outcomes. Technology-first thinking for legacy industrial brands.">
-  <link rel="stylesheet" href="css/design-system.css">
-  <link rel="stylesheet" href="css/pages.css">
+  {{> head pageTitle="About" }}
+  <link rel="stylesheet" href="/css/pages.css">
 </head>
 <body>
+
+  {{> nav activePage="about" }}
 
   <!-- Page Hero -->
   <section class="page-hero" id="about-hero">
@@ -30,7 +28,7 @@
       <div class="reveal reveal--delay-1">
         <p style="margin-bottom:var(--space-6);">There's a massive gap in the market that nobody is filling well. On one side, you have traditional marketing agencies — great at running ads, terrible at understanding your ERP, your manufacturing constraints, or how your dealer network actually distributes products. On the other side, you have enterprise consulting firms that charge $500/hour to produce a PowerPoint deck that tells you what you already know.</p>
         <p style="margin-bottom:var(--space-6);">Neither of these is what a legacy B2B or manufacturing company actually needs. What they need is someone who speaks both languages — who understands the technical architecture of how data flows from a production floor to a digital shopping cart <em>and</em> who can direct a trade show activation that stops foot traffic.</p>
-        <p>That's the gap this consultancy fills. That's why [AGENCY] exists.</p>
+        <p>That's the gap this consultancy fills. That's why {{site.name}} exists.</p>
       </div>
     </div>
   </section>
@@ -124,12 +122,13 @@
         <span class="label" style="display:block;margin-bottom:var(--space-6);">Let's Talk</span>
         <h2>Ready to modernize<br>your revenue architecture?</h2>
         <p>No sales pitch. Just a clear-eyed conversation about where your money is going — and where it could be going.</p>
-        <a href="contact.html" class="btn btn--primary btn--lg" id="about-cta-btn">Book a Discovery Call</a>
+        <a href="/contact.html" class="btn btn--primary btn--lg" id="about-cta-btn">Book a Discovery Call</a>
       </div>
     </div>
   </section>
 
-  <script src="js/shared.js"></script>
-  <script>initShared('about');</script>
+  {{> footer }}
+
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>
