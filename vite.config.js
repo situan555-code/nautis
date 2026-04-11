@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
+import react from '@vitejs/plugin-react';
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
@@ -13,6 +14,7 @@ const pages = [
   'contact',
   'engagement',
   'insights',
+  'portfolio',
 ];
 
 // Build rollup input map: { index: '/abs/path/src/index.html', about: '...', ... }
@@ -36,6 +38,7 @@ export default defineConfig({
   publicDir: '../public',
 
   plugins: [
+    react(),
     handlebars({
       partialDirectory: resolve(__dirname, 'src/partials'),
       helpers: {
@@ -61,7 +64,6 @@ export default defineConfig({
 
   server: {
     port: 5173,
-    open: true,
   },
 
   css: {
