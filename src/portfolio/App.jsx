@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Desktop from './components/Desktop';
 import Taskbar from './components/Taskbar';
 import FolderView from './components/FolderView';
+import CaseStudyViewer from './components/CaseStudyViewer';
+import { caseStudies } from './data/caseStudies';
 
 import Paint from './components/Paint';
 
@@ -147,57 +149,77 @@ const App = () => {
       id: 'pageantry_commercial',
       title: 'Pageantry_Innovations.mp4',
       folderId: 'creative_hardware',
-      content: (
-        <div style={{ padding: '8px', backgroundColor: '#000', height: '100%', display: 'flex', flexDirection: 'column' }}>
-          <img src="/case-studies/pageantry_robot.jpg" alt="Pageantry Commercial" style={{ width: '100%', height: 'auto' }} />
-          <p style={{ color: '#0f0', fontFamily: 'monospace', textAlign: 'center', marginTop: '8px' }}>Co-directed and sole editor.</p>
-        </div>
-      ),
+      content: <CaseStudyViewer {...caseStudies.pageantry_commercial} />,
       isOpen: false,
       isMinimized: false,
       zIndex: 10,
       position: { x: 100, y: 100 }
     },
     {
+      id: 'polymount_commercial',
+      title: 'Polymount_Commercial.mp4',
+      folderId: 'creative_hardware',
+      content: (
+        <div style={{ padding: '8px', backgroundColor: '#000', height: '100%', display: 'flex', flexDirection: 'column' }}>
+          <video src="/case-studies/polymount.mp4" controls style={{ width: '100%', height: 'auto', outline: 'none' }} />
+          <p style={{ color: '#0f0', fontFamily: 'monospace', textAlign: 'center', marginTop: '8px' }}>Polymount Advertising Commercial</p>
+        </div>
+      ),
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      position: { x: 110, y: 110 }
+    },
+    {
       id: 'kiosk_tech',
       title: 'Retail_Kiosk.pdf',
       folderId: 'creative_hardware',
-      content: (
-        <div style={{ padding: '8px', backgroundColor: '#fff', height: '100%', display: 'flex', flexDirection: 'column' }}>
-          <img src="/case-studies/mavin_kiosk.jpg" alt="Mavin Kiosk" style={{ width: '100%', height: 'auto', border: '1px solid #ccc' }} />
-          <p style={{ textAlign: 'center', fontFamily: 'monospace', marginTop: '8px' }}>Designed the underlying kiosk technology architecture & managed retail signage execution.</p>
-        </div>
-      ),
+      content: <CaseStudyViewer {...caseStudies.mavin_kiosk} />,
       isOpen: false,
       isMinimized: false,
       zIndex: 10,
       position: { x: 120, y: 120 }
     },
+
     {
-      id: 'kiosk_hardware',
-      title: 'Podium_Hardware.pdf',
+      id: 'distroblox_video',
+      title: 'distroBLOX_Announcement.mp4',
       folderId: 'creative_hardware',
-      content: (
-        <div style={{ padding: '8px', backgroundColor: '#fff', height: '100%', display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
-          <img src="/case-studies/podium_front.jpg" alt="Podium Front" style={{ width: '100%', height: 'auto', border: '1px solid #ccc', marginBottom: '8px' }} />
-          <img src="/case-studies/podium_back.jpg" alt="Podium Back" style={{ width: '100%', height: 'auto', border: '1px solid #ccc' }} />
-          <p style={{ textAlign: 'center', fontFamily: 'monospace', marginTop: '16px', fontWeight: 'bold' }}>Developed manufacturing partners and designed the entire physical podium kiosk architecture.</p>
-        </div>
-      ),
+      content: <CaseStudyViewer {...caseStudies.distroblox} />,
       isOpen: false,
       isMinimized: false,
       zIndex: 10,
-      position: { x: 130, y: 130 }
+      position: { x: 140, y: 140 }
+    },
+    {
+      id: 'ihfc_trade_show',
+      title: 'IHFC_Showroom.gallery',
+      folderId: 'creative_hardware',
+      content: <CaseStudyViewer {...caseStudies.ihfc_trade_show} />,
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      position: { x: 150, y: 150 }
+    },
+    {
+      id: 'product_photo',
+      title: 'Product_Photography.png',
+      folderId: 'creative_hardware',
+      content: <CaseStudyViewer {...caseStudies.product_photography} />,
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 10,
+      position: { x: 160, y: 160 }
     },
     {
       id: 'print_design',
       title: 'Environmental_Design.gallery',
       folderId: 'creative_hardware',
-      content: <PlacholderContent title="Truck Trailer Wraps & Outdoor Signage" />,
+      content: <CaseStudyViewer {...caseStudies.environmental_design} />,
       isOpen: false,
       isMinimized: false,
       zIndex: 10,
-      position: { x: 160, y: 160 }
+      position: { x: 170, y: 170 }
     },
 
     // RevOps Strategy
