@@ -1,0 +1,161 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.6.2
+2 info using node@v24.13.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Volumes/raid4/Antigravity IDE/Resume Website/.npmrc
+5 silly config load:file:/Users/nautis/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install @vitejs/plugin-react
+8 verbose argv "install" "--save-dev" "@vitejs/plugin-react" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:/Volumes/raid4/Antigravity IDE/Resume Website/.npm-cache/_logs/2026-04-09T17_56_13_454Z-
+10 verbose logfile /Volumes/raid4/Antigravity IDE/Resume Website/.npm-cache/_logs/2026-04-09T17_56_13_454Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest @vitejs/plugin-react@*
+15 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fplugin-react cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fplugin-react 133ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fplugin-react set size:undefined disposed:false
+18 silly fetch manifest @rolldown/plugin-babel@^0.1.7 || ^0.2.0
+19 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fplugin-babel cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/@rolldown%2fplugin-babel 60ms (cache miss)
+21 silly packumentCache full:https://registry.npmjs.org/@rolldown%2fplugin-babel set size:undefined disposed:false
+22 silly fetch manifest @babel/core@^7.29.0 || ^8.0.0-rc.1
+23 silly packumentCache full:https://registry.npmjs.org/@babel%2fcore cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/@babel%2fcore 95ms (cache miss)
+25 silly packumentCache full:https://registry.npmjs.org/@babel%2fcore set size:undefined disposed:false
+26 silly fetch manifest @babel/plugin-transform-runtime@^7.29.0 || ^8.0.0-rc.1
+27 silly packumentCache full:https://registry.npmjs.org/@babel%2fplugin-transform-runtime cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/@babel%2fplugin-transform-runtime 175ms (cache miss)
+29 silly packumentCache full:https://registry.npmjs.org/@babel%2fplugin-transform-runtime set size:undefined disposed:false
+30 silly fetch manifest @babel/runtime@^7.27.0 || ^8.0.0-rc.1
+31 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime cache-miss
+32 http fetch GET 200 https://registry.npmjs.org/@babel%2fruntime 177ms (cache miss)
+33 silly packumentCache full:https://registry.npmjs.org/@babel%2fruntime set size:undefined disposed:false
+34 silly fetch manifest rolldown@^1.0.0-rc.5
+35 silly packumentCache full:https://registry.npmjs.org/rolldown cache-miss
+36 http fetch GET 200 https://registry.npmjs.org/rolldown 214ms (cache miss)
+37 silly packumentCache full:https://registry.npmjs.org/rolldown set size:undefined disposed:false
+38 silly fetch manifest vite@^6.2.0
+39 silly packumentCache full:https://registry.npmjs.org/vite cache-miss
+40 http cache https://registry.npmjs.org/vite 892ms (cache hit)
+41 silly packumentCache full:https://registry.npmjs.org/vite set size:38805901 disposed:false
+42 silly fetch manifest vite@^8.0.0
+43 silly packumentCache full:https://registry.npmjs.org/vite cache-miss
+44 http cache https://registry.npmjs.org/vite 34ms (cache hit)
+45 silly packumentCache full:https://registry.npmjs.org/vite set size:38805901 disposed:false
+46 silly fetch manifest @types/node@^18.0.0 || ^20.0.0 || >=22.0.0
+47 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+48 http cache https://registry.npmjs.org/@types%2fnode 261ms (cache hit)
+49 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:10968423 disposed:false
+50 silly fetch manifest jiti@>=1.21.0
+51 silly packumentCache full:https://registry.npmjs.org/jiti cache-miss
+52 http cache https://registry.npmjs.org/jiti 20ms (cache hit)
+53 silly packumentCache full:https://registry.npmjs.org/jiti set size:382310 disposed:false
+54 silly fetch manifest less@*
+55 silly packumentCache full:https://registry.npmjs.org/less cache-miss
+56 http cache https://registry.npmjs.org/less 21ms (cache hit)
+57 silly packumentCache full:https://registry.npmjs.org/less set size:461684 disposed:false
+58 silly fetch manifest lightningcss@^1.21.0
+59 silly packumentCache full:https://registry.npmjs.org/lightningcss cache-miss
+60 http cache https://registry.npmjs.org/lightningcss 14ms (cache hit)
+61 silly packumentCache full:https://registry.npmjs.org/lightningcss set size:186753 disposed:false
+62 silly fetch manifest sass@*
+63 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+64 http cache https://registry.npmjs.org/sass 26ms (cache hit)
+65 silly packumentCache full:https://registry.npmjs.org/sass set size:726244 disposed:false
+66 silly fetch manifest sass-embedded@*
+67 silly packumentCache full:https://registry.npmjs.org/sass-embedded cache-miss
+68 http cache https://registry.npmjs.org/sass-embedded 19ms (cache hit)
+69 silly packumentCache full:https://registry.npmjs.org/sass-embedded set size:415594 disposed:false
+70 silly fetch manifest stylus@*
+71 silly packumentCache full:https://registry.npmjs.org/stylus cache-miss
+72 http cache https://registry.npmjs.org/stylus 17ms (cache hit)
+73 silly packumentCache full:https://registry.npmjs.org/stylus set size:286766 disposed:false
+74 silly fetch manifest sugarss@*
+75 silly packumentCache full:https://registry.npmjs.org/sugarss cache-miss
+76 http cache https://registry.npmjs.org/sugarss 12ms (cache hit)
+77 silly packumentCache full:https://registry.npmjs.org/sugarss set size:44975 disposed:false
+78 silly fetch manifest postcss@^8.3.3
+79 silly packumentCache full:https://registry.npmjs.org/postcss cache-miss
+80 http cache https://registry.npmjs.org/postcss 27ms (cache hit)
+81 silly packumentCache full:https://registry.npmjs.org/postcss set size:705229 disposed:false
+82 silly fetch manifest terser@^5.16.0
+83 silly packumentCache full:https://registry.npmjs.org/terser cache-miss
+84 http cache https://registry.npmjs.org/terser 28ms (cache hit)
+85 silly packumentCache full:https://registry.npmjs.org/terser set size:789927 disposed:false
+86 silly fetch manifest tsx@^4.8.1
+87 silly packumentCache full:https://registry.npmjs.org/tsx cache-miss
+88 http cache https://registry.npmjs.org/tsx 15ms (cache hit)
+89 silly packumentCache full:https://registry.npmjs.org/tsx set size:289592 disposed:false
+90 silly fetch manifest yaml@^2.4.2
+91 silly packumentCache full:https://registry.npmjs.org/yaml cache-miss
+92 http cache https://registry.npmjs.org/yaml 16ms (cache hit)
+93 silly packumentCache full:https://registry.npmjs.org/yaml set size:375230 disposed:false
+94 silly fetch manifest babel-plugin-react-compiler@^1.0.0
+95 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler cache-miss
+96 http fetch GET 200 https://registry.npmjs.org/babel-plugin-react-compiler 158ms (cache miss)
+97 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler set size:undefined disposed:false
+98 silly fetch manifest @types/node@^20.19.0 || >=22.12.0
+99 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+100 http cache https://registry.npmjs.org/@types%2fnode 15ms (cache hit)
+101 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:10968423 disposed:false
+102 silly fetch manifest @vitejs/devtools@^0.1.0
+103 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools cache-miss
+104 http fetch GET 200 https://registry.npmjs.org/@vitejs%2fdevtools 73ms (cache miss)
+105 silly packumentCache full:https://registry.npmjs.org/@vitejs%2fdevtools set size:undefined disposed:false
+106 silly fetch manifest esbuild@^0.27.0 || ^0.28.0
+107 silly packumentCache full:https://registry.npmjs.org/esbuild cache-miss
+108 http cache https://registry.npmjs.org/esbuild 38ms (cache hit)
+109 silly packumentCache full:https://registry.npmjs.org/esbuild set size:1254708 disposed:false
+110 silly fetch manifest less@^4.0.0
+111 silly packumentCache full:https://registry.npmjs.org/less cache-hit
+112 silly fetch manifest sass@^1.70.0
+113 silly packumentCache full:https://registry.npmjs.org/sass cache-hit
+114 silly fetch manifest sass-embedded@^1.70.0
+115 silly packumentCache full:https://registry.npmjs.org/sass-embedded cache-hit
+116 silly fetch manifest stylus@>=0.54.8
+117 silly packumentCache full:https://registry.npmjs.org/stylus cache-hit
+118 silly fetch manifest sugarss@^5.0.0
+119 silly packumentCache full:https://registry.npmjs.org/sugarss cache-hit
+120 verbose stack Error: unable to resolve dependency tree
+120 verbose stack     at #failPeerConflict (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1420:25)
+120 verbose stack     at #loadPeerSet (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1413:29)
+120 verbose stack     at async #buildDepStep (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:929:11)
+120 verbose stack     at async Arborist.buildIdealTree (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:182:7)
+120 verbose stack     at async Promise.all (index 1)
+120 verbose stack     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:114:5)
+120 verbose stack     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:150:5)
+120 verbose stack     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:208:9)
+120 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:67:5)
+121 error code ERESOLVE
+122 error ERESOLVE unable to resolve dependency tree
+123 error
+124 error While resolving: agency-website@1.0.0
+124 error Found: vite@6.4.2[2m[22m
+124 error [2mnode_modules/vite[22m
+124 error   [34mdev[39m vite@"^6.2.0" from the root project
+124 error
+124 error Could not resolve dependency:
+124 error [95mpeer[39m vite@"^8.0.0" from @vitejs/plugin-react@6.0.1[2m[22m
+124 error [2mnode_modules/@vitejs/plugin-react[22m
+124 error   [34mdev[39m @vitejs/plugin-react@"*" from the root project
+124 error
+124 error Fix the upstream dependency conflict, or retry
+124 error this command with --force or --legacy-peer-deps
+124 error to accept an incorrect (and potentially broken) dependency resolution.
+125 error
+125 error
+125 error For a full report see:
+125 error /Volumes/raid4/Antigravity IDE/Resume Website/.npm-cache/_logs/2026-04-09T17_56_13_454Z-eresolve-report.txt
+126 silly unfinished npm timer reify 1775757373639
+127 silly unfinished npm timer reify:loadTrees 1775757373640
+128 silly unfinished npm timer idealTree:buildDeps 1775757373658
+129 silly unfinished npm timer idealTree:#root 1775757373659
+130 verbose cwd /Volumes/raid4/Antigravity IDE/Resume Website
+131 verbose os Darwin 25.4.0
+132 verbose node v24.13.0
+133 verbose npm  v11.6.2
+134 verbose exit 1
+135 verbose code 1
+136 error A complete log of this run can be found in: /Volumes/raid4/Antigravity IDE/Resume Website/.npm-cache/_logs/2026-04-09T17_56_13_454Z-debug-0.log

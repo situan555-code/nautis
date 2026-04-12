@@ -1,0 +1,18 @@
+'Log files:
+/Volumes/raid4/Antigravity IDE/Resume Website/.npm-cache/_logs/2026-04-09T17_56_13_454Z-debug-0.log
+
+# npm resolution error report
+
+While resolving: agency-website@1.0.0
+Found: vite@6.4.2
+node_modules/vite
+  dev vite@"^6.2.0" from the root project
+
+Could not resolve dependency:
+peer vite@"^8.0.0" from @vitejs/plugin-react@6.0.1
+node_modules/@vitejs/plugin-react
+  dev @vitejs/plugin-react@"*" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.

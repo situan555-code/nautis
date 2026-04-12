@@ -155,21 +155,7 @@ const App = () => {
       zIndex: 10,
       position: { x: 100, y: 100 }
     },
-    {
-      id: 'polymount_commercial',
-      title: 'Polymount_Commercial.mp4',
-      folderId: 'creative_hardware',
-      content: (
-        <div style={{ padding: '8px', backgroundColor: '#000', height: '100%', display: 'flex', flexDirection: 'column' }}>
-          <video src="/case-studies/polymount.mp4" controls style={{ width: '100%', height: 'auto', outline: 'none' }} />
-          <p style={{ color: '#0f0', fontFamily: 'monospace', textAlign: 'center', marginTop: '8px' }}>Polymount Advertising Commercial</p>
-        </div>
-      ),
-      isOpen: false,
-      isMinimized: false,
-      zIndex: 10,
-      position: { x: 110, y: 110 }
-    },
+
     {
       id: 'kiosk_tech',
       title: 'Retail_Kiosk.pdf',

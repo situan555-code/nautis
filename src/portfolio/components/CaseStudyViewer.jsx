@@ -20,7 +20,7 @@ const CaseStudyViewer = ({ title, role, timeline, blocks }) => {
       </header>
 
       <div className="case-study-content" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        {blocks.map((block, index) => {
+        {(blocks || []).map((block, index) => {
           if (block.type === 'text') {
             return (
               <div key={index} style={{ fontSize: '16px' }}>

@@ -37,24 +37,34 @@ export const caseStudies = {
     ]
   },
   pageantry_commercial: {
-    title: 'Pageantry Innovations Commercial Launch',
+    title: 'Commercial Film Production & Creative Direction',
     role: 'Co-Director & Sole Editor',
-    timeline: '2020',
+    timeline: '2020 - 2021',
     blocks: [
       {
+        type: 'image',
+        src: '/case-studies/video_direction.jpeg',
+        caption: 'On-set lighting and mechanical blocking.'
+      },
+      {
         type: 'text',
-        heading: 'Creative Vision & Execution',
+        heading: 'Creative Vision & Execution: Pageantry Innovations',
         content: 'For this flagship commercial, the objective was sheer visual impact combined with mechanical precision. Tasked with co-directing the shoot and serving as the sole post-production editor, I architected a high-speed narrative that anchored the physical capabilities of Pageantry\'s hardware against dynamic, industrial cinematography.'
       },
       {
         type: 'video',
         src: '/case-studies/pageantry.mp4',
-        caption: 'Final commercial launch video.'
+        caption: 'Pageantry Innovations launch rollout.'
       },
       {
         type: 'text',
-        heading: 'Post-Production Pipeline',
-        content: 'The editing process required aggressive pacing and meticulous color-grading to ensure the heavy machinery read as premium, high-end technology. I unified disparate shot formats into a clean, cohesive timeline, managing audio mixing, kinetic typography overlays, and final rendering pipelines.'
+        heading: 'Brand Advertising: Polymount',
+        content: 'The editing process required aggressive pacing and meticulous color-grading. I unified disparate shot formats into a clean, cohesive timeline, managing audio mixing, kinetic typography overlays, and final rendering pipelines.'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/polymount.mp4',
+        caption: 'Polymount commercial spot.'
       }
     ]
   },
