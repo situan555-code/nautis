@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DesktopIcon = ({ id, title, position, onDoubleClick, isFolderItem }) => {
+const DesktopIcon = ({ id, title, position, onDoubleClick, isFolderItem, iconType = 'folder' }) => {
   return (
     <div
       className="desktop-icon"
@@ -8,7 +8,7 @@ const DesktopIcon = ({ id, title, position, onDoubleClick, isFolderItem }) => {
       onDoubleClick={onDoubleClick}
       tabIndex="0"
     >
-      <div className="desktop-icon-img"></div>
+      <div className={`desktop-icon-img icon-${iconType}`}></div>
       <div 
         className="desktop-icon-text" 
         style={isFolderItem ? { color: '#000000', textShadow: 'none', wordBreak: 'break-word', whiteSpace: 'normal', fontSize: '14px' } : {}}

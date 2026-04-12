@@ -184,15 +184,22 @@ body, html {
   height: 48px;
   margin-bottom: 4px;
   image-rendering: pixelated;
+  position: relative;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-folder {
   /* Basic folder pixel art with CSS gradients */
   background: linear-gradient(var(--os-teal) 40%, transparent 40%),
               linear-gradient(to right, #ffca28 100%, #ffca28 100%);
   border: 2px solid var(--os-black);
   border-top-left-radius: 8px;
   box-shadow: inset 2px 2px #ffe082;
-  position: relative;
 }
-.desktop-icon-img::after {
+
+.icon-folder::after {
   content: "";
   position: absolute;
   top: -10px;
@@ -203,6 +210,28 @@ body, html {
   border: 2px solid var(--os-black);
   border-bottom: none;
   box-shadow: inset 2px 2px #ffe082;
+}
+
+.icon-paint {
+  /* Win95 MS Paint Icon Base64. A 32x32 transparent pixel art replica */
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAArhJREFUWEfF111ozWEUB/D/X88523nZzLKVpJS4Y0QupBdu3HArN9wouVAulCih8ZIoxYUbFy7caNxZbnAl21iSUl4iI2+Tee08ZzrPO23ntP/2+/f/7vnVc/3/f53znOc8Z0SMXUVR1AghzInIe/S391/D8A+eY0nI2/YQwqOIjP8JwM4BMAOA5wD0FEXRY1kRkUEAPwD011LPAyDiOwDrARQArARwzXGcxZlM5kF22cyshoh2EtFqAPMAYpnA2HHO7QWwIhaLbcvn8++Gg5jAOAAnASwFMDeKooiINjnnzjLzfCKaNQLkO2DmuUTE7y8kIv1wTjBzl4hk/wZg5lNEtK+0ZgBoBvA0m6n7y7m2EABm3kJEW1Qf59yBWCx2Lp/PT1YtItoG4ByAhUq51jn3WESulT6k/L42EADm+XkAHwBMTyQSNbqun2WmZQA6lXnFOddmGMblQqFwqVgsPqsWAA3TdT3JzLcDqF5S100AHRkM2HvvQ4noBDPvB3B8BCAiOgPgmFouATgJ4P4IAD3P+xUR/a1WbcvlcrsNwyiappll5s8qLzPzQSK6NQLA9wAcUbUBAG+ZeYWK5TlvA3hULcDMJwGcB/C1Uqm8rtXrvW4A7wGcB/Cl1XLO7TUM4yoR6aMCOAvgvE+j2Q/X9Yjohw3gvIikq2Xv/QMi2q+W/ZRSVj+e51X//408B145504DeE9EG9QCInoB4BKAtX8AcM7dIqKN/QkQkX0Ahpm59Q8AItrjnPvBzI6IdFjWe7+PiM4B2Grlvff7iGi32tE2M7daee/9TiJaV3lXmHmbWq2896cBDOf9mflEtVrgnNvGzG0i8gGAbRjGA8Mwemzb8DzvAICIhGF027ax2c7MvNey7E/7A+oH9wXw0Q48R9/8BQzZg8G0a+LwAAAAAElFTkSuQmCC');
+}
+
+.icon-document {
+  background: white;
+  border: 2px solid var(--os-black);
+  box-shadow: inset -20px 0 0 -18px var(--os-silver);
+}
+.icon-document::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: var(--os-silver);
+  border-bottom: 2px solid var(--os-black);
+  border-left: 2px solid var(--os-black);
 }
 
 .desktop-icon-text {

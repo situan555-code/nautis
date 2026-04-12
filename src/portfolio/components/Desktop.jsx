@@ -13,6 +13,7 @@ const Desktop = ({ desktopIcons, openWindows, openWindow, closeWindow, updatePos
           key={icon.id}
           id={icon.id}
           title={icon.title}
+          iconType={icon.iconType}
           position={{ x: 20, y: 20 + index * 100 }}
           onDoubleClick={() => openWindow(icon.id)}
         />

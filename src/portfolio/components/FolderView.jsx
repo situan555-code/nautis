@@ -20,6 +20,7 @@ const FolderView = ({ folderId, windows = [], openWindow = () => {} }) => {
           key={item.id}
           id={item.id}
           title={item.title}
+          iconType={item.iconType}
           position={{ x: 'auto', y: 'auto' }} // CSS Grid overrides position
           onDoubleClick={() => openWindow(item.id)}
           isFolderItem={true}
