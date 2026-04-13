@@ -1,201 +1,75 @@
 export const caseStudies = {
-  mavin_kiosk: {
-    title: 'Retail Kiosk & Digital Signage Architecture',
-    role: 'Lead Technology Architect & Manufacturing Liaison',
-    timeline: '2023 - 2024',
+
+  // =============================================
+  // DEFINED CASE STUDIES
+  // =============================================
+
+  polymount_greenscreen: {
+    title: 'Polymount: Green Screen Production',
+    role: 'Director & Editor',
+    timeline: '2021',
     blocks: [
       {
         type: 'text',
-        heading: 'Phase 1: Diagnostic & Strategic Objectives',
-        content: 'The core challenge was translating a massive, complex digital configurator into a seamless physical retail footprint. The retail kiosk needed to be highly durable, digitally responsive, and tightly integrated with our backend PIM constraints without requiring constant manual oversight from floor staff.'
+        heading: 'Green Screen Process',
+        content: 'The Polymount commercial required full chroma-key isolation to achieve the final cinematic compositing. I directed the green screen shoot, managed on-set blocking, and handled the entire post-production pipeline from key pulling through final compositing and color grading.'
       },
       {
         type: 'image',
-        src: '/case-studies/kiosk_retail.jpeg',
-        caption: 'Retail showroom deployment mapping aesthetic flow against digital touchpoints.'
-      },
-      {
-        type: 'text',
-        heading: 'Phase 2: Technical Architecture & Systems Engineering',
-        content: 'I architected the underlying kiosk technology stack, selecting edge-compute hardware capable of rendering intensive WebGL product models continuously without thermal throttling. The system required an isolated network environment to guarantee 99.9% uptime, even in retail showrooms with notoriously unreliable bandwidth.'
+        src: '/case-studies/polymount_greenscreen/01.png',
+        caption: 'Green screen production reference — on-set blocking and camera framing.'
       },
       {
         type: 'image',
-        src: '/case-studies/kiosk_retail2.jpeg',
-        caption: 'Integrated wood sample racks acting as a tactile bridge to the digital configurator.'
-      },
-      {
-        type: 'text',
-        heading: 'Phase 3: Hardware Sourcing & Manufacturing Partners',
-        content: 'Beyond the software, the physical podium required robust partner collaboration. I vetted, negotiated, and developed relationships with manufacturing partners to fabricate the custom wood and aluminum chassis, ensuring it passed rigorous structural integrity tests for high-traffic environments.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/kiosk_podium.png',
-        caption: 'Rear view of the VESA-mounted edge-compute hardware and cable management system.'
-      }
-    ]
-  },
-  pageantry_commercial: {
-    title: 'Commercial Film Production & Creative Direction',
-    role: 'Co-Director & Sole Editor',
-    timeline: '2020 - 2021',
-    blocks: [
-      {
-        type: 'image',
-        src: '/case-studies/video_direction.jpeg',
-        caption: 'On-set lighting and mechanical blocking.'
-      },
-      {
-        type: 'text',
-        heading: 'Creative Vision & Execution: Pageantry Innovations',
-        content: 'For this flagship commercial, the objective was sheer visual impact combined with mechanical precision. Tasked with co-directing the shoot and serving as the sole post-production editor, I architected a high-speed narrative that anchored the physical capabilities of Pageantry\'s hardware against dynamic, industrial cinematography.'
-      },
-      {
-        type: 'video',
-        src: '/case-studies/pageantry.mp4',
-        caption: 'Pageantry Innovations launch rollout.'
-      },
-      {
-        type: 'text',
-        heading: 'Brand Advertising: Polymount',
-        content: 'The editing process required aggressive pacing and meticulous color-grading. I unified disparate shot formats into a clean, cohesive timeline, managing audio mixing, kinetic typography overlays, and final rendering pipelines.'
-      },
-      {
-        type: 'video',
-        src: '/case-studies/polymount.mp4',
-        caption: 'Polymount commercial spot.'
-      },
-      {
-        type: 'text',
-        heading: 'Behind the Scenes: Green Screen Production',
-        content: 'Achieving the final cinematic look required controlled studio environments with full chroma-key isolation. I managed the green screen pipeline from on-set blocking through to final compositing, ensuring clean key pulls and believable integration.'
+        src: '/case-studies/polymount_greenscreen/02.png',
+        caption: 'Chroma-key environment setup and lighting isolation.'
       },
       {
         type: 'image',
         src: '/case-studies/green_screen.png',
         caption: 'On-set green screen production environment.'
-      }
-    ]
-  },
-  distroblox: {
-    title: 'distroBLOX™ Product Announcement',
-    role: 'Media Strategist & Editor',
-    timeline: '2021',
-    blocks: [
-      {
-        type: 'text',
-        heading: 'Market Positioning',
-        content: 'The launch of distroBLOX™ represented a major strategic announcement. I spearheaded the visual media packaging to strip away complex mechanical constraints and present the core value proposition instantly.'
       },
       {
         type: 'video',
-        src: '/case-studies/distroblox.mp4',
-        caption: 'Product announcement rollout used across B2B social channels.'
+        src: '/case-studies/polymount.mp4',
+        caption: 'Final Polymount commercial.'
       }
     ]
   },
-  ihfc_trade_show: {
-    title: 'IHFC Trade Show Architecture',
-    role: 'Environmental Designer',
-    timeline: '2023',
+
+  isoshock: {
+    title: 'Pageantry Innovations isoSHOCK Announcement',
+    role: 'Video Direction & Editing',
+    timeline: '2020',
     blocks: [
       {
         type: 'text',
-        heading: 'Spatial Design & Footprint Layout',
-        content: 'Designing the IHFC trade show booth required balancing high-volume traffic flow with premium product isolation. I mapped the entire grid layout, establishing strategic visual anchors to gently funnel attendees toward our highest-margin product configurations.'
+        heading: 'Video Direction & Editing',
+        content: 'The isoSHOCK product launch demanded aggressive, high-impact cinematography that communicated mechanical precision and industrial strength. I directed the shoot and served as sole editor, building a narrative that let the hardware speak for itself.'
       },
       {
         type: 'image',
-        src: '/case-studies/ihfc_design.jpeg',
-        caption: 'Structural beam framing and modular partition mapping.'
-      },
-      {
-        type: 'text',
-        heading: 'Aesthetic Realization',
-        content: 'By integrating large-scale lighting trusses and modular backdrops, the environment felt permanent despite its temporary nature. The result was a heavily trafficked, visually dominant branded ecosystem.'
+        src: '/case-studies/isoshock/01.png',
+        caption: 'Video direction — shot composition and mechanical blocking.'
       },
       {
         type: 'image',
-        src: '/case-studies/ihfc_design2.jpeg',
-        caption: 'Fully realized floor setup matching pre-visualized 3D architecture.'
+        src: '/case-studies/isoshock/02.png',
+        caption: 'On-set reference — lighting and camera angle selection.'
       },
       {
-        type: 'text',
-        heading: 'Digital Signage & Motion Content',
-        content: 'Beyond the physical environment, I produced looping motion content optimized for two distinct display ratios deployed across the showroom floor — a widescreen lobby format and a vertical portrait kiosk. Each format required independent pacing and compositional hierarchy to command attention at different viewing distances.'
+        type: 'image',
+        src: '/case-studies/video_direction.jpeg',
+        caption: 'Behind the scenes — on-set lighting rig.'
       },
       {
         type: 'video',
-        src: '/case-studies/ihfc_video_wide.mp4',
-        caption: 'Widescreen lobby display loop (1144×520).'
-      },
-      {
-        type: 'video',
-        src: '/case-studies/ihfc_video_portrait.mp4',
-        caption: 'Portrait kiosk display loop (606×1080).'
+        src: '/case-studies/pageantry.mp4',
+        caption: 'Pageantry Innovations isoSHOCK launch video.'
       }
     ]
   },
-  environmental_design: {
-    title: 'Brand Environmental & Print Design',
-    role: 'Designer',
-    timeline: '2022',
-    blocks: [
-      {
-        type: 'text',
-        heading: 'Scale & Material Constraints',
-        content: 'Translating strict B2B brand guidelines into massive, 40-foot convex aluminum truck trailers requires extreme pre-visualization and vector scaling fidelity. I managed the layout and print handoff for the environmental logistics fleet.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/mavin_trailer.jpeg',
-        caption: 'Mavin branded logistics trailer parked at distribution facility.'
-      }
-    ]
-  },
-  product_photography: {
-    title: 'Photography & Visual Production',
-    role: 'Creative Director & Photographer',
-    timeline: '2018 - Present',
-    blocks: [
-      {
-        type: 'text',
-        heading: 'Studio Product Photography',
-        content: 'Driving a premium brand means flawless catalog imagery. I led the standard for lighting isolation and material representation, ensuring that physical wood grains and fabric textures translated seamlessly to the digital catalog with zero loss of color accuracy.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/product_photography.png',
-        caption: 'Isolated, high-fidelity studio lighting configuration for catalog components.'
-      },
-      {
-        type: 'text',
-        heading: '3D Product Visualization',
-        content: 'Beyond physical photography, I directed 3D rendering pipelines to produce photorealistic room scenes for catalog and e-commerce. Each render required precise material mapping of wood grains, fabric textures, and ambient lighting to match real-world photography standards.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/mv_diningroom_3d.jpeg',
-        caption: '3D rendered dining room scene — directed lighting and material specifications.'
-      },
-      {
-        type: 'text',
-        heading: 'Event & Action Photography',
-        content: 'My lens work extended beyond the studio into live event environments and high-speed action contexts, where lighting control gives way to instinct and anticipatory framing.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/wedding_cake.jpg',
-        caption: 'Event photography — Canon EOS 6D Mark II, natural ambient lighting.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/wgi_darksky.jpg',
-        caption: 'WGI Darksky action shot — Canon EOS 6D Mark II, high-speed capture.'
-      }
-    ]
-  },
+
   mavin_50_years: {
     title: 'Mavin 50th Anniversary Campaign',
     role: 'Creative Director & 3D Prototyping Lead',
@@ -250,6 +124,108 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/mavin50/06.png',
         caption: 'Final on-site display installation across HPMKT environments.'
+      }
+    ]
+  },
+
+  // =============================================
+  // CATCH-ALL: Everything else for reorganization
+  // =============================================
+
+  portfolio_assets: {
+    title: 'Portfolio Assets — Unsorted',
+    role: 'Various Roles',
+    timeline: '2018 - Present',
+    blocks: [
+      {
+        type: 'text',
+        heading: 'Retail Kiosk & Digital Signage',
+        content: 'Translating a massive, complex digital configurator into a seamless physical retail footprint. The retail kiosk needed to be highly durable, digitally responsive, and tightly integrated with our backend PIM constraints.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk_retail.jpeg',
+        caption: 'Retail showroom deployment.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk_retail2.jpeg',
+        caption: 'Integrated wood sample racks with digital configurator.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk_podium.png',
+        caption: 'VESA-mounted edge-compute hardware and cable management.'
+      },
+      {
+        type: 'text',
+        heading: 'distroBLOX™ Product Announcement',
+        content: 'The launch of distroBLOX™ represented a major strategic announcement. I spearheaded the visual media packaging to present the core value proposition instantly.'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/distroblox.mp4',
+        caption: 'distroBLOX™ product announcement.'
+      },
+      {
+        type: 'text',
+        heading: 'IHFC Trade Show Architecture',
+        content: 'Designing the IHFC trade show booth required balancing high-volume traffic flow with premium product isolation. I mapped the entire grid layout, establishing strategic visual anchors.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/ihfc_design.jpeg',
+        caption: 'Structural beam framing and modular partition mapping.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/ihfc_design2.jpeg',
+        caption: 'Fully realized floor setup.'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/ihfc_video_wide.mp4',
+        caption: 'IHFC widescreen lobby display loop.'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/ihfc_video_portrait.mp4',
+        caption: 'IHFC portrait kiosk display loop.'
+      },
+      {
+        type: 'text',
+        heading: 'Brand Environmental & Print Design',
+        content: 'Translating strict B2B brand guidelines into massive, 40-foot convex aluminum truck trailers. I managed the layout and print handoff for the environmental logistics fleet.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin_trailer.jpeg',
+        caption: 'Mavin branded logistics trailer.'
+      },
+      {
+        type: 'text',
+        heading: 'Photography & Visual Production',
+        content: 'Studio product photography, 3D visualization, and event/action photography across multiple contexts and formats.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photography.png',
+        caption: 'Studio lighting configuration for catalog components.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mv_diningroom_3d.jpeg',
+        caption: '3D rendered dining room scene.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/wedding_cake.jpg',
+        caption: 'Event photography — Canon EOS 6D Mark II.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/wgi_darksky.jpg',
+        caption: 'WGI Darksky action shot — Canon EOS 6D Mark II.'
       }
     ]
   }

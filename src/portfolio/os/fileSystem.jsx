@@ -125,52 +125,28 @@ export const fileSystem = [
 
   // Creative Hardware
   {
-    id: 'pageantry_commercial',
-    title: 'Pageantry_Innovations.mp4',
+    id: 'polymount_greenscreen',
+    title: 'Polymount_Green_Screen.pdf',
     folderId: 'creative_hardware',
     iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.pageantry_commercial} />,
+    content: <CaseStudyViewer {...caseStudies.polymount_greenscreen} />,
     position: { x: 100, y: 100 }
   },
   {
-    id: 'kiosk_tech',
-    title: 'Retail_Kiosk.pdf',
+    id: 'isoshock',
+    title: 'isoSHOCK_Announcement.pdf',
     folderId: 'creative_hardware',
     iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.mavin_kiosk} />,
+    content: <CaseStudyViewer {...caseStudies.isoshock} />,
+    position: { x: 110, y: 110 }
+  },
+  {
+    id: 'portfolio_assets',
+    title: 'Portfolio_Assets_Unsorted.pdf',
+    folderId: 'creative_hardware',
+    iconType: 'document',
+    content: <CaseStudyViewer {...caseStudies.portfolio_assets} />,
     position: { x: 120, y: 120 }
-  },
-  {
-    id: 'distroblox_video',
-    title: 'distroBLOX_Announcement.mp4',
-    folderId: 'creative_hardware',
-    iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.distroblox} />,
-    position: { x: 140, y: 140 }
-  },
-  {
-    id: 'ihfc_trade_show',
-    title: 'IHFC_Showroom.gallery',
-    folderId: 'creative_hardware',
-    iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.ihfc_trade_show} />,
-    position: { x: 150, y: 150 }
-  },
-  {
-    id: 'product_photo',
-    title: 'Product_Photography.png',
-    folderId: 'creative_hardware',
-    iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.product_photography} />,
-    position: { x: 160, y: 160 }
-  },
-  {
-    id: 'print_design',
-    title: 'Environmental_Design.gallery',
-    folderId: 'creative_hardware',
-    iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.environmental_design} />,
-    position: { x: 170, y: 170 }
   },
 
   // RevOps Strategy
