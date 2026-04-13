@@ -207,14 +207,14 @@ export const caseStudies = {
         content: 'For Mavin\'s landmark 50th anniversary, I led the creative campaign from concept through execution. The first phase involved directing camera angles and scene composition for 3D rendering artists, ensuring the anniversary hero piece — a signature chair — was captured with the exact weight, material fidelity, and lighting drama the milestone demanded. I originally built the first 3D prototype of this chair when it was initially designed.'
       },
       {
-        type: 'image',
-        src: '/case-studies/mavin50/01.png',
-        caption: '3D rendering art direction — camera angle and scene composition.'
+        type: 'video',
+        src: '/case-studies/ihfc_video_portrait.mp4',
+        caption: 'Portrait display loop produced for HPMKT kiosk deployment.'
       },
       {
-        type: 'image',
-        src: '/case-studies/mavin50/02.png',
-        caption: 'Rendered product visualization with directed lighting and material mapping.'
+        type: 'video',
+        src: '/case-studies/ihfc_video_wide.mp4',
+        caption: 'Widescreen lobby display loop produced for HPMKT signage.'
       },
       {
         type: 'text',
