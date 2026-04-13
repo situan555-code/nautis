@@ -109,6 +109,21 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/ihfc_design2.jpeg',
         caption: 'Fully realized floor setup matching pre-visualized 3D architecture.'
+      },
+      {
+        type: 'text',
+        heading: 'Digital Signage & Motion Content',
+        content: 'Beyond the physical environment, I produced looping motion content optimized for two distinct display ratios deployed across the showroom floor — a widescreen lobby format and a vertical portrait kiosk. Each format required independent pacing and compositional hierarchy to command attention at different viewing distances.'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/ihfc_video_wide.mp4',
+        caption: 'Widescreen lobby display loop (1144×520).'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/ihfc_video_portrait.mp4',
+        caption: 'Portrait kiosk display loop (606×1080).'
       }
     ]
   },
