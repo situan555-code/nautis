@@ -65,6 +65,16 @@ export const caseStudies = {
         type: 'video',
         src: '/case-studies/polymount.mp4',
         caption: 'Polymount commercial spot.'
+      },
+      {
+        type: 'text',
+        heading: 'Behind the Scenes: Green Screen Production',
+        content: 'Achieving the final cinematic look required controlled studio environments with full chroma-key isolation. I managed the green screen pipeline from on-set blocking through to final compositing, ensuring clean key pulls and believable integration.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/green_screen.png',
+        caption: 'On-set green screen production environment.'
       }
     ]
   },
@@ -145,19 +155,44 @@ export const caseStudies = {
     ]
   },
   product_photography: {
-    title: 'High-Fidelity Product Visualization',
-    role: 'Creative Director',
-    timeline: '2022 - Present',
+    title: 'Photography & Visual Production',
+    role: 'Creative Director & Photographer',
+    timeline: '2018 - Present',
     blocks: [
       {
         type: 'text',
-        heading: 'Visual Integrity',
+        heading: 'Studio Product Photography',
         content: 'Driving a premium brand means flawless catalog imagery. I led the standard for lighting isolation and material representation, ensuring that physical wood grains and fabric textures translated seamlessly to the digital catalog with zero loss of color accuracy.'
       },
       {
         type: 'image',
         src: '/case-studies/product_photography.png',
         caption: 'Isolated, high-fidelity studio lighting configuration for catalog components.'
+      },
+      {
+        type: 'text',
+        heading: '3D Product Visualization',
+        content: 'Beyond physical photography, I directed 3D rendering pipelines to produce photorealistic room scenes for catalog and e-commerce. Each render required precise material mapping of wood grains, fabric textures, and ambient lighting to match real-world photography standards.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mv_diningroom_3d.jpeg',
+        caption: '3D rendered dining room scene — directed lighting and material specifications.'
+      },
+      {
+        type: 'text',
+        heading: 'Event & Action Photography',
+        content: 'My lens work extended beyond the studio into live event environments and high-speed action contexts, where lighting control gives way to instinct and anticipatory framing.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/wedding_cake.jpg',
+        caption: 'Event photography — Canon EOS 6D Mark II, natural ambient lighting.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/wgi_darksky.jpg',
+        caption: 'WGI Darksky action shot — Canon EOS 6D Mark II, high-speed capture.'
       }
     ]
   },
