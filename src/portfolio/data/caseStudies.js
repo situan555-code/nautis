@@ -145,5 +145,62 @@ export const caseStudies = {
         caption: 'Isolated, high-fidelity studio lighting configuration for catalog components.'
       }
     ]
+  },
+  mavin_50_years: {
+    title: 'Mavin 50th Anniversary Campaign',
+    role: 'Creative Director & 3D Prototyping Lead',
+    timeline: '2024 - 2025',
+    blocks: [
+      {
+        type: 'text',
+        heading: 'Phase 1: 3D Rendering & Art Direction',
+        content: 'For Mavin\'s landmark 50th anniversary, I led the creative campaign from concept through execution. The first phase involved directing camera angles and scene composition for 3D rendering artists, ensuring the anniversary hero piece — a signature chair — was captured with the exact weight, material fidelity, and lighting drama the milestone demanded. I originally built the first 3D prototype of this chair when it was initially designed.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/01.png',
+        caption: '3D rendering art direction — camera angle and scene composition.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/02.png',
+        caption: 'Rendered product visualization with directed lighting and material mapping.'
+      },
+      {
+        type: 'text',
+        heading: 'Phase 2: Product Photography & Prototype Documentation',
+        content: 'Once the physical prototype was fabricated, I managed the initial product photography sessions, establishing the hero shots that would anchor the campaign across all media channels. Every angle was pre-visualized to match the earlier 3D renders, creating seamless continuity between digital and physical assets.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/03.png',
+        caption: 'Initial prototype photography session — establishing the hero angles.'
+      },
+      {
+        type: 'text',
+        heading: 'Phase 3: Ad Design & Placement Coordination',
+        content: 'I designed the final anniversary advertisement layout and coordinated placement across trade publications and digital channels. The design had to honor 50 years of brand heritage while feeling modern and commanding immediate attention in competitive B2B trade environments.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/04.png',
+        caption: 'Anniversary advertisement — designed and coordinated for trade publication placement.'
+      },
+      {
+        type: 'text',
+        heading: 'Phase 4: Multi-Format Display Adaptation for HPMKT',
+        content: 'High Point Market required the campaign to scale across 4 different aspect ratios for digital displays deployed throughout the showroom campus. I managed the adaptive layout pipeline, ensuring the visual hierarchy held across portrait kiosks, widescreen lobby panels, and vertical banner columns without any loss of visual impact.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/05.png',
+        caption: 'Multi-ratio display adaptation for HPMKT showroom deployment.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/06.png',
+        caption: 'Final on-site display installation across HPMKT environments.'
+      }
+    ]
   }
 };

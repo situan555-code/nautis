@@ -114,6 +114,14 @@ export const fileSystem = [
     content: <PlaceholderContent title="Mavin Timber LiDAR Potree Demo" />,
     position: { x: 120, y: 120 }
   },
+  {
+    id: 'mavin_50_years',
+    title: '50th_Anniversary_Campaign.pdf',
+    folderId: 'mavin_systems',
+    iconType: 'document',
+    content: <CaseStudyViewer {...caseStudies.mavin_50_years} />,
+    position: { x: 130, y: 130 }
+  },
 
   // Creative Hardware
   {
