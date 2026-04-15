@@ -64,6 +64,11 @@ export const caseStudies = {
       },
       {
         type: 'video',
+        src: '/case-studies/pageantry_bts.mp4',
+        caption: 'On-set footage from the day of the shoot.'
+      },
+      {
+        type: 'video',
         src: '/case-studies/pageantry.mp4',
         caption: 'Pageantry Innovations isoSHOCK launch video.'
       }
