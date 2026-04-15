@@ -4,6 +4,29 @@ export const caseStudies = {
   // DEFINED CASE STUDIES
   // =============================================
 
+  about_me: {
+    title: 'About Me',
+    role: '',
+    timeline: '',
+    blocks: [
+      {
+        type: 'image',
+        src: '/case-studies/bio_kids.jpg',
+        caption: 'Building things together.'
+      },
+      {
+        type: 'text',
+        heading: '',
+        content: 'Creative technologist, father, and builder. I make things — software, hardware, commercials, furniture, websites, and sometimes a mess. My kids are my favorite collaborators.'
+      },
+      {
+        type: 'video',
+        src: '/case-studies/bio_kids_video.mov',
+        caption: 'Creative time with the kids.'
+      }
+    ]
+  },
+
   polymount_greenscreen: {
     title: 'Polymount: Green Screen Production',
     role: 'Director & Editor',

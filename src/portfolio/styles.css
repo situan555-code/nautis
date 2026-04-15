@@ -270,6 +270,37 @@ body, html {
   border-left: 2px solid var(--os-black);
 }
 
+.icon-person {
+  background: var(--os-silver);
+  border: 2px solid var(--os-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-person::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--os-navy);
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.icon-person::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 20px;
+  border-radius: 50% 50% 0 0;
+  background: var(--os-navy);
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .desktop-icon-text {
   color: var(--os-white);
   text-align: center;

@@ -16,6 +16,14 @@ const PlaceholderContent = ({ title }) => (
 export const fileSystem = [
   // --- TOP LEVEL DESKTOP ICONS ---
   {
+    id: 'about_me',
+    title: 'About_Me.txt',
+    onDesktop: true,
+    iconType: 'person',
+    content: <CaseStudyViewer {...caseStudies.about_me} />,
+    position: { x: 40, y: 640 }
+  },
+  {
     id: 'paint',
     title: 'Paint.exe',
     onDesktop: true,
