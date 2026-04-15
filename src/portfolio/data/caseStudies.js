@@ -87,6 +87,11 @@ export const caseStudies = {
       },
       {
         type: 'image',
+        src: '/case-studies/isoshock/pageantry_onset.jpg',
+        caption: 'On set — Pageantry commercial production.'
+      },
+      {
+        type: 'image',
         src: '/case-studies/isoshock/editing_timeline.jpg',
         caption: 'Video project timeline — editing in progress.'
       },
