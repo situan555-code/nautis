@@ -63,6 +63,11 @@ export const caseStudies = {
         caption: 'Behind the scenes — on-set lighting rig.'
       },
       {
+        type: 'image',
+        src: '/case-studies/isoshock/editing_timeline.jpg',
+        caption: 'Video project timeline — editing in progress.'
+      },
+      {
         type: 'video',
         src: '/case-studies/pageantry_bts.mp4',
         caption: 'On-set footage from the day of the shoot.'
