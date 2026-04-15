@@ -252,6 +252,11 @@ export const caseStudies = {
       },
       {
         type: 'image',
+        src: '/case-studies/product_photo_example.png',
+        caption: 'Product photography example.'
+      },
+      {
+        type: 'image',
         src: '/case-studies/mv_diningroom_3d.jpeg',
         caption: '3D rendered dining room scene.'
       }
