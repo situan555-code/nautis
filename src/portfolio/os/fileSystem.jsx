@@ -94,17 +94,20 @@ export const fileSystem = [
 
   // Mavin Systems
   {
-    id: 'mavin_trailer',
-    title: 'Mavin_Trailer_Design.jpg',
+    id: 'mavin_50_years',
+    title: '50th_Anniversary_Campaign.pdf',
     folderId: 'mavin_systems',
     iconType: 'document',
-    content: (
-      <div style={{ padding: '8px', backgroundColor: '#fff', height: '100%' }}>
-        <img src="/case-studies/mavin_trailer.jpeg" alt="Mavin Trailer Design" style={{ width: '100%', height: 'auto', border: '1px solid #ccc' }} />
-        <p style={{ textAlign: 'center', fontFamily: 'monospace', marginTop: '8px' }}>Designed completely by me.</p>
-      </div>
-    ),
+    content: <CaseStudyViewer {...caseStudies.mavin_50_years} />,
     position: { x: 90, y: 90 }
+  },
+  {
+    id: 'virtual_tours',
+    title: 'Virtual_Showroom_Tours.url',
+    folderId: 'mavin_systems',
+    iconType: 'document',
+    content: <CaseStudyViewer {...caseStudies.virtual_tours} />,
+    position: { x: 100, y: 100 }
   },
   {
     id: 'mavin_3d',
@@ -112,7 +115,7 @@ export const fileSystem = [
     folderId: 'mavin_systems',
     iconType: 'document',
     content: <PlaceholderContent title="Mavin 3D Configurator & Lead Gen" />,
-    position: { x: 100, y: 100 }
+    position: { x: 110, y: 110 }
   },
   {
     id: 'mavin_lidar',
@@ -121,14 +124,6 @@ export const fileSystem = [
     iconType: 'document',
     content: <PlaceholderContent title="Mavin Timber LiDAR Potree Demo" />,
     position: { x: 120, y: 120 }
-  },
-  {
-    id: 'mavin_50_years',
-    title: '50th_Anniversary_Campaign.pdf',
-    folderId: 'mavin_systems',
-    iconType: 'document',
-    content: <CaseStudyViewer {...caseStudies.mavin_50_years} />,
-    position: { x: 130, y: 130 }
   },
 
   // Creative Hardware
@@ -149,12 +144,20 @@ export const fileSystem = [
     position: { x: 110, y: 110 }
   },
   {
+    id: 'product_photography',
+    title: 'Product_Photography.pdf',
+    folderId: 'creative_hardware',
+    iconType: 'document',
+    content: <CaseStudyViewer {...caseStudies.product_photography} />,
+    position: { x: 120, y: 120 }
+  },
+  {
     id: 'portfolio_assets',
-    title: 'Portfolio_Assets_Unsorted.pdf',
+    title: 'Digital_Experiences.pdf',
     folderId: 'creative_hardware',
     iconType: 'document',
     content: <CaseStudyViewer {...caseStudies.portfolio_assets} />,
-    position: { x: 120, y: 120 }
+    position: { x: 130, y: 130 }
   },
   {
     id: 'lifestyle_photography',

@@ -177,11 +177,56 @@ export const caseStudies = {
   },
 
   // =============================================
-  // CATCH-ALL: Everything else for reorganization
+  // GALLERIES
+  // =============================================
+
+  product_photography: {
+    title: 'Product Photography',
+    role: 'Photographer & Art Director',
+    timeline: '2018 - Present',
+    blocks: [
+      {
+        type: 'text',
+        heading: '',
+        content: 'Studio product photography and 3D visualization across multiple furniture brands and product categories. All lighting, composition, and post-production directed and executed in-house.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photography.png',
+        caption: 'Mavin — studio lighting configuration for catalog components.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photo_example.png',
+        caption: 'Mavin — product photography example.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mv_diningroom_3d.jpeg',
+        caption: 'Mavin — 3D rendered dining room scene.'
+      }
+    ]
+  },
+
+  virtual_tours: {
+    title: 'Virtual Showroom Tours',
+    role: 'Creative Director',
+    timeline: '2022 - 2025',
+    blocks: [
+      {
+        type: 'text',
+        heading: '',
+        content: 'Produced recurring virtual showroom tours for Mavin\'s HPMKT presence across 4 consecutive market seasons. Each tour was designed to extend the physical showroom experience to dealers and reps who couldn\'t attend in person.'
+      }
+    ]
+  },
+
+  // =============================================
+  // CATCH-ALL: Digital Experiences & remaining items
   // =============================================
 
   portfolio_assets: {
-    title: 'Portfolio Assets — Unsorted',
+    title: 'Digital Experiences & Trade Show',
     role: 'Various Roles',
     timeline: '2018 - Present',
     blocks: [
@@ -231,16 +276,6 @@ export const caseStudies = {
         caption: 'Fully realized floor setup.'
       },
       {
-        type: 'video',
-        src: '/case-studies/ihfc_video_wide.mp4',
-        caption: 'IHFC widescreen lobby display loop.'
-      },
-      {
-        type: 'video',
-        src: '/case-studies/ihfc_video_portrait.mp4',
-        caption: 'IHFC portrait kiosk display loop.'
-      },
-      {
         type: 'text',
         heading: 'Brand Environmental & Print Design',
         content: 'Translating strict B2B brand guidelines into massive, 40-foot convex aluminum truck trailers. I managed the layout and print handoff for the environmental logistics fleet.'
@@ -249,26 +284,6 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/mavin_trailer.jpeg',
         caption: 'Mavin branded logistics trailer.'
-      },
-      {
-        type: 'text',
-        heading: 'Photography & Visual Production',
-        content: 'Studio product photography, 3D visualization, and event/action photography across multiple contexts and formats.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/product_photography.png',
-        caption: 'Studio lighting configuration for catalog components.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/product_photo_example.png',
-        caption: 'Product photography example.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/mv_diningroom_3d.jpeg',
-        caption: '3D rendered dining room scene.'
       }
     ]
   },
