@@ -199,11 +199,6 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/product_photo_example.png',
         caption: 'Mavin — product photography example.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/mv_diningroom_3d.jpeg',
-        caption: 'Mavin — 3D rendered dining room scene.'
       }
     ]
   },
@@ -221,19 +216,33 @@ export const caseStudies = {
     ]
   },
 
-  // =============================================
-  // CATCH-ALL: Digital Experiences & remaining items
-  // =============================================
-
-  portfolio_assets: {
-    title: 'Digital Experiences & Trade Show',
-    role: 'Various Roles',
-    timeline: '2018 - Present',
+  cgi_configurator: {
+    title: '3D Rendering & Product Configurator',
+    role: 'Creative Director & 3D Lead',
+    timeline: '2019 - Present',
     blocks: [
       {
         type: 'text',
-        heading: 'Retail Kiosk & Digital Signage',
-        content: 'Translating a massive, complex digital configurator into a seamless physical retail footprint. The retail kiosk needed to be highly durable, digitally responsive, and tightly integrated with our backend PIM constraints.'
+        heading: '',
+        content: 'Transitioned Mavin from traditional photography to full CGI rendering for product visualization — cutting per-SKU shoot costs dramatically while enabling infinite scene compositions. Built the rendering pipeline, directed all 3D scenes, and led the development of the interactive web configurator that connected directly to the product information management system.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mv_diningroom_3d.jpeg',
+        caption: 'CGI dining room scene — full 3D render replacing traditional photography.'
+      }
+    ]
+  },
+
+  retail_kiosk: {
+    title: 'Retail Kiosk & Digital Signage',
+    role: 'Hardware & Software Lead',
+    timeline: '2020 - 2024',
+    blocks: [
+      {
+        type: 'text',
+        heading: '',
+        content: 'Designed and deployed a custom retail kiosk system that brought the full digital configurator into physical dealer showrooms. I handled everything from hardware sourcing and VESA mounting to integrating the edge-compute backend with our PIM — giving reps a tactile selling tool that could visualize any configuration on screen while the customer touched real wood samples on the rack.'
       },
       {
         type: 'image',
@@ -249,7 +258,19 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/kiosk_podium.png',
         caption: 'VESA-mounted edge-compute hardware and cable management.'
-      },
+      }
+    ]
+  },
+
+  // =============================================
+  // CATCH-ALL: Remaining items
+  // =============================================
+
+  portfolio_assets: {
+    title: 'Additional Work',
+    role: 'Various Roles',
+    timeline: '2018 - Present',
+    blocks: [
       {
         type: 'text',
         heading: 'distroBLOX™ Product Announcement',

@@ -103,19 +103,19 @@ export const fileSystem = [
     position: { x: 100, y: 100 }
   },
   {
-    id: 'mavin_3d',
-    title: '3D_WebGL_Configurator.html',
+    id: 'cgi_configurator',
+    title: '3D_Rendering_Configurator.pdf',
     folderId: 'mavin_systems',
     iconType: 'document',
-    content: <PlaceholderContent title="Mavin 3D Configurator & Lead Gen" />,
+    content: <CaseStudyViewer {...caseStudies.cgi_configurator} />,
     position: { x: 110, y: 110 }
   },
   {
-    id: 'mavin_lidar',
-    title: 'Timber_LiDAR_Pointcloud.exe',
+    id: 'retail_kiosk',
+    title: 'Retail_Kiosk_System.pdf',
     folderId: 'mavin_systems',
     iconType: 'document',
-    content: <PlaceholderContent title="Mavin Timber LiDAR Potree Demo" />,
+    content: <CaseStudyViewer {...caseStudies.retail_kiosk} />,
     position: { x: 120, y: 120 }
   },
 
