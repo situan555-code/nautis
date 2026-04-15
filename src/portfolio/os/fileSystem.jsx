@@ -55,14 +55,7 @@ export const fileSystem = [
     content: <FolderView folderId="creative_hardware" />,
     position: { x: 40, y: 240 }
   },
-  {
-    id: 'revops_strategy',
-    title: 'RevOps_Strategy',
-    onDesktop: true,
-    iconType: 'folder',
-    content: <FolderView folderId="revops_strategy" />,
-    position: { x: 40, y: 340 }
-  },
+
   {
     id: 'awards',
     title: 'Awards_and_Links',
@@ -168,47 +161,7 @@ export const fileSystem = [
     position: { x: 130, y: 130 }
   },
 
-  // RevOps Strategy
-  {
-    id: 'dna_detergent',
-    title: 'DNA_Detergent_Concept.pdf',
-    folderId: 'revops_strategy',
-    iconType: 'document',
-    content: <PlaceholderContent title="DN/A Sustainable Detergent Concept" />,
-    position: { x: 100, y: 100 }
-  },
-  {
-    id: 'whale_curve',
-    title: 'Whale_Curve_Dashboard.xls',
-    folderId: 'revops_strategy',
-    iconType: 'document',
-    content: <PlaceholderContent title="ABC Cost-to-Serve Dashboard" />,
-    position: { x: 120, y: 120 }
-  },
-  {
-    id: 'competitive_deepdives',
-    title: 'Market_Benchmarks.pdf',
-    folderId: 'revops_strategy',
-    iconType: 'document',
-    content: <PlaceholderContent title="Competitive Deep Dives" />,
-    position: { x: 140, y: 140 }
-  },
-  {
-    id: 'copilot_demo',
-    title: 'AI_Copilot_Demo.mp4',
-    folderId: 'revops_strategy',
-    iconType: 'document',
-    content: <PlaceholderContent title="AI Copilot Brand Agent Demo" />,
-    position: { x: 160, y: 160 }
-  },
-  {
-    id: 'architecture_map',
-    title: 'Tech_Stack_Map.fig',
-    folderId: 'revops_strategy',
-    iconType: 'document',
-    content: <PlaceholderContent title="Global Architecture Map" />,
-    position: { x: 180, y: 180 }
-  },
+
 
   // Awards and Links
   {
