@@ -216,16 +216,34 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/mv_diningroom_3d.jpeg',
         caption: '3D rendered dining room scene.'
+      }
+    ]
+  },
+
+  lifestyle_photography: {
+    title: 'Lifestyle & Event Photography',
+    role: 'Photographer',
+    timeline: '2018 - 2021',
+    blocks: [
+      {
+        type: 'image',
+        src: '/case-studies/lifestyle/01.png',
+        caption: 'Lifestyle photography reference.'
+      },
+      {
+        type: 'text',
+        heading: 'Event & Action Photography',
+        content: 'Beyond studio and product work, my photography extended into live event environments and high-speed action contexts — where lighting control gives way to instinct, anticipatory framing, and fast glass.'
       },
       {
         type: 'image',
         src: '/case-studies/wedding_cake.jpg',
-        caption: 'Event photography — Canon EOS 6D Mark II.'
+        caption: 'Event photography — Canon EOS 6D Mark II, natural ambient lighting.'
       },
       {
         type: 'image',
         src: '/case-studies/wgi_darksky.jpg',
-        caption: 'WGI Darksky action shot — Canon EOS 6D Mark II.'
+        caption: 'WGI Darksky action shot — Canon EOS 6D Mark II, high-speed capture.'
       }
     ]
   }

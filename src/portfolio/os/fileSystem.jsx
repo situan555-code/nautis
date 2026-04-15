@@ -148,6 +148,14 @@ export const fileSystem = [
     content: <CaseStudyViewer {...caseStudies.portfolio_assets} />,
     position: { x: 120, y: 120 }
   },
+  {
+    id: 'lifestyle_photography',
+    title: 'Lifestyle_Photography.pdf',
+    folderId: 'creative_hardware',
+    iconType: 'document',
+    content: <CaseStudyViewer {...caseStudies.lifestyle_photography} />,
+    position: { x: 130, y: 130 }
+  },
 
   // RevOps Strategy
   {
