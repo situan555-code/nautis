@@ -162,6 +162,16 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/mavin50/06.png',
         caption: 'Final on-site display installation across HPMKT environments.'
+      },
+      {
+        type: 'text',
+        heading: 'Phase 5: Brand Training Manual & Sustainability Strategy',
+        content: 'Beyond the visual campaign, I authored the internal brand training manual — a comprehensive document that codified Mavin\'s identity, positioning, and messaging for every rep walking the floor. I also identified that Mavin was inherently sustainable (domestic hardwood, vertically integrated Ohio manufacturing, minimal shipping footprint) but wasn\'t marketing it. I researched, selected, and enrolled the company in the Sustainable Furnishings Council, getting the SFC member logo on every product going through the door immediately. For certain B2B roles, this kind of brand stewardship is as critical as the creative work itself.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/training_manual.jpg',
+        caption: 'Unmistakably MAVIN — brand training manual with 50-year timeline and SFC membership badge.'
       }
     ]
   },
