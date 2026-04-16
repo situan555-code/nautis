@@ -66,12 +66,20 @@ export const fileSystem = [
 
   // --- Column 2 ---
   {
+    id: 'prototype_app',
+    title: 'Prototype.app',
+    onDesktop: true,
+    iconType: 'document',
+    content: <CaseStudyViewer {...caseStudies.prototype_app} />,
+    position: { x: 110, y: 20 }
+  },
+  {
     id: 'product_photography',
     title: 'Product_Photos.pdf',
     onDesktop: true,
     iconType: 'document',
     content: <CaseStudyViewer {...caseStudies.product_photography} />,
-    position: { x: 110, y: 20 }
+    position: { x: 110, y: 110 }
   },
   {
     id: 'lifestyle_photography',
@@ -79,7 +87,7 @@ export const fileSystem = [
     onDesktop: true,
     iconType: 'document',
     content: <CaseStudyViewer {...caseStudies.lifestyle_photography} />,
-    position: { x: 110, y: 110 }
+    position: { x: 110, y: 200 }
   },
   {
     id: 'portfolio_assets',
@@ -87,7 +95,7 @@ export const fileSystem = [
     onDesktop: true,
     iconType: 'document',
     content: <CaseStudyViewer {...caseStudies.portfolio_assets} />,
-    position: { x: 110, y: 200 }
+    position: { x: 110, y: 290 }
   },
   {
     id: 'paint',
@@ -95,7 +103,7 @@ export const fileSystem = [
     onDesktop: true,
     iconType: 'paint',
     content: <Paint />,
-    position: { x: 110, y: 290 }
+    position: { x: 110, y: 380 }
   },
   {
     id: 'linkedin',
@@ -108,6 +116,6 @@ export const fileSystem = [
         <p><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">Open LinkedIn →</a></p>
       </div>
     ),
-    position: { x: 110, y: 380 }
+    position: { x: 110, y: 470 }
   }
 ];

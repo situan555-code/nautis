@@ -50,6 +50,22 @@ const CaseStudyViewer = ({ title, role, timeline, blocks }) => {
                 )}
               </figure>
             );
+          } else if (block.type === 'iframe') {
+            return (
+              <figure key={index} style={{ margin: 0, padding: '16px', backgroundColor: '#f0f0f0', border: '1px solid #ccc' }}>
+                <iframe
+                  src={block.src}
+                  title={block.caption || 'Interactive embed'}
+                  style={{ width: '100%', aspectRatio: block.aspectRatio || '4 / 3', border: 'none', display: 'block' }}
+                  allow="accelerometer; gyroscope"
+                />
+                {block.caption && (
+                  <figcaption style={{ marginTop: '8px', fontSize: '12px', fontFamily: 'monospace', textAlign: 'center', color: '#666' }}>
+                    {block.caption}
+                  </figcaption>
+                )}
+              </figure>
+            );
           }
           return null;
         })}
