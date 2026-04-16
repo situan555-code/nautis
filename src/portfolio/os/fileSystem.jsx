@@ -91,7 +91,7 @@ export const fileSystem = [
   },
   {
     id: 'portfolio_assets',
-    title: 'Digital_Exp.pdf',
+    title: 'Additional_Exp.pdf',
     onDesktop: true,
     iconType: 'document',
     content: <CaseStudyViewer {...caseStudies.portfolio_assets} />,

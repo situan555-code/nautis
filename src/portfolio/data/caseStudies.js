@@ -7,12 +7,12 @@ export const caseStudies = {
   prototype_app: {
     title: 'Prototype — Native iOS App',
     role: 'Solo Developer & Designer',
-    timeline: '2024 - Present',
+    timeline: '2025 - Present',
     blocks: [
       {
         type: 'text',
         heading: '',
-        content: 'Prototype is a concept-stage native iOS app I built from scratch, designed specifically for manufacturers and creatives. The core idea: what if a furniture manufacturer could walk into a showroom, snap a photo, and instantly generate a fully explorable 3D environment? What if a product designer could turn an early-stage prototype into a navigable virtual scene — on the fly, from their phone?\n\nThat\'s what this app does. It bridges Apple\'s LiDAR spatial reconstruction, native Object Capture photogrammetry, and World Labs\' generative AI into a single pipeline. Product Capture lets you 3D-scan real objects. World Gen lets you upload any image — a room, a product, a sketch — and the app calls the World Labs API to generate an immersive 3D world from it.'
+        content: 'Prototype is a concept-stage native iOS app I built from scratch, designed specifically for manufacturers and creatives. The core idea: what if a furniture manufacturer could walk into a showroom, snap a photo, and instantly generate a fully explorable 3D environment? What if a product designer could turn an early-stage prototype into a navigable virtual scene — on the fly, from their phone?\n\nThat\'s what this app does. It bridges Apple\'s LiDAR spatial reconstruction, native Object Capture photogrammetry, and World Labs\' generative AI into a single pipeline. Product Capture lets you 3D-scan real objects. World Gen lets you upload any image — a room, a product, a sketch — and the app calls the World Labs API to generate an immersive 3D world from it.\n\nWith the rate of burgeoning AI and spatial computing technology, I dove headfirst into agentic software development in February 2025 — building this app as a proof-of-concept for what the next generation of creative tools looks like for the industries I know best.'
       },
       {
         type: 'image',
@@ -146,11 +146,6 @@ export const caseStudies = {
       },
       {
         type: 'video',
-        src: '/case-studies/pageantry_bts.mp4',
-        caption: 'On-set footage from the day of the shoot.'
-      },
-      {
-        type: 'video',
         src: '/case-studies/pageantry.mp4',
         caption: 'Pageantry Innovations isoSHOCK launch video.'
       }
@@ -164,43 +159,48 @@ export const caseStudies = {
     blocks: [
       {
         type: 'text',
-        heading: 'Phase 1: 3D Rendering & Art Direction',
-        content: 'For Mavin\'s landmark 50th anniversary, I led the creative campaign from concept through execution. The first phase involved directing camera angles and scene composition for 3D rendering artists, ensuring the anniversary hero piece — a signature chair — was captured with the exact weight, material fidelity, and lighting drama the milestone demanded. I originally built the first 3D prototype of this chair when it was initially designed.'
+        heading: '50 Years of Innovation',
+        content: 'For Mavin\'s landmark 50th anniversary, I led the creative campaign from concept through execution — spanning environmental signage, digital display loops, print advertisements, trade show deployment, and a full brand training manual.'
       },
       {
-        type: 'video',
-        src: '/case-studies/ihfc_video_portrait.mp4',
-        caption: 'Portrait display loop produced for HPMKT kiosk deployment.'
-      },
-      {
-        type: 'video',
-        src: '/case-studies/ihfc_video_wide.mp4',
-        caption: 'Widescreen lobby display loop produced for HPMKT signage.'
-      },
-      {
-        type: 'text',
-        heading: 'Phase 2: Product Photography & Prototype Documentation',
-        content: 'Once the physical prototype was fabricated, I managed the initial product photography sessions, establishing the hero shots that would anchor the campaign across all media channels. Every angle was pre-visualized to match the earlier 3D renders, creating seamless continuity between digital and physical assets.'
+        type: 'image',
+        src: '/case-studies/mavin50/signage.jpg',
+        caption: 'Anniversary environmental signage — window and wall art installation.'
       },
       {
         type: 'image',
         src: '/case-studies/mavin50/03.png',
-        caption: 'Initial prototype photography session — establishing the hero angles.'
+        caption: 'Showroom storefront — 50th anniversary branding.'
       },
       {
         type: 'text',
-        heading: 'Phase 3: Ad Design & Placement Coordination',
-        content: 'I designed the final anniversary advertisement layout and coordinated placement across trade publications and digital channels. The design had to honor 50 years of brand heritage while feeling modern and commanding immediate attention in competitive B2B trade environments.'
+        heading: 'Brand Environmental & Fleet Design',
+        content: 'Translating strict B2B brand guidelines into massive, 40-foot convex aluminum truck trailers. I managed the layout and print handoff for the environmental logistics fleet.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin_trailer.jpeg',
+        caption: 'Mavin branded logistics trailer.'
+      },
+      {
+        type: 'text',
+        heading: 'Brand Training Manual',
+        content: 'I authored the internal brand training manual — a comprehensive document that codified Mavin\'s identity, positioning, and messaging for every rep walking the floor. The 50th anniversary launch happened to coincide with the manual\'s completion, so launch copies received a special 50th anniversary edition.\n\nI also identified that Mavin was inherently sustainable (domestic hardwood, vertically integrated Ohio manufacturing, minimal shipping footprint) but wasn\'t marketing it. I researched, selected, and enrolled the company in the Sustainable Furnishings Council, getting the SFC member logo on every product going through the door immediately.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/mavin50/training_manual.jpg',
+        caption: 'Unmistakably MAVIN — 50th anniversary edition brand training manual with SFC membership badge.'
+      },
+      {
+        type: 'text',
+        heading: 'Ad Design & Multi-Format Display Adaptation',
+        content: 'I designed the final anniversary advertisement layout and coordinated placement across trade publications and digital channels. High Point Market required the campaign to scale across 4 different aspect ratios for digital displays deployed throughout the showroom campus.'
       },
       {
         type: 'image',
         src: '/case-studies/mavin50/04.png',
         caption: 'Anniversary advertisement — designed and coordinated for trade publication placement.'
-      },
-      {
-        type: 'text',
-        heading: 'Phase 4: Multi-Format Display Adaptation for HPMKT',
-        content: 'High Point Market required the campaign to scale across 4 different aspect ratios for digital displays deployed throughout the showroom campus. I managed the adaptive layout pipeline, ensuring the visual hierarchy held across portrait kiosks, widescreen lobby panels, and vertical banner columns without any loss of visual impact.'
       },
       {
         type: 'image',
@@ -213,14 +213,14 @@ export const caseStudies = {
         caption: 'Final on-site display installation across HPMKT environments.'
       },
       {
-        type: 'text',
-        heading: 'Phase 5: Brand Training Manual & Sustainability Strategy',
-        content: 'Beyond the visual campaign, I authored the internal brand training manual — a comprehensive document that codified Mavin\'s identity, positioning, and messaging for every rep walking the floor. I also identified that Mavin was inherently sustainable (domestic hardwood, vertically integrated Ohio manufacturing, minimal shipping footprint) but wasn\'t marketing it. I researched, selected, and enrolled the company in the Sustainable Furnishings Council, getting the SFC member logo on every product going through the door immediately. For certain B2B roles, this kind of brand stewardship is as critical as the creative work itself.'
+        type: 'video',
+        src: '/case-studies/ihfc_video_portrait.mp4',
+        caption: 'Portrait display loop produced for HPMKT kiosk deployment.'
       },
       {
-        type: 'image',
-        src: '/case-studies/mavin50/training_manual.jpg',
-        caption: 'Unmistakably MAVIN — brand training manual with 50-year timeline and SFC membership badge.'
+        type: 'video',
+        src: '/case-studies/ihfc_video_wide.mp4',
+        caption: 'Widescreen lobby display loop produced for HPMKT signage.'
       }
     ]
   },
@@ -237,7 +237,32 @@ export const caseStudies = {
       {
         type: 'text',
         heading: '',
-        content: 'Studio product photography and 3D visualization across multiple furniture brands and product categories. All lighting, composition, and post-production directed and executed in-house.'
+        content: 'Studio product photography across multiple furniture brands. All lighting, composition, and post-production directed and executed in-house.'
+      },
+      {
+        type: 'text',
+        heading: 'Hi-Tek Furniture',
+        content: 'Product photography for Hi-Tek, a contemporary furniture brand.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/hitek_01.webp',
+        caption: 'Hi-Tek — product photography.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/hitek_02.webp',
+        caption: 'Hi-Tek — product photography.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/hitek_03.webp',
+        caption: 'Hi-Tek — product photography.'
+      },
+      {
+        type: 'text',
+        heading: 'Mavin Furniture',
+        content: 'Studio product photography for Mavin — capturing the craftsmanship and material quality of domestic hardwood furniture for catalog and digital channels.'
       },
       {
         type: 'image',
@@ -248,6 +273,16 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/product_photo_example.png',
         caption: 'Mavin — product photography example.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/mavin_render_01.jpg',
+        caption: 'Mavin — Sony A7R III, studio product shot.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/mavin_render_02.jpg',
+        caption: 'Mavin — Sony A7R III, studio product shot.'
       }
     ]
   },
@@ -273,12 +308,37 @@ export const caseStudies = {
       {
         type: 'text',
         heading: '',
-        content: 'Transitioned Mavin from traditional photography to full CGI rendering for product visualization — cutting per-SKU shoot costs dramatically while enabling infinite scene compositions. Built the rendering pipeline, directed all 3D scenes, and led the development of the interactive web configurator that connected directly to the product information management system.'
+        content: 'A brand like Mavin needs to render images because of the sheer volume of options — hundreds of wood species, finishes, and hardware configurations. Shifting a single variable produces an entirely new style. I love photography and would have loved to shoot more, but with the budget constraints, transitioning to full CGI rendering fit their needs perfectly.\n\nI transitioned Mavin from traditional photography to a fully rendered visualization pipeline — cutting per-SKU shoot costs dramatically while enabling infinite scene compositions. I directed all 3D scenes and led the development of the interactive web configurator that connected directly to the product information management system.'
       },
       {
         type: 'image',
         src: '/case-studies/mv_diningroom_3d.jpeg',
         caption: 'CGI dining room scene — full 3D render replacing traditional photography.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/mavin_3d_01.jpg',
+        caption: 'Mavin — 3D rendered product visualization.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/mavin_3d_02.jpg',
+        caption: 'Mavin — 3D rendered product visualization.'
+      },
+      {
+        type: 'text',
+        heading: 'Configuration Rendering',
+        content: 'The configurator could render any combination of species, finish, and hardware — giving dealers and consumers the ability to see their exact build before ordering. These are examples of configuration renders showing how a single base model transforms across different options.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/mavin_config_01.png',
+        caption: 'Configurator render — showing one configuration option.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/product_photos/mavin_config_02.png',
+        caption: 'Configurator render — different species and finish applied to the same base model.'
       }
     ]
   },
@@ -291,12 +351,27 @@ export const caseStudies = {
       {
         type: 'text',
         heading: '',
-        content: 'Designed and deployed a custom retail kiosk system that brought the full digital configurator into physical dealer showrooms. I handled everything from hardware sourcing and VESA mounting to integrating the edge-compute backend with our PIM — giving reps a tactile selling tool that could visualize any configuration on screen while the customer touched real wood samples on the rack.'
+        content: 'Designed and deployed a custom retail kiosk system that brought the full digital configurator into physical dealer showrooms. I handled everything from hardware sourcing and VESA mounting to integrating the edge-compute backend with our PIM — giving reps a tactile selling tool that could visualize any configuration on screen while the customer touched real wood samples on the rack.\n\nAs the sole technical resource, every service call came to me. I built guided setup documentation and on-screen prompts so dealers could self-service common issues — critical when you\'re a one-man band supporting a national dealer network.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk/podium_drawing.jpg',
+        caption: 'Podium kiosk design drawing — initial concept and dimensions.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk/prototype_hands.jpg',
+        caption: 'Hands-on prototype assembly.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk/thumbsup.jpg',
+        caption: 'Ready for deployment.'
       },
       {
         type: 'image',
         src: '/case-studies/kiosk_retail.jpeg',
-        caption: 'Retail showroom deployment.'
+        caption: 'Retail showroom deployment — full-size kiosk.'
       },
       {
         type: 'image',
@@ -305,8 +380,23 @@ export const caseStudies = {
       },
       {
         type: 'image',
+        src: '/case-studies/kiosk/cable_channels.jpg',
+        caption: 'Wall channels for cable management — clean install in dealer environments.'
+      },
+      {
+        type: 'image',
         src: '/case-studies/kiosk_podium.png',
         caption: 'VESA-mounted edge-compute hardware and cable management.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk/service_call.jpg',
+        caption: 'On-site technical support and troubleshooting — every service call came to me.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/kiosk/setup_prompts.jpg',
+        caption: 'Guided setup prompts — self-service documentation for dealer techs.'
       }
     ]
   },
@@ -316,7 +406,7 @@ export const caseStudies = {
   // =============================================
 
   portfolio_assets: {
-    title: 'Additional Work',
+    title: 'Additional Experience',
     role: 'Various Roles',
     timeline: '2018 - Present',
     blocks: [
@@ -329,31 +419,6 @@ export const caseStudies = {
         type: 'video',
         src: '/case-studies/distroblox.mp4',
         caption: 'distroBLOX™ product announcement.'
-      },
-      {
-        type: 'text',
-        heading: 'IHFC Trade Show Architecture',
-        content: 'Designing the IHFC trade show booth required balancing high-volume traffic flow with premium product isolation. I mapped the entire grid layout, establishing strategic visual anchors.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/ihfc_design.jpeg',
-        caption: 'Structural beam framing and modular partition mapping.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/ihfc_design2.jpeg',
-        caption: 'Fully realized floor setup.'
-      },
-      {
-        type: 'text',
-        heading: 'Brand Environmental & Print Design',
-        content: 'Translating strict B2B brand guidelines into massive, 40-foot convex aluminum truck trailers. I managed the layout and print handoff for the environmental logistics fleet.'
-      },
-      {
-        type: 'image',
-        src: '/case-studies/mavin_trailer.jpeg',
-        caption: 'Mavin branded logistics trailer.'
       }
     ]
   },
@@ -382,6 +447,11 @@ export const caseStudies = {
         type: 'image',
         src: '/case-studies/wgi_darksky.jpg',
         caption: 'WGI Darksky action shot — Canon EOS 6D Mark II, high-speed capture.'
+      },
+      {
+        type: 'image',
+        src: '/case-studies/lifestyle/portrait_sky.jpg',
+        caption: 'Portrait with sky replacement — Sony A7R III.'
       }
     ]
   }
