@@ -50,7 +50,7 @@ export function initGlassSphere() {
   pmremGenerator.dispose();
 
   // --- Glass Sphere ---
-  const geometry = new THREE.IcosahedronGeometry(1.6, 128);
+  const geometry = new THREE.IcosahedronGeometry(1.6, 5);
   const posAttr = geometry.getAttribute('position');
 
   // Store original positions for wobble
