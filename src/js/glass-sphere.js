@@ -42,7 +42,11 @@ export function initGlassSphere() {
   const envScene = createEnvironmentScene();
   const envMap = pmremGenerator.fromScene(envScene, 0.04).texture;
   scene.environment = envMap;
-  envScene.dispose();
+  // Clean up env scene resources (Scene itself has no dispose)
+  envScene.traverse(obj => {
+    if (obj.geometry) obj.geometry.dispose();
+    if (obj.material) obj.material.dispose();
+  });
   pmremGenerator.dispose();
 
   // --- Glass Sphere ---
