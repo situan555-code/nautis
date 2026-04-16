@@ -4,7 +4,6 @@
  * Uses MeshPhysicalMaterial with high transmission for refractive glass look.
  */
 import * as THREE from 'three';
-import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 let scene, camera, renderer, sphere, clock;
 let mouseTarget = { x: 0, y: 0 };
@@ -35,7 +34,7 @@ export function initGlassSphere() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
+  renderer.toneMappingExposure = 1.8;
 
   // --- Environment for refractions ---
   // Generate a procedural environment instead of loading an HDR
@@ -57,32 +56,39 @@ export function initGlassSphere() {
   const material = new THREE.MeshPhysicalMaterial({
     color: new THREE.Color(0xffffff),
     metalness: 0.0,
-    roughness: 0.02,
-    transmission: 0.97,
-    thickness: 1.5,
-    ior: 1.45,
-    envMapIntensity: 1.2,
-    clearcoat: 0.1,
-    clearcoatRoughness: 0.1,
+    roughness: 0.03,
+    transmission: 0.95,
+    thickness: 2.0,
+    ior: 1.5,
+    envMapIntensity: 3.0,
+    clearcoat: 0.3,
+    clearcoatRoughness: 0.05,
     transparent: true,
-    opacity: 0.9,
+    opacity: 0.95,
     side: THREE.DoubleSide,
+    specularIntensity: 1.0,
+    specularColor: new THREE.Color(0xffffff),
   });
 
   sphere = new THREE.Mesh(geometry, material);
   scene.add(sphere);
 
-  // --- Subtle ambient light ---
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+  // --- Lighting ---
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambientLight);
 
-  const pointLight1 = new THREE.PointLight(0x00e5ff, 2, 20);
+  const pointLight1 = new THREE.PointLight(0x00e5ff, 8, 30);
   pointLight1.position.set(3, 3, 3);
   scene.add(pointLight1);
 
-  const pointLight2 = new THREE.PointLight(0x7c4dff, 1.5, 20);
+  const pointLight2 = new THREE.PointLight(0x7c4dff, 5, 30);
   pointLight2.position.set(-3, -2, 2);
   scene.add(pointLight2);
+
+  const spotLight = new THREE.SpotLight(0xffffff, 4, 20, Math.PI / 6, 0.5, 1);
+  spotLight.position.set(0, 5, 5);
+  spotLight.lookAt(0, 0, 0);
+  scene.add(spotLight);
 
   // --- Events ---
   window.addEventListener('resize', onResize);
@@ -114,12 +120,12 @@ function createEnvironmentScene() {
       varying vec3 vWorldPosition;
       void main() {
         float h = normalize(vWorldPosition).y;
-        // Dark gradient from deep navy to subtle teal
-        vec3 bottomColor = vec3(0.02, 0.03, 0.06);
-        vec3 topColor = vec3(0.04, 0.08, 0.15);
-        vec3 accentColor = vec3(0.0, 0.15, 0.25);
+        // Brighter gradient for stronger refractions
+        vec3 bottomColor = vec3(0.05, 0.06, 0.12);
+        vec3 topColor = vec3(0.1, 0.2, 0.4);
+        vec3 accentColor = vec3(0.0, 0.4, 0.6);
         vec3 color = mix(bottomColor, topColor, smoothstep(-0.5, 0.5, h));
-        color += accentColor * smoothstep(0.0, 0.3, h) * 0.3;
+        color += accentColor * smoothstep(0.0, 0.3, h) * 0.5;
         gl_FragColor = vec4(color, 1.0);
       }
     `
@@ -127,11 +133,11 @@ function createEnvironmentScene() {
   const sky = new THREE.Mesh(skyGeo, skyMat);
   envScene.add(sky);
 
-  // Add some bright spots for refraction highlights
-  const lightGeo = new THREE.SphereGeometry(0.5, 16, 16);
-  const lightMat1 = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
-  const lightMat2 = new THREE.MeshBasicMaterial({ color: 0x7c4dff });
-  const lightMat3 = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  // Add bright spots for refraction highlights
+  const lightGeo = new THREE.SphereGeometry(1.0, 16, 16);
+  const lightMat1 = new THREE.MeshBasicMaterial({ color: new THREE.Color(0x00e5ff).multiplyScalar(3) });
+  const lightMat2 = new THREE.MeshBasicMaterial({ color: new THREE.Color(0x7c4dff).multiplyScalar(3) });
+  const lightMat3 = new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffffff).multiplyScalar(2) });
 
   const l1 = new THREE.Mesh(lightGeo, lightMat1);
   l1.position.set(5, 3, -2);
@@ -143,8 +149,11 @@ function createEnvironmentScene() {
 
   const l3 = new THREE.Mesh(lightGeo, lightMat3);
   l3.position.set(0, 5, 0);
-  l3.scale.setScalar(0.3);
   envScene.add(l3);
+
+  const l4 = new THREE.Mesh(lightGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffd700).multiplyScalar(2) }));
+  l4.position.set(3, -4, -3);
+  envScene.add(l4);
 
   return envScene;
 }
