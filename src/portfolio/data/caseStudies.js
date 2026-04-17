@@ -295,7 +295,31 @@ export const caseStudies = {
       {
         type: 'text',
         heading: '',
-        content: 'Produced recurring virtual showroom tours for Mavin\'s HPMKT presence across 4 consecutive market seasons. Each tour was designed to extend the physical showroom experience to dealers and reps who couldn\'t attend in person.'
+        content: 'Produced recurring virtual showroom tours for Mavin\'s HPMKT presence across 4 consecutive market seasons. Each tour was designed to extend the physical showroom experience to dealers and reps who couldn\'t attend in person.\n\nAll tours were captured and produced using Matterport 3D scanning — delivering fully navigable, photorealistic digital twins of the showroom.'
+      },
+      {
+        type: 'iframe',
+        src: 'https://my.matterport.com/show/?m=WwWQjuyisp2',
+        aspectRatio: '16 / 9',
+        caption: 'Mavin HPMKT Virtual Tour — Spring 2022'
+      },
+      {
+        type: 'iframe',
+        src: 'https://my.matterport.com/show/?m=3Gw9svGdEeH',
+        aspectRatio: '16 / 9',
+        caption: 'Mavin HPMKT Virtual Tour — Fall 2022'
+      },
+      {
+        type: 'iframe',
+        src: 'https://my.matterport.com/show/?m=gyJtxGd3XSY',
+        aspectRatio: '16 / 9',
+        caption: 'Mavin HPMKT Virtual Tour — Spring 2024'
+      },
+      {
+        type: 'iframe',
+        src: 'https://my.matterport.com/show/?m=f7waBQgHSTr',
+        aspectRatio: '16 / 9',
+        caption: 'Mavin HPMKT Virtual Tour — Fall 2024'
       }
     ]
   },
