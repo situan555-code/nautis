@@ -56,16 +56,21 @@
                 <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
               </div>
               <div class="form-group">
-                <label for="interest">What are you most interested in?</label>
-                <select id="interest" name="interest">
-                  <option value="" disabled selected>Select one...</option>
-                  <option value="audit">The Audit ($3K–$10K)</option>
-                  <option value="build">A Build Project ($20K–$100K+)</option>
-                  <option value="retainer">Growth Retainer ($5K–$15K/mo)</option>
-                  <option value="3d">3D Configurator / Kiosk</option>
-                  <option value="ai">AI / Automation</option>
-                  <option value="unsure">Not Sure Yet — Let's Talk</option>
-                </select>
+                <label style="margin-bottom: var(--space-3); display: block;">What are you interested in? (Select all that apply)</label>
+                <div class="checkbox-group" style="display: grid; gap: var(--space-2);">
+                  <label class="checkbox-container" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-2) var(--space-3); background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.2s;">
+                    <input type="checkbox" name="interest" value="advisory" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
+                    <span>Sunder Advisory <small style="display: block; opacity: 0.6; font-size: 0.8em;">RevOps, CRM, Strategy</small></span>
+                  </label>
+                  <label class="checkbox-container" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-2) var(--space-3); background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.2s;">
+                    <input type="checkbox" name="interest" value="technology" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
+                    <span>Sunder Technology <small style="display: block; opacity: 0.6; font-size: 0.8em;">Managed IT, Cyber, AI</small></span>
+                  </label>
+                  <label class="checkbox-container" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-2) var(--space-3); background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.2s;">
+                    <input type="checkbox" name="interest" value="creative" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
+                    <span>Sunder Creative <small style="display: block; opacity: 0.6; font-size: 0.8em;">Web Design, SEO, Branding</small></span>
+                  </label>
+                </div>
               </div>
             </div>
 

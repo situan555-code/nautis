@@ -1,0 +1,93 @@
+[
+  {
+    "title": "Email Marketing & Newsletters",
+    "description": "Lifecycle automation, abandoned cart recovery, and B2B newsletters using Klaviyo and HubSpot.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#revops",
+    "keywords": ["email", "newsletter", "klaviyo", "hubspot", "automation", "drip campaign", "retargeting", "abandoned cart"]
+  },
+  {
+    "title": "Text Message (SMS) Marketing",
+    "description": "Direct-to-consumer text campaigns with high open rates for instant conversions.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#revops",
+    "keywords": ["sms", "text message", "mobile marketing", "attentive", "postscript"]
+  },
+  {
+    "title": "Digital Advertising (PPC)",
+    "description": "High-ROI search network marketing (Google Ads, Bing) and paid social campaigns.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#strategy",
+    "keywords": ["ppc", "pay per click", "google ads", "facebook ads", "paid search", "search engine marketing", "sem", "geofencing"]
+  },
+  {
+    "title": "Local SEO & Google Guaranteed",
+    "description": "Optimize Google Business Profiles, local service ads, and manage directory listings.",
+    "category": "Sunder Creative",
+    "url": "/services-creative.html#design",
+    "keywords": ["seo", "local seo", "google business", "google maps", "yelp", "directories", "search engine optimization", "rankings"]
+  },
+  {
+    "title": "Web Design & Development",
+    "description": "Premium, high-conversion websites optimized for performance and aesthetics.",
+    "category": "Sunder Creative",
+    "url": "/services-creative.html#design",
+    "keywords": ["web design", "website", "development", "ui", "ux", "landing page", "frontend", "next.js", "shopify"]
+  },
+  {
+    "title": "3D Product Configurators",
+    "description": "Custom WebGL 3D product visualizers allowing real-time material and dimension changes.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#3d",
+    "keywords": ["3d", "configurator", "webgl", "three.js", "ar", "augmented reality", "virtual showroom", "digital twin"]
+  },
+  {
+    "title": "CRM Deployment",
+    "description": "Implementation and lifecycle automation for Salesforce, HubSpot, and more.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#revops",
+    "keywords": ["crm", "hubspot", "salesforce", "customer relationship", "sales enablement"]
+  },
+  {
+    "title": "Brand Identity & Graphic Design",
+    "description": "Complete visual identities, logos, typography, and premium brand guidelines.",
+    "category": "Sunder Creative",
+    "url": "/services-creative.html#brand",
+    "keywords": ["logo", "branding", "graphic design", "identity", "typography", "rebrand", "print", "collateral"]
+  },
+  {
+    "title": "MarTech & Data Architecture",
+    "description": "Bridging legacy ERPs to modern storefronts and resolving SaaS bloat.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#martech",
+    "keywords": ["martech", "erp", "pim", "integration", "b2b portal", "headless commerce", "syndication"]
+  },
+  {
+    "title": "Applied AI & Automation",
+    "description": "Custom LLM copilots, automated competitive intelligence, and workflow scripts.",
+    "category": "Sunder Advisory",
+    "url": "/services-advisory.html#ai",
+    "keywords": ["ai", "artificial intelligence", "llm", "automation", "scraping", "machine learning", "copilot"]
+  },
+  {
+    "title": "Managed IT Services (MSSP)",
+    "description": "24/7 help desk, endpoint management (RMM), and cloud infrastructure for small-to-mid businesses.",
+    "category": "Sunder Technology",
+    "url": "/services-technology.html#managed-it",
+    "keywords": ["it support", "managed services", "mssp", "help desk", "rmm", "ninjaone", "syncro", "cloud migration", "backup", "disaster recovery", "bdr", "voip", "networking"]
+  },
+  {
+    "title": "Cybersecurity & Compliance",
+    "description": "vCISO leadership, SOC 2, HIPAA, CMMC readiness, and zero-trust security rollouts.",
+    "category": "Sunder Technology",
+    "url": "/services-technology.html#cybersecurity",
+    "keywords": ["cybersecurity", "cyber", "vCISO", "compliance", "soc 2", "hipaa", "cmmc", "pentesting", "vulnerability scan", "edr", "xdr", "zero trust", "ransomware", "shadow ai", "ai governance", "dlp"]
+  },
+  {
+    "title": "Industrial AI & RAG Systems",
+    "description": "Predictive maintenance, shop-floor AI inspection, and secure internal RAG (Retrieval-Augmented Generation) for manufacturers.",
+    "category": "Sunder Technology",
+    "url": "/services-technology.html#ai-industrial",
+    "keywords": ["predictive maintenance", "pdm", "industrial ai", "manufacturing ai", "anomaly detection", "shop floor", "automation", "quality inspection", "erp integration", "rag", "retrieval augmented generation", "chatbot", "manuals"]
+  }
+]

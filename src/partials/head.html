@@ -9,7 +9,7 @@
 
 <!-- Open Graph -->
 <meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}">
-<meta property="og:description" content="We architect the entire revenue system for industrial brands — from ERP integrations to 3D product configurators.">
+<meta property="og:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}We architect the entire revenue system for industrial brands — from ERP integrations to 3D product configurators.{{/if}}">
 <meta property="og:type" content="website">
 
 <!-- Preconnect for fonts (non-blocking) -->
@@ -24,10 +24,24 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "name": "{{site.name}}",
-  "description": "Digital Transformation & Revenue Operations Consultancy for legacy B2B and manufacturing companies.",
-  "url": "#",
-  "serviceType": ["MarTech Consulting", "3D Commerce", "Revenue Operations", "AI Automation", "Brand Strategy"]
+  "description": "{{#if pageDescription}}{{pageDescription}}{{else}}Digital Transformation & Revenue Operations Consultancy for legacy B2B and manufacturing companies.{{/if}}",
+  "url": "https://sunder.co",
+  "logo": "https://sunder.co/images/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/company/sunder-co",
+    "https://twitter.com/sunder_co"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Columbus",
+    "addressRegion": "OH",
+    "addressCountry": "US"
+  },
+  "areaServed": "Worldwide",
+  "priceRange": "$$$$",
+  "telephone": "+1-800-555-0199",
+  "serviceType": ["MarTech Consulting", "3D Commerce", "Revenue Operations", "AI Automation", "Brand Strategy", "Email Marketing", "PPC", "Local SEO"]
 }
 </script>

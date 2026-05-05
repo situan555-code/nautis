@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "draco3dgltf": "^1.5.7",
+    "fuse.js": "^7.3.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "three": "^0.170.0"
+    "three": "^0.170.0",
+    "vite-plugin-sitemap": "^0.8.2"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.3.0",

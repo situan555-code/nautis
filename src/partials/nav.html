@@ -13,6 +13,7 @@
         <span class="nav__link {{#if (eq activePage 'services')}}is-active{{/if}}" style="cursor: pointer;">Services ▾</span>
         <ul class="nav__dropdown">
           <li><a href="/services-advisory.html" class="nav__dropdown-link">Sunder Advisory</a></li>
+          <li><a href="/services-technology.html" class="nav__dropdown-link">Sunder Technology</a></li>
           <li><a href="/services-creative.html" class="nav__dropdown-link">Sunder Creative</a></li>
         </ul>
       </li>
@@ -21,6 +22,9 @@
       <li><a href="/engagement.html" class="nav__link {{#if (eq activePage 'engagement')}}is-active{{/if}}">How We Work</a></li>
       <li><a href="/insights.html" class="nav__link {{#if (eq activePage 'insights')}}is-active{{/if}}">Insights</a></li>
     </ul>
+    <button class="nav__search-trigger" id="search-trigger" aria-label="Open search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
     <a href="/contact.html" class="btn btn--primary nav__cta desktop-only">Start an Audit</a>
     <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -30,6 +34,7 @@
     <a href="/index.html" class="nav__mobile-link">Home</a>
     <div style="padding-left: var(--space-4); display: flex; flex-direction: column;">
       <a href="/services-advisory.html" class="nav__mobile-link" style="font-size: var(--text-lg); border:none; padding: var(--space-2) 0;">↳ Sunder Advisory</a>
+      <a href="/services-technology.html" class="nav__mobile-link" style="font-size: var(--text-lg); border:none; padding: var(--space-2) 0;">↳ Sunder Technology</a>
       <a href="/services-creative.html" class="nav__mobile-link" style="font-size: var(--text-lg); border:none; padding: var(--space-2) 0;">↳ Sunder Creative</a>
     </div>
     <a href="/case-studies.html" class="nav__mobile-link">Case Studies</a>
@@ -39,3 +44,5 @@
     <a href="/contact.html" class="btn btn--primary" style="margin-top: var(--space-4); text-align: center; justify-content: center;">Start an Audit</a>
   </div>
 </nav>
+
+{{> search-modal }}
