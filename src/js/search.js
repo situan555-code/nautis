@@ -17,8 +17,8 @@ export async function initSearch() {
   const loadSearchData = async () => {
     if (fuseInstance) return;
     try {
-      // Import the static JSON file
-      const res = await fetch('/data/searchIndex.json');
+      // Import the static JSON file with cache buster
+      const res = await fetch(`/data/searchIndex.json?v=${new Date().getTime()}`);
       searchData = await res.json();
       
       fuseInstance = new Fuse(searchData, {
@@ -51,7 +51,7 @@ export async function initSearch() {
 
   const renderResults = (query) => {
     if (!query.trim()) {
-      searchResultsContainer.innerHTML = '<div class="search-empty-state"><p>Type to start searching across Sunder & Co. services.</p></div>';
+      searchResultsContainer.innerHTML = '<div class="search-empty-state"><p>Type to search services, case studies, and insights.</p></div>';
       return;
     }
 

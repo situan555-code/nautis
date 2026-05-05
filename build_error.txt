@@ -1,0 +1,40 @@
+
+> agency-website@1.0.0 prebuild
+> node scripts/optimize-models.js
+
+🤖 Agent 2 (Pipeline Engineer): Initializing Model Optimization Pipeline...
+✨ No raw models found in src/raw-models/. Skipping pipeline.
+
+> agency-website@1.0.0 build
+> vite build
+
+vite v6.4.2 building for production...
+transforming...
+✓ 22 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/insights.html              15.00 kB │ gzip:  4.25 kB
+../dist/about.html                 16.07 kB │ gzip:  4.77 kB
+../dist/engagement.html            16.97 kB │ gzip:  4.66 kB
+../dist/case-studies.html          17.39 kB │ gzip:  4.98 kB
+../dist/contact.html               17.54 kB │ gzip:  4.97 kB
+../dist/services-creative.html     19.36 kB │ gzip:  4.90 kB
+../dist/index.html                 23.29 kB │ gzip:  5.64 kB
+../dist/services-advisory.html     32.65 kB │ gzip:  7.55 kB
+../dist/assets/index-XxoqU8C5.css   6.30 kB │ gzip:  1.64 kB
+../dist/assets/pages-Du6ZduVG.css   7.92 kB │ gzip:  1.97 kB
+../dist/assets/main-J675v80b.css   15.25 kB │ gzip:  3.51 kB
+../dist/assets/main-ByCxkczP.js    29.86 kB │ gzip: 10.66 kB
+✓ built in 33.88s
+error during build:
+Error: ENOENT: no such file or directory, open '/Volumes/raid4/Antigravity IDE/dist/robots.txt'
+    at writeFileSync (node:fs:2427:20)
+    at generateSitemap (file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/vite-plugin-sitemap/dist/index.js:11199:5)
+    at Object.closeBundle (file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/vite-plugin-sitemap/dist/index.js:11221:7)
+    at Object.handler (file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:46583:15)
+    at file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/rollup/dist/es/shared/node-entry.js:22967:40
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Promise.all (index 0)
+    at async PluginDriver.hookParallel (file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/rollup/dist/es/shared/node-entry.js:22877:9)
+    at async Object.close (file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/rollup/dist/es/shared/node-entry.js:23890:13)
+    at async buildEnvironment (file:///Volumes/raid4/Antigravity%20IDE/Resume%20Website/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:46283:17)
