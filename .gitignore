@@ -32,3 +32,7 @@ stitch-preview.html
 stitch_test_screen.png
 src/raw-models/
 resume assets
+public/case-studies/*.ply
+public/case-studies/*.stl
+public/case-studies/*.mp4
+public/case-studies/*.mov

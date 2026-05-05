@@ -1,5 +1,5 @@
 /**
- * Main Entry Point — [AGENCY] Website
+ * Main Entry Point — Sunder & Co. Website
  *
  * Single import that initializes all shared modules.
  * Page-specific modules (hero-particles) are imported per-page via separate <script>.
@@ -12,16 +12,11 @@ import { initSmoothAnchors } from './smooth-anchors.js';
 import { initAccordion } from './accordion.js';
 import { initFilters } from './filters.js';
 import { initForm } from './form.js';
-import { initGlassSphere } from './glass-sphere.js';
 
 // Initialize all shared behavior
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
 
-  // Glass sphere background on all agency pages (not the retro portfolio)
-  if (!document.getElementById('root')) {
-    initGlassSphere();
-  }
 
   // Wait for paint before initializing scroll-dependent features
   requestAnimationFrame(() => {

@@ -1,5 +1,5 @@
 /**
- * Shared Components & Utilities — [AGENCY]
+ * Shared Components & Utilities — Sunder & Co.
  * Navigation, Footer, Scroll Reveal, and utilities used across all pages.
  */
 
@@ -33,7 +33,7 @@ function createNav(activePage) {
   nav.innerHTML = `
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Home">
-        <span>[</span>AGENCY<span>]</span>
+        <span></span>Sunder & Co.<span></span>
       </a>
       <ul class="nav__links">
         ${linksHTML}
@@ -83,7 +83,7 @@ function createFooter() {
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html" class="nav__logo" style="font-size: var(--text-2xl);">
-            <span>[</span>AGENCY<span>]</span>
+            <span></span>Sunder & Co.<span></span>
           </a>
           <p>Digital Transformation & Revenue Operations for legacy B2B, manufacturing, and heavy-inventory retail.</p>
         </div>
@@ -111,12 +111,12 @@ function createFooter() {
           <ul class="footer__links">
             <li><a href="contact.html">Contact</a></li>
             <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="mailto:hello@agency.com">hello@agency.com</a></li>
+            <li><a href="mailto:hello@sunderandco.com">hello@sunderandco.com</a></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; ${new Date().getFullYear()} [AGENCY]. All rights reserved.</p>
+        <p>&copy; ${new Date().getFullYear()} Sunder & Co.. All rights reserved.</p>
         <p>Built with precision.</p>
       </div>
     </div>

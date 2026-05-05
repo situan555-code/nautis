@@ -186,8 +186,8 @@
 }
 
 .tier-card--featured {
-  border-color: rgba(0, 229, 255, 0.25);
-  background: linear-gradient(160deg, rgba(0, 229, 255, 0.06) 0%, rgba(15, 22, 41, 0.95) 100%);
+  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--color-bg-card-hover);
 }
 
 .tier-card--featured::after {
@@ -471,8 +471,8 @@
 
 /* --- Highlight Box (for service pages) --- */
 .highlight-box {
-  background: linear-gradient(160deg, rgba(0, 229, 255, 0.04), transparent);
-  border: 1px solid rgba(0, 229, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
   padding: var(--space-8);
 }

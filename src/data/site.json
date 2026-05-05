@@ -1,16 +1,23 @@
 {
   "site": {
-    "name": "[AGENCY]",
+    "name": "Sunder & Co.",
     "tagline": "Digital Transformation & Revenue Operations",
     "description": "Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.",
-    "email": "hello@agency.com",
+    "email": "hello@sunderandco.com",
     "url": "#",
     "linkedin": "https://linkedin.com",
-    "copyright": "[AGENCY]"
+    "copyright": "Sunder & Co."
   },
   "nav": [
     { "id": "home",         "label": "Home",         "href": "/index.html" },
-    { "id": "services",     "label": "Services",     "href": "/services.html" },
+    {
+      "id": "services",
+      "label": "Services",
+      "dropdown": [
+        { "id": "advisory", "label": "Sunder Advisory", "href": "/services-advisory.html" },
+        { "id": "creative", "label": "Sunder Creative", "href": "/services-creative.html" }
+      ]
+    },
     { "id": "case-studies",  "label": "Case Studies",  "href": "/case-studies.html" },
     { "id": "about",        "label": "About",        "href": "/about.html" },
     { "id": "engagement",   "label": "How We Work",   "href": "/engagement.html" },

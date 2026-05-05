@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--gradient-hero);
+  background: var(--color-bg);
   padding-top: var(--nav-height);
 }
 
@@ -326,8 +326,8 @@
 }
 
 .engagement-card--featured {
-  border-color: rgba(0, 229, 255, 0.2);
-  background: linear-gradient(160deg, rgba(0, 229, 255, 0.05) 0%, rgba(15, 22, 41, 0.9) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--color-bg-card-hover);
 }
 
 @media (max-width: 768px) {
@@ -352,7 +352,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
   pointer-events: none;
 }
 

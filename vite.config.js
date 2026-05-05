@@ -9,7 +9,8 @@ const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'
 const pages = [
   'index',
   'about',
-  'services',
+  'services-advisory',
+  'services-creative',
   'case-studies',
   'contact',
   'engagement',
@@ -27,7 +28,8 @@ const input = Object.fromEntries(
 const pageContext = {
   '/index.html': { activePage: 'home', pageTitle: 'Digital Transformation & Revenue Operations' },
   '/about.html': { activePage: 'about', pageTitle: 'About' },
-  '/services.html': { activePage: 'services', pageTitle: 'Services' },
+  '/services-advisory.html': { activePage: 'services', pageTitle: 'Sunder Advisory' },
+  '/services-creative.html': { activePage: 'services', pageTitle: 'Sunder Creative' },
   '/case-studies.html': { activePage: 'case-studies', pageTitle: 'Case Studies' },
   '/contact.html': { activePage: 'contact', pageTitle: 'Contact' },
   '/engagement.html': { activePage: 'engagement', pageTitle: 'How We Work' },
