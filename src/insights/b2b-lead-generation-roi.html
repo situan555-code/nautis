@@ -78,6 +78,114 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>B2B Lead Automation ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Monthly Leads <span id="l_leads_out">0</span></label>
+        <input type="range" id="l_leads" min="10" max="1000" step="10" value="100" oninput="calc_l()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Lead-to-Close Rate <span id="l_conv_out">0%</span></label>
+        <input type="range" id="l_conv" min="0.5" max="20" step="0.5" value="2.5" oninput="calc_l()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Customer LTV <span id="l_ltv_out">$0</span></label>
+        <input type="range" id="l_ltv" min="1000" max="250000" step="5000" value="50000" oninput="calc_l()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Target Cost Per Lead (CPL) <span id="l_cpl_out">$0</span></label>
+        <input type="range" id="l_cpl" min="10" max="500" step="10" value="150" oninput="calc_l()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Monthly Ad Spend <span id="l_spend_out">$0</span></label>
+        <input type="range" id="l_spend" min="1000" max="50000" step="1000" value="10000" oninput="calc_l()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. Additional Monthly Leads</span>
+        <span class="roi-calculator__result-value" id="l_new_leads">0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">New Conv. Rate (Speed to Lead)</span>
+        <span class="roi-calculator__result-value" id="l_new_conv">0%</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Optimized CPL</span>
+        <span class="roi-calculator__result-value" id="l_new_cpl">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Additional Monthly Customers</span>
+        <span class="roi-calculator__result-value highlight" id="l_new_custs">0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Monthly Revenue Lift</span>
+        <span class="roi-calculator__result-value" id="l_new_rev">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. Annual Revenue Lift</span>
+        <span class="roi-calculator__result-value highlight" id="l_annual">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Calculations based on 2026 B2B RevOps automation performance data.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtN(n) {
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return Math.round(n/1000) + 'K';
+  return Math.round(n).toLocaleString();
+}
+function pct(n) { return Math.round(n) + '%'; }
+function mo(n) { return n < 1 ? '<1 mo' : n.toFixed(1) + ' mo'; }
+
+function calc_l() {
+  const leads = +document.getElementById('l_leads').value;
+  const conv = +document.getElementById('l_conv').value / 100;
+  const ltv = +document.getElementById('l_ltv').value;
+  const cpl = +document.getElementById('l_cpl').value;
+  const spend = +document.getElementById('l_spend').value;
+
+  document.getElementById('l_leads_out').textContent = leads;
+  document.getElementById('l_conv_out').textContent = Math.round(conv*100*10)/10 + '%';
+  document.getElementById('l_ltv_out').textContent = fmt(ltv);
+  document.getElementById('l_cpl_out').textContent = '$' + cpl;
+  document.getElementById('l_spend_out').textContent = fmt(spend);
+
+  const newLeads = Math.round(leads * 1.8);
+  const addLeads = newLeads - leads;
+  const newConv = conv * 1.77;
+  const newCpl = cpl * 0.4;
+  const currentCusts = Math.round(leads * conv);
+  const newCusts = Math.round(newLeads * newConv);
+  const addCusts = newCusts - currentCusts;
+  const addRev = addCusts * ltv;
+
+  document.getElementById('l_new_leads').textContent = fmtN(addLeads);
+  document.getElementById('l_new_conv').textContent = (newConv*100).toFixed(1) + '%';
+  document.getElementById('l_new_cpl').textContent = '$' + Math.round(newCpl);
+  document.getElementById('l_new_custs').textContent = addCusts;
+  document.getElementById('l_new_rev').textContent = fmt(addRev);
+  document.getElementById('l_annual').textContent = fmt(addRev * 12);
+}
+calc_l();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, lead generation isn’t a mystery. It’s an architecture. Build it, and the growth will follow.</p>

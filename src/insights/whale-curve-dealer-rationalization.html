@@ -80,6 +80,74 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>Whale Curve ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Current Annual Net Profit <span id="w_prof_out">$0</span></label>
+        <input type="range" id="w_prof" min="100000" max="10000000" step="100000" value="1000000" oninput="calc_w()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Total Active Dealers <span id="w_dealers_out">0</span></label>
+        <input type="range" id="s_dealers" min="10" max="1000" step="10" value="250" oninput="calc_w()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>% of Bottom-Tier Dealers <span id="w_bottom_out">0%</span></label>
+        <input type="range" id="w_bottom" min="5" max="50" step="5" value="20" oninput="calc_w()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. Peak Profit (Pre-Loss)</span>
+        <span class="roi-calculator__result-value" id="w_peak">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Net Profit Lift (via Rationalization)</span>
+        <span class="roi-calculator__result-value highlight" id="w_lift">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Margin Improvement</span>
+        <span class="roi-calculator__result-value highlight" id="w_annual">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Based on Profit Mapping and Whale Curve dealer rationalization benchmarks.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_w() {
+  const profit = +document.getElementById('w_prof').value;
+  const dealers = +document.getElementById('s_dealers').value;
+  const bottom = +document.getElementById('w_bottom').value / 100;
+
+  document.getElementById('w_prof_out').textContent = fmt(profit);
+  document.getElementById('w_dealers_out').textContent = dealers;
+  document.getElementById('w_bottom_out').textContent = Math.round(bottom*100) + '%';
+
+  const peakProfit = profit * 1.65; // Typical whale curve peak is 150-200% of final net
+  const lift = (peakProfit - profit) * 0.45; // Recover 45% of "leaked" profit via rationalization
+  const annual = lift;
+
+  document.getElementById('w_peak').textContent = fmt(peakProfit);
+  document.getElementById('w_lift').textContent = fmt(lift);
+  document.getElementById('w_annual').textContent = fmt(annual);
+}
+calc_w();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, <strong>"Revenue at any cost" is a recipe for bankruptcy.</strong> Whale Curve analysis is the surgical tool that allows you to cut out the "profit cancer" and focus your energy on the accounts that actually fuel your growth.</p>

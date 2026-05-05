@@ -90,6 +90,75 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>Custom AI Copilot ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Number of Knowledge Workers <span id="a_reps_out">0</span></label>
+        <input type="range" id="a_reps" min="5" max="500" step="5" value="50" oninput="calc_a()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Monthly Salary <span id="a_salary_out">$0</span></label>
+        <input type="range" id="a_salary" min="4000" max="15000" step="500" value="7000" oninput="calc_a()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Weekly Search/Research Hrs <span id="a_admin_out">0 hrs</span></label>
+        <input type="range" id="a_admin" min="2" max="15" step="1" value="6" oninput="calc_a()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Reclaimed Capacity (Mo)</span>
+        <span class="roi-calculator__result-value" id="a_time">0 hrs</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. Monthly Productivity Value</span>
+        <span class="roi-calculator__result-value highlight" id="a_lift">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Enterprise ROI</span>
+        <span class="roi-calculator__result-value highlight" id="a_total">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Calculations based on 2026 enterprise AI productivity benchmarks.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_a() {
+  const reps = +document.getElementById('a_reps').value;
+  const salary = +document.getElementById('a_salary').value;
+  const admin = +document.getElementById('a_admin').value;
+
+  document.getElementById('a_reps_out').textContent = reps;
+  document.getElementById('a_salary_out').textContent = fmt(salary);
+  document.getElementById('a_admin_out').textContent = admin + ' hrs';
+
+  const hourly = salary / 160;
+  const reclaimed = admin * 0.70 * 4 * reps; // 70% reduction in research time
+  const monthlyValue = reclaimed * hourly;
+  const annual = monthlyValue * 12;
+
+  document.getElementById('a_time').textContent = Math.round(reclaimed) + ' hrs';
+  document.getElementById('a_lift').textContent = fmt(monthlyValue);
+  document.getElementById('a_total').textContent = fmt(annual);
+}
+calc_a();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, <strong>your institutional knowledge is your most valuable asset.</strong> A custom AI Copilot is the tool that allows you to actually use it. With a 4.1x average ROI and massive productivity gains, this isn't an experiment — it's the new standard for operational excellence.</p>

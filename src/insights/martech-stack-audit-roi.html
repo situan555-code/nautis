@@ -77,6 +77,74 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>MarTech Stack Audit ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Monthly SaaS spend <span id="m_spend_out">$0</span></label>
+        <input type="range" id="m_spend" min="500" max="25000" step="500" value="5000" oninput="calc_m()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Total Tools in Stack <span id="m_tools_out">0</span></label>
+        <input type="range" id="m_tools" min="3" max="50" step="1" value="12" oninput="calc_m()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Monthly Usage % <span id="m_usage_out">0%</span></label>
+        <input type="range" id="m_usage" min="10" max="100" step="5" value="60" oninput="calc_m()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. "Shadow" Waste (Monthly)</span>
+        <span class="roi-calculator__result-value highlight" id="m_waste">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Savings Opportunity</span>
+        <span class="roi-calculator__result-value highlight" id="m_annual">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Productivity Gain (Hrs/Mo)</span>
+        <span class="roi-calculator__result-value" id="m_prod">0 hrs</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Based on 2025 Gartner and Sunder & Co. internal audit data.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_m() {
+  const spend = +document.getElementById('m_spend').value;
+  const tools = +document.getElementById('m_tools').value;
+  const usage = +document.getElementById('m_usage').value / 100;
+
+  document.getElementById('m_spend_out').textContent = fmt(spend);
+  document.getElementById('m_tools_out').textContent = tools;
+  document.getElementById('m_usage_out').textContent = Math.round(usage*100) + '%';
+
+  const waste = spend * (1 - usage) * 0.85; // 15% inherent overhead
+  const annual = waste * 12;
+  const prod = tools * 1.5; // Avg 1.5 hrs saved per tool via consolidation
+
+  document.getElementById('m_waste').textContent = fmt(waste);
+  document.getElementById('m_annual').textContent = fmt(annual);
+  document.getElementById('m_prod').textContent = Math.round(prod) + ' hrs';
+}
+calc_m();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, you don't need more tools. You need <strong>better orchestration</strong>. A MarTech stack audit isn't just about saving money; it's about clearing the path for growth. </p>

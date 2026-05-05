@@ -84,6 +84,76 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>Sales Enablement ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Total Sales Team Size <span id="s_team_out">0</span></label>
+        <input type="range" id="s_team" min="1" max="100" step="1" value="10" oninput="calc_s()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Monthly Quota <span id="s_quota_out">$0</span></label>
+        <input type="range" id="s_quota" min="10000" max="500000" step="10000" value="80000" oninput="calc_s()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Current Quota Attainment <span id="s_att_out">0%</span></label>
+        <input type="range" id="s_att" min="10" max="100" step="5" value="65" oninput="calc_s()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Attainment Lift (Engaged Reps)</span>
+        <span class="roi-calculator__result-value" id="s_lift_pct">0%</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Additional Monthly Revenue</span>
+        <span class="roi-calculator__result-value highlight" id="s_rev">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Enterprise Lift</span>
+        <span class="roi-calculator__result-value highlight" id="s_annual">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Based on 2026 sales enablement performance studies.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_s() {
+  const team = +document.getElementById('s_team').value;
+  const quota = +document.getElementById('s_quota').value;
+  const att = +document.getElementById('s_att').value / 100;
+
+  document.getElementById('s_team_out').textContent = team;
+  document.getElementById('s_quota_out').textContent = fmt(quota);
+  document.getElementById('s_att_out').textContent = Math.round(att*100) + '%';
+
+  const currentRev = team * (quota * att);
+  const lift = 0.15; // 15% increase in attainment via enablement
+  const newAtt = Math.min(1.0, att + lift);
+  const newRev = team * (quota * newAtt);
+  const addRev = newRev - currentRev;
+
+  document.getElementById('s_lift_pct').textContent = Math.round(newAtt*100) + '%';
+  document.getElementById('s_rev').textContent = fmt(addRev);
+  document.getElementById('s_annual').textContent = fmt(addRev * 12);
+}
+calc_s();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, <strong>the best product doesn't always win — the best sales experience does.</strong> B2B sales enablement is the tool that allows your team to deliver that experience at scale. With up to 34% win rate lifts and a 2.8x average ROI, it's the smartest investment you can make in your revenue team.</p>

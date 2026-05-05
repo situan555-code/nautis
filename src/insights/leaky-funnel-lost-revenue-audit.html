@@ -84,6 +84,74 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>Leaky Funnel Recovery Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Monthly Traffic <span id="f_t_out">0</span></label>
+        <input type="range" id="f_t" min="1000" max="250000" step="1000" value="25000" oninput="calc_f()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Cart/Form Abandonment Rate <span id="f_a_out">0%</span></label>
+        <input type="range" id="f_a" min="20" max="95" step="1" value="70" oninput="calc_f()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Order Value <span id="f_v_out">$0</span></label>
+        <input type="range" id="f_v" min="50" max="5000" step="50" value="500" oninput="calc_f()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Monthly Lost Revenue</span>
+        <span class="roi-calculator__result-value" id="f_lost">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Recoverable Revenue (15% Fix)</span>
+        <span class="roi-calculator__result-value highlight" id="f_rec">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Growth Opportunity</span>
+        <span class="roi-calculator__result-value highlight" id="f_annual">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Based on 2026 e-commerce and B2B lead capture friction data.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_f() {
+  const t = +document.getElementById('f_t').value;
+  const a = +document.getElementById('f_a').value / 100;
+  const v = +document.getElementById('f_v').value;
+
+  document.getElementById('f_t_out').textContent = t.toLocaleString();
+  document.getElementById('f_a_out').textContent = Math.round(a*100) + '%';
+  document.getElementById('f_v_out').textContent = '$' + v;
+
+  const lostRev = t * a * v;
+  const recoverable = lostRev * 0.15; // 15% recovery rate via optimization
+  const annual = recoverable * 12;
+
+  document.getElementById('f_lost').textContent = fmt(lostRev);
+  document.getElementById('f_rec').textContent = fmt(recoverable);
+  document.getElementById('f_annual').textContent = fmt(annual);
+}
+calc_f();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, <strong>efficiency is the new growth.</strong> You don't necessarily need more leads; you need to stop wasting the ones you have. A Leaky Funnel Audit is the highest-leverage action any B2B executive can take this year.</p>

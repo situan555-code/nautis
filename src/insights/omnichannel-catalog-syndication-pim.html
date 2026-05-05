@@ -109,6 +109,75 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>PIM & Omnichannel ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Total SKU Count <span id="p_skus_out">0</span></label>
+        <input type="range" id="p_skus" min="50" max="50000" step="50" value="2500" oninput="calc_p()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Number of Sales Channels <span id="p_chan_out">0</span></label>
+        <input type="range" id="p_chan" min="2" max="20" step="1" value="5" oninput="calc_p()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Annual Data Entry Hours / SKU <span id="p_hours_out">0 hrs</span></label>
+        <input type="range" id="p_hours" min="0.5" max="5" step="0.1" value="1.2" oninput="calc_p()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Current Data Admin Load (Hrs/Yr)</span>
+        <span class="roi-calculator__result-value" id="p_load">0 hrs</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">PIM Efficiency Gain (80%)</span>
+        <span class="roi-calculator__result-value highlight" id="p_save">0 hrs</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Operational ROI</span>
+        <span class="roi-calculator__result-value highlight" id="p_total">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Based on 2026 PIM adoption and syndication efficiency metrics.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_p() {
+  const skus = +document.getElementById('p_skus').value;
+  const chan = +document.getElementById('p_chan').value;
+  const hours = +document.getElementById('p_hours').value;
+
+  document.getElementById('p_skus_out').textContent = skus.toLocaleString();
+  document.getElementById('p_chan_out').textContent = chan;
+  document.getElementById('p_hours_out').textContent = hours.toFixed(1) + ' hrs';
+
+  const totalLoad = skus * chan * hours;
+  const savings = totalLoad * 0.80;
+  const hourlyRate = 45; // Internal burdened labor rate
+  const annual = savings * hourlyRate;
+
+  document.getElementById('p_load').textContent = Math.round(totalLoad).toLocaleString() + ' hrs';
+  document.getElementById('p_save').textContent = Math.round(savings).toLocaleString() + ' hrs';
+  document.getElementById('p_total').textContent = fmt(annual);
+}
+calc_p();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, <strong>your product data is as important as your physical product</strong>.</p>

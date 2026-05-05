@@ -82,6 +82,106 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>Interactive Kiosk ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Total Locations <span id="k_locs_out">0</span></label>
+        <input type="range" id="k_locs" min="1" max="50" step="1" value="5" oninput="calc_k()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Staff per Location <span id="k_staff_out">0</span></label>
+        <input type="range" id="k_staff" min="1" max="10" step="1" value="3" oninput="calc_k()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Annual Staff Wage <span id="k_wage_out">$0</span></label>
+        <input type="range" id="k_wage" min="30000" max="120000" step="5000" value="65000" oninput="calc_k()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Monthly Revenue / Location <span id="k_rev_out">$0</span></label>
+        <input type="range" id="k_rev" min="10000" max="1000000" step="10000" value="150000" oninput="calc_k()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Kiosk Hardware/Install Cost <span id="k_cost_out">$0</span></label>
+        <input type="range" id="k_cost" min="2000" max="50000" step="1000" value="12000" oninput="calc_k()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Labor Savings (28.6%)</span>
+        <span class="roi-calculator__result-value" id="k_labor">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Sales Lift (22%)</span>
+        <span class="roi-calculator__result-value" id="k_lift">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Total Annual Value</span>
+        <span class="roi-calculator__result-value highlight" id="k_total">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Total Implementation Cost</span>
+        <span class="roi-calculator__result-value" id="k_install_total">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. Payback Period</span>
+        <span class="roi-calculator__result-value highlight" id="k_payback">0 mo</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Calculations based on 2026 phygital showroom benchmarks.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtN(n) {
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return Math.round(n/1000) + 'K';
+  return Math.round(n).toLocaleString();
+}
+function pct(n) { return Math.round(n) + '%'; }
+function mo(n) { return n < 1 ? '<1 mo' : n.toFixed(1) + ' mo'; }
+
+function calc_k() {
+  const locs = +document.getElementById('k_locs').value;
+  const staff = +document.getElementById('k_staff').value;
+  const wage = +document.getElementById('k_wage').value;
+  const rev = +document.getElementById('k_rev').value;
+  const cost = +document.getElementById('k_cost').value;
+
+  document.getElementById('k_locs_out').textContent = locs;
+  document.getElementById('k_staff_out').textContent = staff;
+  document.getElementById('k_wage_out').textContent = fmt(wage);
+  document.getElementById('k_rev_out').textContent = fmt(rev);
+  document.getElementById('k_cost_out').textContent = fmt(cost);
+
+  const laborSave = locs * staff * wage * 0.286;
+  const salesLift = locs * rev * 12 * 0.22;
+  const installTotal = locs * cost;
+  const totalVal = laborSave + salesLift;
+  const payback = totalVal > 0 ? installTotal / (totalVal / 12) : 0;
+
+  document.getElementById('k_labor').textContent = fmt(laborSave);
+  document.getElementById('k_lift').textContent = fmt(salesLift);
+  document.getElementById('k_total').textContent = fmt(totalVal);
+  document.getElementById('k_install_total').textContent = fmt(installTotal);
+  document.getElementById('k_payback').textContent = mo(payback);
+}
+calc_k();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, a kiosk is more than a display — it's a data-collection engine and a sales closer. With 22% lifts in sales and massive labor savings, the "phygital" showroom is the only way to remain competitive in a digital-first world.</p>

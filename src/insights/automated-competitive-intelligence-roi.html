@@ -86,6 +86,77 @@
 
 <hr>
 
+<section class="roi-calculator">
+  <div class="roi-calculator__header">
+    <h3>Competitive Intelligence ROI Calculator</h3>
+  </div>
+  <div class="roi-calculator__grid">
+    <div class="roi-calculator__inputs">
+      <div class="roi-calculator__input-group">
+        <label>Monthly Marketing/Sales Spend <span id="ci_spend_out">$0</span></label>
+        <input type="range" id="ci_spend" min="1000" max="250000" step="1000" value="25000" oninput="calc_ci()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Win Rate % <span id="ci_win_out">0%</span></label>
+        <input type="range" id="ci_win" min="5" max="60" step="1" value="20" oninput="calc_ci()">
+      </div>
+      <div class="roi-calculator__input-group">
+        <label>Avg. Deal Size <span id="ci_deal_out">$0</span></label>
+        <input type="range" id="ci_deal" min="1000" max="100000" step="1000" value="15000" oninput="calc_ci()">
+      </div>
+    </div>
+    <div class="roi-calculator__results">
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Est. Win Rate Lift (24%)</span>
+        <span class="roi-calculator__result-value" id="ci_new_win">0%</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Additional Monthly Revenue</span>
+        <span class="roi-calculator__result-value highlight" id="ci_rev">$0</span>
+      </div>
+      <div class="roi-calculator__result-item">
+        <span class="roi-calculator__result-label">Annual Enterprise Value</span>
+        <span class="roi-calculator__result-value highlight" id="ci_annual">$0</span>
+      </div>
+    </div>
+  </div>
+  <div class="roi-calculator__footer">
+    *Based on 2026 AI-driven competitive intelligence benchmarks.
+  </div>
+</section>
+
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_ci() {
+  const spend = +document.getElementById('ci_spend').value;
+  const win = +document.getElementById('ci_win').value / 100;
+  const deal = +document.getElementById('ci_deal').value;
+
+  document.getElementById('ci_spend_out').textContent = fmt(spend);
+  document.getElementById('ci_win_out').textContent = Math.round(win*100) + '%';
+  document.getElementById('ci_deal_out').textContent = fmt(deal);
+
+  const dealsPerMonth = spend / 2000; // Proxy for volume
+  const currentRev = dealsPerMonth * win * deal;
+  const lift = 0.24; // 24% relative win rate lift
+  const newWin = win * (1 + lift);
+  const newRev = dealsPerMonth * newWin * deal;
+  const addRev = newRev - currentRev;
+
+  document.getElementById('ci_new_win').textContent = (newWin*100).toFixed(1) + '%';
+  document.getElementById('ci_rev').textContent = fmt(addRev);
+  document.getElementById('ci_annual').textContent = fmt(addRev * 12);
+}
+calc_ci();
+</script>
+
+<hr>
+
 <h2>The Bottom Line</h2>
 
 <p>In 2026, <strong>ignorance is a choice — and a very expensive one.</strong> Automated competitive intelligence gives you the "vision" to see the market as it actually is, not as it was a month ago. </p>
