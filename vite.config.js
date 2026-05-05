@@ -15,8 +15,6 @@ const pages = [
   'contact',
   'engagement',
   'insights',
-  'portfolio',
-  'portfolio-v2',
 ];
 
 // Build rollup input map: { index: '/abs/path/src/index.html', about: '...', ... }
