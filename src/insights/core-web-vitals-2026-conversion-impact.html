@@ -1,0 +1,129 @@
+{{#> insight-layout }}
+
+<p>A 1-second improvement in Core Web Vitals (specifically LCP or INP) can increase conversions by 7–12% for most sites. In 2026, Google treats these metrics as a tie-breaker that directly protects (or destroys) revenue — yet the majority of SMB websites still fail at least one of the three thresholds.</p>
+
+<p>This is no longer just a technical SEO checkbox. It is measurable profit protection.</p>
+
+<hr>
+
+<h2>Why Did Core Web Vitals Suddenly Become a Revenue Issue in 2026?</h2>
+
+<p>Google made <strong>Interaction to Next Paint (INP)</strong> a full ranking signal in early 2026. Combined with LCP and CLS, these three metrics now influence whether your page ranks above or below competitors with similar content.</p>
+
+<p>The business impact is brutal and measurable:</p>
+
+<ul>
+  <li>Every additional second of LCP above 2.5 seconds reduces conversions by 4–8% on average.</li>
+  <li>A 1-second delay in responsiveness (INP) can cut sales by up to 7%.</li>
+  <li>Sites that improved from 3 seconds to 1 second load time saw conversion lifts as high as 27%.</li>
+</ul>
+
+<p>For a typical 50–150 employee local business doing $1.5M–$4M in annual revenue, even a 7% conversion lift equals <strong>$105,000–$280,000</strong> in additional top-line revenue — without spending another dollar on ads.</p>
+
+<hr>
+
+<h2>The Three Metrics That Actually Move the Needle in 2026</h2>
+
+<h3>Core Web Vitals Thresholds & Business Impact (2026)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Good Threshold</th>
+      <th>Needs Improvement</th>
+      <th>Poor</th>
+      <th>Revenue Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>LCP</strong> (Largest Contentful Paint)</td>
+      <td>≤ 2.5s</td>
+      <td>2.5s – 4.0s</td>
+      <td>&gt; 4.0s</td>
+      <td>4–8% conversion drop per second above 2.5s</td>
+    </tr>
+    <tr>
+      <td><strong>INP</strong> (Interaction to Next Paint)</td>
+      <td>≤ 200ms</td>
+      <td>200ms – 500ms</td>
+      <td>&gt; 500ms</td>
+      <td>Up to 7% sales loss; rage clicks & abandoned forms</td>
+    </tr>
+    <tr>
+      <td><strong>CLS</strong> (Cumulative Layout Shift)</td>
+      <td>≤ 0.1</td>
+      <td>0.1 – 0.25</td>
+      <td>&gt; 0.25</td>
+      <td>Hidden conversion killer (especially on mobile)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Technical Frontier in 2026:</strong> INP is the new battleground. Heavy JavaScript frameworks, third-party scripts, and unoptimized event handlers are destroying responsiveness on product pages, booking forms, and checkout flows.</p>
+
+<hr>
+
+<h2>The Real Cost of Ignoring Core Web Vitals (CFO Math)</h2>
+
+<p>Most SMB owners look at their Google Analytics and think “our bounce rate is fine.” They are wrong.</p>
+
+<p>Field data from Search Console often shows 30–60% of traffic hitting “Needs Improvement” or “Poor” on mobile — the exact segment Google now penalizes.</p>
+
+<p><strong>Conservative Revenue Leakage Model (50-employee service business)</strong></p>
+<ul>
+  <li>40% of organic traffic on slow pages</li>
+  <li>8% average conversion drop from poor CWV</li>
+  <li>$2.8M annual revenue → <strong>$89,600+ lost per year</strong> in direct conversions</li>
+</ul>
+
+<hr>
+
+<h2>The Practical 90-Day Core Web Vitals Fix (Technical Lead Playbook)</h2>
+
+<h3>Phase 1: Diagnose (Week 1–2)</h3>
+<ul>
+  <li>Run top 20 revenue pages through PageSpeed Insights + Search Console field data.</li>
+  <li>Prioritize pages with both high traffic and poor CWV scores.</li>
+</ul>
+
+<h3>Phase 2: LCP Fixes (Week 3–5)</h3>
+<ul>
+  <li>Optimize hero images (AVIF + proper sizing + fetchpriority="high").</li>
+  <li>Preload critical fonts and remove render-blocking resources.</li>
+  <li>Use a CDN with edge caching (Cloudflare recommended).</li>
+</ul>
+
+<h3>Phase 3: INP Fixes (Week 6–10) — The 2026 Priority</h3>
+<ul>
+  <li>Implement <code>scheduler.yield()</code> for long tasks.</li>
+  <li>Defer or lazy-load non-critical JavaScript.</li>
+  <li>Audit and reduce third-party scripts (chat widgets, analytics, remarketing pixels).</li>
+</ul>
+
+<h3>Phase 4: CLS Fixes (Week 8–12)</h3>
+<ul>
+  <li>Always reserve space for images, ads, and dynamic content.</li>
+  <li>Use <code>aspect-ratio</code> CSS or explicit width/height attributes.</li>
+</ul>
+
+<hr>
+
+<h2>5 Immediate Actions You Can Take This Week</h2>
+<ol>
+  <li>Open Search Console → Core Web Vitals report and export the worst-performing URLs.</li>
+  <li>Run your top 5 revenue pages through PageSpeed Insights (mobile view).</li>
+  <li>Identify the single largest image or script slowing down your homepage.</li>
+  <li>Add <code>fetchpriority="high"</code> to your hero image.</li>
+  <li>Book a 60-minute technical audit with a performance specialist.</li>
+</ol>
+
+<div class="sunder-insight-box">
+  <p>In 2026, <strong>performance is not a technical debt item</strong> — it is a <strong>revenue protection layer</strong>. A slow site doesn’t just rank lower. It silently leaks customers who will never come back and will never tell you why.</p>
+  <p>The businesses that win are the ones that treat every 100 milliseconds of improvement as a direct deposit into their bank account. They measure it, they fix it, and they protect it like any other profit center.</p>
+</div>
+
+<p>This post is a spoke in our <strong>Sunder Advisory Hub</strong> on Technical SEO & Performance. For the complete pillar guide (including <a href="/insights/ai-search-traffic-2026-citation-strategy.html">INP optimization checklists</a> and real client before/after revenue data), <a href="">read the full playbook</a>.</p>
+
+{{/insight-layout}}

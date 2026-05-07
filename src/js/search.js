@@ -67,7 +67,7 @@ export async function initSearch() {
     const html = results.map(result => {
       const item = result.item;
       return `
-        <a href="${item.url}" class="search-result-item" onclick="document.getElementById('search-modal').classList.remove('is-open')">
+        <a href="${item.url}" class="search-result-item" data-search-link>
           <div class="search-result-cat">${item.category}</div>
           <div class="search-result-title">${item.title}</div>
           <div class="search-result-desc">${item.description}</div>
@@ -82,6 +82,13 @@ export async function initSearch() {
   searchTrigger.addEventListener('click', openSearch);
   searchCloseBtn.addEventListener('click', closeSearch);
   searchBackdrop.addEventListener('click', closeSearch);
+
+  // Close search when a result is clicked (Event Delegation)
+  searchResultsContainer.addEventListener('click', (e) => {
+    if (e.target.closest('[data-search-link]')) {
+      closeSearch();
+    }
+  });
 
   // Close on Escape key
   document.addEventListener('keydown', (e) => {

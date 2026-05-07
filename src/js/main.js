@@ -13,6 +13,7 @@ import { initAccordion } from './accordion.js';
 import { initFilters } from './filters.js';
 import { initForm } from './form.js';
 import { initSearch } from './search.js';
+import { initCalculators } from './calculators.js';
 
 // Initialize all shared behavior
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,5 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initAccordion();
     initFilters();
     initForm();
+    initCalculators();
   });
 });

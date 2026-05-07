@@ -1,0 +1,287 @@
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_ci() {
+  const spend = +document.getElementById('ci_spend').value;
+  const win = +document.getElementById('ci_win').value / 100;
+  const deal = +document.getElementById('ci_deal').value;
+
+  document.getElementById('ci_spend_out').textContent = fmt(spend);
+  document.getElementById('ci_win_out').textContent = Math.round(win*100) + '%';
+  document.getElementById('ci_deal_out').textContent = fmt(deal);
+
+  const dealsPerMonth = spend / 2000; // Proxy for volume
+  const currentRev = dealsPerMonth * win * deal;
+  const lift = 0.24; // 24% relative win rate lift
+  const newWin = win * (1 + lift);
+  const newRev = dealsPerMonth * newWin * deal;
+  const addRev = newRev - currentRev;
+
+  document.getElementById('ci_new_win').textContent = (newWin*100).toFixed(1) + '%';
+  document.getElementById('ci_rev').textContent = fmt(addRev);
+  document.getElementById('ci_annual').textContent = fmt(addRev * 12);
+}
+calc_ci();
+</script>
+
+<hr>
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_s() {
+  const team = +document.getElementById('s_team').value;
+  const quota = +document.getElementById('s_quota').value;
+  const att = +document.getElementById('s_att').value / 100;
+
+  document.getElementById('s_team_out').textContent = team;
+  document.getElementById('s_quota_out').textContent = fmt(quota);
+  document.getElementById('s_att_out').textContent = Math.round(att*100) + '%';
+
+  const currentRev = team * (quota * att);
+  const lift = 0.15; // 15% increase in attainment via enablement
+  const newAtt = Math.min(1.0, att + lift);
+  const newRev = team * (quota * newAtt);
+  const addRev = newRev - currentRev;
+
+  document.getElementById('s_lift_pct').textContent = Math.round(newAtt*100) + '%';
+  document.getElementById('s_rev').textContent = fmt(addRev);
+  document.getElementById('s_annual').textContent = fmt(addRev * 12);
+}
+calc_s();
+</script>
+
+<hr>
+
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_dt() {
+  const t = +document.getElementById('dt_t').value;
+  const opex = +document.getElementById('dt_opex').value;
+  const cac = +document.getElementById('dt_cac').value;
+
+  document.getElementById('dt_t_out').textContent = t.toLocaleString();
+  document.getElementById('dt_opex_out').textContent = fmt(opex);
+  document.getElementById('dt_cac_out').textContent = '$' + cac;
+
+  const cacSave = t * 0.05 * cac * 0.31 * 12; // 5% conversion, 31% CAC reduction
+  const velocityLift = opex * 12 * 0.19; // Proxy for efficiency
+  const annual = cacSave + velocityLift;
+
+  document.getElementById('dt_cac_save').textContent = fmt(cacSave / 12) + '/mo';
+  document.getElementById('dt_velocity').textContent = fmt(velocityLift / 12) + '/mo';
+  document.getElementById('dt_annual').textContent = fmt(annual);
+}
+calc_dt();
+</script>
+
+<hr>
+
+<h2>The Bottom Line</h2>
+
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtN(n) {
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return Math.round(n/1000) + 'K';
+  return Math.round(n).toLocaleString();
+}
+function pct(n) { return Math.round(n) + '%'; }
+function mo(n) { return n < 1 ? '<1 mo' : n.toFixed(1) + ' mo'; }
+
+function calc_e() {
+  const rev = +document.getElementById('e_rev').value;
+  const hours = +document.getElementById('e_hours').value;
+  const rate = +document.getElementById('e_rate').value;
+  const loss = +document.getElementById('e_loss').value / 100;
+  const invest = +document.getElementById('e_invest').value;
+
+  document.getElementById('e_rev_out').textContent = fmt(rev);
+  document.getElementById('e_hours_out').textContent = hours + ' hrs';
+  document.getElementById('e_rate_out').textContent = '$' + rate;
+  document.getElementById('e_loss_out').textContent = Math.round(loss*100) + '%';
+  document.getElementById('e_invest_out').textContent = fmt(invest);
+
+  const laborWaste = hours * rate * 52;
+  const revLoss = rev * loss;
+  const inaction = laborWaste + revLoss;
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function fmtN(n) {
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return Math.round(n/1000) + 'K';
+  return Math.round(n).toLocaleString();
+}
+function pct(n) { return Math.round(n) + '%'; }
+function mo(n) { return n < 1 ? '<1 mo' : n.toFixed(1) + ' mo'; }
+
+function calc_k() {
+  const locs = +document.getElementById('k_locs').value;
+  const staff = +document.getElementById('k_staff').value;
+  const wage = +document.getElementById('k_wage').value;
+  const rev = +document.getElementById('k_rev').value;
+  const cost = +document.getElementById('k_cost').value;
+
+  document.getElementById('k_locs_out').textContent = locs;
+  document.getElementById('k_staff_out').textContent = staff;
+  document.getElementById('k_wage_out').textContent = fmt(wage);
+  document.getElementById('k_rev_out').textContent = fmt(rev);
+  document.getElementById('k_cost_out').textContent = fmt(cost);
+
+  const laborSave = locs * staff * wage * 0.286;
+  const salesLift = locs * rev * 12 * 0.22;
+  const installTotal = locs * cost;
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_f() {
+  const t = +document.getElementById('f_t').value;
+  const a = +document.getElementById('f_a').value / 100;
+  const v = +document.getElementById('f_v').value;
+
+  document.getElementById('f_t_out').textContent = t.toLocaleString();
+  document.getElementById('f_a_out').textContent = Math.round(a*100) + '%';
+  document.getElementById('f_v_out').textContent = '$' + v;
+
+  const lostRev = t * a * v;
+  const recoverable = lostRev * 0.15; // 15% recovery rate via optimization
+  const annual = recoverable * 12;
+
+  document.getElementById('f_lost').textContent = fmt(lostRev);
+  document.getElementById('f_rec').textContent = fmt(recoverable);
+  document.getElementById('f_annual').textContent = fmt(annual);
+}
+calc_f();
+</script>
+
+<hr>
+
+<h2>The Bottom Line</h2>
+
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_m() {
+  const spend = +document.getElementById('m_spend').value;
+  const tools = +document.getElementById('m_tools').value;
+  const usage = +document.getElementById('m_usage').value / 100;
+
+  document.getElementById('m_spend_out').textContent = fmt(spend);
+  document.getElementById('m_tools_out').textContent = tools;
+  document.getElementById('m_usage_out').textContent = Math.round(usage*100) + '%';
+
+  const waste = spend * (1 - usage) * 0.85; // 15% inherent overhead
+  const annual = waste * 12;
+  const prod = tools * 1.5; // Avg 1.5 hrs saved per tool via consolidation
+
+  document.getElementById('m_waste').textContent = fmt(waste);
+  document.getElementById('m_annual').textContent = fmt(annual);
+  document.getElementById('m_prod').textContent = Math.round(prod) + ' hrs';
+}
+calc_m();
+</script>
+
+<hr>
+
+<h2>The Bottom Line</h2>
+
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_p() {
+  const skus = +document.getElementById('p_skus').value;
+  const chan = +document.getElementById('p_chan').value;
+  const hours = +document.getElementById('p_hours').value;
+
+  document.getElementById('p_skus_out').textContent = skus.toLocaleString();
+  document.getElementById('p_chan_out').textContent = chan;
+  document.getElementById('p_hours_out').textContent = hours.toFixed(1) + ' hrs';
+
+  const totalLoad = skus * chan * hours;
+  const savings = totalLoad * 0.80;
+  const hourlyRate = 45; // Internal burdened labor rate
+  const annual = savings * hourlyRate;
+
+  document.getElementById('p_load').textContent = Math.round(totalLoad).toLocaleString() + ' hrs';
+  document.getElementById('p_save').textContent = Math.round(savings).toLocaleString() + ' hrs';
+  document.getElementById('p_total').textContent = fmt(annual);
+}
+calc_p();
+</script>
+
+<hr>
+
+<h2>The Bottom Line</h2>
+--
+<script>
+function fmt(n) {
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + Math.round(n/1000) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+function calc_w() {
+  const profit = +document.getElementById('w_prof').value;
+  const dealers = +document.getElementById('s_dealers').value;
+  const bottom = +document.getElementById('w_bottom').value / 100;
+
+  document.getElementById('w_prof_out').textContent = fmt(profit);
+  document.getElementById('w_dealers_out').textContent = dealers;
+  document.getElementById('w_bottom_out').textContent = Math.round(bottom*100) + '%';
+
+  const peakProfit = profit * 1.65; // Typical whale curve peak is 150-200% of final net
+  const lift = (peakProfit - profit) * 0.45; // Recover 45% of "leaked" profit via rationalization
+  const annual = lift;
+
+  document.getElementById('w_peak').textContent = fmt(peakProfit);
+  document.getElementById('w_lift').textContent = fmt(lift);
+  document.getElementById('w_annual').textContent = fmt(annual);
+}
+calc_w();
+</script>
+
+<hr>
+
+<h2>The Bottom Line</h2>
+

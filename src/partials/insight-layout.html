@@ -15,6 +15,9 @@
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <a href="/">Home</a> / <a href="/insights.html">Insights</a> / <span>{{pageTitle}}</span>
         </nav>
+        <div class="insight-header__hero reveal" style="margin-bottom: var(--space-8);">
+          <img src="{{heroImage}}" alt="{{pageTitle}} Hero" fetchpriority="high" loading="eager" style="width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--color-border); aspect-ratio: 1200/630; object-fit: cover;">
+        </div>
         <div class="insight-header__content reveal">
           <span class="label">{{category}}</span>
           <h1>{{pageTitle}}</h1>

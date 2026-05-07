@@ -25,6 +25,7 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://sunder.co/#organization",
   "name": "{{site.name}}",
   "description": "{{#if pageDescription}}{{pageDescription}}{{else}}Digital Transformation & Revenue Operations Consultancy for legacy B2B and manufacturing companies.{{/if}}",
   "url": "https://sunder.co",
@@ -45,3 +46,8 @@
   "serviceType": ["MarTech Consulting", "3D Commerce", "Revenue Operations", "AI Automation", "Brand Strategy", "Email Marketing", "PPC", "Local SEO"]
 }
 </script>
+
+{{#if pageSchema}}
+{{{pageSchema}}}
+{{/if}}
+
