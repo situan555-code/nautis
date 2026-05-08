@@ -1,18 +1,28 @@
 <!-- ============================================================
      HEAD PARTIAL — Shared <head> content for all pages
-     Variables: pageTitle, pageDescription, pageCSS (optional extra stylesheet)
      ============================================================ -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}</title>
 <meta name="description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.{{/if}}">
 
+<!-- Canonical URL (critical for SEO) -->
+<link rel="canonical" href="https://sunder.co{{#if pagePath}}{{pagePath}}{{else}}/{{/if}}">
+
 <!-- Open Graph -->
 <meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}">
 <meta property="og:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}We architect the entire revenue system for industrial brands — from ERP integrations to 3D product configurators.{{/if}}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sunder.co{{#if pagePath}}{{pagePath}}{{else}}/{{/if}}">
+<meta property="og:image" content="https://sunder.co/og-image.jpg">
+<meta property="og:site_name" content="Sunder & Co.">
 
-<!-- Preconnect for fonts (non-blocking) -->
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}">
+<meta name="twitter:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Fractional CDO services for legacy B2B and manufacturing.{{/if}}">
+
+<!-- Preconnect for fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -20,7 +30,7 @@
 <!-- Design System -->
 <link rel="stylesheet" href="/css/design-system.css">
 
-<!-- Schema.org -->
+<!-- Organization Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +41,7 @@
   "url": "https://sunder.co",
   "logo": "https://sunder.co/images/logo.png",
   "sameAs": [
-    "https://www.linkedin.com/company/sunder-co",
-    "https://twitter.com/sunder_co"
+    "https://www.linkedin.com/company/sunder-co"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -41,13 +50,10 @@
     "addressCountry": "US"
   },
   "areaServed": "Worldwide",
-  "priceRange": "$$$$",
-  "telephone": "+1-800-555-0199",
-  "serviceType": ["MarTech Consulting", "3D Commerce", "Revenue Operations", "AI Automation", "Brand Strategy", "Email Marketing", "PPC", "Local SEO"]
+  "priceRange": "$$$$
 }
 </script>
 
 {{#if pageSchema}}
 {{{pageSchema}}}
 {{/if}}
-
