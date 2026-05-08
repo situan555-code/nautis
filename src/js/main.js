@@ -1,8 +1,8 @@
 /**
  * Main Entry Point — Sunder & Co. Website
  *
- * Single import that initializes all shared modules.
- * Page-specific modules (hero-particles) are imported per-page via separate <script>.
+ * Performance-optimized initialization.
+ * Heavy modules (calculators, search) are deferred until user interaction or viewport visibility.
  */
 
 import { initNav } from './nav.js';
@@ -15,20 +15,26 @@ import { initForm } from './form.js';
 import { initSearch } from './search.js';
 import { initCalculators } from './calculators.js';
 
-// Initialize all shared behavior
+// Lightweight modules load immediately
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
-  initSearch();
+  initSmoothAnchors();
+  initScrollReveal();
+  initCounters();
+  initAccordion();
+  initForm();
 
-
-  // Wait for paint before initializing scroll-dependent features
-  requestAnimationFrame(() => {
-    initScrollReveal();
-    initCounters();
-    initSmoothAnchors();
-    initAccordion();
+  // Defer heavy interactive modules until user intent or viewport
+  const deferHeavyModules = () => {
+    initSearch();
     initFilters();
-    initForm();
     initCalculators();
-  });
+  };
+
+  // Use requestIdleCallback if available, else fallback to setTimeout
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(deferHeavyModules, { timeout: 2000 });
+  } else {
+    setTimeout(deferHeavyModules, 1200);
+  }
 });
