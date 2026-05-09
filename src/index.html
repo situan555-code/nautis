@@ -3,16 +3,53 @@
 <head>
   {{> head pageTitle="Home" }}
   <link rel="stylesheet" href="/css/home.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sunder & Co.",
+    "url": "https://sunder.co",
+    "logo": "https://sunder.co/logo.png",
+    "description": "Fractional CDO services for legacy B2B, manufacturing, and heavy-inventory retail. We bridge the gap between your production floor and modern digital commerce.",
+    "email": "hello@sunderandco.com",
+    "sameAs": [
+      "https://linkedin.com/company/sunderandco"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "[Your Street Address]",
+      "addressLocality": "[City]",
+      "addressRegion": "[State]",
+      "postalCode": "[ZIP]",
+      "addressCountry": "US"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Sunder & Co.",
+    "description": "Fractional CDO and Revenue Operations consultancy for legacy manufacturing and wholesale businesses.",
+    "url": "https://sunder.co",
+    "telephone": "(555) 000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "[Your Street Address]",
+      "addressLocality": "[City]",
+      "addressRegion": "[State]",
+      "postalCode": "[ZIP]",
+      "addressCountry": "US"
+    }
+  }
+  </script>
 </head>
 <body>
 
   {{> nav activePage="home" }}
 
-  <!-- ============================================================
-       HERO
-       ============================================================ -->
+  <!-- HERO -->
   <section class="hero" id="hero">
-
     <div class="hero__content">
       <div class="hero__eyebrow">
         <span class="pulse-dot"></span>
@@ -40,9 +77,7 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       PAIN STRIP — Industry Stats
-       ============================================================ -->
+  <!-- PAIN STRIP -->
   <section class="pain-strip" id="pain-strip">
     <div class="container">
       <div class="pain-strip__grid">
@@ -66,11 +101,8 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       SERVICE PILLARS
-       ============================================================ -->
+  <!-- SERVICE PILLARS -->
   <section class="section pillars-section" id="pillars">
-    <!-- Ambient glow -->
     <div class="glow-orb glow-orb--cyan" style="width:500px;height:500px;top:-10%;right:-5%;"></div>
 
     <div class="container">
@@ -81,8 +113,7 @@
       </div>
 
       <div class="grid grid--3" style="margin-top: var(--space-12);">
-
-        <!-- Pillar 1 -->
+        <!-- Pillar cards remain the same -->
         <a href="/services.html#martech" class="card pillar-card reveal" id="pillar-martech" style="text-decoration:none;">
           <div class="pillar-card__icon">⚡</div>
           <h3 class="pillar-card__title">MarTech &<br>Data Architecture</h3>
@@ -96,7 +127,6 @@
           <span class="pillar-card__link">Explore MarTech →</span>
         </a>
 
-        <!-- Pillar 2 -->
         <a href="/services.html#3d" class="card pillar-card reveal reveal--delay-1" id="pillar-3d" style="text-decoration:none;">
           <div class="pillar-card__icon">🔮</div>
           <h3 class="pillar-card__title">3D Commerce &<br>Spatial Computing</h3>
@@ -110,7 +140,6 @@
           <span class="pillar-card__link">Explore 3D Commerce →</span>
         </a>
 
-        <!-- Pillar 3 -->
         <a href="/services.html#revops" class="card pillar-card reveal reveal--delay-2" id="pillar-revops" style="text-decoration:none;">
           <div class="pillar-card__icon">📊</div>
           <h3 class="pillar-card__title">Revenue Ops &<br>Data Intelligence</h3>
@@ -124,7 +153,6 @@
           <span class="pillar-card__link">Explore RevOps →</span>
         </a>
 
-        <!-- Pillar 4 -->
         <a href="/services.html#ai" class="card pillar-card reveal" id="pillar-ai" style="text-decoration:none;">
           <div class="pillar-card__icon">🤖</div>
           <h3 class="pillar-card__title">Applied AI &<br>Custom Automation</h3>
@@ -138,7 +166,6 @@
           <span class="pillar-card__link">Explore AI →</span>
         </a>
 
-        <!-- Pillar 5 -->
         <a href="/services.html#brand" class="card pillar-card reveal reveal--delay-1" id="pillar-brand" style="text-decoration:none;">
           <div class="pillar-card__icon">🎯</div>
           <h3 class="pillar-card__title">Brand Strategy &<br>Creative Production</h3>
@@ -152,21 +179,17 @@
           <span class="pillar-card__link">Explore Brand →</span>
         </a>
 
-        <!-- Cross-sell card -->
         <div class="card pillar-card reveal reveal--delay-2" style="display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,rgba(0,229,255,0.04) 0%,rgba(15,22,41,0.9) 100%);border-color:rgba(0,229,255,0.15);">
           <div>
             <p style="font-size:var(--text-lg);color:var(--color-text-secondary);margin-bottom:var(--space-6);max-width:25ch;">Not sure where to start?</p>
             <a href="/contact.html" class="btn btn--primary" id="pillar-audit-cta">Start with an Audit</a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       PROOF BAR — Platforms & Technologies
-       ============================================================ -->
+  <!-- PROOF BAR -->
   <section class="proof-bar" id="proof-bar">
     <div class="container reveal">
       <p class="label text-center" style="margin-bottom:var(--space-8);">Platforms We Operate In</p>
@@ -206,9 +229,7 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       ENGAGEMENT MODEL TEASER
-       ============================================================ -->
+  <!-- ENGAGEMENT MODEL TEASER -->
   <section class="section engagement-teaser" id="engagement-teaser">
     <div class="glow-orb glow-orb--blue" style="width:600px;height:600px;bottom:-20%;left:-10%;"></div>
 
@@ -220,7 +241,6 @@
       </div>
 
       <div class="engagement-teaser__grid" style="margin-top:var(--space-12);">
-
         <div class="card engagement-card reveal" id="tier-audit">
           <span class="engagement-card__step">Step 01</span>
           <h3 class="engagement-card__title">The Audit</h3>
@@ -244,7 +264,6 @@
           <p class="engagement-card__desc">Ongoing Fractional CDO. We run your Klaviyo, manage dealer pipelines, and direct creative strategy.</p>
           <span class="tag">Monthly</span>
         </div>
-
       </div>
 
       <div class="text-center reveal" style="margin-top:var(--space-12);">
@@ -253,9 +272,7 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       CTA BANNER
-       ============================================================ -->
+  <!-- CTA BANNER -->
   <section class="cta-banner section" id="cta-banner">
     <div class="container">
       <div class="reveal">
@@ -267,12 +284,8 @@
     </div>
   </section>
 
-
   {{> footer }}
 
-  <!-- ============================================================
-       SCRIPTS
-       ============================================================ -->
   <script type="module" src="/js/main.js"></script>
 </body>
 </html>
