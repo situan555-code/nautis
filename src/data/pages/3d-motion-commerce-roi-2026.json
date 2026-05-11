@@ -1,0 +1,9 @@
+{
+  "slug": "3d-motion-commerce-roi-2026",
+  "title": "3D & Motion Commerce 2026: The Spatial Storefront ROI",
+  "category": "Creative",
+  "readTime": "11 min read",
+  "heroImage": "/hero/creative.png",
+  "description": "Spatial commerce drives a 40% conversion lift. Learn how Gaussian Splatting and WebGL performance (INP) define the 2026 visual confidence index.",
+  "pageSchema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"@id\": \"https://sunder.co/insights/3d-motion-commerce-roi-2026\",\n  \"headline\": \"3D & Motion Commerce 2026: The Spatial Storefront ROI\",\n  \"description\": \"Spatial commerce drives a 40% conversion lift. Learn how Gaussian Splatting and WebGL performance (INP) define the 2026 visual confidence index.\",\n  \"image\": {\n    \"@type\": \"ImageObject\",\n    \"url\": \"https://sunder.co/hero/creative.png\",\n    \"width\": 1200,\n    \"height\": 630\n  },\n  \"author\": {\n    \"@type\": \"Person\",\n    \"@id\": \"https://sunder.co/team/morgan-ellis\",\n    \"name\": \"Morgan Ellis\",\n    \"jobTitle\": \"Head of Digital Strategy\",\n    \"worksFor\": {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://sunder.co/#organization\"\n    }\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"@id\": \"https://sunder.co/#organization\",\n    \"name\": \"Sunder & Co.\"\n  },\n  \"datePublished\": \"2026-05-07\",\n  \"dateModified\": \"2026-05-08\"\n}\n</script>"
+}
