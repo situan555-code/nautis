@@ -1,11 +1,11 @@
 {{#> insight-layout }}
 <div class="sunder-insight-box">
-  <p><strong>Executive Summary:</strong> MarTech performance in 2026 is a data sovereignty and yield issue. "Zombie Seats" and siloed intent data currently drain 20-30% of average B2B OpEx. This audit framework enables enterprises to reclaim six-figure waste while transitioning from fragmented SaaS dashboards to a unified, autonomous Brand Operating System. If your stack doesn't talk to itself, it's working against you.</p>
+  <p><strong>Executive Summary:</strong> The average B2B enterprise is paying for <strong>92 different SaaS tools</strong>, with <strong>42% of them redundant or abandoned</strong>. This "MarTech bloat" is quietly draining $240k+ per year in wasted spend and broken data. In 2026, the companies that win are the ones that consolidate their stack into a unified, autonomous Brand Operating System.</p>
 </div>
 
-<p>The average B2B enterprise is currently paying for <strong>92 different SaaS tools</strong>. Our data shows that <strong>42% of these subscriptions are either redundant or completely abandoned</strong>. This isn't just "bloat"—it's a massive leak in your revenue engine that degrades data integrity and slows down sales cycles.</p>
+<p>The average B2B enterprise is currently paying for <strong>92 different SaaS tools</strong>. Our data shows that <strong>42% of these subscriptions are either redundant or completely abandoned</strong>. This isn't just "bloat" — it's a massive leak in your revenue engine that degrades data integrity and slows down sales cycles.</p>
 
-<p>According to <a href="https://www.gartner.com/en/marketing/topics/marketing-technology" target="_blank" rel="noopener">Gartner</a>, MarTech utilization is at an all-time low. Reclaiming this waste requires a move from the "Best of Breed" fallacy to a "Best of Suite" reality where integration is the primary performance metric.</p>
+<p>According to <a href="https://www.gartner.com/en/marketing/topics/marketing-technology" target="_blank" rel="noopener">Gartner</a>, MarTech utilization is at an all-time low. Reclaiming this waste requires moving from the "Best of Breed" fallacy to a "Best of Suite" reality where integration is the primary performance metric.</p>
 
 <hr>
 
@@ -62,16 +62,16 @@
 <h2>The 3 Pillars of a 2026 Stack Rationalization</h2>
 
 <h3>1. Capability Overlap Analysis</h3>
-<p>Most enterprises pay for the same feature three times. Your CRM, your email tool, and your landing page builder all have overlapping capabilities. Consolidating these into a single "Source of Truth" like <a href="https://www.hubspot.com/" target="_blank" rel="noopener">HubSpot</a> or <a href="https://www.salesforce.com/" target="_blank" rel="noopener">Salesforce</a> eliminates the $20k/year "integration tax" and ensures your data remains deterministic.</p>
+<p>Most enterprises pay for the same feature three times. Your CRM, your email tool, and your landing page builder all have overlapping capabilities. Consolidating these into a single "Source of Truth" eliminates the $20k/year "integration tax" and ensures your data remains deterministic.</p>
 
 <h3>2. Eliminating Integration Debt</h3>
-<p>If your team is still downloading CSVs to move data between tools, you are running a 2018 playbook in a 2026 market. We focus on <strong>Agentic Middleware</strong>—autonomous scripts that sync data across your stack without human intervention. Reclaiming these manual hours is equivalent to adding 2-3 full-time heads to your marketing team without the payroll cost.</p>
+<p>If your team is still downloading CSVs to move data between tools, you are running a 2018 playbook in a 2026 market. We focus on <strong>Agentic Middleware</strong> — autonomous scripts that sync data across your stack without human intervention. Reclaiming these manual hours is equivalent to adding 2-3 full-time heads to your marketing team without the payroll cost.</p>
 
 <h3>3. Usage-Based Rightsizing</h3>
 <p>In 2026, "Just-in-case" seats are a fiduciary failure. We audit actual login data and feature utilization. If a tool hasn't been touched in 30 days, it is cut. We don't negotiate with unused software.</p>
 
 <div class="sunder-insight-box">
-  <p><strong>The Sunder Perspective:</strong> You don't need more tools. You need <strong>better orchestration</strong>. A clean stack isn't just about saving money; it's about clearing the technical debt that prevents you from deploying autonomous agents at scale.</p>
+  <p><strong>The Sunder Perspective:</strong> You don't need more tools. You need <strong>better orchestration</strong>. A clean stack isn't just about saving money — it's about clearing the technical debt that prevents you from deploying autonomous agents at scale.</p>
 </div>
 
 <hr>
@@ -131,9 +131,9 @@ function calc_m() {
   document.getElementById('m_tools_out').textContent = tools;
   document.getElementById('m_usage_out').textContent = Math.round(usage*100) + '%';
 
-  const waste = spend * (1 - usage) * 0.85; // 15% inherent overhead
+  const waste = spend * (1 - usage) * 0.85;
   const annual = waste * 12;
-  const prod = tools * 1.5; // Avg 1.5 hrs saved per tool via consolidation
+  const prod = tools * 1.5;
 
   document.getElementById('m_waste').textContent = fmt(waste);
   document.getElementById('m_annual').textContent = fmt(annual);
