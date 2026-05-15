@@ -427,13 +427,18 @@
   }
 
   .nav__dropdown-link--disabled {
-    opacity: 0.4;
-    pointer-events: none;
+    color: var(--color-text-muted);
     cursor: default;
-    filter: grayscale(1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  }
+
+  .nav__dropdown-link--disabled:hover {
+    background: var(--color-bg-card-hover);
+    color: var(--color-text-secondary);
+  }
+
+  .nav__dropdown-note {
+    display: block;
+    margin-top: var(--space-1);
   }
 
   .pillar-card--disabled {
@@ -522,6 +527,15 @@
 
   .nav__mobile-link:hover {
     color: var(--color-accent);
+  }
+
+  .nav__mobile-link--disabled {
+    color: var(--color-text-muted);
+    cursor: default;
+  }
+
+  .nav__mobile-link--disabled:hover {
+    color: var(--color-text-muted);
   }
 
   /* --- Footer --- */
