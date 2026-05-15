@@ -426,6 +426,33 @@
     color: var(--color-accent);
   }
 
+  .nav__dropdown-link--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+    filter: grayscale(1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pillar-card--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    filter: grayscale(0.8);
+  }
+
+  .link--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none !important;
+  }
+
+
+
+
   .nav__cta {
     margin-left: var(--space-4);
   }

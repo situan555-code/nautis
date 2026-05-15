@@ -36,3 +36,8 @@ public/case-studies/*.ply
 public/case-studies/*.stl
 public/case-studies/*.mp4
 public/case-studies/*.mov
+
+# Isolated components
+nautis-portfolio/
+scratch/
+
