@@ -27,7 +27,7 @@
     "@gltf-transform/core": "^4.3.0",
     "@gltf-transform/extensions": "^4.3.0",
     "@gltf-transform/functions": "^4.3.0",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^9.0.0",
     "leva": "^0.10.1",
     "prettier": "^3.4.0",
