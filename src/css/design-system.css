@@ -362,7 +362,9 @@
     display: flex;
     align-items: center;
     transition: all var(--duration-normal) var(--ease-out);
-    background: transparent;
+    background: var(--color-nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .nav.is-scrolled {

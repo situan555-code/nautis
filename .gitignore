@@ -40,4 +40,4 @@ public/case-studies/*.mov
 # Isolated components
 nautis-portfolio/
 scratch/
-
+src/components/three/SunderWordmarkTuningPanel.local.jsx
