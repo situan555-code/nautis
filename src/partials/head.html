@@ -3,6 +3,23 @@
      ============================================================ -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  (() => {
+    const storageKey = 'sunder-theme';
+    const root = document.documentElement;
+
+    try {
+      const savedTheme = localStorage.getItem(storageKey);
+      const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const theme = savedTheme || systemTheme;
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
+    } catch (error) {
+      root.dataset.theme = 'dark';
+      root.style.colorScheme = 'dark';
+    }
+  })();
+</script>
 <title>{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}</title>
 <meta name="description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.{{/if}}">
 

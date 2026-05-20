@@ -14,9 +14,11 @@ import { initFilters } from './filters.js';
 import { initForm } from './form.js';
 import { initSearch } from './search.js';
 import { initCalculators } from './calculators.js';
+import { initTheme } from './theme.js';
 
 // Lightweight modules load immediately
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   initNav();
   initSmoothAnchors();
   initScrollReveal();
@@ -36,5 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
     requestIdleCallback(deferHeavyModules, { timeout: 2000 });
   } else {
     setTimeout(deferHeavyModules, 1200);
+  }
+
+  const heroMount = document.getElementById('sunder-wordmark-hero');
+  if (heroMount) {
+    import('./three/sunder-wordmark-hero.js')
+      .then(({ initSunderWordmarkHero }) => initSunderWordmarkHero())
+      .catch(() => {
+        heroMount.dataset.sceneReady = 'false';
+      });
   }
 });

@@ -5,103 +5,102 @@
 /* --- Hero --- */
 .hero {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100svh;
   overflow: hidden;
   background: var(--color-bg);
   padding-top: var(--nav-height);
+  isolation: isolate;
 }
 
-.hero__canvas {
+.hero::after {
+  content: '';
   position: absolute;
-  top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: var(--hero-scene-fade);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__scene {
+  --hero-scroll-progress: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  cursor: grab;
+  touch-action: pan-y;
+  opacity: calc(1 - (var(--hero-scroll-progress) * 0.32));
+  transform-origin: center bottom;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.hero__scene:active {
+  cursor: grabbing;
+}
+
+.hero__scene canvas {
   width: 100%;
   height: 100%;
-  z-index: 0;
-}
-
-.hero__content {
-  position: relative;
-  z-index: var(--z-base);
-  text-align: center;
-  max-width: 900px;
-  padding: var(--space-8);
-}
-
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-8);
-  animation: fadeInDown 0.8s var(--ease-out) 0.3s both;
-}
-
-.hero__eyebrow .pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.hero__title {
-  font-size: var(--text-5xl);
-  font-weight: 900;
-  line-height: 1.05;
-  margin-bottom: var(--space-8);
-  animation: fadeInUp 0.8s var(--ease-out) 0.5s both;
-}
-
-.hero__title .accent-line {
   display: block;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
-.hero__subtitle {
-  font-size: var(--text-xl);
-  color: var(--color-text-secondary);
-  max-width: 600px;
-  margin: 0 auto var(--space-10);
-  line-height: 1.7;
-  animation: fadeInUp 0.8s var(--ease-out) 0.7s both;
+.sunder-wordmark-canvas {
+  width: 100%;
+  height: 100%;
 }
 
-.hero__actions {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeInUp 0.8s var(--ease-out) 0.9s both;
-}
-
-.hero__scroll-indicator {
+.hero__scene-fallback {
   position: absolute;
-  bottom: var(--space-8);
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
-  color: var(--color-text-muted);
-  font-size: var(--text-xs);
-  font-family: var(--font-mono);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  animation: fadeIn 1s var(--ease-out) 1.5s both;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(0.32rem, 1vw, 0.72rem);
+  padding-top: clamp(10rem, 22vh, 16rem);
+  font-family: var(--font-body);
+  font-size: clamp(5rem, 18vw, 15rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  color: var(--hero-wordmark-color);
+  text-shadow: var(--hero-wordmark-shadow);
+  opacity: 0.62;
 }
 
-.hero__scroll-indicator .scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--color-accent), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
+.hero__scene-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 20% -10% -10%;
+  background-image:
+    linear-gradient(var(--hero-grid-secondary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-secondary) 1px, transparent 1px),
+    linear-gradient(var(--hero-grid-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-primary) 1px, transparent 1px);
+  background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px;
+  transform: perspective(780px) rotateX(66deg) translateY(6rem);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 62%, transparent);
+  pointer-events: none;
+}
+
+.hero__scene[data-scene-ready='true'] .hero__scene-fallback {
+  opacity: 0;
+}
+
+.hero__fallback-word,
+.hero__fallback-dot {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__fallback-dot {
+  width: clamp(0.52rem, 1.5vw, 1.25rem);
+  height: clamp(0.52rem, 1.5vw, 1.25rem);
+  margin-top: clamp(3.2rem, 10.8vw, 9rem);
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: var(--hero-wordmark-shadow);
 }
 
 /* --- Pain Strip --- */
@@ -154,12 +153,40 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 92svh;
+  }
+
+  .hero__scene {
+    height: 62%;
+  }
+
+  .hero__scene canvas {
+    display: none;
+  }
+
+  .hero__scene-fallback {
+    opacity: 0.5;
+    padding-top: calc(var(--nav-height) + var(--space-16));
+    font-size: clamp(3.6rem, 19vw, 6.4rem);
+  }
+
   .pain-strip__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-6);
   }
   .pain-stat:not(:last-child)::after {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scene {
+    transform: none;
+  }
+
+  .hero__scene-fallback {
+    animation: none;
   }
 }
 
