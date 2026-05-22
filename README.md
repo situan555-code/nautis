@@ -1,196 +1,64 @@
-# Sunder & Co. — nautis
+# Sunder & Co. Website
 
-**High-end B2B agency portfolio + lead generation site** for Sunder & Co. (Fractional CDO / Revenue Operations consultancy).
+Public website for Sunder & Co., a local and regional creative agency serving New Philadelphia, Dover, Canton, Tuscarawas County, Stark County, and Holmes County, Ohio.
 
-Built with Vite + React 19 + Three.js + heavy AI assistance.
+The site is built with Vite, Handlebars, React, and Three.js. It includes static service pages, insight articles, shared partials, search/filter behavior, and a 3D Sunder wordmark hero.
 
----
-
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
-# 1. Clone
-git clone https://github.com/situan555-code/nautis.git
-cd nautis
-
-# 2. Install dependencies
 npm install
-
-# 3. Start dev server
 npm run dev
-
-# 4. Build for production
 npm run build
-
-# 5. Preview production build
 npm run preview
 ```
 
----
-
-## 📁 Project Structure
-
-```
-nautis/
-├── README.md
-├── package.json
-├── vite.config.js          # ⚠️ Currently bloated — see "Refactoring" below
-├── .gitignore
-├── .prettierrc
-├── eslint.config.js
-├── public/                   # Static assets (images, models, icons)
-├── src/
-│   ├── index.html            # Home
-│   ├── about.html
-│   ├── services-*.html       # Advisory / Technology / Creative
-│   ├── case-studies.html
-│   ├── engagement.html
-│   ├── contact.html
-│   ├── insights.html         # Hub + 30+ insight articles
-│   ├── css/                  # Global + page-specific styles
-│   ├── js/                   # Modular JavaScript (excellent)
-│   │   ├── main.js           # Orchestrator
-│   │   ├── shared.js         # Nav + Footer + utilities
-│   │   ├── calculators.js    # ⭐ 12 ROI calculators (best part)
-│   │   ├── search.js, filters.js, nav.js, etc.
-│   ├── data/
-│   │   ├── site.json         # Core site data
-│   │   └── searchIndex.json
-│   ├── partials/             # Handlebars partials (nav, footer, head)
-│   └── insights/             # Individual insight pages
-├── scripts/                  # Python asset processing tools
-│   ├── process_all_icons.py
-│   ├── crop_icons.py
-│   ├── fix_icons.py
-│   └── process_kiosk.py
-├── document_instructions_to_agent.md   # 🧠 Massive AI prompt / business playbook
-├── blogs.md                  # Content dump
-└── .venv / .npm-cache        # Mixed Python + Node environment
-```
-
----
-
-## 🛠 Tech Stack
-
-- **Build**: Vite 6 + Handlebars templating
-- **Frontend**: React 19 + Three.js (3D commerce)
-- **Styling**: Custom CSS + modern design system
-- **Interactivity**: 12 ROI calculators, search, filters, smooth scroll, counters, accordions
-- **Asset Pipeline**: Python scripts for icon/3D model processing
-- **AI Assistance**: Heavy use of fast models for content + code generation
-
----
-
-## 📝 Available Scripts
+## Scripts
 
 | Script | Description |
-|--------|-------------|
-| `npm run dev` | Start development server (port 5173) |
-| `npm run build` | Production build → `dist/` |
-| `npm run preview` | Preview production build |
-| `npm run lint` | ESLint check |
-| `npm run format` | Prettier formatting |
-| `npm run prebuild` | Run `scripts/optimize-models.js` (if exists) |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Optimize assets and build the production site to `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run ESLint against source JavaScript |
+| `npm run format` | Format source HTML, CSS, JS, and JSON files |
 
----
+## Project Structure
 
-## 🧠 Key Files Explained
-
-### `document_instructions_to_agent.md`
-This is the **brain** of the project. It contains:
-- Detailed business strategy for Sunder & Co.
-- AI agent instructions for content generation
-- Client narrative frameworks
-- 2026 market positioning
-
-**Do not edit lightly** — this file drives much of the site's content and tone.
-
-### `vite.config.js` (Current State)
-**Warning**: This file is currently **58kB** and contains a massive hardcoded `pageContext` object with 30+ full insight pages + JSON-LD schema.
-
-**Planned Refactor** (see below):
-- Move all page metadata to `src/data/pages/*.json`
-- Keep config clean and maintainable
-
-### `src/js/calculators.js`
-**Best file in the repo**. 12 different ROI calculators with clean logic, formatters, and CSP-compliant implementation. Production-grade.
-
----
-
-## 🔧 Python Asset Pipeline
-
-Located in `scripts/`:
-
-- `process_all_icons.py` — Batch process icons for web/kiosk
-- `crop_icons.py` — Crop and optimize icons
-- `fix_icons.py` — Fix icon metadata/issues
-- `process_kiosk.py` — Prepare assets for interactive kiosk deployments
-
-**Setup**:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt  # (create if needed)
+```text
+src/
+  components/three/     React Three Fiber scene files
+  css/                  Design system and page styles
+  data/                 Site data and page metadata
+  insights/             Static insight article pages
+  js/                   Shared browser behavior
+  partials/             Shared Handlebars partials
+public/
+  data/                 Public search/site data
+  models/               Optimized 3D model output
+scripts/
+  optimize-models.js    GLB/glTF optimization pipeline
 ```
 
-These scripts are used during content production for 3D commerce and kiosk projects.
+## SEO Foundation
 
----
+The production domain is:
 
-## 🚨 Current Technical Debt (May 2026)
+```text
+https://www.sunderandco.com
+```
 
-| Issue | Severity | Status | Owner |
-|-------|----------|--------|-------|
-| No README.md | High | **Fixed** (this PR) | — |
-| `vite.config.js` bloat (58kB hardcoded) | High | **In Progress** | Flash Agent |
-| `nautis-portfolio` (0-byte file) | Low | Needs cleanup | Flash Agent |
-| `build_error.txt` present | Medium | Investigate + delete | Flash Agent |
-| Missing `.env.example` | Medium | **Fixed** (this PR) | — |
-| Python tooling undocumented | Medium | **Fixed** (this README) | — |
-| Repetitive AI-generated copy | Medium | Content review pass needed | Content Owner |
+Page metadata, canonicals, Open Graph URLs, sitemap output, and JSON-LD are generated from the Vite/Handlebars build configuration and shared site data.
 
----
+## 3D Hero
 
-## 🗺 Refactoring Roadmap (High Priority)
+The homepage uses a React Three Fiber hero scene with a normal HTML fallback. The fallback remains visible while the WebGL scene loads and on devices where the 3D scene is intentionally disabled.
 
-### Phase 1 — Config Cleanup (Next 1-2 days)
-1. Create `src/data/pages/` directory
-2. Extract each insight page's metadata into individual JSON files
-3. Update `vite.config.js` to dynamically load from JSON
-4. Reduce config size from 58kB → <5kB
+## Build Notes
 
-### Phase 2 — Content Quality (This week)
-- Run flash agent through all insight pages with voice consistency prompt
-- Fix repetitive phrasing
-- Ensure every page has unique value proposition
+The prebuild step runs `scripts/optimize-models.js`. If `src/raw-models/` is empty, the model pipeline exits cleanly and the normal Vite build continues.
 
-### Phase 3 — Performance (Next sprint)
-- Add lazy loading for Three.js scenes
-- Implement image optimization pipeline using existing Python scripts
-- Add Lighthouse CI
+## Contact
 
----
-
-## 🤝 Contributing
-
-This project is built with heavy AI assistance ("flash model"). The goal is **speed + quality**.
-
-When adding new insight pages:
-1. Create the HTML file in `src/insights/`
-2. Add metadata to `src/data/pages/`
-3. Update `searchIndex.json` if needed
-4. Run `npm run build` and verify no errors
-
----
-
-## 📬 Contact
-
-- **Email**: hello@sunderandco.com
-- **LinkedIn**: https://linkedin.com (update with real link)
-- **Site**: https://sunder.co (when live)
-
----
-
-**Built with precision.**
-
-*Last updated: May 8, 2026*
+- Email: hello@sunderandco.com
+- Site: https://www.sunderandco.com

@@ -1,17 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
-import {
-  AccumulativeShadows,
-  Center,
-  Environment,
-  Instance,
-  Instances,
-  Lightformer,
-  MeshTransmissionMaterial,
-  OrbitControls,
-  RandomizedLight,
-  Text3D,
-} from '@react-three/drei';
+import { AccumulativeShadows, RandomizedLight } from '@react-three/drei/core/AccumulativeShadows.js';
+import { Center } from '@react-three/drei/core/Center.js';
+import { Environment } from '@react-three/drei/core/Environment.js';
+import { Instance, Instances } from '@react-three/drei/core/Instances.js';
+import { Lightformer } from '@react-three/drei/core/Lightformer.js';
+import { MeshTransmissionMaterial } from '@react-three/drei/core/MeshTransmissionMaterial.js';
+import { OrbitControls } from '@react-three/drei/core/OrbitControls.js';
+import { Text3D } from '@react-three/drei/core/Text3D.js';
 import { RGBELoader } from 'three-stdlib';
 import sunderWordmarkFont from './sunder-wordmark-font.json';
 

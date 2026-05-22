@@ -54,6 +54,7 @@
 .hero__scene-fallback {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -65,7 +66,7 @@
   letter-spacing: -0.055em;
   color: var(--hero-wordmark-color);
   text-shadow: var(--hero-wordmark-shadow);
-  opacity: 0.62;
+  opacity: 0.78;
 }
 
 .hero__scene-fallback::before {

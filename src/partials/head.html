@@ -20,24 +20,25 @@
     }
   })();
 </script>
-<title>{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}</title>
-<meta name="description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.{{/if}}">
+<title>{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Websites, Branding, Local SEO & AI Search Visibility{{/if}}</title>
+<meta name="description" content="{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}">
+{{#if noindex}}<meta name="robots" content="noindex,follow">{{/if}}
 
 <!-- Canonical URL (critical for SEO) -->
-<link rel="canonical" href="https://sunder.co{{#if pagePath}}{{pagePath}}{{else}}/{{/if}}">
+<link rel="canonical" href="{{#if canonicalUrl}}{{canonicalUrl}}{{else}}{{site.url}}{{/if}}">
 
 <!-- Open Graph -->
-<meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}">
-<meta property="og:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}We architect the entire revenue system for industrial brands — from ERP integrations to 3D product configurators.{{/if}}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://sunder.co{{#if pagePath}}{{pagePath}}{{else}}/{{/if}}">
-<meta property="og:image" content="https://sunder.co/og-image.jpg">
+<meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Websites, Branding, Local SEO & AI Search Visibility{{/if}}">
+<meta property="og:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}">
+<meta property="og:type" content="{{#if ogType}}{{ogType}}{{else}}website{{/if}}">
+<meta property="og:url" content="{{#if canonicalUrl}}{{canonicalUrl}}{{else}}{{site.url}}{{/if}}">
+{{#if ogImage}}<meta property="og:image" content="{{ogImage}}">{{/if}}
 <meta property="og:site_name" content="Sunder & Co.">
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Digital Transformation & Revenue Operations{{/if}}">
-<meta name="twitter:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Fractional CDO services for legacy B2B and manufacturing.{{/if}}">
+<meta name="twitter:card" content="{{#if ogImage}}summary_large_image{{else}}summary{{/if}}">
+<meta name="twitter:title" content="{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — Websites, Branding, Local SEO & AI Search Visibility{{/if}}">
+<meta name="twitter:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}">
 
 <!-- Preconnect for fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,27 +48,24 @@
 <!-- Design System -->
 <link rel="stylesheet" href="/css/design-system.css">
 
-<!-- Organization Schema -->
+<!-- ProfessionalService Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://sunder.co/#organization",
-  "name": "{{site.name}}",
-  "description": "{{#if pageDescription}}{{pageDescription}}{{else}}Digital Transformation & Revenue Operations Consultancy for legacy B2B and manufacturing companies.{{/if}}",
-  "url": "https://sunder.co",
-  "logo": "https://sunder.co/images/logo.png",
-  "sameAs": [
-    "https://www.linkedin.com/company/sunder-co"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Columbus",
-    "addressRegion": "OH",
-    "addressCountry": "US"
-  },
-  "areaServed": "Worldwide",
-  "priceRange": "$$$$
+  "@id": "https://www.sunderandco.com/#organization",
+  "name": "Sunder & Co.",
+  "description": {{{json site.description}}},
+  "url": "https://www.sunderandco.com",
+  "email": "hello@sunderandco.com",
+  "areaServed": [
+    "New Philadelphia, Ohio",
+    "Dover, Ohio",
+    "Canton, Ohio",
+    "Tuscarawas County, Ohio",
+    "Stark County, Ohio",
+    "Holmes County, Ohio"
+  ]
 }
 </script>
 

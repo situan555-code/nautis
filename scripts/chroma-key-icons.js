@@ -6,19 +6,18 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const artifactsDir = '/Users/nautis/.gemini/antigravity/brain/bbe24a75-aea6-4a3c-8c58-a5d6c1ff5368';
-const outDir = '/Volumes/raid4/Antigravity IDE/Resume Website/public/case-studies/icons';
+const sourceDir = path.resolve(__dirname, '../asset-source/icons');
+const outDir = path.resolve(__dirname, '../public/case-studies/icons');
 
 const targets = [
-  // New Studio Light icon for Product Photos
-  { file: 'icon_studiolight_1776533157685.png', out: 'icon_studiolight.png', bg: 'green', cropText: false },
+  { file: 'icon_studiolight.png', out: 'icon_studiolight.png', bg: 'green', cropText: false },
 ];
 
 async function removeBackground() {
-  for (const t of targets) {
-    const rawPath = path.join(artifactsDir, t.file);
-    const outPath = path.join(outDir, t.out);
-    
+  for (const target of targets) {
+    const rawPath = path.join(sourceDir, target.file);
+    const outPath = path.join(outDir, target.out);
+
     if (!fs.existsSync(rawPath)) {
       console.log(`Missing: ${rawPath}`);
       continue;
@@ -26,11 +25,11 @@ async function removeBackground() {
 
     try {
       let pipeline = sharp(rawPath);
-      
-      if (t.cropText) {
-         pipeline = pipeline.extract({ left: 100, top: 100, width: 824, height: 750 });
+
+      if (target.cropText) {
+        pipeline = pipeline.extract({ left: 100, top: 100, width: 824, height: 750 });
       } else {
-         pipeline = pipeline.extract({ left: 50, top: 50, width: 924, height: 924 });
+        pipeline = pipeline.extract({ left: 50, top: 50, width: 924, height: 924 });
       }
 
       const { data, info } = await pipeline.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -39,23 +38,17 @@ async function removeBackground() {
         const r = data[i];
         const g = data[i + 1];
         const b = data[i + 2];
-        
-        let isBg = false;
 
-        if (t.bg === 'green') {
-          if (g > r + 15 && g > b + 15) {
-             isBg = true;
-          }
-          if (r < 30 && b < 30 && g > 20) {
-             isBg = true;
-          }
-          if (g > 150 && r < 50 && b < 50) {
-             isBg = true;
-          }
+        let isBackground = false;
+
+        if (target.bg === 'green') {
+          if (g > r + 15 && g > b + 15) isBackground = true;
+          if (r < 30 && b < 30 && g > 20) isBackground = true;
+          if (g > 150 && r < 50 && b < 50) isBackground = true;
         }
-        
-        if (isBg) {
-          data[i + 3] = 0; // Transparent
+
+        if (isBackground) {
+          data[i + 3] = 0;
         }
       }
 
@@ -63,16 +56,15 @@ async function removeBackground() {
         raw: {
           width: info.width,
           height: info.height,
-          channels: 4
-        }
+          channels: 4,
+        },
       })
-      .resize(128, 128, { kernel: 'nearest' })
-      .toFile(outPath);
+        .resize(128, 128, { kernel: 'nearest' })
+        .toFile(outPath);
 
-      console.log(`✅ Processed ${t.out} successfully.`);
-
+      console.log(`Processed ${target.out} successfully.`);
     } catch (err) {
-      console.error(`❌ Failed on ${t.file}:`, err);
+      console.error(`Failed on ${target.file}:`, err);
     }
   }
 }

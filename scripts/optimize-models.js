@@ -10,7 +10,7 @@ const RAW_DIR = path.resolve('src/raw-models');
 const OUT_DIR = path.resolve('public/models');
 
 async function optimizeModels() {
-  console.log('🤖 Agent 2 (Pipeline Engineer): Initializing Model Optimization Pipeline...');
+  console.log('Initializing model optimization pipeline...');
   
   // Ensure directories exist
   await fs.mkdir(RAW_DIR, { recursive: true });
@@ -75,6 +75,6 @@ async function optimizeModels() {
 }
 
 optimizeModels().catch(err => {
-  console.error('❌ Pipeline Engineer Error:', err);
+  console.error('❌ Model optimization failed:', err);
   process.exit(1);
 });

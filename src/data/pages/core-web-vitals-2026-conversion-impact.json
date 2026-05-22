@@ -5,5 +5,5 @@
   "readTime": "10 min read",
   "heroImage": "/hero/performance.png",
   "description": "In 2026, every 100ms of lag is a tax on your margin. Learn how INP and the Speculative Rules API drive B2B conversion ROI.",
-  "pageSchema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"@id\": \"https://sunder.co/insights/core-web-vitals-2026-conversion-impact\",\n  \"headline\": \"Core Web Vitals 2026: The Millisecond-to-Margin Ratio\",\n  \"description\": \"In 2026, every 100ms of lag is a tax on your margin. Learn how INP and the Speculative Rules API drive B2B conversion ROI.\",\n  \"image\": {\n    \"@type\": \"ImageObject\",\n    \"url\": \"https://sunder.co/hero/performance.png\",\n    \"width\": 1200,\n    \"height\": 630\n  },\n  \"author\": {\n    \"@type\": \"Person\",\n    \"@id\": \"https://sunder.co/team/morgan-ellis\",\n    \"name\": \"Morgan Ellis\",\n    \"jobTitle\": \"Head of Digital Strategy\",\n    \"worksFor\": {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://sunder.co/#organization\"\n    }\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"@id\": \"https://sunder.co/#organization\",\n    \"name\": \"Sunder & Co.\"\n  },\n  \"datePublished\": \"2026-05-07\",\n  \"dateModified\": \"2026-05-08\"\n}\n</script>"
+  "pageSchema": null
 }

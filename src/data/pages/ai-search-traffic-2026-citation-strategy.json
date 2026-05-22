@@ -1,9 +1,9 @@
 {
   "slug": "ai-search-traffic-2026-citation-strategy",
-  "title": "AI Search Traffic 2026: The Citation Equity Strategy",
+  "title": "AI Search Traffic 2026: Building Clearer Citation Signals",
   "category": "Advisory",
   "readTime": "12 min read",
   "heroImage": "/hero/advisory.png",
-  "description": "Traditional search is down 25%, but AI referrals are up 500%. Learn the GEO (Generative Engine Optimization) playbook for the 2026 citation economy.",
-  "pageSchema": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"@id\": \"https://sunder.co/insights/ai-search-traffic-2026-citation-strategy\",\n  \"headline\": \"AI Search Traffic 2026: The Citation Equity Strategy\",\n  \"description\": \"Traditional search is down 25%, but AI referrals are up 500%. Learn the GEO (Generative Engine Optimization) playbook for the 2026 citation economy.\",\n  \"image\": {\n    \"@type\": \"ImageObject\",\n    \"url\": \"https://sunder.co/hero/advisory.png\",\n    \"width\": 1200,\n    \"height\": 630\n  },\n  \"author\": {\n    \"@type\": \"Person\",\n    \"@id\": \"https://sunder.co/team/morgan-ellis\",\n    \"name\": \"Morgan Ellis\",\n    \"jobTitle\": \"Head of Digital Strategy\",\n    \"worksFor\": {\n      \"@type\": \"Organization\",\n      \"@id\": \"https://sunder.co/#organization\"\n    }\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"@id\": \"https://sunder.co/#organization\",\n    \"name\": \"Sunder & Co.\"\n  },\n  \"datePublished\": \"2026-05-07\",\n  \"dateModified\": \"2026-05-08\"\n}\n</script>"
+  "description": "How technical SEO, structured business data, metadata, service pages, and answer-friendly content can improve AI-powered search visibility without guarantees.",
+  "pageSchema": null
 }

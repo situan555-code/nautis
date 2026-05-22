@@ -38,14 +38,14 @@ function createNav(activePage) {
       <ul class="nav__links">
         ${linksHTML}
       </ul>
-      <a href="contact.html" class="btn btn--primary nav__cta desktop-only">Start an Audit</a>
+      <a href="contact.html" class="btn btn--primary nav__cta desktop-only">Start a Project</a>
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav__mobile-menu" id="mobile-menu">
       ${mobileLinksHTML}
-      <a href="contact.html" class="btn btn--primary" style="margin-top: var(--space-4); text-align: center; justify-content: center;">Start an Audit</a>
+      <a href="contact.html" class="btn btn--primary" style="margin-top: var(--space-4); text-align: center; justify-content: center;">Start a Project</a>
     </div>
   `;
 
@@ -85,7 +85,7 @@ function createFooter() {
           <a href="index.html" class="nav__logo" style="font-size: var(--text-2xl);">
             <span></span>Sunder & Co.<span></span>
           </a>
-          <p>Digital Transformation & Revenue Operations for legacy B2B, manufacturing, and heavy-inventory retail.</p>
+          <p>Websites, branding, content, local visibility, and follow-up systems for businesses that need a stronger first impression.</p>
         </div>
         <div>
           <p class="footer__col-title">Services</p>
@@ -198,7 +198,7 @@ function initSmoothAnchors() {
 /* ============================================================
    INIT ALL SHARED COMPONENTS
    ============================================================ */
-function initShared(activePage) {
+export function initShared(activePage) {
   createNav(activePage);
   createFooter();
 

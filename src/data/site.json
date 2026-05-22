@@ -1,11 +1,11 @@
 {
   "site": {
     "name": "Sunder & Co.",
-    "tagline": "Digital Transformation & Revenue Operations",
-    "description": "Fractional Chief Digital Officer services for legacy B2B, manufacturing, and heavy-inventory retail. MarTech, 3D Commerce, RevOps, AI, and Brand Strategy.",
+    "tagline": "Websites, Branding, Local SEO & AI Search Visibility",
+    "description": "Sunder & Co. builds websites, branding systems, local SEO foundations, content, and AI search visibility systems for small and mid-sized businesses in New Philadelphia, Dover, Canton, Tuscarawas County, Stark County, and Holmes County, Ohio.",
     "email": "hello@sunderandco.com",
-    "url": "#",
-    "linkedin": "https://linkedin.com",
+    "url": "https://www.sunderandco.com",
+    "linkedin": "",
     "copyright": "Sunder & Co."
   },
   "nav": [
@@ -25,11 +25,12 @@
     { "id": "insights",     "label": "Insights",     "href": "/insights.html" }
   ],
   "services": [
-    { "id": "martech", "label": "MarTech & Data" },
-    { "id": "3d",      "label": "3D Commerce" },
-    { "id": "revops",  "label": "Revenue Ops" },
-    { "id": "ai",      "label": "Applied AI" },
-    { "id": "brand",   "label": "Brand Strategy" }
+    { "id": "web-design", "label": "Web Design" },
+    { "id": "branding",   "label": "Branding" },
+    { "id": "content",    "label": "Content Production" },
+    { "id": "local-seo",  "label": "Local SEO" },
+    { "id": "ai-search",  "label": "AI Search Visibility" },
+    { "id": "lead-flow",  "label": "Lead Flow & Follow-Up" }
   ],
   "platforms": [
     "Acumatica", "NetSuite", "Magento", "Shopify Plus", "BigCommerce",

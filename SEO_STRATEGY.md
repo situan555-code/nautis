@@ -1,72 +1,38 @@
-# SEO & GEO Domination Strategy — Sunder & Co. (2026)
+# SEO Foundation Notes
 
-**Goal**: Become the #1 cited source for B2B industrial transformation topics in both traditional search and generative engines (ChatGPT, Gemini, Perplexity, Claude).
+Sunder & Co. uses a static, crawlable site architecture with page-level metadata, canonical URLs, Open Graph tags, sitemap generation, robots policy, and truthful structured data.
 
----
+## Production Domain
 
-## Core Principles
+```text
+https://www.sunderandco.com
+```
 
-1. **GEO > SEO**  
-   In 2026, being *cited* by AI engines matters more than ranking #1. Every insight page is written to be the definitive source on its topic.
+## Principles
 
-2. **E-E-A-T First**  
-   - Author bios with real credentials (Morgan Ellis, Jordan Vance, etc.)
-   - Data-backed claims with sources
-   - Regular updates (dateModified in schema)
+- Use one canonical production host.
+- Keep important service, location, and entity copy in normal HTML.
+- Use unique titles and meta descriptions for important pages.
+- Avoid unsupported claims, fake proof, fake contact details, fake reviews, and placeholder organization data.
+- Keep service pages internally linked through normal crawlable anchors.
+- Keep JSON-LD valid and based only on confirmed business information.
 
-3. **Hub + Spoke Model**  
-   - `insights.html` = main hub
-   - Every insight page links back to hub + 2–3 related pages
-   - Category filters create strong topical clusters
+## Local Visibility
 
-4. **Technical Excellence**  
-   - Canonical URLs on every page (just added)
-   - Full JSON-LD Article + FAQ schema on high-value pages
-   - Fast Core Web Vitals (already elite)
-   - Clean, crawlable HTML
+The site supports Sunder & Co.'s local and regional positioning across New Philadelphia, Dover, Canton, Tuscarawas County, Stark County, and Holmes County, Ohio.
 
----
+## Validation
 
-## Current Strengths (May 2026)
+Before publishing material SEO changes:
 
-- 35+ high-quality insight pages with rich schema
-- Strong category structure (Cybersecurity, AI & GEO, Strategy, SEO & Growth, Creative)
-- Excellent meta descriptions and Open Graph
-- Sitemap auto-generated via `vite-plugin-sitemap`
-- Zero secondary images = faster load times = better rankings
+```bash
+npm run build
+npm run lint
+```
 
----
+Then confirm:
 
-## Immediate Next Wins
-
-### 1. Add 4–6 New High-Intent Pages (This Week)
-Target topics with rising 2026 search volume + low competition:
-
-- "Agentic Commerce: The Death of the Traditional PDP"
-- "Zero-Trust MarTech Stack 2026"
-- "AI-Native Revenue Operations"
-- "Spatial Commerce ROI for Industrial Brands"
-- "The End of the Marketing Dashboard"
-
-### 2. Internal Linking Pass
-Add "Related Insights" section at the bottom of every insight page (2–3 contextual links).
-
-### 3. FAQ Schema on Top 10 Pages
-Turn key questions from each article into FAQPage schema for rich results.
-
-### 4. Update Sitemap Priorities
-Prioritize high-conversion pages (case-studies, engagement, contact) in `vite.config.js`.
-
----
-
-## Long-Term Play
-- Quarterly content refresh of top 10 pages
-- Create "Ultimate Guides" (10k+ words) for flagship topics
-- Build backlinks via guest posts on industrial/manufacturing sites
-- Monitor AI citations using tools like Perplexity "Sources" and ChatGPT "Browse with Bing"
-
----
-
-**Status**: Technical foundation is strong. Now we scale content velocity with maximum GEO intent.
-
-*Last updated: May 8, 2026*
+- Canonicals use the production domain.
+- Sitemap URLs use the production domain.
+- JSON-LD parses cleanly.
+- No placeholder phone, address, reviews, ratings, or author data are present.
