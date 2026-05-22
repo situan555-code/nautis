@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import {
   AccumulativeShadows,
@@ -13,7 +13,7 @@ import {
   Text3D,
 } from '@react-three/drei';
 import { RGBELoader } from 'three-stdlib';
-import interLikeBold from 'three/examples/fonts/helvetiker_bold.typeface.json';
+import sunderWordmarkFont from './sunder-wordmark-font.json';
 
 export const MAX_DPR = 1.5;
 export const ENABLE_POSTPROCESSING = false;
@@ -24,7 +24,9 @@ export const HERO_RENDER_WHEN_VISIBLE_ONLY = true;
 export const TARGET_FPS_MODE = 'on-demand';
 export const DEV_TUNING_ENABLED = import.meta.env.DEV && import.meta.env.VITE_ENABLE_3D_TUNING === 'true';
 export const ENABLE_ACCUMULATIVE_SHADOWS = true;
+export const SHADOW_FRAMES = 80;
 export const USE_EXTERNAL_HDR_BACKGROUND = true;
+export const ENABLE_3D_PERF_DEBUG = false;
 export const HDR_BACKGROUND_URL =
   'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr';
 
@@ -60,24 +62,26 @@ export const GRID_CROSS_SIZE = 0.5;
 export const GRID_LINE_WIDTH = 0.026;
 export const GRID_MINOR_COLOR = 'gridColor';
 export const GRID_MAJOR_COLOR = 'gridHelperColor';
-export const GRID_CROSS_COLOR = 'gridColor';
+export const GRID_CROSS_COLOR = 'gridCrossColor';
 export const GRID_POSITION_Y = -1.02;
 export const GRID_OPACITY = 1;
 export const GRID_POSITION = [0, GRID_POSITION_Y, 0];
 
+// High-quality reference values from the pmndrs epoxy demo:
+// samples: 16, resolution: 1024, chromaticAberration: 5, distortion: 0.5, distortionScale: 0.1
 export const MATERIAL_BACKSIDE = true;
-export const MATERIAL_BACKSIDE_THICKNESS = 0.3;
-export const MATERIAL_SAMPLES = 16;
-export const MATERIAL_RESOLUTION = 1024;
+export const MATERIAL_BACKSIDE_THICKNESS = 0.25;
+export const MATERIAL_SAMPLES = 8;
+export const MATERIAL_RESOLUTION = 512;
 export const MATERIAL_TRANSMISSION = 1;
 export const MATERIAL_CLEARCOAT = 0;
 export const MATERIAL_CLEARCOAT_ROUGHNESS = 0;
 export const MATERIAL_THICKNESS = 0.3;
-export const MATERIAL_CHROMATIC_ABERRATION = 5;
+export const MATERIAL_CHROMATIC_ABERRATION = 2.5;
 export const MATERIAL_ANISOTROPY = 0.3;
 export const MATERIAL_ROUGHNESS = 0;
-export const MATERIAL_DISTORTION = 0.5;
-export const MATERIAL_DISTORTION_SCALE = 0.1;
+export const MATERIAL_DISTORTION = 0.25;
+export const MATERIAL_DISTORTION_SCALE = 0.08;
 export const MATERIAL_TEMPORAL_DISTORTION = 0;
 export const MATERIAL_IOR = 1.5;
 
@@ -85,24 +89,27 @@ export const ENVIRONMENT_RESOLUTION = 32;
 export const KEY_LIGHT_INTENSITY = 20;
 export const SIDE_LIGHT_INTENSITY = 2;
 export const RING_LIGHT_INTENSITY = 2;
+export const AUTO_ROTATE = false;
 
 const THEME_SCENE = {
   light: {
-    backgroundColor: '#f2f2f5',
+    backgroundColor: '#f6f4ee',
     wordColor: '#ff9cf5',
     attenuationColor: '#ff7eb3',
-    shadowColor: '#750d57',
-    gridColor: '#999999',
-    gridHelperColor: '#bbbbbb',
+    shadowColor: '#000000',
+    gridColor: '#e9e6de',
+    gridHelperColor: '#dedbd2',
+    gridCrossColor: '#d0ccc2',
     lightColor: '#ffffff',
   },
   dark: {
-    backgroundColor: '#08080d',
+    backgroundColor: '#050506',
     wordColor: '#ff9cf5',
     attenuationColor: '#ff7eb3',
-    shadowColor: '#750d57',
-    gridColor: '#6d6778',
-    gridHelperColor: '#84808d',
+    shadowColor: '#000000',
+    gridColor: '#161615',
+    gridHelperColor: '#272625',
+    gridCrossColor: '#3a3937',
     lightColor: '#ffffff',
   },
 };
@@ -125,17 +132,31 @@ function getTuningDefaults(themeName) {
     periodPosition: [PERIOD_OFFSET_X, PERIOD_OFFSET_Y, PERIOD_OFFSET_Z],
     gridCellSize: GRID_CELL_SIZE,
     gridOpacity: GRID_OPACITY,
+    materialBackside: MATERIAL_BACKSIDE,
+    materialBacksideThickness: MATERIAL_BACKSIDE_THICKNESS,
+    materialSamples: MATERIAL_SAMPLES,
+    materialResolution: MATERIAL_RESOLUTION,
     materialTransmission: MATERIAL_TRANSMISSION,
+    materialClearcoat: MATERIAL_CLEARCOAT,
+    materialClearcoatRoughness: MATERIAL_CLEARCOAT_ROUGHNESS,
+    materialChromaticAberration: MATERIAL_CHROMATIC_ABERRATION,
+    materialAnisotropy: MATERIAL_ANISOTROPY,
     materialRoughness: MATERIAL_ROUGHNESS,
+    materialDistortion: MATERIAL_DISTORTION,
+    materialDistortionScale: MATERIAL_DISTORTION_SCALE,
+    materialTemporalDistortion: MATERIAL_TEMPORAL_DISTORTION,
     materialThickness: MATERIAL_THICKNESS,
+    materialIor: MATERIAL_IOR,
     keyLightIntensity: KEY_LIGHT_INTENSITY,
     rimLightIntensity: SIDE_LIGHT_INTENSITY,
+    autoRotate: AUTO_ROTATE,
     backgroundColor: palette.backgroundColor,
     wordColor: palette.wordColor,
     attenuationColor: palette.attenuationColor,
     shadowColor: palette.shadowColor,
     gridColor: palette.gridColor,
     gridHelperColor: palette.gridHelperColor,
+    gridCrossColor: palette.gridCrossColor,
     lightColor: palette.lightColor,
   };
 }
@@ -168,67 +189,104 @@ function resolveTuning(themeName, values) {
     ],
     gridCellSize: values?.gridCellSize ?? defaults.gridCellSize,
     gridOpacity: values?.gridOpacity ?? defaults.gridOpacity,
+    materialBackside: values?.materialBackside ?? defaults.materialBackside,
+    materialBacksideThickness: values?.materialBacksideThickness ?? defaults.materialBacksideThickness,
+    materialSamples: values?.materialSamples ?? defaults.materialSamples,
+    materialResolution: values?.materialResolution ?? defaults.materialResolution,
     materialTransmission: values?.materialTransmission ?? defaults.materialTransmission,
+    materialClearcoat: values?.materialClearcoat ?? defaults.materialClearcoat,
+    materialClearcoatRoughness: values?.materialClearcoatRoughness ?? defaults.materialClearcoatRoughness,
+    materialChromaticAberration: values?.materialChromaticAberration ?? defaults.materialChromaticAberration,
+    materialAnisotropy: values?.materialAnisotropy ?? defaults.materialAnisotropy,
     materialRoughness: values?.materialRoughness ?? defaults.materialRoughness,
+    materialDistortion: values?.materialDistortion ?? defaults.materialDistortion,
+    materialDistortionScale: values?.materialDistortionScale ?? defaults.materialDistortionScale,
+    materialTemporalDistortion: values?.materialTemporalDistortion ?? defaults.materialTemporalDistortion,
     materialThickness: values?.materialThickness ?? defaults.materialThickness,
+    materialIor: values?.materialIor ?? defaults.materialIor,
     keyLightIntensity: values?.keyLightIntensity ?? defaults.keyLightIntensity,
     rimLightIntensity: values?.rimLightIntensity ?? defaults.rimLightIntensity,
-    backgroundColor: (useCustomColors ? values?.backgroundColor : undefined) ?? defaults.backgroundColor,
+    autoRotate: values?.autoRotate ?? defaults.autoRotate,
+    backgroundColor: defaults.backgroundColor,
     wordColor: (useCustomColors ? values?.wordColor : undefined) ?? defaults.wordColor,
     attenuationColor: (useCustomColors ? values?.attenuationColor : undefined) ?? defaults.attenuationColor,
     shadowColor: (useCustomColors ? values?.shadowColor : undefined) ?? defaults.shadowColor,
-    gridColor: (useCustomColors ? values?.gridColor : undefined) ?? defaults.gridColor,
-    gridHelperColor: (useCustomColors ? values?.gridHelperColor : undefined) ?? defaults.gridHelperColor,
-    lightColor: (useCustomColors ? values?.lightColor : undefined) ?? defaults.lightColor,
+    gridColor: defaults.gridColor,
+    gridHelperColor: defaults.gridHelperColor,
+    gridCrossColor: defaults.gridCrossColor,
+    lightColor: defaults.lightColor,
   };
 }
 
 function EpoxyMaterial({ tuning, backgroundTexture }) {
+  const materialProps = useMemo(
+    () => ({
+      background: backgroundTexture,
+      color: tuning.wordColor,
+      backside: tuning.materialBackside,
+      backsideThickness: tuning.materialBacksideThickness,
+      samples: tuning.materialSamples,
+      resolution: tuning.materialResolution,
+      transmission: tuning.materialTransmission,
+      clearcoat: tuning.materialClearcoat,
+      clearcoatRoughness: tuning.materialClearcoatRoughness,
+      thickness: tuning.materialThickness,
+      chromaticAberration: tuning.materialChromaticAberration,
+      anisotropy: tuning.materialAnisotropy,
+      roughness: tuning.materialRoughness,
+      distortion: tuning.materialDistortion,
+      distortionScale: tuning.materialDistortionScale,
+      temporalDistortion: tuning.materialTemporalDistortion,
+      ior: tuning.materialIor,
+      attenuationColor: tuning.attenuationColor,
+    }),
+    [
+      backgroundTexture,
+      tuning.attenuationColor,
+      tuning.materialAnisotropy,
+      tuning.materialBackside,
+      tuning.materialBacksideThickness,
+      tuning.materialChromaticAberration,
+      tuning.materialClearcoat,
+      tuning.materialClearcoatRoughness,
+      tuning.materialDistortion,
+      tuning.materialDistortionScale,
+      tuning.materialIor,
+      tuning.materialResolution,
+      tuning.materialRoughness,
+      tuning.materialSamples,
+      tuning.materialTemporalDistortion,
+      tuning.materialThickness,
+      tuning.materialTransmission,
+      tuning.wordColor,
+    ],
+  );
+
   if (!ENABLE_TRANSMISSION) {
     return (
       <meshPhysicalMaterial
-        color={tuning.wordColor}
-        roughness={tuning.materialRoughness}
-        transmission={tuning.materialTransmission}
-        thickness={tuning.materialThickness}
-        ior={MATERIAL_IOR}
-        clearcoat={MATERIAL_CLEARCOAT}
-        clearcoatRoughness={MATERIAL_CLEARCOAT_ROUGHNESS}
+        color={materialProps.color}
+        roughness={materialProps.roughness}
+        transmission={materialProps.transmission}
+        thickness={materialProps.thickness}
+        ior={materialProps.ior}
+        clearcoat={materialProps.clearcoat}
+        clearcoatRoughness={materialProps.clearcoatRoughness}
       />
     );
   }
 
-  return (
-    <MeshTransmissionMaterial
-      background={backgroundTexture}
-      color={tuning.wordColor}
-      backside={MATERIAL_BACKSIDE}
-      backsideThickness={MATERIAL_BACKSIDE_THICKNESS}
-      samples={MATERIAL_SAMPLES}
-      resolution={MATERIAL_RESOLUTION}
-      transmission={tuning.materialTransmission}
-      clearcoat={MATERIAL_CLEARCOAT}
-      clearcoatRoughness={MATERIAL_CLEARCOAT_ROUGHNESS}
-      thickness={tuning.materialThickness}
-      chromaticAberration={MATERIAL_CHROMATIC_ABERRATION}
-      anisotropy={MATERIAL_ANISOTROPY}
-      roughness={tuning.materialRoughness}
-      distortion={MATERIAL_DISTORTION}
-      distortionScale={MATERIAL_DISTORTION_SCALE}
-      temporalDistortion={MATERIAL_TEMPORAL_DISTORTION}
-      ior={MATERIAL_IOR}
-      attenuationColor={tuning.attenuationColor}
-    />
-  );
+  return <MeshTransmissionMaterial {...materialProps} />;
 }
 
 function Grid({ tuning }) {
-  const gridSize = tuning.gridCellSize * GRID_DIVISIONS;
-  const halfGridSize = gridSize / 2;
-  const halfDivisions = GRID_DIVISIONS / 2;
-  const crossIndices = Array.from({ length: GRID_DIVISIONS + 1 }, (_, index) => index).filter(
-    (index) => index % GRID_CROSS_EVERY === 0,
+  const crossIndices = useMemo(
+    () =>
+      Array.from({ length: GRID_DIVISIONS + 1 }, (_, index) => index).filter((index) => index % GRID_CROSS_EVERY === 0),
+    [],
   );
+  const gridSize = tuning.gridCellSize * GRID_DIVISIONS;
+  const halfDivisions = GRID_DIVISIONS / 2;
 
   return (
     <group position={GRID_POSITION}>
@@ -265,13 +323,13 @@ function Wordmark({ tuning }) {
   const backgroundTexture = useLoader(RGBELoader, HDR_BACKGROUND_URL);
 
   return (
-    <group>
+    <>
       <Center scale={WORDMARK_CENTER_SCALE} front top position={tuning.wordPosition} rotation={tuning.wordRotation}>
         <group scale={tuning.wordScale}>
           <Text3D
             castShadow
             bevelEnabled
-            font={interLikeBold}
+            font={sunderWordmarkFont}
             scale={1}
             letterSpacing={LETTER_SPACING}
             height={tuning.textDepth}
@@ -296,17 +354,17 @@ function Wordmark({ tuning }) {
         </group>
       </Center>
       <Grid tuning={tuning} />
-    </group>
+    </>
   );
 }
 
-function Scene({ themeName, tuning }) {
+function Scene({ tuning }) {
   return (
     <>
       <color attach="background" args={[tuning.backgroundColor]} />
       <Wordmark tuning={tuning} />
       <OrbitControls
-        autoRotate={false}
+        autoRotate={tuning.autoRotate}
         zoomSpeed={0.25}
         minZoom={CAMERA_MIN_ZOOM}
         maxZoom={CAMERA_MAX_ZOOM}
@@ -360,7 +418,7 @@ function Scene({ themeName, tuning }) {
       </Environment>
       {ENABLE_ACCUMULATIVE_SHADOWS && (
         <AccumulativeShadows
-          frames={80}
+          frames={SHADOW_FRAMES}
           color={tuning.shadowColor}
           colorBlend={5}
           toneMapped
@@ -385,10 +443,11 @@ function Scene({ themeName, tuning }) {
   );
 }
 
-export function SunderWordmarkScene({ isVisible = true, reducedMotion = false }) {
+export function SunderWordmarkScene({ isVisible = true, reducedMotion = false, onReady }) {
   const [themeName, setThemeName] = useState(getCurrentTheme);
   const [DevTuningPanel, setDevTuningPanel] = useState(null);
   const [tuningValues, setTuningValues] = useState(null);
+  const didSignalReady = useRef(false);
   const tuningDefaults = useMemo(() => getTuningDefaults(themeName), [themeName]);
   const tuning = useMemo(() => resolveTuning(themeName, tuningValues), [themeName, tuningValues]);
 
@@ -401,7 +460,7 @@ export function SunderWordmarkScene({ isVisible = true, reducedMotion = false })
   useEffect(() => {
     if (!DEV_TUNING_ENABLED) return;
 
-    const tuningPanelPath = ['/src', 'components', 'three', 'SunderWordmarkTuningPanel.local.jsx'].join('/');
+    const tuningPanelPath = ['/components', 'three', 'SunderWordmarkTuningPanel.local.jsx'].join('/');
 
     import(
       /* @vite-ignore */
@@ -427,6 +486,7 @@ export function SunderWordmarkScene({ isVisible = true, reducedMotion = false })
         shadowColor: tuningDefaults.shadowColor,
         gridColor: tuningDefaults.gridColor,
         gridHelperColor: tuningDefaults.gridHelperColor,
+        gridCrossColor: tuningDefaults.gridCrossColor,
         lightColor: tuningDefaults.lightColor,
       };
     });
@@ -442,15 +502,21 @@ export function SunderWordmarkScene({ isVisible = true, reducedMotion = false })
         orthographic
         camera={{ position: CAMERA_POSITION, zoom: CAMERA_ZOOM }}
         dpr={[1, MAX_DPR]}
-        frameloop={TARGET_FPS_MODE === 'on-demand' ? 'demand' : 'always'}
         gl={{
           antialias: true,
           alpha: false,
           powerPreference: 'high-performance',
           preserveDrawingBuffer: DEV_TUNING_ENABLED,
         }}
+        onCreated={() => {
+          if (didSignalReady.current) return;
+          didSignalReady.current = true;
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => onReady?.());
+          });
+        }}
       >
-        {shouldRenderScene && <Scene key={themeName} themeName={themeName} tuning={tuning} />}
+        {shouldRenderScene && <Scene key={themeName} tuning={tuning} />}
       </Canvas>
       {DevTuningPanel && (
         <DevTuningPanel defaults={tuningDefaults} themeName={themeName} onChange={setTuningValues} />

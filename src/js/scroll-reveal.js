@@ -3,11 +3,15 @@
  */
 
 export function initScrollReveal() {
+  if (document.documentElement.dataset.scrollRevealReady === 'true') return;
+  document.documentElement.dataset.scrollRevealReady = 'true';
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          entry.target.classList.add('visible');
           observer.unobserve(entry.target);
         }
       });
@@ -18,5 +22,5 @@ export function initScrollReveal() {
     },
   );
 
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.reveal, .animate-up').forEach((el) => observer.observe(el));
 }

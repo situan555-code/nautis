@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {{> head pageTitle="Home" }}
+  {{> head pageTitle="Home" pageDescription="Websites, branding, content, local visibility, and follow-up systems for businesses that need a stronger first impression." }}
   <link rel="stylesheet" href="/css/home.css">
   <script type="application/ld+json">
   {
@@ -10,7 +10,7 @@
     "name": "Sunder & Co.",
     "url": "https://sunder.co",
     "logo": "https://sunder.co/logo.png",
-    "description": "Fractional CDO services for legacy B2B, manufacturing, and heavy-inventory retail. We bridge the gap between your production floor and modern digital commerce.",
+    "description": "Websites, branding, content, local visibility, and follow-up systems for businesses that need a stronger first impression.",
     "email": "hello@sunderandco.com",
     "sameAs": [
       "https://linkedin.com/company/sunderandco"
@@ -30,7 +30,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Sunder & Co.",
-    "description": "Fractional CDO and Revenue Operations consultancy for legacy manufacturing and wholesale businesses.",
+    "description": "Websites, branding, content, local visibility, and follow-up systems for businesses that need a stronger first impression.",
     "url": "https://sunder.co",
     "telephone": "(555) 000-0000",
     "address": {
@@ -48,6 +48,7 @@
 
   {{> nav activePage="home" }}
 
+  <main id="main-content">
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero__scene" id="sunder-wordmark-hero" aria-hidden="true">
@@ -57,212 +58,203 @@
     </div>
   </section>
 
-  <!-- PAIN STRIP -->
-  <section class="pain-strip" id="pain-strip">
+  <section class="section dc-intro" id="homepage-intro">
     <div class="container">
-      <div class="pain-strip__grid">
-        <div class="pain-stat reveal">
-          <div class="pain-stat__number" data-counter data-target="72" data-suffix="%">0%</div>
-          <p class="pain-stat__text">of B2B manufacturers lose leads between website and dealer</p>
-        </div>
-        <div class="pain-stat reveal reveal--delay-1">
-          <div class="pain-stat__number" data-counter data-target="430" data-prefix="$" data-suffix="K">$0K</div>
-          <p class="pain-stat__text">average annual loss from unoptimized wholesale accounts</p>
-        </div>
-        <div class="pain-stat reveal reveal--delay-2">
-          <div class="pain-stat__number" data-counter data-target="67" data-suffix="%">0%</div>
-          <p class="pain-stat__text">of product photoshoot costs eliminated by 3D pipelines</p>
-        </div>
-        <div class="pain-stat reveal reveal--delay-3">
-          <div class="pain-stat__number" data-counter data-target="5" data-suffix="x">0x</div>
-          <p class="pain-stat__text">faster content production with custom AI copilots</p>
+      <div class="dc-intro__content animate-up">
+        <h1>Make the first impression match the work behind it.</h1>
+        <p>Websites, branding, content, local visibility, and follow-up systems for businesses that need to be easier to find, trust, and choose.</p>
+        <div class="dc-actions">
+          <a href="/contact.html" class="dc-button dc-button--primary" id="hero-primary-cta">Start a Project</a>
+          <a href="#what-we-build" class="dc-button dc-button--secondary" id="hero-secondary-cta">See What We Build</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICE PILLARS -->
-  <section class="section pillars-section" id="pillars">
-    <div class="glow-orb glow-orb--cyan" style="width:500px;height:500px;top:-10%;right:-5%;"></div>
-
+  <!-- WHAT WE BUILD -->
+  <section class="section dc-services" id="what-we-build">
     <div class="container">
-      <div class="section-header text-center reveal">
-        <span class="label">What We Do</span>
-        <h2>Five pillars. <br>One integrated revenue system.</h2>
-        <p class="lead" style="margin: var(--space-4) auto 0;">Most agencies sell you one channel. We architect the entire stack — from your ERP to your customer's living room.</p>
+      <div class="dc-section-heading animate-up">
+        <span class="section-label">What We Build</span>
+        <h2>Customer-facing pieces, built to work together.</h2>
       </div>
 
-      <div class="grid grid--3" style="margin-top: var(--space-12);">
-        <!-- Pillar cards remain the same -->
-        <a href="javascript:void(0)" class="card pillar-card pillar-card--disabled reveal" id="pillar-martech" style="text-decoration:none;">
-          <div class="pillar-card__icon">⚡</div>
-          <h3 class="pillar-card__title">MarTech &<br>Data Architecture</h3>
-          <p class="pillar-card__desc">Bridge legacy ERPs to modern storefronts. Tame your PIM. Automate your catalog syndication to every retail channel.</p>
-          <ul class="pillar-card__services">
-            <li>ERP-to-E-Commerce Integrations</li>
-            <li>Enterprise PIM & Taxonomy</li>
-            <li>Omnichannel Syndication</li>
-            <li>MarTech Stack Turnarounds</li>
-          </ul>
-          <span class="pillar-card__link">Coming Soon</span>
-        </a>
-
-        <a href="javascript:void(0)" class="card pillar-card pillar-card--disabled reveal reveal--delay-1" id="pillar-3d" style="text-decoration:none;">
-          <div class="pillar-card__icon">🔮</div>
-          <h3 class="pillar-card__title">3D Commerce &<br>Spatial Computing</h3>
-          <p class="pillar-card__desc">Browser-based 3D configurators, AR try-before-you-buy, virtual showrooms, and the end of expensive photoshoots.</p>
-          <ul class="pillar-card__services">
-            <li>WebGL Product Configurators</li>
-            <li>Physical-to-3D Pipeline</li>
-            <li>Interactive Retail Kiosks</li>
-            <li>AR App Development</li>
-          </ul>
-          <span class="pillar-card__link">Coming Soon</span>
-        </a>
-
-        <a href="javascript:void(0)" class="card pillar-card pillar-card--disabled reveal reveal--delay-2" id="pillar-revops" style="text-decoration:none;">
-          <div class="pillar-card__icon">📊</div>
-          <h3 class="pillar-card__title">Revenue Ops &<br>Data Intelligence</h3>
-          <p class="pillar-card__desc">Expose unprofitable accounts. Find the revenue hiding in your CRM. Build closed-loop lead gen that actually converts.</p>
-          <ul class="pillar-card__services">
-            <li>Dealer Rationalization</li>
-            <li>Leaky Funnel Audits</li>
-            <li>CRM & Lifecycle Automation</li>
-            <li>Sales Enablement Strategy</li>
-          </ul>
-          <span class="pillar-card__link">Coming Soon</span>
-        </a>
-
-        <a href="javascript:void(0)" class="card pillar-card pillar-card--disabled reveal" id="pillar-ai" style="text-decoration:none;">
-          <div class="pillar-card__icon">🤖</div>
-          <h3 class="pillar-card__title">Applied AI &<br>Custom Automation</h3>
-          <p class="pillar-card__desc">Private brand copilots, automated competitive intelligence, agentic workflows, and scripts that eliminate manual data entry.</p>
-          <ul class="pillar-card__services">
-            <li>Custom Brand AI Copilots</li>
-            <li>Competitive Intelligence Scrapers</li>
-            <li>Agentic Workflow (MCP)</li>
-            <li>Internal Automation</li>
-          </ul>
-          <span class="pillar-card__link">Coming Soon</span>
-        </a>
-
-        <a href="/services-creative.html" class="card pillar-card reveal reveal--delay-1" id="pillar-brand" style="text-decoration:none;">
-          <div class="pillar-card__icon">🎯</div>
-          <h3 class="pillar-card__title">Brand Strategy &<br>Creative Production</h3>
-          <p class="pillar-card__desc">Fractional CMO/CDO retainers. Trade show activations. High-end media production — elevated by data-driven precision.</p>
-          <ul class="pillar-card__services">
-            <li>Fractional CMO / CDO</li>
-            <li>Trade Show Activations</li>
-            <li>Media Production (4K/Photo)</li>
-            <li>Data-Driven Product Strategy</li>
-          </ul>
-          <span class="pillar-card__link">Explore Creative →</span>
-        </a>
-
-        <div class="card pillar-card reveal reveal--delay-2" style="display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(160deg,rgba(0,229,255,0.04) 0%,rgba(15,22,41,0.9) 100%);border-color:rgba(0,229,255,0.15);">
+      <div class="dc-service-grid">
+        <article class="dc-service-card animate-up">
+          <span class="dc-card-index">01</span>
           <div>
-            <p style="font-size:var(--text-lg);color:var(--color-text-secondary);margin-bottom:var(--space-6);max-width:25ch;">Not sure where to start?</p>
-            <a href="/contact.html" class="btn btn--primary" id="pillar-audit-cta">Start with an Audit</a>
+            <h3>Websites, Web Apps & Landing Pages</h3>
+            <p>Polished pages built for clarity, trust, and conversion. We also build fast web apps and browser-based tools that feel app-like without forcing a download.</p>
           </div>
-        </div>
+          <a href="/contact.html" class="dc-card-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="dc-service-card animate-up">
+          <span class="dc-card-index">02</span>
+          <div>
+            <h3>Local Search & AI SEO</h3>
+            <p>Search is moving beyond blue links. We help clean up your structure, local visibility, and content so the business is easier for people and modern search systems to understand.</p>
+          </div>
+          <a href="/contact.html" class="dc-card-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="dc-service-card animate-up">
+          <span class="dc-card-index">03</span>
+          <div>
+            <h3>Brand Identity & Systems</h3>
+            <p>Visual identity, logo refinement, collateral, and design systems that make the business feel clear, consistent, and memorable.</p>
+          </div>
+          <a href="/contact.html" class="dc-card-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="dc-service-card animate-up">
+          <span class="dc-card-index">04</span>
+          <div>
+            <h3>Photo, Video & Content</h3>
+            <p>Commercial photography, video, copy, social creative, and campaign assets that help people trust what they are seeing.</p>
+          </div>
+          <a href="/contact.html" class="dc-card-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="dc-service-card animate-up">
+          <span class="dc-card-index">05</span>
+          <div>
+            <h3>Lead Flow & RevOps Systems</h3>
+            <p>Forms, tracking, CRM handoff, routing, reminders, and simple automations so every inquiry has a clearer next step.</p>
+          </div>
+          <a href="/contact.html" class="dc-card-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+        </article>
+
+        <article class="dc-service-card animate-up">
+          <span class="dc-card-index">06</span>
+          <div>
+            <h3>3D, Motion & Premium Visuals</h3>
+            <p>Interactive visuals, motion assets, renders, and high-end moments that make the brand feel more memorable.</p>
+          </div>
+          <a href="/contact.html" class="dc-card-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- PROOF BAR -->
-  <section class="proof-bar" id="proof-bar">
-    <div class="container reveal">
-      <p class="label text-center" style="margin-bottom:var(--space-8);">Platforms We Operate In</p>
-    </div>
-    <div style="overflow:hidden;">
-      <div class="proof-bar__marquee">
-        <span class="proof-bar__item"><span class="dot"></span> Acumatica</span>
-        <span class="proof-bar__item"><span class="dot"></span> NetSuite</span>
-        <span class="proof-bar__item"><span class="dot"></span> Magento</span>
-        <span class="proof-bar__item"><span class="dot"></span> Shopify Plus</span>
-        <span class="proof-bar__item"><span class="dot"></span> BigCommerce</span>
-        <span class="proof-bar__item"><span class="dot"></span> Pimberly</span>
-        <span class="proof-bar__item"><span class="dot"></span> Salsify</span>
-        <span class="proof-bar__item"><span class="dot"></span> Akeneo</span>
-        <span class="proof-bar__item"><span class="dot"></span> Three.js / WebGL</span>
-        <span class="proof-bar__item"><span class="dot"></span> Next.js / React</span>
-        <span class="proof-bar__item"><span class="dot"></span> Klaviyo</span>
-        <span class="proof-bar__item"><span class="dot"></span> HubSpot</span>
-        <span class="proof-bar__item"><span class="dot"></span> Swift / RoomPlan</span>
-        <span class="proof-bar__item"><span class="dot"></span> Python / Node.js</span>
-        <!-- Duplicate set for seamless loop -->
-        <span class="proof-bar__item"><span class="dot"></span> Acumatica</span>
-        <span class="proof-bar__item"><span class="dot"></span> NetSuite</span>
-        <span class="proof-bar__item"><span class="dot"></span> Magento</span>
-        <span class="proof-bar__item"><span class="dot"></span> Shopify Plus</span>
-        <span class="proof-bar__item"><span class="dot"></span> BigCommerce</span>
-        <span class="proof-bar__item"><span class="dot"></span> Pimberly</span>
-        <span class="proof-bar__item"><span class="dot"></span> Salsify</span>
-        <span class="proof-bar__item"><span class="dot"></span> Akeneo</span>
-        <span class="proof-bar__item"><span class="dot"></span> Three.js / WebGL</span>
-        <span class="proof-bar__item"><span class="dot"></span> Next.js / React</span>
-        <span class="proof-bar__item"><span class="dot"></span> Klaviyo</span>
-        <span class="proof-bar__item"><span class="dot"></span> HubSpot</span>
-        <span class="proof-bar__item"><span class="dot"></span> Swift / RoomPlan</span>
-        <span class="proof-bar__item"><span class="dot"></span> Python / Node.js</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ENGAGEMENT MODEL TEASER -->
-  <section class="section engagement-teaser" id="engagement-teaser">
-    <div class="glow-orb glow-orb--blue" style="width:600px;height:600px;bottom:-20%;left:-10%;"></div>
-
+  <!-- THE GAP -->
+  <section class="section dc-gap" id="the-gap">
     <div class="container">
-      <div class="section-header text-center reveal">
-        <span class="label">How We Work</span>
-        <h2>Three tiers. One trajectory.</h2>
-        <p class="lead" style="margin:var(--space-4) auto 0;">Every engagement starts with an Audit. Most clients never stop.</p>
-      </div>
-
-      <div class="engagement-teaser__grid" style="margin-top:var(--space-12);">
-        <div class="card engagement-card reveal" id="tier-audit">
-          <span class="engagement-card__step">Step 01</span>
-          <h3 class="engagement-card__title">The Audit</h3>
-          <span class="engagement-card__price">$3K – $10K</span>
-          <p class="engagement-card__desc">We map your MarTech stack, find the lost revenue in your CRM, and deliver a strategic roadmap.</p>
-          <span class="tag">2–4 Weeks</span>
+      <div class="dc-gap__layout">
+        <div class="dc-gap__statement animate-up">
+          <span class="section-label">The gap</span>
+          <h2>The work is good. The presence is<br>lagging.</h2>
+          <p>Most businesses do not need more random marketing. They need the visible parts of the business to match the quality, trust, and momentum behind the scenes.</p>
         </div>
 
-        <div class="card engagement-card engagement-card--featured reveal reveal--delay-1" id="tier-build">
-          <span class="engagement-card__step">Step 02</span>
-          <h3 class="engagement-card__title">The Build</h3>
-          <span class="engagement-card__price">$20K – $100K+</span>
-          <p class="engagement-card__desc">Project-based execution. 3D configurators, ERP integrations, kiosk deployments, AI copilots — built and delivered.</p>
-          <span class="tag">Project-Based</span>
-        </div>
+        <div class="dc-gap__list">
+          <article class="dc-list-card animate-up">
+            <span>01</span>
+            <h3>Dated digital presence</h3>
+            <p>The business has grown, but the website still feels like an earlier version of it.</p>
+          </article>
 
-        <div class="card engagement-card reveal reveal--delay-2" id="tier-growth">
-          <span class="engagement-card__step">Step 03</span>
-          <h3 class="engagement-card__title">Growth Retainer</h3>
-          <span class="engagement-card__price">$5K – $15K/mo</span>
-          <p class="engagement-card__desc">Ongoing Fractional CDO. We run your Klaviyo, manage dealer pipelines, and direct creative strategy.</p>
-          <span class="tag">Monthly</span>
-        </div>
-      </div>
+          <article class="dc-list-card animate-up">
+            <span>02</span>
+            <h3>Low search visibility</h3>
+            <p>People are looking for what you offer, but your business is not showing up with enough clarity or authority.</p>
+          </article>
 
-      <div class="text-center reveal" style="margin-top:var(--space-12);">
-        <a href="/engagement.html" class="btn btn--secondary" id="engagement-cta">See How We Work →</a>
+          <article class="dc-list-card animate-up">
+            <span>03</span>
+            <h3>Inconsistent brand</h3>
+            <p>Your website, print, social, ads, signage, and sales materials do not feel like one brand.</p>
+          </article>
+
+          <article class="dc-list-card animate-up">
+            <span>04</span>
+            <h3>Content bottleneck</h3>
+            <p>You need better visuals, copy, landing pages, and campaigns - but there is no repeatable system for making them.</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA BANNER -->
-  <section class="cta-banner section" id="cta-banner">
+  <!-- WHO IT IS FOR -->
+  <section class="section dc-audience" id="built-for">
     <div class="container">
-      <div class="reveal">
-        <span class="label" style="display:block;margin-bottom:var(--space-6);">Ready?</span>
-        <h2>Stop losing revenue to<br>disconnected systems.</h2>
-        <p>Every engagement starts with a conversation. No sales pitch — just a clear-eyed look at where your money is leaking.</p>
-        <a href="/contact.html" class="btn btn--primary btn--lg" id="bottom-cta">Book a Discovery Call</a>
+      <div class="dc-section-heading animate-up">
+        <span class="section-label">Built for</span>
+        <h2>Businesses that have outgrown their current presence.</h2>
+      </div>
+
+      <div class="dc-audience__grid">
+        <article class="dc-audience-card animate-up">
+          <span class="dc-audience-card__label">Local trust</span>
+          <h3>Local service businesses</h3>
+          <p>Contractors, clinics, trades, home services, and professional services that need trust fast.</p>
+        </article>
+
+        <article class="dc-audience-card animate-up">
+          <span class="dc-audience-card__label">Local draw</span>
+          <h3>Retail, restaurants & showrooms</h3>
+          <p>Businesses that rely on local visibility, strong visuals, and clear customer touchpoints.</p>
+        </article>
+
+        <article class="dc-audience-card animate-up">
+          <span class="dc-audience-card__label">Regional scale</span>
+          <h3>Regional brands & B2B companies</h3>
+          <p>Manufacturers, distributors, suppliers, and service businesses with outdated websites or scattered marketing.</p>
+        </article>
+
+        <article class="dc-audience-card animate-up">
+          <span class="dc-audience-card__label">Operator-led</span>
+          <h3>Growing operators</h3>
+          <p>Owners and teams who know the business is better than the way it currently shows up.</p>
+        </article>
       </div>
     </div>
   </section>
+
+  <!-- HOW WE WORK -->
+  <section class="section dc-process" id="how-we-work">
+    <div class="container">
+      <div class="dc-process__copy animate-up">
+        <span class="section-label">How We Work</span>
+        <h2>Start focused. Build what matters. Keep improving.</h2>
+        <p>Each engagement starts with the customer-facing pieces people already see, then turns the biggest gaps into a clear build path.</p>
+      </div>
+
+      <ol class="dc-process__steps">
+        <li class="dc-process-step animate-up">
+          <span>01</span>
+          <h3>Review</h3>
+          <p>We audit what customers actually see - website, search, brand, content, and lead flow - before recommending what to build.</p>
+        </li>
+
+        <li class="dc-process-step animate-up">
+          <span>02</span>
+          <h3>Build</h3>
+          <p>We build what is missing, not everything at once.</p>
+        </li>
+
+        <li class="dc-process-step animate-up">
+          <span>03</span>
+          <h3>Support</h3>
+          <p>We stay in it with updates, campaigns, reporting, content, local SEO, and follow-up that compounds over time.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section dc-final-cta" id="cta-banner">
+    <div class="container">
+      <div class="dc-final-cta__content animate-up">
+        <span class="section-label">Ready?</span>
+        <h2>Start with the part customers see first.</h2>
+        <p>One focused conversation. We'll help identify what to fix first and what can wait.</p>
+        <a href="/contact.html" class="dc-button dc-button--primary dc-button--large" id="bottom-cta">Start a Project</a>
+      </div>
+    </div>
+  </section>
+  </main>
 
   {{> footer }}
 

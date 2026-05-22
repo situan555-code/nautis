@@ -19,19 +19,28 @@ export function initSunderWordmarkHero() {
   const mount = document.getElementById('sunder-wordmark-hero');
   if (!mount || !hasWebGL()) {
     if (mount) mount.dataset.sceneReady = 'false';
-    return;
+    return Promise.resolve(false);
   }
 
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   if (isMobile && !MOBILE_ENABLE_3D) {
     mount.dataset.sceneReady = 'false';
-    return;
+    return Promise.resolve(false);
   }
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const root = createRoot(mount);
   let heroInView = true;
   let documentIsVisible = document.visibilityState === 'visible';
+  let resolveReady;
+  const readyPromise = new Promise((resolve) => {
+    resolveReady = resolve;
+  });
+
+  const markSceneReady = () => {
+    mount.dataset.sceneReady = 'true';
+    resolveReady(true);
+  };
 
   const updateScrollBlend = () => {
     const progress = Math.min(window.scrollY / Math.max(window.innerHeight * 0.9, 1), 1);
@@ -43,7 +52,7 @@ export function initSunderWordmarkHero() {
 
   const render = () => {
     const isVisible = !HERO_RENDER_WHEN_VISIBLE_ONLY || (heroInView && documentIsVisible);
-    root.render(React.createElement(SunderWordmarkScene, { isVisible, reducedMotion }));
+    root.render(React.createElement(SunderWordmarkScene, { isVisible, reducedMotion, onReady: markSceneReady }));
   };
 
   const handleDocumentVisibility = () => {
@@ -66,5 +75,5 @@ export function initSunderWordmarkHero() {
   document.addEventListener('visibilitychange', handleDocumentVisibility);
 
   render();
-  mount.dataset.sceneReady = 'true';
+  return readyPromise;
 }

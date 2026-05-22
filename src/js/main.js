@@ -21,10 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initNav();
   initSmoothAnchors();
-  initScrollReveal();
   initCounters();
   initAccordion();
   initForm();
+
+  const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(callback, { timeout });
+    } else {
+      setTimeout(callback, fallbackDelay);
+    }
+  };
+
+  const runAfterInitialPaint = (callback) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(callback);
+    });
+  };
 
   // Defer heavy interactive modules until user intent or viewport
   const deferHeavyModules = () => {
@@ -34,18 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Use requestIdleCallback if available, else fallback to setTimeout
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(deferHeavyModules, { timeout: 2000 });
-  } else {
-    setTimeout(deferHeavyModules, 1200);
-  }
+  runWhenIdle(deferHeavyModules);
 
   const heroMount = document.getElementById('sunder-wordmark-hero');
   if (heroMount) {
-    import('./three/sunder-wordmark-hero.js')
-      .then(({ initSunderWordmarkHero }) => initSunderWordmarkHero())
-      .catch(() => {
-        heroMount.dataset.sceneReady = 'false';
-      });
+    const initHero = () => {
+      import('./three/sunder-wordmark-hero.js')
+        .then(({ initSunderWordmarkHero }) => initSunderWordmarkHero())
+        .then(() => {
+          runWhenIdle(() => initScrollReveal(), 3000, 500);
+        })
+        .catch(() => {
+          heroMount.dataset.sceneReady = 'false';
+          initScrollReveal();
+        });
+    };
+
+    runAfterInitialPaint(() => runWhenIdle(initHero, 1500, 300));
+  } else {
+    initScrollReveal();
   }
 });

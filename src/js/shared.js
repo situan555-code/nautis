@@ -32,7 +32,7 @@ function createNav(activePage) {
 
   nav.innerHTML = `
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo" aria-label="Home">
+      <a href="index.html" class="nav__logo" aria-label="Sunder & Co. Home">
         <span></span>Sunder & Co.<span></span>
       </a>
       <ul class="nav__links">
@@ -88,7 +88,7 @@ function createFooter() {
           <p>Digital Transformation & Revenue Operations for legacy B2B, manufacturing, and heavy-inventory retail.</p>
         </div>
         <div>
-          <h4 class="footer__col-title">Services</h4>
+          <p class="footer__col-title">Services</p>
           <ul class="footer__links">
             <li><a href="services.html#martech">MarTech & Data</a></li>
             <li><a href="services.html#3d">3D Commerce</a></li>
@@ -98,7 +98,7 @@ function createFooter() {
           </ul>
         </div>
         <div>
-          <h4 class="footer__col-title">Company</h4>
+          <p class="footer__col-title">Company</p>
           <ul class="footer__links">
             <li><a href="about.html">About</a></li>
             <li><a href="case-studies.html">Case Studies</a></li>
@@ -107,7 +107,7 @@ function createFooter() {
           </ul>
         </div>
         <div>
-          <h4 class="footer__col-title">Connect</h4>
+          <p class="footer__col-title">Connect</p>
           <ul class="footer__links">
             <li><a href="contact.html">Contact</a></li>
             <li><a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
