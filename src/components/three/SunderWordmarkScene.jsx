@@ -351,9 +351,7 @@ function Grid({ tuning }) {
   );
 }
 
-function Wordmark({ tuning }) {
-  const backgroundTexture = useLoader(RGBELoader, HDR_BACKGROUND_URL);
-
+function Wordmark({ tuning, backgroundTexture }) {
   return (
     <>
       <Center scale={WORDMARK_CENTER_SCALE} front top position={tuning.wordPosition} rotation={tuning.wordRotation}>
@@ -373,14 +371,14 @@ function Wordmark({ tuning }) {
             {WORD_TEXT}
             <EpoxyMaterial
               tuning={tuning}
-              backgroundTexture={USE_EXTERNAL_HDR_BACKGROUND ? backgroundTexture : undefined}
+              backgroundTexture={backgroundTexture}
             />
           </Text3D>
           <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
             <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
             <EpoxyMaterial
               tuning={tuning}
-              backgroundTexture={USE_EXTERNAL_HDR_BACKGROUND ? backgroundTexture : undefined}
+              backgroundTexture={backgroundTexture}
             />
           </mesh>
         </group>
@@ -388,6 +386,11 @@ function Wordmark({ tuning }) {
       <Grid tuning={tuning} />
     </>
   );
+}
+
+function DesktopWordmark({ tuning }) {
+  const backgroundTexture = useLoader(RGBELoader, HDR_BACKGROUND_URL);
+  return <Wordmark tuning={tuning} backgroundTexture={USE_EXTERNAL_HDR_BACKGROUND ? backgroundTexture : undefined} />;
 }
 
 function SceneReadySignal({ onReady }) {
@@ -430,7 +433,7 @@ function Scene({ tuning, isMobile, onReady, onFallback }) {
   return (
     <>
       <color attach="background" args={[tuning.backgroundColor]} />
-      <Wordmark tuning={tuning} />
+      {isMobile ? <Wordmark tuning={tuning} /> : <DesktopWordmark tuning={tuning} />}
       <SceneReadySignal onReady={onReady} />
       {isMobile && <MobilePerformanceGuard onFallback={onFallback} />}
       <OrbitControls
@@ -601,7 +604,6 @@ export function SunderWordmarkScene({ isVisible = true, isMobile = false, reduce
       >
         {shouldRenderScene && (
           <Scene
-            key={themeName}
             tuning={tuning}
             isMobile={isMobile}
             onReady={onReady}
