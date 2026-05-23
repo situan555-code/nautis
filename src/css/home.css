@@ -46,6 +46,12 @@
   display: block;
 }
 
+.sunder-wordmark-root {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .sunder-wordmark-canvas {
   width: 100%;
   height: 100%;
@@ -67,6 +73,8 @@
   color: var(--hero-wordmark-color);
   text-shadow: var(--hero-wordmark-shadow);
   opacity: 0.78;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
 }
 
 .hero__scene-fallback::before {
@@ -87,6 +95,20 @@
 
 .hero__scene[data-scene-ready='true'] .hero__scene-fallback {
   opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .hero__scene {
+    cursor: default;
+  }
+
+  .hero__scene:active {
+    cursor: default;
+  }
+
+  .sunder-wordmark-canvas canvas {
+    pointer-events: none;
+  }
 }
 
 .hero__fallback-word,

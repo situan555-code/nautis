@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Canvas, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { AccumulativeShadows, RandomizedLight } from '@react-three/drei/core/AccumulativeShadows.js';
 import { Center } from '@react-three/drei/core/Center.js';
 import { Environment } from '@react-three/drei/core/Environment.js';
@@ -14,7 +14,18 @@ import sunderWordmarkFont from './sunder-wordmark-font.json';
 export const MAX_DPR = 1.5;
 export const ENABLE_POSTPROCESSING = false;
 export const ENABLE_TRANSMISSION = true;
-export const MOBILE_ENABLE_3D = false;
+export const MOBILE_ENABLE_3D = true;
+export const MOBILE_MAX_DPR = 1;
+export const MOBILE_MATERIAL_SAMPLES = 4;
+export const MOBILE_MATERIAL_RESOLUTION = 256;
+export const MOBILE_CHROMATIC_ABERRATION = 0.75;
+export const MOBILE_DISTORTION = 0.08;
+export const MOBILE_TEMPORAL_DISTORTION = 0;
+export const MOBILE_ENABLE_ACCUMULATIVE_SHADOWS = false;
+export const MOBILE_ENABLE_POSTPROCESSING = false;
+export const MOBILE_ENABLE_INTERACTION = false;
+export const MOBILE_GRID_CROSS_EVERY = 2;
+export const MOBILE_CAMERA_ZOOM = 22;
 export const REDUCED_MOTION_DISABLE_ANIMATION = true;
 export const HERO_RENDER_WHEN_VISIBLE_ONLY = true;
 export const TARGET_FPS_MODE = 'on-demand';
@@ -127,6 +138,7 @@ function getTuningDefaults(themeName) {
     periodDepth: PERIOD_DEPTH,
     periodPosition: [PERIOD_OFFSET_X, PERIOD_OFFSET_Y, PERIOD_OFFSET_Z],
     gridCellSize: GRID_CELL_SIZE,
+    gridCrossEvery: GRID_CROSS_EVERY,
     gridOpacity: GRID_OPACITY,
     materialBackside: MATERIAL_BACKSIDE,
     materialBacksideThickness: MATERIAL_BACKSIDE_THICKNESS,
@@ -146,6 +158,9 @@ function getTuningDefaults(themeName) {
     keyLightIntensity: KEY_LIGHT_INTENSITY,
     rimLightIntensity: SIDE_LIGHT_INTENSITY,
     autoRotate: AUTO_ROTATE,
+    enableInteraction: true,
+    enableAccumulativeShadows: ENABLE_ACCUMULATIVE_SHADOWS,
+    enablePostprocessing: ENABLE_POSTPROCESSING,
     backgroundColor: palette.backgroundColor,
     wordColor: palette.wordColor,
     attenuationColor: palette.attenuationColor,
@@ -184,6 +199,7 @@ function resolveTuning(themeName, values) {
       values?.periodPositionZ ?? defaults.periodPosition[2],
     ],
     gridCellSize: values?.gridCellSize ?? defaults.gridCellSize,
+    gridCrossEvery: values?.gridCrossEvery ?? defaults.gridCrossEvery,
     gridOpacity: values?.gridOpacity ?? defaults.gridOpacity,
     materialBackside: values?.materialBackside ?? defaults.materialBackside,
     materialBacksideThickness: values?.materialBacksideThickness ?? defaults.materialBacksideThickness,
@@ -203,6 +219,9 @@ function resolveTuning(themeName, values) {
     keyLightIntensity: values?.keyLightIntensity ?? defaults.keyLightIntensity,
     rimLightIntensity: values?.rimLightIntensity ?? defaults.rimLightIntensity,
     autoRotate: values?.autoRotate ?? defaults.autoRotate,
+    enableInteraction: values?.enableInteraction ?? defaults.enableInteraction,
+    enableAccumulativeShadows: values?.enableAccumulativeShadows ?? defaults.enableAccumulativeShadows,
+    enablePostprocessing: values?.enablePostprocessing ?? defaults.enablePostprocessing,
     backgroundColor: defaults.backgroundColor,
     wordColor: (useCustomColors ? values?.wordColor : undefined) ?? defaults.wordColor,
     attenuationColor: (useCustomColors ? values?.attenuationColor : undefined) ?? defaults.attenuationColor,
@@ -211,6 +230,21 @@ function resolveTuning(themeName, values) {
     gridHelperColor: defaults.gridHelperColor,
     gridCrossColor: defaults.gridCrossColor,
     lightColor: defaults.lightColor,
+  };
+}
+
+function getMobileTuning(tuning) {
+  return {
+    ...tuning,
+    materialSamples: MOBILE_MATERIAL_SAMPLES,
+    materialResolution: MOBILE_MATERIAL_RESOLUTION,
+    materialChromaticAberration: MOBILE_CHROMATIC_ABERRATION,
+    materialDistortion: MOBILE_DISTORTION,
+    materialTemporalDistortion: MOBILE_TEMPORAL_DISTORTION,
+    enableAccumulativeShadows: MOBILE_ENABLE_ACCUMULATIVE_SHADOWS,
+    enablePostprocessing: MOBILE_ENABLE_POSTPROCESSING,
+    enableInteraction: MOBILE_ENABLE_INTERACTION,
+    gridCrossEvery: MOBILE_GRID_CROSS_EVERY,
   };
 }
 
@@ -278,8 +312,10 @@ function EpoxyMaterial({ tuning, backgroundTexture }) {
 function Grid({ tuning }) {
   const crossIndices = useMemo(
     () =>
-      Array.from({ length: GRID_DIVISIONS + 1 }, (_, index) => index).filter((index) => index % GRID_CROSS_EVERY === 0),
-    [],
+      Array.from({ length: GRID_DIVISIONS + 1 }, (_, index) => index).filter(
+        (index) => index % tuning.gridCrossEvery === 0,
+      ),
+    [tuning.gridCrossEvery],
   );
   const gridSize = tuning.gridCellSize * GRID_DIVISIONS;
   const halfDivisions = GRID_DIVISIONS / 2;
@@ -354,11 +390,49 @@ function Wordmark({ tuning }) {
   );
 }
 
-function Scene({ tuning }) {
+function SceneReadySignal({ onReady }) {
+  const didSignalReady = useRef(false);
+
+  useFrame(() => {
+    if (didSignalReady.current) return;
+    didSignalReady.current = true;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => onReady?.());
+    });
+  });
+
+  return null;
+}
+
+function MobilePerformanceGuard({ onFallback }) {
+  const startedAt = useRef(null);
+  const frames = useRef(0);
+
+  useFrame(() => {
+    const now = performance.now();
+    startedAt.current ??= now;
+    frames.current += 1;
+
+    const elapsed = now - startedAt.current;
+    if (elapsed < 2800 || frames.current < 90) return;
+
+    const fps = (frames.current / elapsed) * 1000;
+    if (fps < 18) onFallback?.();
+
+    startedAt.current = now;
+    frames.current = 0;
+  });
+
+  return null;
+}
+
+function Scene({ tuning, isMobile, onReady, onFallback }) {
   return (
     <>
       <color attach="background" args={[tuning.backgroundColor]} />
       <Wordmark tuning={tuning} />
+      <SceneReadySignal onReady={onReady} />
+      {isMobile && <MobilePerformanceGuard onFallback={onFallback} />}
       <OrbitControls
         autoRotate={tuning.autoRotate}
         zoomSpeed={0.25}
@@ -366,6 +440,8 @@ function Scene({ tuning }) {
         maxZoom={CAMERA_MAX_ZOOM}
         enableZoom={false}
         enablePan={false}
+        enableRotate={tuning.enableInteraction}
+        enabled={tuning.enableInteraction}
         dampingFactor={0.05}
         minPolarAngle={Math.PI / 3}
         maxPolarAngle={Math.PI / 3}
@@ -412,7 +488,7 @@ function Scene({ tuning }) {
           />
         </group>
       </Environment>
-      {ENABLE_ACCUMULATIVE_SHADOWS && (
+      {tuning.enableAccumulativeShadows && (
         <AccumulativeShadows
           frames={SHADOW_FRAMES}
           color={tuning.shadowColor}
@@ -439,13 +515,14 @@ function Scene({ tuning }) {
   );
 }
 
-export function SunderWordmarkScene({ isVisible = true, reducedMotion = false, onReady }) {
+export function SunderWordmarkScene({ isVisible = true, isMobile = false, reducedMotion = false, onReady, onFallback }) {
   const [themeName, setThemeName] = useState(getCurrentTheme);
   const [DevTuningPanel, setDevTuningPanel] = useState(null);
   const [tuningValues, setTuningValues] = useState(null);
-  const didSignalReady = useRef(false);
+  const [performanceFallback, setPerformanceFallback] = useState(false);
   const tuningDefaults = useMemo(() => getTuningDefaults(themeName), [themeName]);
-  const tuning = useMemo(() => resolveTuning(themeName, tuningValues), [themeName, tuningValues]);
+  const desktopTuning = useMemo(() => resolveTuning(themeName, tuningValues), [themeName, tuningValues]);
+  const tuning = useMemo(() => (isMobile ? getMobileTuning(desktopTuning) : desktopTuning), [desktopTuning, isMobile]);
 
   useEffect(() => {
     const handleThemeChange = (event) => setThemeName(event.detail.theme);
@@ -488,31 +565,49 @@ export function SunderWordmarkScene({ isVisible = true, reducedMotion = false, o
     });
   }, [tuningDefaults]);
 
-  const shouldRenderScene = isVisible && !(REDUCED_MOTION_DISABLE_ANIMATION && reducedMotion);
+  const shouldRenderScene = isVisible && !performanceFallback && !(REDUCED_MOTION_DISABLE_ANIMATION && reducedMotion);
+  const dpr = isMobile ? [1, MOBILE_MAX_DPR] : [1, MAX_DPR];
+  const shadowsEnabled = !isMobile && tuning.enableAccumulativeShadows;
+  const cameraZoom = isMobile ? MOBILE_CAMERA_ZOOM : CAMERA_ZOOM;
+
+  useEffect(() => {
+    if (!performanceFallback) return;
+    onFallback?.();
+  }, [onFallback, performanceFallback]);
 
   return (
     <div className="sunder-wordmark-canvas">
       <Canvas
-        shadows={ENABLE_ACCUMULATIVE_SHADOWS}
+        shadows={shadowsEnabled}
         aria-hidden="true"
         orthographic
-        camera={{ position: CAMERA_POSITION, zoom: CAMERA_ZOOM }}
-        dpr={[1, MAX_DPR]}
+        camera={{ position: CAMERA_POSITION, zoom: cameraZoom }}
+        dpr={dpr}
         gl={{
           antialias: true,
           alpha: false,
           powerPreference: 'high-performance',
           preserveDrawingBuffer: DEV_TUNING_ENABLED,
         }}
-        onCreated={() => {
-          if (didSignalReady.current) return;
-          didSignalReady.current = true;
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => onReady?.());
-          });
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener(
+            'webglcontextlost',
+            () => {
+              setPerformanceFallback(true);
+            },
+            { once: true },
+          );
         }}
       >
-        {shouldRenderScene && <Scene key={themeName} tuning={tuning} />}
+        {shouldRenderScene && (
+          <Scene
+            key={themeName}
+            tuning={tuning}
+            isMobile={isMobile}
+            onReady={onReady}
+            onFallback={() => setPerformanceFallback(true)}
+          />
+        )}
       </Canvas>
       {DevTuningPanel && (
         <DevTuningPanel defaults={tuningDefaults} themeName={themeName} onChange={setTuningValues} />

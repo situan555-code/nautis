@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import {
   HERO_RENDER_WHEN_VISIBLE_ONLY,
   MOBILE_ENABLE_3D,
+  REDUCED_MOTION_DISABLE_ANIMATION,
   SunderWordmarkScene,
 } from '../../components/three/SunderWordmarkScene.jsx';
 
@@ -29,17 +30,39 @@ export function initSunderWordmarkHero() {
   }
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const root = createRoot(mount);
+  if (REDUCED_MOTION_DISABLE_ANIMATION && reducedMotion) {
+    mount.dataset.sceneReady = 'false';
+    return Promise.resolve(false);
+  }
+
+  let sceneRoot = mount.querySelector(':scope > .sunder-wordmark-root');
+  if (!sceneRoot) {
+    sceneRoot = document.createElement('div');
+    sceneRoot.className = 'sunder-wordmark-root';
+    mount.prepend(sceneRoot);
+  }
+
+  const root = createRoot(sceneRoot);
   let heroInView = true;
   let documentIsVisible = document.visibilityState === 'visible';
   let resolveReady;
+  let readySettled = false;
   const readyPromise = new Promise((resolve) => {
     resolveReady = resolve;
   });
 
   const markSceneReady = () => {
+    if (readySettled) return;
+    readySettled = true;
     mount.dataset.sceneReady = 'true';
     resolveReady(true);
+  };
+
+  const keepFallback = () => {
+    mount.dataset.sceneReady = 'false';
+    if (readySettled) return;
+    readySettled = true;
+    resolveReady(false);
   };
 
   const updateScrollBlend = () => {
@@ -52,7 +75,15 @@ export function initSunderWordmarkHero() {
 
   const render = () => {
     const isVisible = !HERO_RENDER_WHEN_VISIBLE_ONLY || (heroInView && documentIsVisible);
-    root.render(React.createElement(SunderWordmarkScene, { isVisible, reducedMotion, onReady: markSceneReady }));
+    root.render(
+      React.createElement(SunderWordmarkScene, {
+        isVisible,
+        isMobile,
+        reducedMotion,
+        onReady: markSceneReady,
+        onFallback: keepFallback,
+      }),
+    );
   };
 
   const handleDocumentVisibility = () => {
