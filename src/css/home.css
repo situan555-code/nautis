@@ -98,6 +98,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: 76svh;
+  }
+
   .hero__scene {
     cursor: default;
   }

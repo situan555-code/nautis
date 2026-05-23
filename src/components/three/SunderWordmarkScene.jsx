@@ -26,6 +26,7 @@ export const MOBILE_ENABLE_POSTPROCESSING = false;
 export const MOBILE_ENABLE_INTERACTION = false;
 export const MOBILE_GRID_CROSS_EVERY = 2;
 export const MOBILE_CAMERA_ZOOM = 22;
+export const MOBILE_WORDMARK_ROTATION_RANGE = 0.08;
 export const REDUCED_MOTION_DISABLE_ANIMATION = true;
 export const HERO_RENDER_WHEN_VISIBLE_ONLY = true;
 export const TARGET_FPS_MODE = 'on-demand';
@@ -245,6 +246,7 @@ function getMobileTuning(tuning) {
     enablePostprocessing: MOBILE_ENABLE_POSTPROCESSING,
     enableInteraction: MOBILE_ENABLE_INTERACTION,
     gridCrossEvery: MOBILE_GRID_CROSS_EVERY,
+    gridOpacity: tuning.gridOpacity * 0.58,
   };
 }
 
@@ -309,6 +311,28 @@ function EpoxyMaterial({ tuning, backgroundTexture }) {
   return <MeshTransmissionMaterial {...materialProps} />;
 }
 
+function MobileAcrylicMaterial({ tuning }) {
+  return (
+    <meshPhysicalMaterial
+      color="#f06bff"
+      emissive="#211044"
+      emissiveIntensity={0.24}
+      metalness={0.22}
+      roughness={0.2}
+      clearcoat={0.95}
+      clearcoatRoughness={0.14}
+      reflectivity={0.88}
+      ior={1.45}
+      sheen={0.8}
+      sheenColor="#6ad7ff"
+      iridescence={0.7}
+      iridescenceIOR={1.35}
+      specularIntensity={1}
+      specularColor="#b7e8ff"
+    />
+  );
+}
+
 function Grid({ tuning }) {
   const crossIndices = useMemo(
     () =>
@@ -351,11 +375,30 @@ function Grid({ tuning }) {
   );
 }
 
-function Wordmark({ tuning, backgroundTexture }) {
+function Wordmark({ tuning, backgroundTexture, isMobile = false }) {
+  const wordmarkGroup = useRef(null);
+  const mobilePointerTarget = useRef(0);
+
+  useEffect(() => {
+    if (!isMobile) return undefined;
+
+    const handlePointerMove = (event) => {
+      mobilePointerTarget.current = ((event.clientX / Math.max(window.innerWidth, 1)) - 0.5) * MOBILE_WORDMARK_ROTATION_RANGE;
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { passive: true });
+    return () => window.removeEventListener('pointermove', handlePointerMove);
+  }, [isMobile]);
+
+  useFrame(() => {
+    if (!isMobile || !wordmarkGroup.current) return;
+    wordmarkGroup.current.rotation.y += (mobilePointerTarget.current - wordmarkGroup.current.rotation.y) * 0.08;
+  });
+
   return (
     <>
       <Center scale={WORDMARK_CENTER_SCALE} front top position={tuning.wordPosition} rotation={tuning.wordRotation}>
-        <group scale={tuning.wordScale}>
+        <group ref={wordmarkGroup} scale={tuning.wordScale}>
           <Text3D
             castShadow
             bevelEnabled
@@ -369,17 +412,25 @@ function Wordmark({ tuning, backgroundTexture }) {
             bevelThickness={TEXT_BEVEL_THICKNESS}
           >
             {WORD_TEXT}
-            <EpoxyMaterial
-              tuning={tuning}
-              backgroundTexture={backgroundTexture}
-            />
+            {isMobile ? (
+              <MobileAcrylicMaterial tuning={tuning} />
+            ) : (
+              <EpoxyMaterial
+                tuning={tuning}
+                backgroundTexture={backgroundTexture}
+              />
+            )}
           </Text3D>
           <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
             <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
-            <EpoxyMaterial
-              tuning={tuning}
-              backgroundTexture={backgroundTexture}
-            />
+            {isMobile ? (
+              <MobileAcrylicMaterial tuning={tuning} />
+            ) : (
+              <EpoxyMaterial
+                tuning={tuning}
+                backgroundTexture={backgroundTexture}
+              />
+            )}
           </mesh>
         </group>
       </Center>
@@ -429,13 +480,25 @@ function MobilePerformanceGuard({ onFallback }) {
   return null;
 }
 
+function MobileAccentLights() {
+  return (
+    <>
+      <ambientLight intensity={1.8} />
+      <directionalLight color="#ffffff" intensity={3.2} position={[4, 8, 6]} />
+      <pointLight color="#ff6bdc" intensity={32} distance={18} position={[-5, 4, 5]} />
+      <pointLight color="#5ee7ff" intensity={22} distance={18} position={[6, 3, -2]} />
+    </>
+  );
+}
+
 function Scene({ tuning, isMobile, onReady, onFallback }) {
   return (
     <>
       <color attach="background" args={[tuning.backgroundColor]} />
-      {isMobile ? <Wordmark tuning={tuning} /> : <DesktopWordmark tuning={tuning} />}
+      {isMobile ? <Wordmark tuning={tuning} isMobile /> : <DesktopWordmark tuning={tuning} />}
       <SceneReadySignal onReady={onReady} />
       {isMobile && <MobilePerformanceGuard onFallback={onFallback} />}
+      {isMobile && <MobileAccentLights />}
       <OrbitControls
         autoRotate={tuning.autoRotate}
         zoomSpeed={0.25}
