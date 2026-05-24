@@ -18,11 +18,25 @@ export function initNav() {
   const toggle = document.getElementById('nav-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   if (toggle && mobileMenu) {
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.classList.toggle('is-open');
+    const setMenuOpen = (isOpen) => {
+      toggle.classList.toggle('is-open', isOpen);
       mobileMenu.classList.toggle('is-open', isOpen);
       toggle.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.body.classList.toggle('nav-open', isOpen);
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuOpen(!toggle.classList.contains('is-open'));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
     });
   }
 }

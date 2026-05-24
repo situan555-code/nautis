@@ -35,17 +35,18 @@
   </div>
   <div class="nav__mobile-menu" id="mobile-menu">
     <a href="/index.html" class="nav__mobile-link">Home</a>
-    <div style="padding-left: var(--space-4); display: flex; flex-direction: column;">
-      <a href="/services-creative.html" class="nav__mobile-link" style="font-size: var(--text-lg); border:none; padding: var(--space-2) 0;">↳ Sunder Creative</a>
-      <span class="nav__mobile-link nav__mobile-link--disabled" aria-disabled="true" style="font-size: var(--text-lg); border:none; padding: var(--space-2) 0;">↳ Sunder Advisory (Coming Soon)</span>
-      <span class="nav__mobile-link nav__mobile-link--disabled" aria-disabled="true" style="font-size: var(--text-lg); border:none; padding: var(--space-2) 0;">↳ Sunder Technology (Coming Soon)</span>
+    <div class="nav__mobile-group" aria-label="Services">
+      <span class="nav__mobile-section-label">Services</span>
+      <a href="/services-creative.html" class="nav__mobile-link nav__mobile-link--sub">Sunder Creative</a>
+      <span class="nav__mobile-link nav__mobile-link--sub nav__mobile-link--disabled" aria-disabled="true">Sunder Advisory <span>Coming Soon</span></span>
+      <span class="nav__mobile-link nav__mobile-link--sub nav__mobile-link--disabled" aria-disabled="true">Sunder Technology <span>Coming Soon</span></span>
     </div>
     <a href="/case-studies.html" class="nav__mobile-link">Case Studies</a>
     <a href="/about.html" class="nav__mobile-link">About</a>
     <a href="/engagement.html" class="nav__mobile-link">How We Work</a>
     <a href="/insights.html" class="nav__mobile-link">Insights</a>
     <button class="nav__mobile-link nav__mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">Theme</button>
-    <a href="/contact.html" class="btn btn--primary" style="margin-top: var(--space-4); text-align: center; justify-content: center;">Start a Project</a>
+    <a href="/contact.html" class="btn btn--primary nav__mobile-cta">Start a Project</a>
   </div>
 </nav>
 
