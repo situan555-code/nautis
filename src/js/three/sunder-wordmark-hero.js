@@ -98,7 +98,7 @@ export function initSunderWordmarkHero() {
         heroInView = entry.isIntersecting;
         render();
       },
-      { rootMargin: '160px 0px' },
+      { rootMargin: '0px 0px -20% 0px' },
     );
 
     visibilityObserver.observe(mount);

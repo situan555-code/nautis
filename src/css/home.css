@@ -107,11 +107,7 @@
   }
 
   .hero__scene:active {
-    cursor: default;
-  }
-
-  .sunder-wordmark-canvas canvas {
-    pointer-events: none;
+    cursor: grabbing;
   }
 }
 
