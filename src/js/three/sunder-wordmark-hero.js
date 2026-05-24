@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import {
   HERO_RENDER_WHEN_VISIBLE_ONLY,
   MOBILE_ENABLE_3D,
+  MOBILE_HERO_MEDIA_QUERY,
   REDUCED_MOTION_DISABLE_ANIMATION,
   SunderWordmarkScene,
 } from '../../components/three/SunderWordmarkScene.jsx';
@@ -23,7 +24,7 @@ export function initSunderWordmarkHero() {
     return Promise.resolve(false);
   }
 
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isMobile = window.matchMedia(MOBILE_HERO_MEDIA_QUERY).matches;
   if (isMobile && !MOBILE_ENABLE_3D) {
     mount.dataset.sceneReady = 'false';
     return Promise.resolve(false);

@@ -97,7 +97,7 @@
   opacity: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1180px) {
   .hero {
     min-height: 76svh;
   }

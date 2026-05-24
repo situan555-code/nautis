@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { AccumulativeShadows, RandomizedLight } from '@react-three/drei/core/AccumulativeShadows.js';
 import { Center } from '@react-three/drei/core/Center.js';
 import { Environment } from '@react-three/drei/core/Environment.js';
@@ -16,17 +16,13 @@ export const ENABLE_POSTPROCESSING = false;
 export const ENABLE_TRANSMISSION = true;
 export const MOBILE_ENABLE_3D = true;
 export const MOBILE_MAX_DPR = 1;
-export const MOBILE_MATERIAL_SAMPLES = 4;
-export const MOBILE_MATERIAL_RESOLUTION = 256;
-export const MOBILE_CHROMATIC_ABERRATION = 0.75;
-export const MOBILE_DISTORTION = 0.08;
-export const MOBILE_TEMPORAL_DISTORTION = 0;
 export const MOBILE_ENABLE_ACCUMULATIVE_SHADOWS = false;
 export const MOBILE_ENABLE_POSTPROCESSING = false;
 export const MOBILE_ENABLE_INTERACTION = false;
-export const MOBILE_GRID_CROSS_EVERY = 2;
+export const MOBILE_HERO_MEDIA_QUERY = '(max-width: 1180px)';
 export const MOBILE_CAMERA_ZOOM = 22;
-export const MOBILE_WORDMARK_ROTATION_RANGE = 0.08;
+export const MOBILE_CAMERA_MIN_ZOOM = 18;
+export const MOBILE_CAMERA_MAX_ZOOM = 48;
 export const REDUCED_MOTION_DISABLE_ANIMATION = true;
 export const HERO_RENDER_WHEN_VISIBLE_ONLY = true;
 export const TARGET_FPS_MODE = 'on-demand';
@@ -58,6 +54,7 @@ export const PERIOD_OFFSET_Z = 0.12;
 
 export const CAMERA_POSITION = [10, 20, 20];
 export const CAMERA_ZOOM = 80;
+export const CAMERA_WIDTH_RATIO = 0.041;
 export const CAMERA_MIN_ZOOM = 40;
 export const CAMERA_MAX_ZOOM = 140;
 
@@ -237,16 +234,9 @@ function resolveTuning(themeName, values) {
 function getMobileTuning(tuning) {
   return {
     ...tuning,
-    materialSamples: MOBILE_MATERIAL_SAMPLES,
-    materialResolution: MOBILE_MATERIAL_RESOLUTION,
-    materialChromaticAberration: MOBILE_CHROMATIC_ABERRATION,
-    materialDistortion: MOBILE_DISTORTION,
-    materialTemporalDistortion: MOBILE_TEMPORAL_DISTORTION,
     enableAccumulativeShadows: MOBILE_ENABLE_ACCUMULATIVE_SHADOWS,
     enablePostprocessing: MOBILE_ENABLE_POSTPROCESSING,
     enableInteraction: MOBILE_ENABLE_INTERACTION,
-    gridCrossEvery: MOBILE_GRID_CROSS_EVERY,
-    gridOpacity: tuning.gridOpacity * 0.58,
   };
 }
 
@@ -311,28 +301,6 @@ function EpoxyMaterial({ tuning, backgroundTexture }) {
   return <MeshTransmissionMaterial {...materialProps} />;
 }
 
-function MobileAcrylicMaterial({ tuning }) {
-  return (
-    <meshPhysicalMaterial
-      color="#f06bff"
-      emissive="#211044"
-      emissiveIntensity={0.24}
-      metalness={0.22}
-      roughness={0.2}
-      clearcoat={0.95}
-      clearcoatRoughness={0.14}
-      reflectivity={0.88}
-      ior={1.45}
-      sheen={0.8}
-      sheenColor="#6ad7ff"
-      iridescence={0.7}
-      iridescenceIOR={1.35}
-      specularIntensity={1}
-      specularColor="#b7e8ff"
-    />
-  );
-}
-
 function Grid({ tuning }) {
   const crossIndices = useMemo(
     () =>
@@ -375,30 +343,11 @@ function Grid({ tuning }) {
   );
 }
 
-function Wordmark({ tuning, backgroundTexture, isMobile = false }) {
-  const wordmarkGroup = useRef(null);
-  const mobilePointerTarget = useRef(0);
-
-  useEffect(() => {
-    if (!isMobile) return undefined;
-
-    const handlePointerMove = (event) => {
-      mobilePointerTarget.current = ((event.clientX / Math.max(window.innerWidth, 1)) - 0.5) * MOBILE_WORDMARK_ROTATION_RANGE;
-    };
-
-    window.addEventListener('pointermove', handlePointerMove, { passive: true });
-    return () => window.removeEventListener('pointermove', handlePointerMove);
-  }, [isMobile]);
-
-  useFrame(() => {
-    if (!isMobile || !wordmarkGroup.current) return;
-    wordmarkGroup.current.rotation.y += (mobilePointerTarget.current - wordmarkGroup.current.rotation.y) * 0.08;
-  });
-
+function Wordmark({ tuning, backgroundTexture }) {
   return (
     <>
       <Center scale={WORDMARK_CENTER_SCALE} front top position={tuning.wordPosition} rotation={tuning.wordRotation}>
-        <group ref={wordmarkGroup} scale={tuning.wordScale}>
+        <group scale={tuning.wordScale}>
           <Text3D
             castShadow
             bevelEnabled
@@ -412,25 +361,11 @@ function Wordmark({ tuning, backgroundTexture, isMobile = false }) {
             bevelThickness={TEXT_BEVEL_THICKNESS}
           >
             {WORD_TEXT}
-            {isMobile ? (
-              <MobileAcrylicMaterial tuning={tuning} />
-            ) : (
-              <EpoxyMaterial
-                tuning={tuning}
-                backgroundTexture={backgroundTexture}
-              />
-            )}
+            <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
           </Text3D>
           <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
             <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
-            {isMobile ? (
-              <MobileAcrylicMaterial tuning={tuning} />
-            ) : (
-              <EpoxyMaterial
-                tuning={tuning}
-                backgroundTexture={backgroundTexture}
-              />
-            )}
+            <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
           </mesh>
         </group>
       </Center>
@@ -442,6 +377,19 @@ function Wordmark({ tuning, backgroundTexture, isMobile = false }) {
 function DesktopWordmark({ tuning }) {
   const backgroundTexture = useLoader(RGBELoader, HDR_BACKGROUND_URL);
   return <Wordmark tuning={tuning} backgroundTexture={USE_EXTERNAL_HDR_BACKGROUND ? backgroundTexture : undefined} />;
+}
+
+function ResponsiveCamera({ isMobile }) {
+  const { camera, size } = useThree();
+
+  useEffect(() => {
+    const minZoom = isMobile ? MOBILE_CAMERA_MIN_ZOOM : CAMERA_MIN_ZOOM;
+    const maxZoom = isMobile ? MOBILE_CAMERA_MAX_ZOOM : CAMERA_MAX_ZOOM;
+    camera.zoom = Math.min(Math.max(size.width * CAMERA_WIDTH_RATIO, minZoom), maxZoom);
+    camera.updateProjectionMatrix();
+  }, [camera, isMobile, size.width]);
+
+  return null;
 }
 
 function SceneReadySignal({ onReady }) {
@@ -480,25 +428,13 @@ function MobilePerformanceGuard({ onFallback }) {
   return null;
 }
 
-function MobileAccentLights() {
-  return (
-    <>
-      <ambientLight intensity={1.8} />
-      <directionalLight color="#ffffff" intensity={3.2} position={[4, 8, 6]} />
-      <pointLight color="#ff6bdc" intensity={32} distance={18} position={[-5, 4, 5]} />
-      <pointLight color="#5ee7ff" intensity={22} distance={18} position={[6, 3, -2]} />
-    </>
-  );
-}
-
 function Scene({ tuning, isMobile, onReady, onFallback }) {
   return (
     <>
       <color attach="background" args={[tuning.backgroundColor]} />
-      {isMobile ? <Wordmark tuning={tuning} isMobile /> : <DesktopWordmark tuning={tuning} />}
+      <DesktopWordmark tuning={tuning} />
       <SceneReadySignal onReady={onReady} />
       {isMobile && <MobilePerformanceGuard onFallback={onFallback} />}
-      {isMobile && <MobileAccentLights />}
       <OrbitControls
         autoRotate={tuning.autoRotate}
         zoomSpeed={0.25}
@@ -561,7 +497,7 @@ function Scene({ tuning, isMobile, onReady, onFallback }) {
           colorBlend={5}
           toneMapped
           alphaTest={0.9}
-          opacity={1}
+          opacity={0.5}
           scale={30}
           position={[0, -1.01, 0]}
         >
@@ -665,6 +601,7 @@ export function SunderWordmarkScene({ isVisible = true, isMobile = false, reduce
           );
         }}
       >
+        <ResponsiveCamera isMobile={isMobile} />
         {shouldRenderScene && (
           <Scene
             tuning={tuning}
