@@ -14,13 +14,15 @@
       "id": "services",
       "label": "Services",
       "dropdown": [
-        { "id": "advisory", "label": "Sunder Advisory", "href": "/services-advisory.html" },
-        { "id": "technology", "label": "Sunder Technology", "href": "/services-technology.html" },
+        { "id": "advisory", "label": "Sunder Advisory", "disabled": true },
+        { "id": "technology", "label": "Sunder Technology", "disabled": true },
         { "id": "creative", "label": "Sunder Creative", "href": "/services-creative.html" }
       ]
     },
+    { "id": "case-studies", "label": "Case Studies", "disabled": true },
     { "id": "about",        "label": "About",        "href": "/about.html" },
-    { "id": "engagement",   "label": "How We Work",   "href": "/engagement.html" }
+    { "id": "engagement",   "label": "How We Work",   "disabled": true },
+    { "id": "insights",     "label": "Insights",      "disabled": true }
   ],
   "services": [
     { "id": "web-design", "label": "Web Design" },

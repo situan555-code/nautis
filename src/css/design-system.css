@@ -453,6 +453,13 @@
     color: var(--color-text-primary);
   }
 
+  .nav__link--disabled,
+  .nav__link--disabled:hover,
+  .nav__link--disabled.is-active {
+    color: var(--color-text-muted);
+    cursor: default;
+  }
+
   .nav__link::after {
     content: '';
     position: absolute;
@@ -470,6 +477,10 @@
   .nav__link.is-active::after {
     transform: scaleX(1);
     transform-origin: left;
+  }
+
+  .nav__link--disabled::after {
+    display: none;
   }
 
   /* Dropdown Styles */
@@ -742,6 +753,7 @@
   .nav__mobile-link--disabled {
     color: var(--color-text-muted);
     cursor: default;
+    pointer-events: none;
   }
 
   .nav__mobile-link--disabled:hover {

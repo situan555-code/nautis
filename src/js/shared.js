@@ -10,8 +10,10 @@ function createNav(activePage) {
   const pages = [
     { id: 'home',        label: 'Home',        href: 'index.html' },
     { id: 'services',    label: 'Services',    href: 'services.html' },
+    { id: 'case-studies', label: 'Case Studies', disabled: true },
     { id: 'about',       label: 'About',       href: 'about.html' },
-    { id: 'engagement',  label: 'How We Work',  href: 'engagement.html' },
+    { id: 'engagement',  label: 'How We Work', disabled: true },
+    { id: 'insights',    label: 'Insights', disabled: true },
   ];
 
   const nav = document.createElement('nav');
@@ -20,13 +22,19 @@ function createNav(activePage) {
   nav.setAttribute('role', 'navigation');
   nav.setAttribute('aria-label', 'Main navigation');
 
-  const linksHTML = pages.map(p =>
-    `<li><a href="${p.href}" class="nav__link ${p.id === activePage ? 'is-active' : ''}">${p.label}</a></li>`
-  ).join('');
+  const linksHTML = pages.map((p) => {
+    if (p.disabled) {
+      return `<li><span class="nav__link nav__link--disabled" aria-disabled="true">${p.label}</span></li>`;
+    }
+    return `<li><a href="${p.href}" class="nav__link ${p.id === activePage ? 'is-active' : ''}">${p.label}</a></li>`;
+  }).join('');
 
-  const mobileLinksHTML = pages.map(p =>
-    `<a href="${p.href}" class="nav__mobile-link">${p.label}</a>`
-  ).join('');
+  const mobileLinksHTML = pages.map((p) => {
+    if (p.disabled) {
+      return `<span class="nav__mobile-link nav__mobile-link--disabled" aria-disabled="true">${p.label}</span>`;
+    }
+    return `<a href="${p.href}" class="nav__mobile-link">${p.label}</a>`;
+  }).join('');
 
   nav.innerHTML = `
     <div class="nav__inner">
@@ -99,7 +107,6 @@ function createFooter() {
           <p class="footer__col-title">Company</p>
           <ul class="footer__links">
             <li><a href="about.html">About</a></li>
-            <li><a href="engagement.html">How We Work</a></li>
           </ul>
         </div>
         <div>
