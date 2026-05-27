@@ -19,10 +19,8 @@
         { "id": "creative", "label": "Sunder Creative", "href": "/services-creative.html" }
       ]
     },
-    { "id": "case-studies",  "label": "Case Studies",  "href": "/case-studies.html" },
     { "id": "about",        "label": "About",        "href": "/about.html" },
-    { "id": "engagement",   "label": "How We Work",   "href": "/engagement.html" },
-    { "id": "insights",     "label": "Insights",     "href": "/insights.html" }
+    { "id": "engagement",   "label": "How We Work",   "href": "/engagement.html" }
   ],
   "services": [
     { "id": "web-design", "label": "Web Design" },

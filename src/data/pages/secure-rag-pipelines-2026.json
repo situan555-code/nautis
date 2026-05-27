@@ -1,9 +1,0 @@
-{
-  "slug": "secure-rag-pipelines-2026",
-  "title": "Secure RAG Pipelines 2026: Protecting Intellectual Property in the Era of LLMs",
-  "category": "AI",
-  "readTime": "10 min read",
-  "heroImage": "/hero/secure-rag-pipelines-2026.avif",
-  "description": "RAG is a powerful AI pattern, but insecure deployments risk IP theft. Learn the 6-stage secure pipeline for enterprise RAG systems in 2026.",
-  "pageSchema": null
-}

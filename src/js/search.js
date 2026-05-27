@@ -51,7 +51,7 @@ export async function initSearch() {
 
   const renderResults = (query) => {
     if (!query.trim()) {
-      searchResultsContainer.innerHTML = '<div class="search-empty-state"><p>Type to search services, case studies, and insights.</p></div>';
+      searchResultsContainer.innerHTML = '<div class="search-empty-state"><p>Type to search services and local capabilities.</p></div>';
       return;
     }
 

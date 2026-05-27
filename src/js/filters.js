@@ -1,7 +1,7 @@
 /**
  * Filter Component
  *
- * Handles category filtering for grids (e.g., Case Studies, Insights).
+ * Handles category filtering for reusable card grids.
  * Expects .filter-tab buttons and .case-card elements.
  */
 

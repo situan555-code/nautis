@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const sourceDir = path.resolve(__dirname, '../asset-source/icons');
-const outDir = path.resolve(__dirname, '../public/case-studies/icons');
+const outDir = path.resolve(__dirname, '../archived-content/case-studies/assets/icons');
 
 const targets = [
   { file: 'icon_studiolight.png', out: 'icon_studiolight.png', bg: 'green', cropText: false },

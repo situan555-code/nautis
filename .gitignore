@@ -46,6 +46,8 @@ public/case-studies/*.ply
 public/case-studies/*.stl
 public/case-studies/*.mp4
 public/case-studies/*.mov
+archived-content/case-studies/assets/US-62.ply
+archived-content/case-studies/assets/kiosk.stl
 
 # Isolated components
 nautis-portfolio/

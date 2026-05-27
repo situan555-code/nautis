@@ -10,10 +10,8 @@ function createNav(activePage) {
   const pages = [
     { id: 'home',        label: 'Home',        href: 'index.html' },
     { id: 'services',    label: 'Services',    href: 'services.html' },
-    { id: 'case-studies', label: 'Case Studies', href: 'case-studies.html' },
     { id: 'about',       label: 'About',       href: 'about.html' },
     { id: 'engagement',  label: 'How We Work',  href: 'engagement.html' },
-    { id: 'insights',    label: 'Insights',    href: 'insights.html' },
   ];
 
   const nav = document.createElement('nav');
@@ -101,9 +99,7 @@ function createFooter() {
           <p class="footer__col-title">Company</p>
           <ul class="footer__links">
             <li><a href="about.html">About</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
             <li><a href="engagement.html">How We Work</a></li>
-            <li><a href="insights.html">Insights</a></li>
           </ul>
         </div>
         <div>

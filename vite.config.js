@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
@@ -10,68 +10,6 @@ const DEFAULT_DESCRIPTION =
   'Sunder & Co. builds websites, branding systems, local SEO foundations, content, and AI search visibility systems for small and mid-sized businesses in New Philadelphia, Dover, Canton, Tuscarawas County, Stark County, and Holmes County, Ohio.';
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
-
-// Dynamic Insight Pages
-const pagesDataDir = resolve(__dirname, 'src/data/pages');
-const insightFiles = readdirSync(pagesDataDir).filter(f => f.endsWith('.json') && !f.startsWith('._'));
-const insightPagesData = insightFiles.map(f => JSON.parse(readFileSync(resolve(pagesDataDir, f), 'utf-8')));
-
-// Only include insight pages that have a corresponding HTML file in src/insights/
-const validInsightPages = insightPagesData.filter(p => {
-  try {
-    return readFileSync(resolve(__dirname, `src/insights/${p.slug}.html`));
-  } catch (e) {
-    console.warn(`⚠️ Warning: Insight page data found for "${p.slug}" but src/insights/${p.slug}.html is missing. Skipping from build.`);
-    return false;
-  }
-});
-
-const insightSlugs = validInsightPages.map(p => p.slug);
-
-const toAbsoluteUrl = (path) => {
-  if (!path) return undefined;
-  return path.startsWith('http') ? path : `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
-};
-
-const createArticleSchema = (page, canonicalUrl) => {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${canonicalUrl}#article`,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': canonicalUrl,
-    },
-    headline: page.title,
-    description: page.description,
-    image: toAbsoluteUrl(page.heroImage),
-    datePublished: '2026-05-01',
-    dateModified: '2026-05-22',
-    articleSection: page.category,
-    publisher: {
-      '@id': `${SITE_URL}/#organization`,
-    },
-  };
-
-  return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
-};
-
-const noindexInsightSlugs = [
-  '3d-motion-commerce-roi-2026',
-  '3d-visualization-roi',
-  'ai-search-moat-beyond-sge',
-  'ai-search-traffic-2026-citation-strategy',
-  'b2b-lead-generation-roi',
-  'brand-consistency-roi-2026',
-  'branding-consistency-revenue-leak-2026',
-  'gbp-41-percent-actions-growth-2026',
-  'interactive-kiosk-roi',
-  'local-seo-roi-backyard-dominance-2026',
-  'real-photography-roi-2026',
-  'shadow-ai-risk-2026',
-  'video-landing-page-conversion-2026',
-  'whale-curve-profitability-analysis',
-];
 
 const localServicePageSlugs = [
   'web-design-new-philadelphia-ohio',
@@ -144,11 +82,6 @@ const corePages = {
     pageDescription: 'AI SEO services for local businesses that want clearer search visibility across Google, maps, and AI-powered discovery systems.',
     pagePath: '/ai-seo-local-business.html',
   },
-  'case-studies': {
-    activePage: 'case-studies',
-    pageTitle: 'Case Studies',
-    pageDescription: 'Selected Sunder & Co. work, prototypes, and examples across web, design, content, and digital systems.',
-  },
   'contact': {
     activePage: 'contact',
     pageTitle: 'Contact',
@@ -159,17 +92,9 @@ const corePages = {
     pageTitle: 'How We Work',
     pageDescription: 'How Sunder & Co. reviews, builds, and supports customer-facing digital systems for growing businesses.',
   },
-  'insights': {
-    activePage: 'insights',
-    pageTitle: 'Insights',
-    pageDescription: 'Sunder & Co. insights on websites, branding, content, local visibility, search, and digital systems.',
-  },
 };
 
-const allPageSlugs = [
-  ...Object.keys(corePages),
-  ...insightSlugs.map(s => `insights/${s}`)
-];
+const allPageSlugs = Object.keys(corePages);
 
 // Build rollup input map
 const input = Object.fromEntries(
@@ -186,25 +111,6 @@ Object.entries(corePages).forEach(([slug, data]) => {
     ...data,
     pagePath,
     canonicalUrl: `${SITE_URL}${pagePath}`,
-  };
-});
-
-// Insight pages context
-validInsightPages.forEach(p => {
-  const pagePath = `/insights/${p.slug}`;
-  const canonicalUrl = `${SITE_URL}${pagePath}`;
-  pageContext[`/insights/${p.slug}.html`] = {
-    activePage: 'insights',
-    category: p.category,
-    readTime: p.readTime,
-    pageTitle: p.title,
-    pageDescription: p.description,
-    pagePath,
-    canonicalUrl,
-    heroImage: p.heroImage,
-    ogType: 'article',
-    noindex: noindexInsightSlugs.includes(p.slug),
-    pageSchema: createArticleSchema(p, canonicalUrl),
   };
 });
 
@@ -239,12 +145,6 @@ export default defineConfig({
           sitemap = sitemap.replace(
             new RegExp(`<loc>${SITE_URL}/${slug}</loc>`, 'g'),
             `<loc>${SITE_URL}/${slug}.html</loc>`,
-          );
-        });
-        noindexInsightSlugs.forEach((slug) => {
-          sitemap = sitemap.replace(
-            new RegExp(`\\s*<url>\\s*<loc>${SITE_URL}/insights/${slug}</loc>[\\s\\S]*?<\\/url>`, 'g'),
-            '',
           );
         });
         writeFileSync(sitemapPath, sitemap);
