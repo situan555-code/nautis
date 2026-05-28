@@ -7,7 +7,7 @@ import Sitemap from 'vite-plugin-sitemap';
 
 const SITE_URL = 'https://www.sunderandco.com';
 const DEFAULT_DESCRIPTION =
-  'Sunder & Co. builds clean websites, brand systems, local visibility foundations, content, and lead-flow improvements for Ohio businesses and regional operators that have outgrown how they show up online.';
+  'Websites, brand systems, local visibility, and follow-up improvements for businesses that have outgrown the way they show up online.';
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
