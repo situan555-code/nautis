@@ -91,7 +91,7 @@ function createFooter() {
           <a href="index.html" class="nav__logo" style="font-size: var(--text-2xl);">
             <span></span>Sunder & Co.<span></span>
           </a>
-          <p>Websites, branding, content, local visibility, and follow-up systems for businesses that need a stronger first impression.</p>
+          <p>Websites, brand systems, local visibility, content, and follow-up improvements for businesses that need a stronger first impression.</p>
         </div>
         <div>
           <p class="footer__col-title">Services</p>

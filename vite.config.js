@@ -7,7 +7,7 @@ import Sitemap from 'vite-plugin-sitemap';
 
 const SITE_URL = 'https://www.sunderandco.com';
 const DEFAULT_DESCRIPTION =
-  'Sunder & Co. builds websites, branding systems, local SEO foundations, content, and AI search visibility systems for small and mid-sized businesses in New Philadelphia, Dover, Canton, Tuscarawas County, Stark County, and Holmes County, Ohio.';
+  'Sunder & Co. builds clean websites, brand systems, local visibility foundations, content, and lead-flow improvements for Ohio businesses and regional operators that have outgrown how they show up online.';
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
@@ -23,7 +23,7 @@ const localServicePageSlugs = [
 const corePages = {
   'index': {
     activePage: 'home',
-    pageTitle: 'Websites, Branding, Local SEO & AI Search Visibility',
+    pageTitle: 'Websites, Brand Systems & Local Visibility',
     pageDescription: DEFAULT_DESCRIPTION,
   },
   'about': {
