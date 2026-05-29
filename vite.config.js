@@ -7,7 +7,7 @@ import Sitemap from 'vite-plugin-sitemap';
 
 const SITE_URL = 'https://www.sunderandco.com';
 const DEFAULT_DESCRIPTION =
-  'Websites, brand systems, local visibility, and follow-up improvements for businesses that have outgrown the way they show up online.';
+  'Websites, brand systems, local visibility, and follow-up improvements for businesses whose first impression has fallen behind the work they actually do.';
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
