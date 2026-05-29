@@ -445,7 +445,7 @@ html[data-theme='dark'] .dc-audience-card {
 }
 
 .dc-about__copy {
-  max-width: 520px;
+  max-width: 560px;
 }
 
 .dc-about__copy p {
@@ -479,7 +479,7 @@ html[data-theme='dark'] .dc-audience-card {
 }
 
 .dc-process__copy p {
-  max-width: 400px;
+  max-width: 520px;
   color: #888;
   font-size: 0.9rem;
   line-height: 1.65;
@@ -553,7 +553,7 @@ html[data-theme='dark'] .dc-audience-card {
 }
 
 .dc-final-cta__content p {
-  max-width: 420px;
+  max-width: 560px;
   margin-bottom: 0;
   color: #666;
   font-size: 0.95rem;
