@@ -8,180 +8,107 @@
 
   {{> nav activePage="contact" }}
 
-  <!-- Page Hero -->
-  <section class="page-hero" id="contact-hero">
-    <div class="glow-orb glow-orb--cyan" style="width:400px;height:400px;top:-10%;left:40%;"></div>
-    <div class="container" style="position:relative;z-index:1;">
-      <span class="label">Contact</span>
-      <h1>Start the conversation.</h1>
-      <p class="lead">No sales pitch. No obligation. Just a clear-eyed look at where your revenue architecture stands.</p>
-    </div>
-  </section>
+  <main id="main-content" class="support-page">
+    <section class="support-hero" id="contact-hero">
+      <div class="support-hero__grid" aria-hidden="true"></div>
+      <div class="container">
+        <div class="support-hero__layout">
+          <div class="support-hero__copy reveal">
+            <span class="label">Contact Us</span>
+            <h1>We are here to help you.</h1>
+            <p>Tell us what needs to change: the website, the brand, the search presence, the content, the follow-up, or the first impression people get before they reach out.</p>
+            <a href="#contact-form-section" class="btn btn--primary btn--lg">Send a Message</a>
+          </div>
 
-  <!-- Contact Form -->
-  <section class="section" id="contact-form-section">
-    <div class="container">
-      <div class="contact-grid">
+          <div class="support-image-stack reveal reveal--delay-1" aria-label="Sunder project placeholders">
+            <div class="support-image-card support-image-card--wide">
+              <span>Website audit</span>
+            </div>
+            <div class="support-image-card support-image-card--tall">
+              <span>Brand system</span>
+            </div>
+            <div class="support-image-card">
+              <span>Local visibility</span>
+            </div>
+            <div class="support-image-card support-image-card--accent">
+              <span>Follow-up flow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Form -->
-        <div class="reveal">
-          <h2 style="margin-bottom:var(--space-2);">Tell us about your company.</h2>
-          <p style="margin-bottom:var(--space-8);">We'll respond within one business day with next steps or a calendar link.</p>
+    <section class="support-contact section" id="contact-form-section">
+      <div class="container">
+        <div class="support-contact__layout">
+          <div class="support-contact__intro reveal">
+            <span class="label">Start Here</span>
+            <h2>Send the rough version.</h2>
+            <p>You do not need a polished brief. A few honest notes about what feels behind, broken, scattered, or unclear is enough to start the conversation.</p>
+          </div>
 
-          <form id="contact-form" action="#" method="post">
-            <div class="grid grid--2" style="gap:var(--space-4);">
+          <form id="contact-form" class="support-form reveal reveal--delay-1" action="#" method="post">
+            <div class="support-form__row">
               <div class="form-group">
                 <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required placeholder="John">
+                <input type="text" id="firstName" name="firstName" required placeholder="First name">
               </div>
               <div class="form-group">
                 <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
+                <input type="text" id="lastName" name="lastName" required placeholder="Last name">
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="email">Work Email *</label>
-              <input type="email" id="email" name="email" required placeholder="john@company.com">
-            </div>
-
-            <div class="form-group">
-              <label for="company">Company Name *</label>
-              <input type="text" id="company" name="company" required placeholder="Acme Manufacturing">
-            </div>
-
-            <div class="grid grid--2" style="gap:var(--space-4);">
+            <div class="support-form__row">
               <div class="form-group">
-                <label for="phone">Phone (optional)</label>
-                <input type="tel" id="phone" name="phone" placeholder="Phone number">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="you@company.com">
               </div>
               <div class="form-group">
-                <label style="margin-bottom: var(--space-3); display: block;">What are you interested in? (Select all that apply)</label>
-                <div class="checkbox-group" style="display: grid; gap: var(--space-2);">
-                  <label class="checkbox-container" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-2) var(--space-3); background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.2s;">
-                    <input type="checkbox" name="interest" value="advisory" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
-                    <span>Sunder Advisory <small style="display: block; opacity: 0.6; font-size: 0.8em;">RevOps, CRM, Strategy</small></span>
-                  </label>
-                  <label class="checkbox-container" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-2) var(--space-3); background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.2s;">
-                    <input type="checkbox" name="interest" value="technology" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
-                    <span>Sunder Technology <small style="display: block; opacity: 0.6; font-size: 0.8em;">Managed IT, Cyber, AI</small></span>
-                  </label>
-                  <label class="checkbox-container" style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-2) var(--space-3); background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.2s;">
-                    <input type="checkbox" name="interest" value="creative" style="width: 18px; height: 18px; accent-color: var(--color-accent);">
-                    <span>Sunder Creative <small style="display: block; opacity: 0.6; font-size: 0.8em;">Web Design, SEO, Branding</small></span>
-                  </label>
-                </div>
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" placeholder="Business name">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="message">Tell us about your challenge.</label>
-              <textarea id="message" name="message" placeholder="What's broken? What's the goal? What have you already tried?"></textarea>
+              <label for="message">What should we look at?</label>
+              <textarea id="message" name="message" placeholder="The website feels dated, search is unclear, brand materials are scattered, or leads are getting lost after contact..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn--primary btn--lg" id="submit-btn" style="width:100%;justify-content:center;">
-              Send Message
+            <button type="submit" class="btn btn--primary btn--lg support-form__submit" id="submit-btn">
+              Send
             </button>
-            <p style="font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-3);text-align:center;">We'll never share your info. No spam. Ever.</p>
           </form>
         </div>
-
-        <!-- Sidebar -->
-        <div class="contact-sidebar reveal reveal--delay-1">
-          <div class="card contact-sidebar__card">
-            <h4>📧 Email Direct</h4>
-            <a href="mailto:{{site.email}}">{{site.email}}</a>
-          </div>
-
-          <div class="card contact-sidebar__card">
-            <h4>📞 Call</h4>
-            <a href="tel:+13308261511">(330) 826-1511</a>
-            <p style="margin-top:var(--space-2);">Mon–Fri, 9am–5pm ET</p>
-          </div>
-
-          <div class="card contact-sidebar__card">
-            <h4>🔗 Connect</h4>
-            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn →</a>
-          </div>
-
-          <div class="card contact-sidebar__card" style="background:linear-gradient(160deg,rgba(0,229,255,0.04),transparent);border-color:rgba(0,229,255,0.15);">
-            <h4 style="color:var(--color-accent);">💡 Prefer to schedule directly?</h4>
-            <p>Skip the form and grab a 30-minute discovery call on our calendar.</p>
-            <a href="#" class="btn btn--primary" style="margin-top:var(--space-4);width:100%;justify-content:center;" id="calendly-cta">Book a Call</a>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq" style="background:var(--color-surface);border-top:1px solid var(--color-border);">
-    <div class="container container--sm">
-      <div class="section-header text-center reveal">
-        <span class="label">FAQ</span>
-        <h2>Common questions.</h2>
-      </div>
-
-      <div class="accordion reveal" style="margin-top:var(--space-8);">
-        <div class="accordion__item">
-          <button class="accordion__trigger" id="faq-1">
-            <span>What does The Audit actually include?</span>
-            <span class="accordion__icon">+</span>
-          </button>
-          <div class="accordion__body">
-            <div class="accordion__content">
-              <p>A comprehensive assessment of your MarTech stack, CRM pipeline, digital storefront, and competitive landscape. We map every system, every data flow, and every leak. Deliverable: an executive-ready strategic roadmap with prioritized recommendations, projected ROI, and a build timeline.</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <button class="accordion__trigger" id="faq-2">
-            <span>How quickly can we start?</span>
-            <span class="accordion__icon">+</span>
-          </button>
-          <div class="accordion__body">
-            <div class="accordion__content">
-              <p>Most Audit engagements begin within 1–2 weeks of signing. Build projects depend on scope, but we typically have capacity for new projects within 3–4 weeks. Retainer engagements start the first of the following month.</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <button class="accordion__trigger" id="faq-3">
-            <span>Do you work with companies outside of manufacturing?</span>
-            <span class="accordion__icon">+</span>
-          </button>
-          <div class="accordion__body">
-            <div class="accordion__content">
-              <p>Our deepest expertise is in manufacturing, B2B wholesale, and heavy-inventory retail. However, the revenue operations and AI automation pillars apply broadly. If you sell physical products through complex distribution — we should talk.</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <button class="accordion__trigger" id="faq-4">
-            <span>Are you a solo operation or a team?</span>
-            <span class="accordion__icon">+</span>
-          </button>
-          <div class="accordion__body">
-            <div class="accordion__content">
-              <p>Core strategy, architecture, and technical leadership come from a single deeply experienced practitioner. For production-scale builds, we bring in vetted specialist partners for specific verticals (iOS development, large-format video, industrial design). You get one accountable point of contact with access to world-class execution.</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion__item">
-          <button class="accordion__trigger" id="faq-5">
-            <span>What's the minimum engagement?</span>
-            <span class="accordion__icon">+</span>
-          </button>
-          <div class="accordion__body">
-            <div class="accordion__content">
-              <p>The Audit starts at $3K. That's the minimum. We don't do one-off tasks, hourly consulting, or "quick fixes." Every engagement starts with a proper diagnosis, because guessing is expensive.</p>
-            </div>
-          </div>
+    <section class="support-links section" aria-label="Contact options">
+      <div class="container">
+        <div class="support-links__grid">
+          <a class="support-link-card reveal" href="mailto:{{site.email}}">
+            <span>Email</span>
+            <strong>{{site.email}}</strong>
+          </a>
+          <a class="support-link-card reveal reveal--delay-1" href="/services-creative.html">
+            <span>Services</span>
+            <strong>Sunder Creative</strong>
+          </a>
+          <a class="support-link-card reveal reveal--delay-2" href="/about.html">
+            <span>Studio</span>
+            <strong>About Sunder &amp; Co.</strong>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="support-wordmark" aria-label="Sunder">
+      <div class="support-wordmark__grid" aria-hidden="true"></div>
+      <div class="container">
+        <p>Sunder.</p>
+      </div>
+    </section>
+  </main>
 
   {{> footer }}
 
