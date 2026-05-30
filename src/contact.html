@@ -8,47 +8,43 @@
 
   {{> nav activePage="contact" }}
 
-  <main id="main-content" class="support-page">
-    <section class="support-hero" id="contact-hero">
-      <div class="support-hero__grid" aria-hidden="true"></div>
+  <main id="main-content" class="contact-page">
+    <section class="contact-hero" id="contact-hero">
       <div class="container">
-        <div class="support-hero__layout">
-          <div class="support-hero__copy reveal">
+        <div class="contact-visual-grid" aria-label="Sunder project capabilities" data-reveal>
+          <div class="contact-visual-card contact-visual-card--feature"><span>Website</span></div>
+          <div class="contact-visual-card"><span>Brand</span></div>
+          <div class="contact-visual-card"><span>Local search</span></div>
+          <div class="contact-visual-card"><span>Content</span></div>
+          <div class="contact-visual-card"><span>Follow-up</span></div>
+          <div class="contact-visual-card"><span>Audit</span></div>
+          <div class="contact-visual-card"><span>Launch</span></div>
+          <div class="contact-visual-card"><span>Support</span></div>
+          <div class="contact-visual-card"><span>Clarity</span></div>
+          <div class="contact-visual-card contact-visual-card--feature"><span>First impression</span></div>
+        </div>
+
+        <div class="contact-hero__copy" data-reveal data-reveal-delay="1">
             <span class="label">Contact Us</span>
             <h1>We are here to help you.</h1>
             <p>Tell us what needs to change: the website, the brand, the search presence, the content, the follow-up, or the first impression people get before they reach out.</p>
             <a href="#contact-form-section" class="btn btn--primary btn--lg">Send a Message</a>
-          </div>
-
-          <div class="support-image-stack reveal reveal--delay-1" aria-label="Sunder project placeholders">
-            <div class="support-image-card support-image-card--wide">
-              <span>Website audit</span>
-            </div>
-            <div class="support-image-card support-image-card--tall">
-              <span>Brand system</span>
-            </div>
-            <div class="support-image-card">
-              <span>Local visibility</span>
-            </div>
-            <div class="support-image-card support-image-card--accent">
-              <span>Follow-up flow</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="support-contact section" id="contact-form-section">
+    <section class="contact-form-section section" id="contact-form-section">
       <div class="container">
-        <div class="support-contact__layout">
-          <div class="support-contact__intro reveal">
+        <div class="contact-form-section__layout">
+          <div class="contact-form-section__intro" data-reveal>
             <span class="label">Start Here</span>
             <h2>Send the rough version.</h2>
             <p>You do not need a polished brief. A few honest notes about what feels behind, broken, scattered, or unclear is enough to start the conversation.</p>
+            <a class="contact-email-link" href="mailto:{{site.email}}">{{site.email}}</a>
           </div>
 
-          <form id="contact-form" class="support-form reveal reveal--delay-1" action="#" method="post">
-            <div class="support-form__row">
+          <form id="contact-form" class="contact-form-card" action="#" method="post" data-reveal data-reveal-delay="1">
+            <div class="contact-form-card__row">
               <div class="form-group">
                 <label for="firstName">First Name *</label>
                 <input type="text" id="firstName" name="firstName" required placeholder="First name">
@@ -59,7 +55,7 @@
               </div>
             </div>
 
-            <div class="support-form__row">
+            <div class="contact-form-card__row">
               <div class="form-group">
                 <label for="email">Email *</label>
                 <input type="email" id="email" name="email" required placeholder="you@company.com">
@@ -75,26 +71,27 @@
               <textarea id="message" name="message" placeholder="The website feels dated, search is unclear, brand materials are scattered, or leads are getting lost after contact..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn--primary btn--lg support-form__submit" id="submit-btn">
+            <button type="submit" class="btn btn--primary btn--lg contact-form-card__submit" id="submit-btn">
               Send
             </button>
+            <p class="contact-form-card__status" id="contact-form-status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
 
-    <section class="support-links section" aria-label="Contact options">
+    <section class="contact-detail-section section" aria-label="Contact options">
       <div class="container">
-        <div class="support-links__grid">
-          <a class="support-link-card reveal" href="mailto:{{site.email}}">
+        <div class="contact-detail-grid">
+          <a class="contact-detail-card" href="mailto:{{site.email}}" data-reveal>
             <span>Email</span>
             <strong>{{site.email}}</strong>
           </a>
-          <a class="support-link-card reveal reveal--delay-1" href="/services-creative.html">
+          <a class="contact-detail-card" href="/services-creative.html" data-reveal data-reveal-delay="1">
             <span>Services</span>
             <strong>Sunder Creative</strong>
           </a>
-          <a class="support-link-card reveal reveal--delay-2" href="/about.html">
+          <a class="contact-detail-card" href="/about.html" data-reveal data-reveal-delay="2">
             <span>Studio</span>
             <strong>About Sunder &amp; Co.</strong>
           </a>
@@ -102,10 +99,10 @@
       </div>
     </section>
 
-    <section class="support-wordmark" aria-label="Sunder">
-      <div class="support-wordmark__grid" aria-hidden="true"></div>
+    <section class="contact-brand-reveal" aria-label="Sunder">
       <div class="container">
-        <p>Sunder.</p>
+        <p class="contact-brand-reveal__eyebrow" data-reveal>Start where the first impression breaks.</p>
+        <p class="contact-brand-wordmark" data-reveal data-reveal-delay="1">Sunder.</p>
       </div>
     </section>
   </main>

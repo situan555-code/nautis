@@ -6,6 +6,15 @@ export function initScrollReveal() {
   if (document.documentElement.dataset.scrollRevealReady === 'true') return;
   document.documentElement.dataset.scrollRevealReady = 'true';
 
+  const revealElements = document.querySelectorAll('.reveal, .animate-up, [data-reveal]');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealElements.forEach((el) => {
+      el.classList.add('is-visible');
+      el.classList.add('visible');
+    });
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -22,5 +31,5 @@ export function initScrollReveal() {
     },
   );
 
-  document.querySelectorAll('.reveal, .animate-up').forEach((el) => observer.observe(el));
+  revealElements.forEach((el) => observer.observe(el));
 }
