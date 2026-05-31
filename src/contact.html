@@ -22,74 +22,58 @@
 
       <div class="container contact-hero__inner">
         <div class="contact-hero__copy" data-reveal data-reveal-delay="1">
-            <span class="label">Contact Us</span>
-            <h1>We are here to help you.</h1>
-            <p>Tell us what needs to change: the website, the brand, the search presence, the content, the follow-up, or the first impression people get before they reach out.</p>
-            <a href="#contact-form-section" class="btn btn--primary btn--lg">Send a Message</a>
+          <span class="label">Contact Us</span>
+          <h1>We are here to help you.</h1>
+          <p>Tell us what needs to change: the website, the brand, the search presence, the content, the follow-up, or the first impression people get before they reach out.</p>
         </div>
-      </div>
-    </section>
 
-    <section class="contact-form-section section" id="contact-form-section">
-      <div class="container">
-        <div class="contact-form-section__layout">
-          <div class="contact-form-section__intro" data-reveal>
-            <span class="label">Start Here</span>
-            <h2>Send the rough version.</h2>
-            <p>You do not need a polished brief. A few honest notes about what feels behind, broken, scattered, or unclear is enough to start the conversation.</p>
-            <a class="contact-email-link" href="mailto:{{site.email}}">{{site.email}}</a>
+        <form id="contact-form" class="contact-form-card" action="#" method="post" data-reveal data-reveal-delay="2">
+          <div class="contact-form-card__row">
+            <div class="form-group">
+              <label class="contact-form-card__label" for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label class="contact-form-card__label" for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Last name">
+            </div>
           </div>
 
-          <form id="contact-form" class="contact-form-card" action="#" method="post" data-reveal data-reveal-delay="1">
-            <div class="contact-form-card__row">
-              <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required placeholder="First name">
-              </div>
-              <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required placeholder="Last name">
-              </div>
-            </div>
-
-            <div class="contact-form-card__row">
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required placeholder="you@company.com">
-              </div>
-              <div class="form-group">
-                <label for="company">Company</label>
-                <input type="text" id="company" name="company" placeholder="Business name">
-              </div>
-            </div>
-
+          <div class="contact-form-card__row">
             <div class="form-group">
-              <label for="message">What should we look at?</label>
-              <textarea id="message" name="message" placeholder="The website feels dated, search is unclear, brand materials are scattered, or leads are getting lost after contact..."></textarea>
+              <label class="contact-form-card__label" for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="Email">
             </div>
-
-            <div class="contact-form-card__row">
-              <div class="form-group">
-                <label for="phone">Phone <span>(optional)</span></label>
-                <input type="tel" id="phone" name="phone" placeholder="Phone number">
-              </div>
-              <div class="form-group">
-                <label for="website">Website <span>(optional)</span></label>
-                <input type="url" id="website" name="website" placeholder="https://">
-              </div>
-            </div>
-
             <div class="form-group">
-              <label for="projectNotes">Message / project notes <span>(optional)</span></label>
-              <textarea id="projectNotes" name="projectNotes" placeholder="Anything else we should know before we reply?"></textarea>
+              <label class="contact-form-card__label" for="phone">Phone <span>(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="Phone">
             </div>
+          </div>
 
-            <button type="submit" class="btn btn--primary btn--lg contact-form-card__submit" id="submit-btn">
+          <div class="contact-form-card__row">
+            <div class="form-group">
+              <label class="contact-form-card__label" for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Company">
+            </div>
+            <div class="form-group">
+              <label class="contact-form-card__label" for="website">Website <span>(optional)</span></label>
+              <input type="url" id="website" name="website" placeholder="Website">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="contact-form-card__label" for="message">What should we look at?</label>
+            <textarea id="message" name="message" placeholder="Message / project notes"></textarea>
+          </div>
+
+          <div class="contact-form-card__footer">
+            <button type="submit" class="btn btn--primary contact-form-card__submit" id="submit-btn">
               Send
             </button>
-            <p class="contact-form-card__status" id="contact-form-status" aria-live="polite"></p>
-          </form>
-        </div>
+            <a class="contact-email-link" href="mailto:{{site.email}}">{{site.email}}</a>
+          </div>
+          <p class="contact-form-card__status" id="contact-form-status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
 
