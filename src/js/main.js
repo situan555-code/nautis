@@ -15,7 +15,6 @@ import { initForm } from './form.js';
 import { initSearch } from './search.js';
 import { initCalculators } from './calculators.js';
 import { initTheme } from './theme.js';
-import { initContactCollage } from './contact-collage.js';
 
 // Lightweight modules load immediately
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initAccordion();
   initForm();
-  initContactCollage();
 
   const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
     if ('requestIdleCallback' in window) {
