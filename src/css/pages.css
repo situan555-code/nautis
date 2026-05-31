@@ -421,6 +421,12 @@
 }
 
 .contact-visual-card {
+  --card-x: 0px;
+  --card-y: 0px;
+  --card-hover-y: 0px;
+  --card-scale: 1;
+  position: relative;
+  z-index: 1;
   min-height: clamp(96px, 11vw, 154px);
   display: flex;
   align-items: flex-end;
@@ -433,6 +439,33 @@
     radial-gradient(circle at 78% 36%, rgba(72, 119, 255, 0.38), transparent 38%),
     linear-gradient(140deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03)),
     var(--color-bg-card);
+  box-shadow: 0 16px 34px rgba(5, 5, 6, 0.08);
+  transform: translate(var(--card-x), calc(var(--card-y) + var(--card-hover-y))) scale(var(--card-scale));
+  will-change: transform;
+  transition:
+    border-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact-visual-card::before {
+  content: '';
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--color-text-muted);
+  border-radius: 50%;
+  opacity: 0.52;
+}
+
+.contact-visual-card:nth-child(3n + 2) {
+  z-index: 2;
+}
+
+.contact-visual-card:nth-child(4n) {
+  z-index: 3;
 }
 
 .contact-visual-card--feature {
@@ -639,6 +672,14 @@
   transform: translateY(0);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .contact-visual-card:hover {
+    --card-hover-y: -5px;
+    border-color: var(--color-border-hover);
+    box-shadow: 0 22px 42px rgba(5, 5, 6, 0.14);
+  }
+}
+
 @media (max-width: 900px) {
   .contact-hero {
     min-height: auto;
@@ -692,6 +733,11 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .contact-visual-card {
+    transform: none !important;
+    transition: none !important;
   }
 }
 
