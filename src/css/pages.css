@@ -393,6 +393,38 @@
 }
 
 /* --- Contact Page --- */
+.contact-body .nav,
+.contact-body .nav.is-scrolled {
+  border-bottom: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.contact-body .nav__logo,
+.contact-body .nav__link,
+.contact-body .nav__search-trigger {
+  color: #f7f7f5;
+}
+
+.contact-body .nav__link--disabled,
+.contact-body .nav__link--disabled:hover,
+.contact-body .nav__link--disabled.is-active {
+  color: rgba(247, 247, 245, 0.46);
+}
+
+.contact-body .nav__theme-toggle,
+.contact-body .nav__toggle {
+  border-color: rgba(247, 247, 245, 0.24);
+  background: rgba(247, 247, 245, 0.06);
+  color: #f7f7f5;
+}
+
+.contact-body .nav__toggle span {
+  background: #f7f7f5;
+}
+
 .contact-page {
   overflow-x: hidden;
   background: #050506;
