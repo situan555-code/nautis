@@ -27,55 +27,30 @@
           <span class="label">Contact Us</span>
           <h1>We are here to help you.</h1>
           <p>Tell us what needs to change: the website, the brand, the search presence, the content, the follow-up, or the first impression people get before they reach out.</p>
+          <p class="contact-hero__location">Ohio-based with eastern Ohio roots. Available for remote work with clients across the United States.</p>
         </div>
 
-        <form id="contact-form" class="contact-form-card" action="#" method="post" data-reveal data-reveal-delay="2">
-          <div class="contact-form-card__row">
-            <div class="form-group">
-              <label class="contact-form-card__label" for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" required placeholder="First name">
-            </div>
-            <div class="form-group">
-              <label class="contact-form-card__label" for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" required placeholder="Last name">
-            </div>
+        <div class="contact-direct" data-reveal data-reveal-delay="2">
+          <p class="contact-direct__note">Email or call with your website, company name, and what feels behind, unclear, or ready to improve.</p>
+          <div class="contact-direct__grid">
+            <a class="contact-direct__card" href="mailto:{{site.email}}">
+              <span class="contact-direct__label">Email</span>
+              <strong>{{site.email}}</strong>
+            </a>
+            <a class="contact-direct__card" href="{{site.phoneHref}}">
+              <span class="contact-direct__label">Call</span>
+              <strong>{{site.phoneDisplay}}</strong>
+            </a>
+            <a class="contact-direct__card" href="/services-creative.html">
+              <span class="contact-direct__label">Services</span>
+              <strong>Explore Sunder Creative</strong>
+            </a>
+            <a class="contact-direct__card" href="/about.html">
+              <span class="contact-direct__label">Studio</span>
+              <strong>About Sunder &amp; Co.</strong>
+            </a>
           </div>
-
-          <div class="contact-form-card__row">
-            <div class="form-group">
-              <label class="contact-form-card__label" for="email">Email *</label>
-              <input type="email" id="email" name="email" required placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label class="contact-form-card__label" for="phone">Phone <span>(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="Phone">
-            </div>
-          </div>
-
-          <div class="contact-form-card__row">
-            <div class="form-group">
-              <label class="contact-form-card__label" for="company">Company</label>
-              <input type="text" id="company" name="company" placeholder="Company">
-            </div>
-            <div class="form-group">
-              <label class="contact-form-card__label" for="website">Website <span>(optional)</span></label>
-              <input type="url" id="website" name="website" placeholder="Website">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="contact-form-card__label" for="message">What should we look at?</label>
-            <textarea id="message" name="message" placeholder="Message / project notes"></textarea>
-          </div>
-
-          <div class="contact-form-card__footer">
-            <button type="submit" class="btn btn--primary contact-form-card__submit" id="submit-btn">
-              Send
-            </button>
-            <a class="contact-email-link" href="mailto:{{site.email}}">{{site.email}}</a>
-          </div>
-          <p class="contact-form-card__status" id="contact-form-status" aria-live="polite"></p>
-        </form>
+        </div>
       </div>
     </section>
 

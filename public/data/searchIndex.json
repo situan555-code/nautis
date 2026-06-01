@@ -1,221 +1,65 @@
 [
   {
-    "title": "Email Marketing & Newsletters",
-    "description": "Lifecycle automation, abandoned cart recovery, and B2B newsletters using Klaviyo and HubSpot.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#revops",
-    "keywords": [
-      "email",
-      "newsletter",
-      "klaviyo",
-      "hubspot",
-      "automation",
-      "drip campaign",
-      "retargeting",
-      "abandoned cart"
-    ]
-  },
-  {
-    "title": "Text Message (SMS) Marketing",
-    "description": "Direct-to-consumer text campaigns with high open rates for instant conversions.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#revops",
-    "keywords": [
-      "sms",
-      "text message",
-      "mobile marketing",
-      "attentive",
-      "postscript"
-    ]
-  },
-  {
-    "title": "Digital Advertising (PPC)",
-    "description": "High-ROI search network marketing (Google Ads, Bing) and paid social campaigns.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#strategy",
-    "keywords": [
-      "ppc",
-      "pay per click",
-      "google ads",
-      "facebook ads",
-      "paid search",
-      "search engine marketing",
-      "sem",
-      "geofencing"
-    ]
-  },
-  {
-    "title": "Local SEO & Google Guaranteed",
-    "description": "Optimize Google Business Profiles, local service ads, and manage directory listings.",
+    "title": "Websites & Landing Pages",
+    "description": "Modern websites and focused landing pages that explain the offer, build trust, and make the next step obvious.",
     "category": "Sunder Creative",
-    "url": "/services-creative.html#design",
-    "keywords": [
-      "seo",
-      "local seo",
-      "google business",
-      "google maps",
-      "yelp",
-      "directories",
-      "search engine optimization",
-      "rankings"
-    ]
+    "url": "/services-creative.html#web-design",
+    "keywords": ["web design", "website", "landing page", "development", "ui", "ux"]
   },
   {
-    "title": "Web Design & Development",
-    "description": "Premium, high-conversion websites optimized for performance and aesthetics.",
+    "title": "Brand Identity & Visual Systems",
+    "description": "Logo refinement, design direction, collateral, and visual standards that help the business feel consistent everywhere it appears.",
     "category": "Sunder Creative",
-    "url": "/services-creative.html#design",
-    "keywords": [
-      "web design",
-      "website",
-      "development",
-      "ui",
-      "ux",
-      "landing page",
-      "frontend",
-      "next.js",
-      "shopify"
-    ]
+    "url": "/branding-design-ohio.html",
+    "keywords": ["branding", "logo", "graphic design", "identity", "print", "collateral"]
   },
   {
-    "title": "3D Product Configurators",
-    "description": "Custom WebGL 3D product visualizers allowing real-time material and dimension changes.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#3d",
-    "keywords": [
-      "3d",
-      "configurator",
-      "webgl",
-      "three.js",
-      "ar",
-      "augmented reality",
-      "virtual showroom",
-      "digital twin"
-    ]
+    "title": "Local SEO for New Philadelphia & Dover",
+    "description": "Local SEO foundations for businesses that depend on nearby customers, quote requests, appointments, and calls.",
+    "category": "Local Visibility",
+    "url": "/local-seo-new-philadelphia-ohio.html",
+    "keywords": ["local seo", "google business profile", "new philadelphia", "dover", "tuscarawas county"]
   },
   {
-    "title": "CRM Deployment",
-    "description": "Implementation and lifecycle automation for Salesforce, HubSpot, and more.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#revops",
-    "keywords": [
-      "crm",
-      "hubspot",
-      "salesforce",
-      "customer relationship",
-      "sales enablement"
-    ]
+    "title": "AI SEO for Local Businesses",
+    "description": "Technical SEO, structured business data, metadata, local profiles, and answer-friendly content for modern discovery.",
+    "category": "Local Visibility",
+    "url": "/ai-seo-local-business.html",
+    "keywords": ["ai seo", "ai search visibility", "structured data", "metadata", "local profiles"]
   },
   {
-    "title": "Brand Identity & Graphic Design",
-    "description": "Complete visual identities, logos, typography, and premium brand guidelines.",
+    "title": "Photo, Video & Content Production",
+    "description": "Authentic visuals, copy, and media assets that support websites, local search, brand trust, and campaigns.",
     "category": "Sunder Creative",
-    "url": "/services-creative.html#brand",
-    "keywords": [
-      "logo",
-      "branding",
-      "graphic design",
-      "identity",
-      "typography",
-      "rebrand",
-      "print",
-      "collateral"
-    ]
+    "url": "/photo-video-content-ohio.html",
+    "keywords": ["photography", "video", "content", "copywriting", "social creative"]
   },
   {
-    "title": "MarTech & Data Architecture",
-    "description": "Bridging legacy ERPs to modern storefronts and resolving SaaS bloat.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#martech",
-    "keywords": [
-      "martech",
-      "erp",
-      "pim",
-      "integration",
-      "b2b portal",
-      "headless commerce",
-      "syndication"
-    ]
+    "title": "Web Design New Philadelphia",
+    "description": "Websites for New Philadelphia, Dover, and Tuscarawas County businesses that need clearer messaging and better local visibility.",
+    "category": "Web Design",
+    "url": "/web-design-new-philadelphia-ohio.html",
+    "keywords": ["web design", "new philadelphia", "dover", "tuscarawas county", "website redesign"]
   },
   {
-    "title": "Applied AI & Automation",
-    "description": "Custom LLM copilots, automated competitive intelligence, and workflow scripts.",
-    "category": "Sunder Advisory",
-    "url": "/services-advisory.html#ai",
-    "keywords": [
-      "ai",
-      "artificial intelligence",
-      "llm",
-      "automation",
-      "scraping",
-      "machine learning",
-      "copilot"
-    ]
+    "title": "Web Design Canton",
+    "description": "Modern, credible, search-ready websites for Canton and Stark County businesses competing in a larger regional market.",
+    "category": "Web Design",
+    "url": "/web-design-canton-ohio.html",
+    "keywords": ["web design", "canton", "stark county", "website redesign"]
   },
   {
-    "title": "Managed IT Services (MSSP)",
-    "description": "24/7 help desk, endpoint management (RMM), and cloud infrastructure for small-to-mid businesses.",
-    "category": "Sunder Technology",
-    "url": "/services-technology.html#managed-it",
-    "keywords": [
-      "it support",
-      "managed services",
-      "mssp",
-      "help desk",
-      "rmm",
-      "ninjaone",
-      "syncro",
-      "cloud migration",
-      "backup",
-      "disaster recovery",
-      "bdr",
-      "voip",
-      "networking"
-    ]
+    "title": "Lead Flow & Follow-Up",
+    "description": "Forms, tracking, CRM handoff, reminders, and practical follow-up improvements for new inquiries.",
+    "category": "Contact",
+    "url": "/contact.html",
+    "keywords": ["lead flow", "follow-up", "forms", "crm", "inquiries"]
   },
   {
-    "title": "Cybersecurity & Compliance",
-    "description": "vCISO leadership, SOC 2, HIPAA, CMMC readiness, and zero-trust security rollouts.",
-    "category": "Sunder Technology",
-    "url": "/services-technology.html#cybersecurity",
-    "keywords": [
-      "cybersecurity",
-      "cyber",
-      "vCISO",
-      "compliance",
-      "soc 2",
-      "hipaa",
-      "cmmc",
-      "pentesting",
-      "vulnerability scan",
-      "edr",
-      "xdr",
-      "zero trust",
-      "ransomware",
-      "shadow ai",
-      "ai governance",
-      "dlp"
-    ]
-  },
-  {
-    "title": "Industrial AI & RAG Systems",
-    "description": "Predictive maintenance, shop-floor AI inspection, and secure internal RAG (Retrieval-Augmented Generation) for manufacturers.",
-    "category": "Sunder Technology",
-    "url": "/services-technology.html#ai-industrial",
-    "keywords": [
-      "predictive maintenance",
-      "pdm",
-      "industrial ai",
-      "manufacturing ai",
-      "anomaly detection",
-      "shop floor",
-      "automation",
-      "quality inspection",
-      "erp integration",
-      "rag",
-      "retrieval augmented generation",
-      "chatbot",
-      "manuals"
-    ]
+    "title": "Custom Interactive Work",
+    "description": "Interactive tools, 3D demos, configurator concepts, and browser-based experiences for memorable customer-facing projects.",
+    "category": "Contact",
+    "url": "/contact.html",
+    "keywords": ["interactive", "3d", "configurator", "browser experience", "webgl"]
   }
 ]

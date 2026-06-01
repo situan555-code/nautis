@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
@@ -11,6 +11,19 @@ const DEFAULT_DESCRIPTION =
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
+function removeAppleDoubleFiles(directory) {
+  if (!existsSync(directory)) return;
+
+  readdirSync(directory, { withFileTypes: true }).forEach((entry) => {
+    const entryPath = resolve(directory, entry.name);
+    if (entry.name.startsWith('._')) {
+      rmSync(entryPath, { recursive: true, force: true });
+    } else if (entry.isDirectory()) {
+      removeAppleDoubleFiles(entryPath);
+    }
+  });
+}
+
 const localServicePageSlugs = [
   'web-design-new-philadelphia-ohio',
   'web-design-canton-ohio',
@@ -19,6 +32,7 @@ const localServicePageSlugs = [
   'photo-video-content-ohio',
   'ai-seo-local-business',
 ];
+const htmlPageSlugs = ['about', 'services-creative', 'contact', ...localServicePageSlugs];
 
 const corePages = {
   'index': {
@@ -29,22 +43,14 @@ const corePages = {
   'about': {
     activePage: 'about',
     pageTitle: 'About',
-    pageDescription: 'Learn about Sunder & Co., a creative and digital partner for small and mid-sized businesses in eastern Ohio.',
-  },
-  'services-advisory': {
-    activePage: 'services',
-    pageTitle: 'Sunder Advisory',
-    pageDescription: 'Sunder Advisory supports business operations, digital strategy, and practical systems planning for growing organizations.',
-  },
-  'services-technology': {
-    activePage: 'services',
-    pageTitle: 'Sunder Technology',
-    pageDescription: 'Sunder Technology supports practical IT, security, and technology foundations for local and regional businesses.',
+    pageDescription: 'Learn about Sunder & Co., an Ohio-based creative and systems partner serving local businesses and remote clients across the United States.',
+    pagePath: '/about.html',
   },
   'services-creative': {
     activePage: 'services',
     pageTitle: 'Sunder Creative',
-    pageDescription: 'Web design, branding, content production, local SEO, and AI search visibility support for small and mid-sized businesses in eastern Ohio.',
+    pageDescription: 'Web design, branding, content production, local SEO, and AI search visibility support for Ohio businesses and remote clients across the United States.',
+    pagePath: '/services-creative.html',
   },
   'web-design-new-philadelphia-ohio': {
     activePage: 'services',
@@ -85,12 +91,8 @@ const corePages = {
   'contact': {
     activePage: 'contact',
     pageTitle: 'Contact',
-    pageDescription: 'Start a project with Sunder & Co. for websites, branding, content, local SEO, and follow-up systems.',
-  },
-  'engagement': {
-    activePage: 'engagement',
-    pageTitle: 'How We Work',
-    pageDescription: 'How Sunder & Co. reviews, builds, and supports customer-facing digital systems for growing businesses.',
+    pageDescription: 'Contact Sunder & Co. for websites, branding, content, local SEO, follow-up systems, and remote creative support across the United States.',
+    pagePath: '/contact.html',
   },
 };
 
@@ -133,7 +135,10 @@ export default defineConfig({
           await new Promise(resolveAttempt => setTimeout(resolveAttempt, 100));
         }
 
-        if (!existsSync(sitemapPath)) return;
+        if (!existsSync(sitemapPath)) {
+          removeAppleDoubleFiles(resolve(__dirname, 'dist'));
+          return;
+        }
 
         let sitemap = readFileSync(sitemapPath, 'utf-8');
         for (let attempt = 0; attempt < 50 && !sitemap.includes(`${SITE_URL}/ai-seo-local-business`); attempt += 1) {
@@ -141,13 +146,14 @@ export default defineConfig({
           sitemap = readFileSync(sitemapPath, 'utf-8');
         }
 
-        localServicePageSlugs.forEach((slug) => {
+        htmlPageSlugs.forEach((slug) => {
           sitemap = sitemap.replace(
             new RegExp(`<loc>${SITE_URL}/${slug}</loc>`, 'g'),
             `<loc>${SITE_URL}/${slug}.html</loc>`,
           );
         });
         writeFileSync(sitemapPath, sitemap);
+        removeAppleDoubleFiles(resolve(__dirname, 'dist'));
       },
     },
     handlebars({
