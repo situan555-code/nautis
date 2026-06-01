@@ -1,7 +1,13 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist"
+      "staticDistDir": "./dist",
+      "url": [
+        "http://localhost/about.html",
+        "http://localhost/contact.html",
+        "http://localhost/services-creative.html",
+        "http://localhost/ai-seo-local-business.html"
+      ]
     }
   }
 }
