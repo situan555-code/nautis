@@ -14,6 +14,7 @@ import { initFilters } from './filters.js';
 import { initSearch } from './search.js';
 import { initCalculators } from './calculators.js';
 import { initTheme } from './theme.js';
+import { initContactTracking } from './contact-tracking.js';
 
 // Lightweight modules load immediately
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothAnchors();
   initCounters();
   initAccordion();
+  initContactTracking();
 
   const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
     if ('requestIdleCallback' in window) {
