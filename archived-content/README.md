@@ -2,6 +2,8 @@
 
 This folder contains preserved Sunder & Co. Insights, Blog, and Case Study content that has been removed from the public-facing website.
 
+The `unready-pages` folder preserves disabled Advisory, Technology, and engagement page sources that are intentionally excluded from the launch build.
+
 Do not delete these files. They are intentionally archived so they can be restored, rewritten, or reused later.
 
 Large geometry assets that exceed normal GitHub file-size limits may be stored as restorable `.gz` files in this archive.

@@ -11,7 +11,6 @@ import { initCounters } from './counters.js';
 import { initSmoothAnchors } from './smooth-anchors.js';
 import { initAccordion } from './accordion.js';
 import { initFilters } from './filters.js';
-import { initForm } from './form.js';
 import { initSearch } from './search.js';
 import { initCalculators } from './calculators.js';
 import { initTheme } from './theme.js';
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothAnchors();
   initCounters();
   initAccordion();
-  initForm();
 
   const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
     if ('requestIdleCallback' in window) {

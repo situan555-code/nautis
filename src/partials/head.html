@@ -59,14 +59,24 @@
   "description": {{{json site.description}}},
   "url": "https://www.sunderandco.com",
   "email": "hello@sunderandco.com",
+  "telephone": "{{site.phoneSchema}}",
   "areaServed": [
+    "United States",
     "New Philadelphia, Ohio",
     "Dover, Ohio",
     "Canton, Ohio",
     "Tuscarawas County, Ohio",
     "Stark County, Ohio",
     "Holmes County, Ohio"
-  ]
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Sales",
+    "telephone": "{{site.phoneSchema}}",
+    "email": "{{site.email}}",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  }
 }
 </script>
 

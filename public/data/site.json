@@ -5,6 +5,9 @@
     "description": "Websites, brand systems, local visibility, and follow-up improvements for businesses that have outgrown the way they show up online.",
     "email": "hello@sunderandco.com",
     "url": "https://www.sunderandco.com",
+    "phoneDisplay": "(330) 826-1511",
+    "phoneHref": "tel:+13308261511",
+    "phoneSchema": "+13308261511",
     "linkedin": "",
     "copyright": "Sunder & Co."
   },
