@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{> head }}
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+  {{> gtm-noscript }}
+
+  {{> nav }}
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="label">Privacy</span>
+        <h1>Privacy Policy</h1>
+        <p class="lead">A plain-English overview of what this website collects and why.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container--sm">
+        <div class="reveal">
+          <h2 style="margin-bottom:var(--space-6);">Website analytics</h2>
+          <p style="margin-bottom:var(--space-8);">This site uses Google Analytics and Google Tag Manager to understand basic website activity, such as page visits and clicks on email or phone links. These tools may use cookies or similar technologies.</p>
+
+          <h2 style="margin-bottom:var(--space-6);">Hosting logs</h2>
+          <p style="margin-bottom:var(--space-8);">The website host may collect standard technical logs, such as IP address, browser type, requested pages, and timestamps, to operate and secure the site.</p>
+
+          <h2 style="margin-bottom:var(--space-6);">Contact</h2>
+          <p style="margin-bottom:var(--space-8);">This site currently does not submit information through a web form. If you contact Sunder &amp; Co. by email or phone, the information you choose to share is used to respond to your inquiry and discuss potential work.</p>
+
+          <h2 style="margin-bottom:var(--space-6);">Personal information</h2>
+          <p style="margin-bottom:var(--space-8);">Sunder &amp; Co. does not sell personal information.</p>
+
+          <h2 style="margin-bottom:var(--space-6);">Questions</h2>
+          <p>For privacy questions, email <a href="mailto:{{site.email}}">{{site.email}}</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{> footer }}
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@ const localServicePageSlugs = [
   'photo-video-content-ohio',
   'ai-seo-local-business',
 ];
-const htmlPageSlugs = ['about', 'services-creative', 'contact', ...localServicePageSlugs];
+const htmlPageSlugs = ['about', 'services-creative', 'contact', 'privacy-policy', ...localServicePageSlugs];
 
 const corePages = {
   'index': {
@@ -93,6 +93,11 @@ const corePages = {
     pageTitle: 'Contact',
     pageDescription: 'Contact Sunder & Co. for websites, branding, content, local SEO, follow-up systems, and remote creative support across the United States.',
     pagePath: '/contact.html',
+  },
+  'privacy-policy': {
+    pageTitle: 'Privacy Policy',
+    pageDescription: 'Read the Sunder & Co. privacy policy for website analytics, hosting logs, and direct contact by email or phone.',
+    pagePath: '/privacy-policy.html',
   },
 };
 
