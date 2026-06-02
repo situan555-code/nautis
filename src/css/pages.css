@@ -147,7 +147,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto var(--space-4);
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: var(--text-lg);
   font-weight: 800;
   color: var(--color-accent);
@@ -319,6 +319,7 @@
 }
 
 .form-group label {
+  font-family: var(--font-mono);
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text-secondary);
@@ -707,7 +708,7 @@
 .contact-brand-wordmark {
   margin: 0 0 -0.1em;
   color: #f7f7f5;
-  font-family: var(--font-body);
+  font-family: var(--font-brand);
   font-size: clamp(7rem, 26vw, 25rem);
   font-weight: 900;
   line-height: 0.76;
@@ -784,7 +785,7 @@
   }
 
   .contact-hero__copy h1 {
-    font-size: clamp(3.6rem, 16vw, 5.2rem);
+    font-size: clamp(3rem, 13vw, 4.5rem);
   }
 
   .contact-hero__copy p {

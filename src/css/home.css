@@ -66,7 +66,7 @@
   justify-content: center;
   gap: clamp(0.32rem, 1vw, 0.72rem);
   padding-top: clamp(10rem, 22vh, 16rem);
-  font-family: var(--font-body);
+  font-family: var(--font-brand);
   font-size: clamp(5rem, 18vw, 15rem);
   font-weight: 900;
   letter-spacing: -0.055em;
@@ -100,6 +100,10 @@
 @media (max-width: 1180px) {
   .hero {
     min-height: 76svh;
+  }
+
+  .hero__scene-fallback {
+    font-size: clamp(3.5rem, 14vw, 8rem);
   }
 
   .hero__scene {
@@ -238,6 +242,7 @@ html[data-theme='dark'] .dc-audience-card {
 
 .section-label {
   display: block;
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -376,6 +381,7 @@ html[data-theme='dark'] .dc-audience-card {
 
 .dc-card-index {
   display: block;
+  font-family: var(--font-mono);
   margin-bottom: 16px;
   color: #aaa;
   font-size: 0.7rem;
@@ -514,6 +520,7 @@ html[data-theme='dark'] .dc-audience-card {
 
 .dc-process-step span {
   display: block;
+  font-family: var(--font-mono);
   margin-bottom: 24px;
   color: #2a2a2a;
   font-size: 3rem;

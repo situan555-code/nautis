@@ -9,7 +9,7 @@ import { MeshTransmissionMaterial } from '@react-three/drei/core/MeshTransmissio
 import { OrbitControls } from '@react-three/drei/core/OrbitControls.js';
 import { Text3D } from '@react-three/drei/core/Text3D.js';
 import { RGBELoader } from 'three-stdlib';
-import sunderWordmarkFont from './sunder-wordmark-font.json';
+import sunderWordmarkFont from './outfit-extrabold.typeface.json';
 
 export const MAX_DPR = 1.5;
 export const ENABLE_POSTPROCESSING = false;
@@ -48,7 +48,7 @@ export const LETTER_SPACING = -0.03;
 
 export const PERIOD_RADIUS = 0.15;
 export const PERIOD_DEPTH = 0.18;
-export const PERIOD_OFFSET_X = 4.48;
+export const PERIOD_OFFSET_X = 3.12;
 export const PERIOD_OFFSET_Y = 0.08;
 export const PERIOD_OFFSET_Z = 0.12;
 
