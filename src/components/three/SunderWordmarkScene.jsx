@@ -37,7 +37,9 @@ export const HDR_BACKGROUND_URL =
   'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr';
 
 export const WORD_TEXT = 'Sunder';
-export const USE_OUTFIT_SVG_WORDMARK = true;
+// Experimental Outfit SVG extrusion currently disabled because SVG path/cap extrusion breaks the live hero.
+// Stable Outfit JSON Text3D path is used for production.
+export const USE_OUTFIT_SVG_WORDMARK = false;
 export const SVG_WORDMARK_UNIT_SCALE = 0.001;
 export const WORDMARK_CENTER_SCALE = [0.8, 1, 1];
 export const WORDMARK_POSITION = [0, -1, 2.25];
