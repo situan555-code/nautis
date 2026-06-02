@@ -8,8 +8,10 @@ import { Lightformer } from '@react-three/drei/core/Lightformer.js';
 import { MeshTransmissionMaterial } from '@react-three/drei/core/MeshTransmissionMaterial.js';
 import { OrbitControls } from '@react-three/drei/core/OrbitControls.js';
 import { Text3D } from '@react-three/drei/core/Text3D.js';
-import { RGBELoader } from 'three-stdlib';
+import { ExtrudeGeometry } from 'three';
+import { RGBELoader, SVGLoader } from 'three-stdlib';
 import sunderWordmarkFont from './outfit-extrabold.typeface.json';
+import sunderWordmarkSvg from './sunder-outfit-wordmark.svg?raw';
 
 export const MAX_DPR = 1.5;
 export const ENABLE_POSTPROCESSING = false;
@@ -35,6 +37,8 @@ export const HDR_BACKGROUND_URL =
   'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr';
 
 export const WORD_TEXT = 'Sunder';
+export const USE_OUTFIT_SVG_WORDMARK = true;
+export const SVG_WORDMARK_UNIT_SCALE = 0.001;
 export const WORDMARK_CENTER_SCALE = [0.8, 1, 1];
 export const WORDMARK_POSITION = [0, -1, 2.25];
 export const WORDMARK_ROTATION = [-Math.PI / 2, 0, 0];
@@ -343,31 +347,68 @@ function Grid({ tuning }) {
   );
 }
 
+function JsonWordmark({ tuning, backgroundTexture }) {
+  return (
+    <group scale={tuning.wordScale}>
+      <Text3D
+        castShadow
+        bevelEnabled
+        font={sunderWordmarkFont}
+        scale={1}
+        letterSpacing={LETTER_SPACING}
+        height={tuning.textDepth}
+        bevelSize={tuning.bevelSize}
+        bevelSegments={TEXT_BEVEL_SEGMENTS}
+        curveSegments={TEXT_CURVE_SEGMENTS}
+        bevelThickness={TEXT_BEVEL_THICKNESS}
+      >
+        {WORD_TEXT}
+        <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
+      </Text3D>
+      <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
+        <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
+        <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
+      </mesh>
+    </group>
+  );
+}
+
+function SvgWordmark({ tuning, backgroundTexture }) {
+  const geometry = useMemo(() => {
+    const loader = new SVGLoader();
+    const paths = loader.parse(sunderWordmarkSvg).paths;
+    const shapes = paths.flatMap((path) => SVGLoader.createShapes(path));
+    const nextGeometry = new ExtrudeGeometry(shapes, {
+      depth: tuning.textDepth / SVG_WORDMARK_UNIT_SCALE,
+      bevelEnabled: true,
+      bevelSize: tuning.bevelSize / SVG_WORDMARK_UNIT_SCALE,
+      bevelSegments: TEXT_BEVEL_SEGMENTS,
+      bevelThickness: TEXT_BEVEL_THICKNESS / SVG_WORDMARK_UNIT_SCALE,
+      curveSegments: TEXT_CURVE_SEGMENTS,
+    });
+
+    nextGeometry.scale(SVG_WORDMARK_UNIT_SCALE, -SVG_WORDMARK_UNIT_SCALE, SVG_WORDMARK_UNIT_SCALE);
+    return nextGeometry;
+  }, [tuning.bevelSize, tuning.textDepth]);
+
+  useEffect(() => () => geometry.dispose(), [geometry]);
+
+  return (
+    <mesh castShadow geometry={geometry} scale={tuning.wordScale}>
+      <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
+    </mesh>
+  );
+}
+
 function Wordmark({ tuning, backgroundTexture }) {
   return (
     <>
       <Center scale={WORDMARK_CENTER_SCALE} front top position={tuning.wordPosition} rotation={tuning.wordRotation}>
-        <group scale={tuning.wordScale}>
-          <Text3D
-            castShadow
-            bevelEnabled
-            font={sunderWordmarkFont}
-            scale={1}
-            letterSpacing={LETTER_SPACING}
-            height={tuning.textDepth}
-            bevelSize={tuning.bevelSize}
-            bevelSegments={TEXT_BEVEL_SEGMENTS}
-            curveSegments={TEXT_CURVE_SEGMENTS}
-            bevelThickness={TEXT_BEVEL_THICKNESS}
-          >
-            {WORD_TEXT}
-            <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
-          </Text3D>
-          <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
-            <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
-            <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
-          </mesh>
-        </group>
+        {USE_OUTFIT_SVG_WORDMARK ? (
+          <SvgWordmark tuning={tuning} backgroundTexture={backgroundTexture} />
+        ) : (
+          <JsonWordmark tuning={tuning} backgroundTexture={backgroundTexture} />
+        )}
       </Center>
       <Grid tuning={tuning} />
     </>
