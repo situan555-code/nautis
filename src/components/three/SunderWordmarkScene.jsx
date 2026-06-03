@@ -41,10 +41,29 @@ export const WORD_TEXT = 'Sunder';
 // Stable Outfit JSON Text3D path is used for production.
 export const USE_OUTFIT_SVG_WORDMARK = false;
 export const SVG_WORDMARK_UNIT_SCALE = 0.001;
-export const WORDMARK_CENTER_SCALE = [0.8, 1, 1];
-export const WORDMARK_POSITION = [0, -1, 2.25];
-export const WORDMARK_ROTATION = [-Math.PI / 2, 0, 0];
-export const WORDMARK_SCALE = 5;
+export const DESIGN_WORD_TEXT_PT = 251.4;
+export const DESIGN_PERIOD_TEXT_PT = 170;
+export const DESIGN_PERIOD_TO_WORD_RATIO = DESIGN_PERIOD_TEXT_PT / DESIGN_WORD_TEXT_PT;
+export const TEXT3D_ACTIVE_SIZE = 1;
+
+// Desktop source design used Outfit word text at 251.4 pt and a separate period at 170 pt.
+// The period is intentionally ~67.6% of the word text size because a full-size period looked visually oversized.
+export const PERIOD_CYLINDER_VISUAL_MULTIPLIER = 0.15 / DESIGN_PERIOD_TO_WORD_RATIO;
+export const DESKTOP_WORDMARK_LAYOUT = {
+  centerScale: [0.8, 1, 1],
+  position: [0, -1, 2.25],
+  rotation: [-Math.PI / 2, 0, 0],
+  scale: 5,
+  period: {
+    radius: DESIGN_PERIOD_TO_WORD_RATIO * PERIOD_CYLINDER_VISUAL_MULTIPLIER,
+    depth: 0.18,
+    position: [3.12, 0.08, 0.12],
+  },
+};
+export const WORDMARK_CENTER_SCALE = DESKTOP_WORDMARK_LAYOUT.centerScale;
+export const WORDMARK_POSITION = DESKTOP_WORDMARK_LAYOUT.position;
+export const WORDMARK_ROTATION = DESKTOP_WORDMARK_LAYOUT.rotation;
+export const WORDMARK_SCALE = DESKTOP_WORDMARK_LAYOUT.scale;
 export const TEXT_DEPTH = 0.25;
 export const TEXT_BEVEL_SIZE = 0.01;
 export const TEXT_BEVEL_THICKNESS = 0.01;
@@ -52,11 +71,11 @@ export const TEXT_BEVEL_SEGMENTS = 10;
 export const TEXT_CURVE_SEGMENTS = 128;
 export const LETTER_SPACING = -0.03;
 
-export const PERIOD_RADIUS = 0.15;
-export const PERIOD_DEPTH = 0.18;
-export const PERIOD_OFFSET_X = 3.12;
-export const PERIOD_OFFSET_Y = 0.08;
-export const PERIOD_OFFSET_Z = 0.12;
+export const PERIOD_RADIUS = DESKTOP_WORDMARK_LAYOUT.period.radius;
+export const PERIOD_DEPTH = DESKTOP_WORDMARK_LAYOUT.period.depth;
+export const PERIOD_OFFSET_X = DESKTOP_WORDMARK_LAYOUT.period.position[0];
+export const PERIOD_OFFSET_Y = DESKTOP_WORDMARK_LAYOUT.period.position[1];
+export const PERIOD_OFFSET_Z = DESKTOP_WORDMARK_LAYOUT.period.position[2];
 
 export const CAMERA_POSITION = [10, 20, 20];
 export const CAMERA_ZOOM = 80;
@@ -124,6 +143,22 @@ const THEME_SCENE = {
     lightColor: '#ffffff',
   },
 };
+
+let didLogDesktopWordmarkLayout = false;
+
+function logDesktopWordmarkLayout(tuning) {
+  if (!import.meta.env.DEV || didLogDesktopWordmarkLayout) return;
+  didLogDesktopWordmarkLayout = true;
+
+  console.table({
+    'word text pt': DESIGN_WORD_TEXT_PT,
+    'period text pt': DESIGN_PERIOD_TEXT_PT,
+    'period ratio': Number(DESIGN_PERIOD_TO_WORD_RATIO.toFixed(4)),
+    'active Text3D size': TEXT3D_ACTIVE_SIZE,
+    'period radius': tuning.periodRadius,
+    'period position': tuning.periodPosition.join(', '),
+  });
+}
 
 function getCurrentTheme() {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
@@ -352,13 +387,13 @@ function Grid({ tuning }) {
 function JsonWordmark({ tuning, backgroundTexture }) {
   return (
     <group scale={tuning.wordScale}>
-      <Text3D
-        castShadow
-        bevelEnabled
-        font={sunderWordmarkFont}
-        scale={1}
-        letterSpacing={LETTER_SPACING}
-        height={tuning.textDepth}
+          <Text3D
+            castShadow
+            bevelEnabled
+            font={sunderWordmarkFont}
+            scale={TEXT3D_ACTIVE_SIZE}
+            letterSpacing={LETTER_SPACING}
+            height={tuning.textDepth}
         bevelSize={tuning.bevelSize}
         bevelSegments={TEXT_BEVEL_SEGMENTS}
         curveSegments={TEXT_CURVE_SEGMENTS}
@@ -418,6 +453,8 @@ function Wordmark({ tuning, backgroundTexture }) {
 }
 
 function DesktopWordmark({ tuning }) {
+  useEffect(() => logDesktopWordmarkLayout(tuning), [tuning]);
+
   const backgroundTexture = useLoader(RGBELoader, HDR_BACKGROUND_URL);
   return <Wordmark tuning={tuning} backgroundTexture={USE_EXTERNAL_HDR_BACKGROUND ? backgroundTexture : undefined} />;
 }
