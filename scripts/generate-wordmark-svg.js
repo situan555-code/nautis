@@ -9,6 +9,10 @@ if (!inputPath || !outputPath) {
 
 const source = await readFile(inputPath);
 const font = parse(source.buffer.slice(source.byteOffset, source.byteOffset + source.byteLength));
+
+// Dev-only helper. The production 3D hero source is the finalized outlined SVG in
+// src/components/three/sunder-outfit-wordmark.svg and should not be overwritten
+// unless this script can reproduce those exact outlines and period spacing.
 const wordmark = 'Sunder';
 const period = '.';
 const periodSourceOffsetY = -160;

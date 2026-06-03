@@ -37,10 +37,14 @@ export const HDR_BACKGROUND_URL =
   'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr';
 
 export const WORD_TEXT = 'Sunder';
-// Experimental Outfit SVG extrusion currently disabled because SVG path/cap extrusion breaks the live hero.
-// Stable Outfit JSON Text3D path is used for production.
-export const USE_OUTFIT_SVG_WORDMARK = false;
+// The active 3D wordmark uses the outlined Sunder. SVG source exported from the finalized Outfit-based brand mark.
+// Do not regenerate from live text unless matching the source SVG exactly.
+export const USE_OUTFIT_SVG_WORDMARK = true;
 export const SVG_WORDMARK_UNIT_SCALE = 0.001;
+export const SVG_WORDMARK_SCALE_MULTIPLIER = 1.08;
+export const SVG_TEXT_DEPTH = 0.22;
+export const SVG_BEVEL_SIZE = 0.008;
+export const SVG_BEVEL_THICKNESS = 0.008;
 export const DESIGN_WORD_TEXT_PT = 251.4;
 export const DESIGN_PERIOD_TEXT_PT = 170;
 export const DESIGN_PERIOD_TO_WORD_RATIO = DESIGN_PERIOD_TEXT_PT / DESIGN_WORD_TEXT_PT;
@@ -416,22 +420,23 @@ function SvgWordmark({ tuning, backgroundTexture }) {
     const paths = loader.parse(sunderWordmarkSvg).paths;
     const shapes = paths.flatMap((path) => SVGLoader.createShapes(path));
     const nextGeometry = new ExtrudeGeometry(shapes, {
-      depth: tuning.textDepth / SVG_WORDMARK_UNIT_SCALE,
+      depth: SVG_TEXT_DEPTH / SVG_WORDMARK_UNIT_SCALE,
       bevelEnabled: true,
-      bevelSize: tuning.bevelSize / SVG_WORDMARK_UNIT_SCALE,
+      bevelSize: SVG_BEVEL_SIZE / SVG_WORDMARK_UNIT_SCALE,
       bevelSegments: TEXT_BEVEL_SEGMENTS,
-      bevelThickness: TEXT_BEVEL_THICKNESS / SVG_WORDMARK_UNIT_SCALE,
+      bevelThickness: SVG_BEVEL_THICKNESS / SVG_WORDMARK_UNIT_SCALE,
       curveSegments: TEXT_CURVE_SEGMENTS,
     });
 
     nextGeometry.scale(SVG_WORDMARK_UNIT_SCALE, -SVG_WORDMARK_UNIT_SCALE, SVG_WORDMARK_UNIT_SCALE);
+    nextGeometry.computeVertexNormals();
     return nextGeometry;
-  }, [tuning.bevelSize, tuning.textDepth]);
+  }, []);
 
   useEffect(() => () => geometry.dispose(), [geometry]);
 
   return (
-    <mesh castShadow geometry={geometry} scale={tuning.wordScale}>
+    <mesh castShadow geometry={geometry} scale={tuning.wordScale * SVG_WORDMARK_SCALE_MULTIPLIER}>
       <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
     </mesh>
   );
