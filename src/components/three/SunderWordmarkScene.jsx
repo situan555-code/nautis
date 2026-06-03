@@ -387,13 +387,13 @@ function Grid({ tuning }) {
 function JsonWordmark({ tuning, backgroundTexture }) {
   return (
     <group scale={tuning.wordScale}>
-          <Text3D
-            castShadow
-            bevelEnabled
-            font={sunderWordmarkFont}
-            scale={TEXT3D_ACTIVE_SIZE}
-            letterSpacing={LETTER_SPACING}
-            height={tuning.textDepth}
+      <Text3D
+        castShadow
+        bevelEnabled
+        font={sunderWordmarkFont}
+        scale={TEXT3D_ACTIVE_SIZE}
+        letterSpacing={LETTER_SPACING}
+        height={tuning.textDepth}
         bevelSize={tuning.bevelSize}
         bevelSegments={TEXT_BEVEL_SEGMENTS}
         curveSegments={TEXT_CURVE_SEGMENTS}
