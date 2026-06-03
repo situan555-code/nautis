@@ -8,10 +8,8 @@ import { Lightformer } from '@react-three/drei/core/Lightformer.js';
 import { MeshTransmissionMaterial } from '@react-three/drei/core/MeshTransmissionMaterial.js';
 import { OrbitControls } from '@react-three/drei/core/OrbitControls.js';
 import { Text3D } from '@react-three/drei/core/Text3D.js';
-import { ExtrudeGeometry } from 'three';
-import { RGBELoader, SVGLoader } from 'three-stdlib';
-import sunderWordmarkFont from './outfit-extrabold.typeface.json';
-import sunderWordmarkSvg from './sunder-outfit-wordmark.svg?raw';
+import { RGBELoader } from 'three-stdlib';
+import sunderWordmarkFont from './sunder-wordmark-font.json';
 
 export const MAX_DPR = 1.5;
 export const ENABLE_POSTPROCESSING = false;
@@ -20,7 +18,7 @@ export const MOBILE_ENABLE_3D = true;
 export const MOBILE_MAX_DPR = 1;
 export const MOBILE_ENABLE_ACCUMULATIVE_SHADOWS = false;
 export const MOBILE_ENABLE_POSTPROCESSING = false;
-export const MOBILE_ENABLE_INTERACTION = true;
+export const MOBILE_ENABLE_INTERACTION = false;
 export const MOBILE_HERO_MEDIA_QUERY = '(max-width: 1180px)';
 export const MOBILE_CAMERA_ZOOM = 22;
 export const MOBILE_CAMERA_MIN_ZOOM = 18;
@@ -37,37 +35,10 @@ export const HDR_BACKGROUND_URL =
   'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr';
 
 export const WORD_TEXT = 'Sunder';
-// The active 3D wordmark uses the outlined Sunder. SVG source exported from the finalized Outfit-based brand mark.
-// Do not regenerate from live text unless matching the source SVG exactly.
-export const USE_OUTFIT_SVG_WORDMARK = true;
-export const SVG_WORDMARK_UNIT_SCALE = 0.001;
-export const SVG_WORDMARK_SCALE_MULTIPLIER = 1.08;
-export const SVG_TEXT_DEPTH = 0.22;
-export const SVG_BEVEL_SIZE = 0.008;
-export const SVG_BEVEL_THICKNESS = 0.008;
-export const DESIGN_WORD_TEXT_PT = 251.4;
-export const DESIGN_PERIOD_TEXT_PT = 170;
-export const DESIGN_PERIOD_TO_WORD_RATIO = DESIGN_PERIOD_TEXT_PT / DESIGN_WORD_TEXT_PT;
-export const TEXT3D_ACTIVE_SIZE = 1;
-
-// Desktop source design used Outfit word text at 251.4 pt and a separate period at 170 pt.
-// The period is intentionally ~67.6% of the word text size because a full-size period looked visually oversized.
-export const PERIOD_CYLINDER_VISUAL_MULTIPLIER = 0.15 / DESIGN_PERIOD_TO_WORD_RATIO;
-export const DESKTOP_WORDMARK_LAYOUT = {
-  centerScale: [0.8, 1, 1],
-  position: [0, -1, 2.25],
-  rotation: [-Math.PI / 2, 0, 0],
-  scale: 5,
-  period: {
-    radius: DESIGN_PERIOD_TO_WORD_RATIO * PERIOD_CYLINDER_VISUAL_MULTIPLIER,
-    depth: 0.18,
-    position: [3.12, 0.08, 0.12],
-  },
-};
-export const WORDMARK_CENTER_SCALE = DESKTOP_WORDMARK_LAYOUT.centerScale;
-export const WORDMARK_POSITION = DESKTOP_WORDMARK_LAYOUT.position;
-export const WORDMARK_ROTATION = DESKTOP_WORDMARK_LAYOUT.rotation;
-export const WORDMARK_SCALE = DESKTOP_WORDMARK_LAYOUT.scale;
+export const WORDMARK_CENTER_SCALE = [0.8, 1, 1];
+export const WORDMARK_POSITION = [0, -1, 2.25];
+export const WORDMARK_ROTATION = [-Math.PI / 2, 0, 0];
+export const WORDMARK_SCALE = 5;
 export const TEXT_DEPTH = 0.25;
 export const TEXT_BEVEL_SIZE = 0.01;
 export const TEXT_BEVEL_THICKNESS = 0.01;
@@ -75,11 +46,11 @@ export const TEXT_BEVEL_SEGMENTS = 10;
 export const TEXT_CURVE_SEGMENTS = 128;
 export const LETTER_SPACING = -0.03;
 
-export const PERIOD_RADIUS = DESKTOP_WORDMARK_LAYOUT.period.radius;
-export const PERIOD_DEPTH = DESKTOP_WORDMARK_LAYOUT.period.depth;
-export const PERIOD_OFFSET_X = DESKTOP_WORDMARK_LAYOUT.period.position[0];
-export const PERIOD_OFFSET_Y = DESKTOP_WORDMARK_LAYOUT.period.position[1];
-export const PERIOD_OFFSET_Z = DESKTOP_WORDMARK_LAYOUT.period.position[2];
+export const PERIOD_RADIUS = 0.15;
+export const PERIOD_DEPTH = 0.18;
+export const PERIOD_OFFSET_X = 4.48;
+export const PERIOD_OFFSET_Y = 0.08;
+export const PERIOD_OFFSET_Z = 0.12;
 
 export const CAMERA_POSITION = [10, 20, 20];
 export const CAMERA_ZOOM = 80;
@@ -147,22 +118,6 @@ const THEME_SCENE = {
     lightColor: '#ffffff',
   },
 };
-
-let didLogDesktopWordmarkLayout = false;
-
-function logDesktopWordmarkLayout(tuning) {
-  if (!import.meta.env.DEV || didLogDesktopWordmarkLayout) return;
-  didLogDesktopWordmarkLayout = true;
-
-  console.table({
-    'word text pt': DESIGN_WORD_TEXT_PT,
-    'period text pt': DESIGN_PERIOD_TEXT_PT,
-    'period ratio': Number(DESIGN_PERIOD_TO_WORD_RATIO.toFixed(4)),
-    'active Text3D size': TEXT3D_ACTIVE_SIZE,
-    'period radius': tuning.periodRadius,
-    'period position': tuning.periodPosition.join(', '),
-  });
-}
 
 function getCurrentTheme() {
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
@@ -388,69 +343,31 @@ function Grid({ tuning }) {
   );
 }
 
-function JsonWordmark({ tuning, backgroundTexture }) {
-  return (
-    <group scale={tuning.wordScale}>
-      <Text3D
-        castShadow
-        bevelEnabled
-        font={sunderWordmarkFont}
-        scale={TEXT3D_ACTIVE_SIZE}
-        letterSpacing={LETTER_SPACING}
-        height={tuning.textDepth}
-        bevelSize={tuning.bevelSize}
-        bevelSegments={TEXT_BEVEL_SEGMENTS}
-        curveSegments={TEXT_CURVE_SEGMENTS}
-        bevelThickness={TEXT_BEVEL_THICKNESS}
-      >
-        {WORD_TEXT}
-        <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
-      </Text3D>
-      <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
-        <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
-        <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
-      </mesh>
-    </group>
-  );
-}
-
-function SvgWordmark({ tuning, backgroundTexture }) {
-  const geometry = useMemo(() => {
-    const loader = new SVGLoader();
-    const paths = loader.parse(sunderWordmarkSvg).paths;
-    const shapes = paths.flatMap((path) => SVGLoader.createShapes(path));
-    const nextGeometry = new ExtrudeGeometry(shapes, {
-      depth: SVG_TEXT_DEPTH / SVG_WORDMARK_UNIT_SCALE,
-      bevelEnabled: true,
-      bevelSize: SVG_BEVEL_SIZE / SVG_WORDMARK_UNIT_SCALE,
-      bevelSegments: TEXT_BEVEL_SEGMENTS,
-      bevelThickness: SVG_BEVEL_THICKNESS / SVG_WORDMARK_UNIT_SCALE,
-      curveSegments: TEXT_CURVE_SEGMENTS,
-    });
-
-    nextGeometry.scale(SVG_WORDMARK_UNIT_SCALE, -SVG_WORDMARK_UNIT_SCALE, SVG_WORDMARK_UNIT_SCALE);
-    nextGeometry.computeVertexNormals();
-    return nextGeometry;
-  }, []);
-
-  useEffect(() => () => geometry.dispose(), [geometry]);
-
-  return (
-    <mesh castShadow geometry={geometry} scale={tuning.wordScale * SVG_WORDMARK_SCALE_MULTIPLIER}>
-      <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
-    </mesh>
-  );
-}
-
 function Wordmark({ tuning, backgroundTexture }) {
   return (
     <>
       <Center scale={WORDMARK_CENTER_SCALE} front top position={tuning.wordPosition} rotation={tuning.wordRotation}>
-        {USE_OUTFIT_SVG_WORDMARK ? (
-          <SvgWordmark tuning={tuning} backgroundTexture={backgroundTexture} />
-        ) : (
-          <JsonWordmark tuning={tuning} backgroundTexture={backgroundTexture} />
-        )}
+        <group scale={tuning.wordScale}>
+          <Text3D
+            castShadow
+            bevelEnabled
+            font={sunderWordmarkFont}
+            scale={1}
+            letterSpacing={LETTER_SPACING}
+            height={tuning.textDepth}
+            bevelSize={tuning.bevelSize}
+            bevelSegments={TEXT_BEVEL_SEGMENTS}
+            curveSegments={TEXT_CURVE_SEGMENTS}
+            bevelThickness={TEXT_BEVEL_THICKNESS}
+          >
+            {WORD_TEXT}
+            <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
+          </Text3D>
+          <mesh position={tuning.periodPosition} rotation={[Math.PI / 2, 0, 0]} castShadow>
+            <cylinderGeometry args={[tuning.periodRadius, tuning.periodRadius, tuning.periodDepth, 48]} />
+            <EpoxyMaterial tuning={tuning} backgroundTexture={backgroundTexture} />
+          </mesh>
+        </group>
       </Center>
       <Grid tuning={tuning} />
     </>
@@ -458,8 +375,6 @@ function Wordmark({ tuning, backgroundTexture }) {
 }
 
 function DesktopWordmark({ tuning }) {
-  useEffect(() => logDesktopWordmarkLayout(tuning), [tuning]);
-
   const backgroundTexture = useLoader(RGBELoader, HDR_BACKGROUND_URL);
   return <Wordmark tuning={tuning} backgroundTexture={USE_EXTERNAL_HDR_BACKGROUND ? backgroundTexture : undefined} />;
 }
