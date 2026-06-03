@@ -571,11 +571,18 @@ html[data-theme='dark'] .dc-audience-card {
   margin-top: 18px;
 }
 
+.dc-final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: 34px;
+}
+
 .dc-inline-link {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  margin-top: 18px;
   padding-bottom: 2px;
   border-bottom: 1px solid rgba(13, 13, 13, 0.5);
   color: #0d0d0d;
