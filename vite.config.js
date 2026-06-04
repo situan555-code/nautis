@@ -42,8 +42,8 @@ const corePages = {
   },
   'about': {
     activePage: 'about',
-    pageTitle: 'About',
-    pageDescription: 'Learn about Sunder & Co., an Ohio-based creative and systems partner serving local businesses and remote clients across the United States.',
+    pageTitle: 'About Us',
+    pageDescription: 'Learn how Sunder unifies technology, design, brand strategy, custom web development, and AI-powered workflow solutions for connected customer experiences.',
     pagePath: '/about.html',
   },
   'services-creative': {
