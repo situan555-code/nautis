@@ -24,7 +24,7 @@
     "vite-plugin-sitemap": "^0.8.2"
   },
   "devDependencies": {
-    "@gltf-transform/core": "^4.3.0",
+    "@gltf-transform/core": "^4.4.0",
     "@gltf-transform/extensions": "^4.3.0",
     "@gltf-transform/functions": "^4.3.0",
     "@vitejs/plugin-react": "^4.7.0",
