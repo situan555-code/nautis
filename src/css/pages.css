@@ -527,6 +527,26 @@ html[data-theme='light'] .advisory-focus-card__visual {
   line-height: 1.5;
 }
 
+.advisory-source-row {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+}
+
+.advisory-source-row .advisory-card-code {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--color-text-secondary);
+}
+
+.advisory-source-row p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+}
+
 .advisory-data-card {
   min-height: 13rem;
   display: flex;

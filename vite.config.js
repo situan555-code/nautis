@@ -11,6 +11,76 @@ const DEFAULT_DESCRIPTION =
 
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+
+function buildPageSchema({ pagePath, title, description, serviceName, serviceDescription, breadcrumbs }) {
+  const pageUrl = `${SITE_URL}${pagePath}`;
+  const graph = [
+    {
+      '@type': 'Organization',
+      '@id': ORGANIZATION_ID,
+      name: 'Sunder & Co.',
+      url: SITE_URL,
+      email: siteData.site.email,
+      telephone: siteData.site.phoneSchema,
+      areaServed: [
+        'United States',
+        'New Philadelphia, Ohio',
+        'Dover, Ohio',
+        'Canton, Ohio',
+        'Tuscarawas County, Ohio',
+        'Stark County, Ohio',
+        'Holmes County, Ohio',
+      ],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description,
+      isPartOf: {
+        '@id': `${SITE_URL}/#website`,
+      },
+      about: {
+        '@id': `${pageUrl}#service`,
+      },
+      provider: {
+        '@id': ORGANIZATION_ID,
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: serviceName,
+      description: serviceDescription,
+      provider: {
+        '@id': ORGANIZATION_ID,
+      },
+      areaServed: [
+        'United States',
+        'Ohio',
+      ],
+      serviceType: serviceName,
+      url: pageUrl,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: breadcrumb.name,
+        item: `${SITE_URL}${breadcrumb.path}`,
+      })),
+    },
+  ];
+
+  return `<script type="application/ld+json">
+${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2)}
+</script>`;
+}
+
 function removeAppleDoubleFiles(directory) {
   if (!existsSync(directory)) return;
 
@@ -57,17 +127,42 @@ const corePages = {
     activePage: 'services',
     inputName: 'advisory/index',
     sourcePath: 'advisory/index.html',
+    metaTitle: 'Sunder Advisory | AI Visibility, Brand Strategy & Technical Discoverability',
     pageTitle: 'Sunder Advisory',
-    pageDescription: 'Sunder Advisory helps companies improve AI visibility, technical discoverability, brand entity clarity, content strategy, and platform readiness.',
+    pageDescription: 'Sunder Advisory helps companies improve how they are understood by people, search engines, and AI systems through AI visibility audits, technical discoverability reviews, entity strategy, and brand systems.',
     pagePath: '/advisory/',
+    pageSchema: buildPageSchema({
+      pagePath: '/advisory/',
+      title: 'Sunder Advisory | AI Visibility, Brand Strategy & Technical Discoverability',
+      description: 'Sunder Advisory helps companies improve how they are understood by people, search engines, and AI systems through AI visibility audits, technical discoverability reviews, entity strategy, and brand systems.',
+      serviceName: 'Sunder Advisory',
+      serviceDescription: 'AI visibility audits, technical discoverability reviews, entity strategy, brand systems, and execution planning for companies that need to be understood by people, search engines, and AI systems.',
+      breadcrumbs: [
+        { name: 'Home', path: '/' },
+        { name: 'Sunder Advisory', path: '/advisory/' },
+      ],
+    }),
   },
   'home-furnishings-ai-visibility': {
     activePage: 'services',
     inputName: 'industries/home-furnishings-ai-visibility/index',
     sourcePath: 'industries/home-furnishings-ai-visibility/index.html',
-    pageTitle: 'Home Furnishings AI Visibility',
-    pageDescription: 'AI visibility audits for furniture, lighting, decor, bathware, rugs, and home goods companies with rich catalogs, configurators, and product systems.',
+    metaTitle: 'AI Visibility for Home Furnishings Brands & Platforms | Sunder & Co.',
+    pageTitle: 'AI Visibility for Home Furnishings Brands & Platforms',
+    pageDescription: 'Sunder helps furniture, lighting, décor, bathware, rugs, and home goods companies understand how AI systems see their catalogs, configurators, product data, entity signals, and third-party source-of-truth risks.',
     pagePath: '/industries/home-furnishings-ai-visibility/',
+    pageSchema: buildPageSchema({
+      pagePath: '/industries/home-furnishings-ai-visibility/',
+      title: 'AI Visibility for Home Furnishings Brands & Platforms | Sunder & Co.',
+      description: 'Sunder helps furniture, lighting, décor, bathware, rugs, and home goods companies understand how AI systems see their catalogs, configurators, product data, entity signals, and third-party source-of-truth risks.',
+      serviceName: 'Home Furnishings AI Visibility Audit',
+      serviceDescription: 'AI visibility audits for furniture, lighting, decor, bathware, rugs, and home goods companies with rich catalogs, configurators, product data, entity signals, and third-party source-of-truth risks.',
+      breadcrumbs: [
+        { name: 'Home', path: '/' },
+        { name: 'Sunder Advisory', path: '/advisory/' },
+        { name: 'Home Furnishings AI Visibility', path: '/industries/home-furnishings-ai-visibility/' },
+      ],
+    }),
   },
   'web-design-new-philadelphia-ohio': {
     activePage: 'services',
