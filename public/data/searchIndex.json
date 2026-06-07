@@ -61,5 +61,19 @@
     "category": "Contact",
     "url": "/contact.html",
     "keywords": ["interactive", "3d", "configurator", "browser experience", "webgl"]
+  },
+  {
+    "title": "Sunder Advisory",
+    "description": "AI visibility audits, technical discoverability reviews, brand entity strategy, AI-ready content strategy, and platform advisory.",
+    "category": "Sunder Advisory",
+    "url": "/advisory/",
+    "keywords": ["advisory", "ai visibility audit", "technical discoverability", "brand entity strategy", "ai ready content"]
+  },
+  {
+    "title": "Home Furnishings AI Visibility",
+    "description": "AI visibility reviews for furniture, lighting, decor, bathware, rugs, and home goods companies with rich catalogs and configurators.",
+    "category": "Sunder Advisory",
+    "url": "/industries/home-furnishings-ai-visibility/",
+    "keywords": ["home furnishings", "furniture", "catalog", "configurator", "ai visibility", "structured data"]
   }
 ]

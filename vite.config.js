@@ -33,6 +33,7 @@ const localServicePageSlugs = [
   'ai-seo-local-business',
 ];
 const htmlPageSlugs = ['about', 'services-creative', 'contact', 'privacy-policy', ...localServicePageSlugs];
+const directoryPageSlugs = ['advisory', 'industries/home-furnishings-ai-visibility'];
 
 const corePages = {
   'index': {
@@ -51,6 +52,22 @@ const corePages = {
     pageTitle: 'Sunder Creative',
     pageDescription: 'Web design, branding, content production, local SEO, and AI search visibility support for Ohio businesses and remote clients across the United States.',
     pagePath: '/services-creative.html',
+  },
+  'advisory': {
+    activePage: 'services',
+    inputName: 'advisory/index',
+    sourcePath: 'advisory/index.html',
+    pageTitle: 'Sunder Advisory',
+    pageDescription: 'Sunder Advisory helps companies improve AI visibility, technical discoverability, brand entity clarity, content strategy, and platform readiness.',
+    pagePath: '/advisory/',
+  },
+  'home-furnishings-ai-visibility': {
+    activePage: 'services',
+    inputName: 'industries/home-furnishings-ai-visibility/index',
+    sourcePath: 'industries/home-furnishings-ai-visibility/index.html',
+    pageTitle: 'Home Furnishings AI Visibility',
+    pageDescription: 'AI visibility audits for furniture, lighting, decor, bathware, rugs, and home goods companies with rich catalogs, configurators, and product systems.',
+    pagePath: '/industries/home-furnishings-ai-visibility/',
   },
   'web-design-new-philadelphia-ohio': {
     activePage: 'services',
@@ -105,7 +122,10 @@ const allPageSlugs = Object.keys(corePages);
 
 // Build rollup input map
 const input = Object.fromEntries(
-  allPageSlugs.map((name) => [name, resolve(__dirname, `src/${name}.html`)]),
+  Object.entries(corePages).map(([name, data]) => [
+    data.inputName || name,
+    resolve(__dirname, `src/${data.sourcePath || `${name}.html`}`),
+  ]),
 );
 
 // Build page context
@@ -114,7 +134,8 @@ const pageContext = {};
 // Core pages context
 Object.entries(corePages).forEach(([slug, data]) => {
   const pagePath = data.pagePath || (slug === 'index' ? '/' : `/${slug}`);
-  pageContext[`/${slug}.html`] = {
+  const sourcePath = data.sourcePath || `${slug}.html`;
+  pageContext[`/${sourcePath}`] = {
     ...data,
     pagePath,
     canonicalUrl: `${SITE_URL}${pagePath}`,
@@ -156,6 +177,12 @@ export default defineConfig({
             new RegExp(`<loc>${SITE_URL}/${slug}</loc>`, 'g'),
             `<loc>${SITE_URL}/${slug}.html</loc>`,
           );
+        });
+        directoryPageSlugs.forEach((slug) => {
+          sitemap = sitemap
+            .replace(new RegExp(`<loc>${SITE_URL}/${slug}</loc>`, 'g'), `<loc>${SITE_URL}/${slug}/</loc>`)
+            .replace(new RegExp(`<loc>${SITE_URL}/${slug}/index</loc>`, 'g'), `<loc>${SITE_URL}/${slug}/</loc>`)
+            .replace(new RegExp(`<loc>${SITE_URL}/${slug}/index.html</loc>`, 'g'), `<loc>${SITE_URL}/${slug}/</loc>`);
         });
         writeFileSync(sitemapPath, sitemap);
         removeAppleDoubleFiles(resolve(__dirname, 'dist'));

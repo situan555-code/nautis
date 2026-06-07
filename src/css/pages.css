@@ -272,6 +272,300 @@
   }
 }
 
+/* --- Advisory Pages --- */
+.advisory-page {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    var(--color-bg);
+  background-size: 96px 96px;
+}
+
+html[data-theme='light'] .advisory-page {
+  background:
+    linear-gradient(rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+    var(--color-bg);
+  background-size: 96px 96px;
+}
+
+.advisory-hero {
+  min-height: 72svh;
+  display: grid;
+  align-items: center;
+  background:
+    radial-gradient(circle at 50% 16%, var(--color-accent-glow-strong), transparent 34%),
+    var(--color-bg);
+}
+
+.advisory-hero h1 {
+  max-width: 12ch;
+  margin-inline: auto;
+}
+
+.industry-hero h1 {
+  max-width: 14ch;
+}
+
+.advisory-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.advisory-actions--center {
+  justify-content: center;
+}
+
+.advisory-intro p,
+.advisory-split p,
+.industry-page .container--sm p {
+  margin-bottom: var(--space-6);
+}
+
+.advisory-intro p:last-child,
+.advisory-split p:last-child,
+.industry-page .container--sm p:last-child {
+  margin-bottom: 0;
+}
+
+.advisory-view-grid,
+.advisory-offering-grid,
+.advisory-data-grid {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.advisory-view-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.advisory-view-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.advisory-offering-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.advisory-data-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.advisory-view-card,
+.advisory-offering-card,
+.advisory-data-card,
+.advisory-focus-card {
+  background: color-mix(in srgb, var(--color-bg-card) 92%, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.advisory-view-card,
+.advisory-offering-card {
+  padding: var(--space-8);
+}
+
+.advisory-view-card h3,
+.advisory-offering-card h3 {
+  margin-bottom: var(--space-4);
+}
+
+.advisory-view-card p,
+.advisory-offering-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.advisory-view-card ul {
+  list-style: none;
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.advisory-view-card li {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.advisory-card-code {
+  display: inline-flex;
+  margin-bottom: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.advisory-focus-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: var(--space-8);
+  align-items: stretch;
+  padding: var(--space-10);
+  overflow: hidden;
+}
+
+.advisory-focus-card h2 {
+  margin: var(--space-4) 0 var(--space-6);
+}
+
+.advisory-focus-card p {
+  margin-bottom: var(--space-6);
+}
+
+.advisory-focus-card__visual {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    var(--color-bg-elevated);
+  background-size: 38px 38px;
+}
+
+html[data-theme='light'] .advisory-focus-card__visual {
+  background:
+    linear-gradient(rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+    var(--color-bg-elevated);
+  background-size: 38px 38px;
+}
+
+.advisory-signal-stack {
+  display: grid;
+  gap: var(--space-3);
+  width: min(100%, 24rem);
+}
+
+.advisory-signal-stack span {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-bg-card) 88%, transparent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.advisory-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.advisory-contrast {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.advisory-contrast article {
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+}
+
+.advisory-contrast h3 {
+  margin-bottom: var(--space-3);
+}
+
+.advisory-contrast p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.advisory-data-card {
+  min-height: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-8);
+}
+
+.advisory-data-card strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+.advisory-data-card span {
+  margin-top: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .advisory-view-grid,
+  .advisory-view-grid--four,
+  .advisory-offering-grid,
+  .advisory-data-grid,
+  .advisory-focus-card,
+  .advisory-split {
+    grid-template-columns: 1fr;
+  }
+
+  .advisory-focus-card__visual {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .advisory-hero {
+    min-height: auto;
+  }
+
+  .advisory-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .advisory-actions .btn {
+    width: 100%;
+  }
+
+  .advisory-view-card,
+  .advisory-offering-card,
+  .advisory-data-card,
+  .advisory-focus-card,
+  .advisory-contrast article {
+    padding: var(--space-6);
+  }
+
+  .advisory-focus-card__visual {
+    min-height: 220px;
+  }
+}
+
 /* --- Case Study Cards --- */
 .case-card {
   padding: var(--space-8);
