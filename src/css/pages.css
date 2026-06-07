@@ -319,6 +319,20 @@ html[data-theme='light'] .advisory-page {
   justify-content: center;
 }
 
+.advisory-outcome-line {
+  max-width: 48rem;
+  margin: var(--space-6) auto 0;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-card) 82%, transparent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  letter-spacing: 0.015em;
+  color: var(--color-text-secondary);
+}
+
 .advisory-intro p,
 .advisory-split p,
 .industry-page .container--sm p {
@@ -497,12 +511,60 @@ html[data-theme='light'] .advisory-focus-card__visual {
   color: var(--color-text-secondary);
 }
 
+.advisory-code-sample {
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+}
+
+.advisory-code-sample code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
 .advisory-data-card {
   min-height: 13rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    var(--color-bg-card);
+  background-size: 28px 28px;
+}
+
+html[data-theme='light'] .advisory-data-card {
+  background:
+    linear-gradient(rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+    var(--color-bg-card);
+  background-size: 28px 28px;
+}
+
+.advisory-data-card::after {
+  content: '';
+  position: absolute;
+  inset: auto var(--space-6) var(--space-6) auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.advisory-data-card .advisory-card-code {
+  margin-bottom: var(--space-8);
+  color: var(--color-text-secondary);
 }
 
 .advisory-data-card strong {
@@ -512,9 +574,11 @@ html[data-theme='light'] .advisory-focus-card__visual {
   line-height: 0.95;
   letter-spacing: 0;
   color: var(--color-text-primary);
+  position: relative;
+  z-index: 1;
 }
 
-.advisory-data-card span {
+.advisory-data-card > span:not(.advisory-card-code) {
   margin-top: var(--space-6);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -522,6 +586,8 @@ html[data-theme='light'] .advisory-focus-card__visual {
   letter-spacing: 0.075em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {
