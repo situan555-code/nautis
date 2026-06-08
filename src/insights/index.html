@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{> head }}
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+  {{> gtm-noscript }}
+  {{> nav activePage="insights" }}
+
+  <main id="main-content">
+    <section class="page-hero" id="insights-hero">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="label">Insights</span>
+        <h1>Readable before the click.</h1>
+        <p class="lead">Notes on AI visibility, brand clarity, search, and the technical details that shape how businesses are understood.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="latest-insights-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="label">Latest</span>
+          <h2 id="latest-insights-heading">Current Sunder thinking.</h2>
+        </div>
+
+        <div class="insight-list">
+          <article class="insight-list-card reveal">
+            <span class="label">AI Visibility / Home Furnishings</span>
+            <h3>Being Indexed Is Not the Same as Being Understood</h3>
+            <p>AI search is changing how buyers discover furniture, lighting, rugs, and home brands. Being indexed is no longer enough — your website needs to be readable, credible, and understandable before the click.</p>
+            <div class="insight-meta">
+              <span>June 2026</span>
+              <span aria-hidden="true">/</span>
+              <span>8 min read</span>
+            </div>
+            <a href="/insights/being-indexed-is-not-the-same-as-being-understood/" class="btn btn--primary">Read Article</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{> footer }}
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

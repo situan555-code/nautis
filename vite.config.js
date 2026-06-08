@@ -12,6 +12,41 @@ const DEFAULT_DESCRIPTION =
 const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'), 'utf-8'));
 
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const ARTICLE_PUBLISHED_DATE = '2026-06-08';
+const ARTICLE_MODIFIED_DATE = '2026-06-08';
+
+const toAbsoluteUrl = (path) => {
+  if (!path) return undefined;
+  return path.startsWith('http') ? path : `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
+};
+
+function createArticleSchema(article, canonicalUrl) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${canonicalUrl}#article`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+    },
+    headline: article.title,
+    description: article.description,
+    datePublished: ARTICLE_PUBLISHED_DATE,
+    dateModified: ARTICLE_MODIFIED_DATE,
+    articleSection: article.category,
+    publisher: {
+      '@id': ORGANIZATION_ID,
+      name: 'Sunder & Co.',
+    },
+  };
+
+  const image = toAbsoluteUrl(article.heroImage);
+  if (image) {
+    schema.image = image;
+  }
+
+  return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+}
 
 function buildPageSchema({ pagePath, title, description, serviceName, serviceDescription, breadcrumbs }) {
   const pageUrl = `${SITE_URL}${pagePath}`;
@@ -103,7 +138,19 @@ const localServicePageSlugs = [
   'ai-seo-local-business',
 ];
 const htmlPageSlugs = ['about', 'services-creative', 'contact', 'privacy-policy', ...localServicePageSlugs];
-const directoryPageSlugs = ['advisory', 'industries/home-furnishings-ai-visibility'];
+const liveInsightsDataDir = resolve(__dirname, 'src/data/insights');
+const liveInsightFiles = existsSync(liveInsightsDataDir)
+  ? readdirSync(liveInsightsDataDir).filter(f => f.endsWith('.json') && !f.startsWith('._'))
+  : [];
+const liveInsightPages = liveInsightFiles.map(file =>
+  JSON.parse(readFileSync(resolve(liveInsightsDataDir, file), 'utf-8')),
+);
+const directoryPageSlugs = [
+  'advisory',
+  'industries/home-furnishings-ai-visibility',
+  'insights',
+  ...liveInsightPages.map(page => `insights/${page.slug}`),
+];
 
 const corePages = {
   'index': {
@@ -211,13 +258,51 @@ const corePages = {
     pageDescription: 'Read the Sunder & Co. privacy policy for website analytics, hosting logs, and direct contact by email or phone.',
     pagePath: '/privacy-policy.html',
   },
+  'insights': {
+    activePage: 'insights',
+    inputName: 'insights/index',
+    sourcePath: 'insights/index.html',
+    pageTitle: 'Insights',
+    pageDescription: 'Sunder & Co. notes on AI visibility, brand clarity, search, and the technical details that shape how businesses are understood.',
+    pagePath: '/insights/',
+  },
 };
 
-const allPageSlugs = Object.keys(corePages);
+const liveInsightCorePages = Object.fromEntries(
+  liveInsightPages.map((page) => {
+    const pagePath = `/insights/${page.slug}/`;
+    const canonicalUrl = `${SITE_URL}${pagePath}`;
+    return [
+      `insights/${page.slug}`,
+      {
+        activePage: 'insights',
+        inputName: `insights/${page.slug}/index`,
+        sourcePath: `insights/${page.slug}/index.html`,
+        pageTitle: page.title,
+        pageDescription: page.description,
+        pagePath,
+        canonicalUrl,
+        category: page.category,
+        readTime: page.readTime,
+        heroImage: page.heroImage,
+        ogType: 'article',
+        ogImage: toAbsoluteUrl(page.heroImage),
+        pageSchema: createArticleSchema(page, canonicalUrl),
+      },
+    ];
+  }),
+);
+
+const pages = {
+  ...corePages,
+  ...liveInsightCorePages,
+};
+
+const allPageSlugs = Object.keys(pages);
 
 // Build rollup input map
 const input = Object.fromEntries(
-  Object.entries(corePages).map(([name, data]) => [
+  Object.entries(pages).map(([name, data]) => [
     data.inputName || name,
     resolve(__dirname, `src/${data.sourcePath || `${name}.html`}`),
   ]),
@@ -227,7 +312,7 @@ const input = Object.fromEntries(
 const pageContext = {};
 
 // Core pages context
-Object.entries(corePages).forEach(([slug, data]) => {
+Object.entries(pages).forEach(([slug, data]) => {
   const pagePath = data.pagePath || (slug === 'index' ? '/' : `/${slug}`);
   const sourcePath = data.sourcePath || `${slug}.html`;
   pageContext[`/${sourcePath}`] = {

@@ -25,7 +25,7 @@
     { "id": "case-studies", "label": "Case Studies", "disabled": true },
     { "id": "about",        "label": "About",        "href": "/about.html" },
     { "id": "engagement",   "label": "How We Work",   "disabled": true },
-    { "id": "insights",     "label": "Insights",      "disabled": true }
+    { "id": "insights",     "label": "Insights",      "href": "/insights/" }
   ],
   "services": [
     { "id": "web-design", "label": "Web Design" },

@@ -1,0 +1,41 @@
+<article class="insight-post">
+  <header class="insight-header section">
+    <div class="container container--narrow">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/index.html">Home</a> / <a href="/insights/">Insights</a> / <span>{{pageTitle}}</span>
+      </nav>
+      {{#if heroImage}}
+      <div class="insight-header__hero reveal">
+        <img src="{{heroImage}}" alt="{{pageTitle}}" fetchpriority="high" loading="eager" width="1200" height="630">
+      </div>
+      {{/if}}
+      <div class="insight-header__content reveal">
+        <span class="label">{{category}}</span>
+        <h1>{{pageTitle}}</h1>
+        <p class="lead">{{pageDescription}}</p>
+        <div class="insight-meta">
+          <span>Published: June 2026</span>
+          <span aria-hidden="true">/</span>
+          <span>{{readTime}}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section insight-body">
+    <div class="container container--narrow reveal">
+      {{> @partial-block }}
+    </div>
+  </section>
+
+  <section class="section insight-cta">
+    <div class="container container--narrow">
+      <div class="insight-cta-card reveal">
+        <span class="label">Next Step</span>
+        <h2>Find out what AI can actually see.</h2>
+        <p>Bring the website, catalog, configurator, or product data question into one focused conversation. Sunder can help identify where the business is readable, where it is thin, and what should be fixed first.</p>
+        <a href="/contact.html" class="btn btn--primary btn--lg">Request an AI Visibility Audit</a>
+      </div>
+    </div>
+  </section>
+</article>

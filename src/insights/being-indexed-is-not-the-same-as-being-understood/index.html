@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{> head }}
+  <link rel="stylesheet" href="/css/pages.css">
+</head>
+<body>
+  {{> gtm-noscript }}
+  {{> nav activePage="insights" }}
+
+  <main id="main-content">
+    {{#> insight-layout }}
+
+    <p class="insight-kicker">AI search is changing the first step in discovery. A buyer may not start by clicking through ten blue links. They may ask a search engine, ChatGPT Search, Copilot, Claude, or another answer system to explain the best options, summarize a product category, compare brands, or point them toward a short list.</p>
+
+    <p>For home furnishings companies, that shift matters. Furniture, lighting, rugs, bathware, decor, and home goods brands have spent years building rich digital experiences for people: polished photography, room scenes, product collections, filters, finish swatches, downloadable specs, dealer paths, and configurators. Those experiences can be beautiful to a human and still be thin to a machine.</p>
+
+    <p>Being indexed means a page can be found. Being understood means a system can confidently explain what the business sells, what makes it credible, how products relate to each other, where the source of truth lives, and what a buyer should do next. Those are not the same thing.</p>
+
+    <hr>
+
+    <h2>The new visibility problem starts before the click.</h2>
+
+    <p>Traditional SEO trained companies to care about whether pages were indexed, ranked, and clicked. Those still matter. But AI-powered discovery adds another layer: the system may summarize the category before the buyer ever reaches the site.</p>
+
+    <p>If an answer system can only see a generic product grid, a JavaScript shell, a few vague collection names, or a marketplace listing with clearer data than the original brand site, it may describe the business through someone else's words. That is the risk. The brand can be present in search and still be represented by weak, incomplete, or third-party information.</p>
+
+    <div class="insight-callout">
+      <p><strong>Practical test:</strong> if an AI system had to explain your company without clicking through the visual interface, would it understand the product categories, collections, materials, configurator options, dealer model, and brand position accurately?</p>
+    </div>
+
+    <h2>Rich visual experiences can become thin machine-readable experiences.</h2>
+
+    <p>Home furnishings websites often lean on interaction. That makes sense for buyers. People want to compare finishes, explore scale, see products in context, and understand how pieces work together. The issue is not the richness of the experience. The issue is whether the underlying information is also available in normal, crawlable, structured formats.</p>
+
+    <p>Common weak points include product copy rendered only after interaction, configurator choices hidden inside scripts, collection relationships that are visible in the interface but absent from HTML, PDFs carrying important specs instead of pages, and product data split across dealer sites, marketplaces, or old catalog systems.</p>
+
+    <p>In those situations, the human sees the showroom. The machine sees fragments.</p>
+
+    <h2>AI systems lean on the clearest source, not always the original source.</h2>
+
+    <p>When the brand site is hard to parse, AI systems often resolve uncertainty by leaning on easier sources. That might be Wayfair, Amazon, Build.com, Ferguson, Perigold, dealer websites, old PDFs, industry directories, marketplace descriptions, scraped product copy, or other public pages that happen to be easier to read.</p>
+
+    <p>Sometimes those sources are useful. Sometimes they are stale, incomplete, too generic, or misaligned with how the company wants to be understood. If the owned site does not clearly explain the brand, products, categories, relationships, and next steps, the answer layer may fill in the blanks from wherever it can.</p>
+
+    <h2>What “understood” looks like for a home brand.</h2>
+
+    <p>A more understandable site does not need to be louder or more bloated. It needs to make the important signals easier to read. For a home furnishings brand or platform, that often means clear product category pages, collection pages with useful summaries, structured product details, consistent naming, crawlable configurator context, accurate metadata, and schema that reflects what the page actually says.</p>
+
+    <p>It also means making entity relationships explicit. A buyer, search engine, or AI system should be able to tell whether the company is a manufacturer, retailer, marketplace, showroom, dealer network, trade supplier, design platform, or some combination of those. It should understand what product categories are central, what regions or channels matter, and which sources should be treated as authoritative.</p>
+
+    <h2>A short checklist for AI-readable product and brand presence.</h2>
+
+    <ul>
+      <li><strong>Crawlable product context:</strong> important product, collection, material, and finish information should exist in normal HTML, not only inside an interaction.</li>
+      <li><strong>Structured data:</strong> schema should match the real page content and support the company, service, product, and breadcrumb relationships that matter.</li>
+      <li><strong>Configurator visibility:</strong> options, generated states, finish names, dimensions, and product relationships should be summarized outside the interface when possible.</li>
+      <li><strong>Source-of-truth clarity:</strong> the owned site should be easier to parse than old PDFs, marketplace pages, and dealer descriptions.</li>
+      <li><strong>Answer-friendly content:</strong> pages should directly answer how the product works, who it is for, what choices exist, and what the buyer should do next.</li>
+    </ul>
+
+    <h2>This is not about gaming AI search.</h2>
+
+    <p>There is no magic file that guarantees placement in an AI answer. The useful work is more grounded than that. Make the business easier to understand. Make product data clearer. Make the site more crawlable. Give answer systems better source material than the loose third-party web.</p>
+
+    <p>For home furnishings companies, that work can improve the quality of how the business is seen before the click. It can also help the human experience: clearer pages, cleaner product relationships, better metadata, more useful content, and fewer dead ends between interest and action.</p>
+
+    <div class="insight-callout">
+      <p><strong>Sunder perspective:</strong> the strongest AI visibility foundation is not hype. It is a website, catalog, and brand presence that can be read clearly by people, search engines, and AI systems at the same time.</p>
+    </div>
+
+    <h2>Where to start.</h2>
+
+    <p>Start with the places where the business is most likely to be misunderstood: product pages, category pages, configurators, collection pages, dealer paths, PDFs, and third-party listings. Compare what a human sees with what a crawler or answer system can actually read.</p>
+
+    <p>If the experience is rich but the machine-readable version is thin, the fix may not be a full rebuild. It may be a focused AI visibility audit, clearer page architecture, better structured data, cleaner product summaries, or a practical plan for turning hidden product knowledge into readable source material.</p>
+
+    <p>For a focused industry view, see <a href="/industries/home-furnishings-ai-visibility/">Home Furnishings AI Visibility</a>. For a broader advisory starting point, visit <a href="/advisory/">Sunder Advisory</a>.</p>
+
+    {{/insight-layout }}
+  </main>
+
+  {{> footer }}
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

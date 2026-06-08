@@ -20,7 +20,7 @@
       <li><span class="nav__link nav__link--disabled" aria-disabled="true">Case Studies</span></li>
       <li><a href="/about.html" class="nav__link {{#if (eq activePage 'about')}}is-active{{/if}}">About</a></li>
       <li><span class="nav__link nav__link--disabled" aria-disabled="true">How We Work</span></li>
-      <li><span class="nav__link nav__link--disabled" aria-disabled="true">Insights</span></li>
+      <li><a href="/insights/" class="nav__link {{#if (eq activePage 'insights')}}is-active{{/if}}">Insights</a></li>
     </ul>
     <button class="nav__search-trigger" id="search-trigger" aria-label="Open search">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -44,7 +44,7 @@
     <span class="nav__mobile-link nav__mobile-link--disabled" aria-disabled="true">Case Studies</span>
     <a href="/about.html" class="nav__mobile-link">About</a>
     <span class="nav__mobile-link nav__mobile-link--disabled" aria-disabled="true">How We Work</span>
-    <span class="nav__mobile-link nav__mobile-link--disabled" aria-disabled="true">Insights</span>
+    <a href="/insights/" class="nav__mobile-link">Insights</a>
     <button class="nav__mobile-link nav__mobile-theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">Theme</button>
     <a href="/contact.html" class="btn btn--primary nav__mobile-cta">Start a Project</a>
   </div>
