@@ -38,8 +38,8 @@
 <link rel="canonical" href="{{#if canonicalUrl}}{{canonicalUrl}}{{else}}{{site.url}}{{/if}}">
 
 <!-- Open Graph -->
-<meta property="og:title" content="{{#if metaTitle}}{{metaTitle}}{{else}}{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — {{site.tagline}}{{/if}}{{/if}}">
-<meta property="og:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}">
+<meta property="og:title" content="{{#if ogTitle}}{{ogTitle}}{{else}}{{#if metaTitle}}{{metaTitle}}{{else}}{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — {{site.tagline}}{{/if}}{{/if}}{{/if}}">
+<meta property="og:description" content="{{#if ogDescription}}{{ogDescription}}{{else}}{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}{{/if}}">
 <meta property="og:type" content="{{#if ogType}}{{ogType}}{{else}}website{{/if}}">
 <meta property="og:url" content="{{#if canonicalUrl}}{{canonicalUrl}}{{else}}{{site.url}}{{/if}}">
 {{#if ogImage}}<meta property="og:image" content="{{ogImage}}">{{/if}}
@@ -47,8 +47,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="{{#if ogImage}}summary_large_image{{else}}summary{{/if}}">
-<meta name="twitter:title" content="{{#if metaTitle}}{{metaTitle}}{{else}}{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — {{site.tagline}}{{/if}}{{/if}}">
-<meta name="twitter:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}">
+<meta name="twitter:title" content="{{#if ogTitle}}{{ogTitle}}{{else}}{{#if metaTitle}}{{metaTitle}}{{else}}{{#if pageTitle}}{{pageTitle}} — {{site.name}}{{else}}{{site.name}} — {{site.tagline}}{{/if}}{{/if}}{{/if}}">
+<meta name="twitter:description" content="{{#if ogDescription}}{{ogDescription}}{{else}}{{#if pageDescription}}{{pageDescription}}{{else}}{{site.description}}{{/if}}{{/if}}">
 
 <!-- Preconnect for fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

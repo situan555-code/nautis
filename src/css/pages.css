@@ -776,10 +776,72 @@ html[data-theme='light'] .advisory-data-card {
 
 .insight-callout,
 .insight-cta-card,
-.insight-list-card {
+.insight-list-card,
+.insight-thesis-card,
+.insight-comparison article,
+.insight-signal-grid article,
+.insight-source-cards article {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-card);
+}
+
+.insight-thesis-card {
+  margin: var(--space-10) 0;
+  padding: var(--space-8);
+}
+
+.insight-thesis-card p {
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+.insight-comparison,
+.insight-signal-grid,
+.insight-source-cards {
+  display: grid;
+  gap: var(--space-5);
+  margin: var(--space-8) 0;
+}
+
+.insight-comparison {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.insight-signal-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.insight-source-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.insight-comparison article,
+.insight-signal-grid article,
+.insight-source-cards article {
+  padding: var(--space-6);
+}
+
+.insight-comparison h3,
+.insight-signal-grid h3,
+.insight-source-cards h3 {
+  margin: var(--space-4) 0 var(--space-3);
+}
+
+.insight-signal-grid h3 {
+  font-size: var(--text-xl);
+}
+
+.insight-comparison p,
+.insight-signal-grid p,
+.insight-source-cards p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
 }
 
 .insight-callout {
@@ -837,13 +899,23 @@ html[data-theme='light'] .advisory-data-card {
     max-width: none;
   }
 
+  .insight-comparison,
+  .insight-signal-grid,
+  .insight-source-cards {
+    grid-template-columns: 1fr;
+  }
+
   .insight-body p,
   .insight-body li {
     font-size: var(--text-base);
   }
 
   .insight-cta-card,
-  .insight-list-card {
+  .insight-list-card,
+  .insight-thesis-card,
+  .insight-comparison article,
+  .insight-signal-grid article,
+  .insight-source-cards article {
     padding: var(--space-6);
   }
 }
