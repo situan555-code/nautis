@@ -13,36 +13,90 @@ const siteData = JSON.parse(readFileSync(resolve(__dirname, 'src/data/site.json'
 
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const ARTICLE_PUBLISHED_DATE = '2026-06-08';
-const ARTICLE_MODIFIED_DATE = '2026-06-08';
+const ARTICLE_MODIFIED_DATE = '2026-06-09';
 
 const toAbsoluteUrl = (path) => {
   if (!path) return undefined;
   return path.startsWith('http') ? path : `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
 };
 
-function createArticleSchema(article, canonicalUrl) {
+function createArticleSchema(article, canonicalUrl, pagePath) {
+  const publisherId = `${canonicalUrl}#publisher`;
+  const webpageId = `${canonicalUrl}#webpage`;
+  const articleId = `${canonicalUrl}#article`;
+  const breadcrumbId = `${canonicalUrl}#breadcrumb`;
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': `${canonicalUrl}#article`,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': canonicalUrl,
-    },
-    headline: article.title,
-    description: article.description,
-    datePublished: ARTICLE_PUBLISHED_DATE,
-    dateModified: ARTICLE_MODIFIED_DATE,
-    articleSection: article.category,
-    publisher: {
-      '@id': ORGANIZATION_ID,
-      name: 'Sunder & Co.',
-    },
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': publisherId,
+        name: 'Sunder & Co.',
+        url: SITE_URL,
+      },
+      {
+        '@type': 'WebPage',
+        '@id': webpageId,
+        url: canonicalUrl,
+        name: article.metaTitle || `${article.title} | Sunder & Co.`,
+        description: article.description,
+        isPartOf: {
+          '@id': `${SITE_URL}/#website`,
+        },
+        about: {
+          '@id': articleId,
+        },
+        breadcrumb: {
+          '@id': breadcrumbId,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': breadcrumbId,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: SITE_URL,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Insights',
+            item: `${SITE_URL}/insights/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: article.title,
+            item: `${SITE_URL}${pagePath}`,
+          },
+        ],
+      },
+      {
+        '@type': article.schemaType || 'Article',
+        '@id': articleId,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': webpageId,
+        },
+        headline: article.headline || article.title,
+        description: article.description,
+        datePublished: article.datePublished || ARTICLE_PUBLISHED_DATE,
+        dateModified: article.dateModified || ARTICLE_MODIFIED_DATE,
+        articleSection: article.category,
+        publisher: {
+          '@id': publisherId,
+          name: 'Sunder & Co.',
+        },
+      },
+    ],
   };
 
   const image = toAbsoluteUrl(article.heroImage);
   if (image) {
-    schema.image = image;
+    schema['@graph'][3].image = image;
   }
 
   return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
@@ -290,7 +344,7 @@ const liveInsightCorePages = Object.fromEntries(
         heroImage: page.heroImage,
         ogType: 'article',
         ogImage: toAbsoluteUrl(page.heroImage),
-        pageSchema: createArticleSchema(page, canonicalUrl),
+        pageSchema: createArticleSchema(page, canonicalUrl, pagePath),
       },
     ];
   }),
