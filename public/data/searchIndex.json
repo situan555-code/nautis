@@ -82,5 +82,12 @@
     "category": "Insights",
     "url": "/insights/being-indexed-is-not-the-same-as-being-understood/",
     "keywords": ["insights", "ai visibility", "home furnishings", "ai search", "answer layer audit", "source material", "structured data", "catalog", "configurator"]
+  },
+  {
+    "title": "Apple Intelligence App Discoverability",
+    "description": "Apple’s App Intents, App Entities, Siri, Spotlight, Shortcuts, and Home Screen search are creating a new discovery layer for customer-facing apps. Sunder outlines a readiness framework for product, retail, booking, service, and catalog teams.",
+    "category": "Insights",
+    "url": "/insights/apple-intelligence-app-discoverability/",
+    "keywords": ["apple intelligence", "app intents", "app entities", "spotlight", "siri", "shortcuts", "app discoverability", "app search", "ios", "customer-facing apps"]
   }
 ]
