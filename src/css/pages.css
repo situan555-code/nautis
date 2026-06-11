@@ -1563,22 +1563,22 @@ html[data-theme='light'] .report-table-wrap {
 
 .report-table th:nth-child(1),
 .report-table td:nth-child(1) {
-  width: 15%;
+  width: 17%;
 }
 
 .report-table th:nth-child(2),
 .report-table td:nth-child(2) {
-  width: 18%;
+  width: 21%;
 }
 
 .report-table th:nth-child(3),
 .report-table td:nth-child(3) {
-  width: 38%;
+  width: 30%;
 }
 
 .report-table th:nth-child(4),
 .report-table td:nth-child(4) {
-  width: 29%;
+  width: 32%;
 }
 
 .report-table--comparison th:nth-child(1),
@@ -1603,7 +1603,7 @@ html[data-theme='light'] .report-table-wrap {
 
 .report-table th,
 .report-table td {
-  padding: 1.05rem 1.1rem;
+  padding: 1.12rem 1.22rem;
   border-bottom: 1px solid var(--report-frame-line);
   vertical-align: top;
   text-align: left;
@@ -1623,7 +1623,7 @@ html[data-theme='light'] .report-table-wrap {
 .report-table td {
   font-family: var(--report-font-body, var(--font-body));
   font-size: 0.92rem;
-  line-height: 1.62;
+  line-height: 1.58;
   color: var(--color-text-secondary);
   overflow-wrap: break-word;
 }
@@ -1631,9 +1631,9 @@ html[data-theme='light'] .report-table-wrap {
 .report-table td:first-child,
 .report-table td:nth-child(2) {
   font-family: var(--report-font-ui, var(--font-body));
-  font-size: 0.9rem;
-  font-weight: 550;
-  line-height: 1.45;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.42;
   color: var(--color-text-primary);
 }
 

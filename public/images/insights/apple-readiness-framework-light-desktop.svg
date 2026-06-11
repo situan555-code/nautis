@@ -11,54 +11,55 @@
     <path d="M140 378H1080" stroke="#E4DED1"/>
     <path d="M140 506H1080" stroke="#E4DED1"/>
   </g>
-  <text x="140" y="96" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="20" letter-spacing="1.8">READINESS FRAMEWORK</text>
-  <text x="140" y="128" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="40" font-weight="700">What a workable Apple discoverability stack needs</text>
+
+  <text x="140" y="94" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="17" font-weight="600" letter-spacing="1.8">READINESS FRAMEWORK</text>
+  <text x="140" y="132" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="32" font-weight="700">What a workable Apple discoverability stack needs</text>
 
   <g>
-    <rect x="138" y="228" width="250" height="146" rx="22" fill="#FBFAF6" stroke="#D7D0C4"/>
-    <text x="166" y="268" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">01 / ENTITY MODELING</text>
-    <text x="166" y="308" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Define the objects</text>
-    <text x="166" y="336" fill="#5E5850" font-family="Outfit, Arial, sans-serif" font-size="18">
-      <tspan x="166" dy="0">Products, accounts, and locations become</tspan>
-      <tspan x="166" dy="24">stable app entities.</tspan>
+    <rect x="118" y="228" width="300" height="142" rx="22" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="148" y="266" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="14" font-weight="600" letter-spacing="1.45">01 / ENTITY MODELING</text>
+    <text x="148" y="306" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="25" font-weight="700">Define the objects</text>
+    <text x="148" y="336" fill="#5E5850" font-family="Outfit, Arial, sans-serif" font-size="17.5" font-weight="500">
+      <tspan x="148" dy="0">Products, accounts, and locations</tspan>
+      <tspan x="148" dy="24">become stable app entities.</tspan>
     </text>
   </g>
   <g>
-    <rect x="474" y="228" width="250" height="146" rx="22" fill="#F4F2FF" stroke="#B8B9F7"/>
-    <text x="502" y="268" fill="#6A6CC1" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">02 / ACTION DESIGN</text>
-    <text x="502" y="308" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Define the actions</text>
-    <text x="502" y="336" fill="#4E4D67" font-family="Outfit, Arial, sans-serif" font-size="18">
-      <tspan x="502" dy="0">Important user moves become callable</tspan>
-      <tspan x="502" dy="24">intents across the system.</tspan>
+    <rect x="450" y="228" width="300" height="142" rx="22" fill="#F4F2FF" stroke="#B8B9F7"/>
+    <text x="480" y="266" fill="#6A6CC1" font-family="Source Code Pro, monospace" font-size="14" font-weight="600" letter-spacing="1.45">02 / ACTION DESIGN</text>
+    <text x="480" y="306" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="25" font-weight="700">Define the actions</text>
+    <text x="480" y="336" fill="#4E4D67" font-family="Outfit, Arial, sans-serif" font-size="17.5" font-weight="500">
+      <tspan x="480" dy="0">Important user moves become</tspan>
+      <tspan x="480" dy="24">callable intents across the system.</tspan>
     </text>
   </g>
   <g>
-    <rect x="810" y="228" width="250" height="146" rx="22" fill="#FFF1EA" stroke="#D4A48D"/>
-    <text x="838" y="268" fill="#98593D" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">03 / ROUTING AND QA</text>
-    <text x="838" y="308" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Test the path</text>
-    <text x="838" y="336" fill="#614C43" font-family="Outfit, Arial, sans-serif" font-size="18">
-      <tspan x="838" dy="0">Spotlight states, deep links, and</tspan>
-      <tspan x="838" dy="24">handoff stay reliable over time.</tspan>
-    </text>
-  </g>
-
-  <g>
-    <rect x="138" y="430" width="922" height="122" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
-    <text x="168" y="466" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">OUTPUT</text>
-    <text x="168" y="502" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">
-      <tspan x="168" dy="0">System surfaces can search, suggest, and route into the app</tspan>
-      <tspan x="168" dy="30">with less friction.</tspan>
+    <rect x="782" y="228" width="300" height="142" rx="22" fill="#FFF1EA" stroke="#D4A48D"/>
+    <text x="812" y="266" fill="#98593D" font-family="Source Code Pro, monospace" font-size="14" font-weight="600" letter-spacing="1.45">03 / ROUTING AND QA</text>
+    <text x="812" y="306" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="25" font-weight="700">Test the path</text>
+    <text x="812" y="336" fill="#614C43" font-family="Outfit, Arial, sans-serif" font-size="17.5" font-weight="500">
+      <tspan x="812" dy="0">Spotlight states, deep links, and</tspan>
+      <tspan x="812" dy="24">handoff stay reliable over time.</tspan>
     </text>
   </g>
 
-  <g stroke-linecap="round" stroke-linejoin="round">
-    <path d="M388 300H444" stroke="#2C8D7C" stroke-width="3"/>
-    <path d="M724 300H780" stroke="#2C8D7C" stroke-width="3"/>
-    <path d="M600 374V430" stroke="#2C8D7C" stroke-width="2.5"/>
+  <g>
+    <rect x="118" y="438" width="964" height="116" rx="20" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="148" y="476" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="14" font-weight="600" letter-spacing="1.45">OUTPUT</text>
+    <text x="148" y="516" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="25" font-weight="700">
+      <tspan x="148" dy="0">System surfaces can search, suggest, and route into the app</tspan>
+      <tspan x="148" dy="30">with less friction.</tspan>
+    </text>
+  </g>
+
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M418 299H450" stroke="#2C8D7C" stroke-width="3"/>
+    <path d="M750 299H782" stroke="#2C8D7C" stroke-width="3"/>
+    <path d="M600 370V438" stroke="#2C8D7C" stroke-width="2.5"/>
   </g>
   <g fill="#2C8D7C">
-    <path d="M444 300L432 293V307L444 300Z"/>
-    <path d="M780 300L768 293V307L780 300Z"/>
-    <path d="M600 430L593 418H607L600 430Z"/>
+    <path d="M450 299L438 292V306L450 299Z"/>
+    <path d="M782 299L770 292V306L782 299Z"/>
+    <path d="M600 438L593 426H607L600 438Z"/>
   </g>
 </svg>
