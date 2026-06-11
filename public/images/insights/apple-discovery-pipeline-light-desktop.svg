@@ -1,0 +1,98 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="28" fill="#F7F5EF"/>
+  <rect x="40" y="40" width="1120" height="640" rx="22" stroke="#D3CEC1" stroke-width="1.5"/>
+  <g opacity="0.5">
+    <path d="M220 140V584" stroke="#E4DED1"/>
+    <path d="M430 140V584" stroke="#E4DED1"/>
+    <path d="M640 140V584" stroke="#E4DED1"/>
+    <path d="M850 140V584" stroke="#E4DED1"/>
+    <path d="M1060 140V584" stroke="#E4DED1"/>
+    <path d="M140 250H1080" stroke="#E4DED1"/>
+    <path d="M140 362H1080" stroke="#E4DED1"/>
+    <path d="M140 474H1080" stroke="#E4DED1"/>
+  </g>
+  <text x="140" y="96" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="20" letter-spacing="1.8">APPLE DISCOVERY PIPELINE</text>
+  <text x="140" y="128" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="38" font-weight="700">From app content to system-level discovery</text>
+
+  <g>
+    <rect x="138" y="184" width="184" height="108" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="166" y="220" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">SOURCE OBJECTS</text>
+    <text x="166" y="256" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Products</text>
+    <text x="166" y="286" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Appointments</text>
+  </g>
+  <g>
+    <rect x="138" y="316" width="184" height="108" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="166" y="352" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">SOURCE OBJECTS</text>
+    <text x="166" y="388" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Orders</text>
+    <text x="166" y="418" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Locations</text>
+  </g>
+  <g>
+    <rect x="138" y="448" width="184" height="108" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="166" y="484" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">SOURCE OBJECTS</text>
+    <text x="166" y="520" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Saved lists</text>
+    <text x="166" y="550" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="26" font-weight="700">Collections</text>
+  </g>
+
+  <g>
+    <rect x="392" y="228" width="218" height="132" rx="22" fill="#F4F2FF" stroke="#B8B9F7"/>
+    <text x="424" y="268" fill="#6A6CC1" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">SYSTEM MODELING</text>
+    <text x="424" y="308" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">App Entities</text>
+    <text x="424" y="336" fill="#4E4D67" font-family="Outfit, Arial, sans-serif" font-size="18">Name what exists in the app</text>
+  </g>
+  <g>
+    <rect x="392" y="392" width="218" height="132" rx="22" fill="#FFF1EA" stroke="#D4A48D"/>
+    <text x="424" y="432" fill="#98593D" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">ACTION LAYER</text>
+    <text x="424" y="472" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">App Intents</text>
+    <text x="424" y="500" fill="#614C43" font-family="Outfit, Arial, sans-serif" font-size="18">Name what users can do</text>
+  </g>
+
+  <g>
+    <rect x="680" y="228" width="210" height="132" rx="22" fill="#F5F8FA" stroke="#C1CAD5"/>
+    <text x="710" y="268" fill="#607181" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">INDEXING</text>
+    <text x="710" y="308" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="30" font-weight="700">Spotlight</text>
+    <text x="710" y="336" fill="#53606D" font-family="Outfit, Arial, sans-serif" font-size="18">Searchable system content</text>
+  </g>
+  <g>
+    <rect x="680" y="392" width="210" height="132" rx="22" fill="#F5F8FA" stroke="#C1CAD5"/>
+    <text x="710" y="432" fill="#607181" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.5">ROUTING</text>
+    <text x="710" y="472" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="24" font-weight="700">Search Handoff</text>
+    <text x="710" y="500" fill="#53606D" font-family="Outfit, Arial, sans-serif" font-size="17">Open the right screen fast</text>
+  </g>
+
+  <g>
+    <rect x="958" y="184" width="114" height="108" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="986" y="228" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="24" font-weight="700">Siri</text>
+    <text x="986" y="256" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="15">voice intent</text>
+  </g>
+  <g>
+    <rect x="958" y="316" width="114" height="108" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="980" y="360" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="24" font-weight="700">Search</text>
+    <text x="980" y="388" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="15">home screen</text>
+  </g>
+  <g>
+    <rect x="958" y="448" width="114" height="108" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="972" y="492" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="24" font-weight="700">Widgets</text>
+    <text x="972" y="520" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="15">context cues</text>
+  </g>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M332 370H374" stroke="#6C6ED4" stroke-width="3"/>
+    <path d="M610 294H652" stroke="#6C6ED4" stroke-width="3"/>
+    <path d="M610 458H652" stroke="#B97253" stroke-width="3"/>
+    <path d="M890 294H930" stroke="#2C8D7C" stroke-width="3"/>
+    <path d="M890 458H930" stroke="#2C8D7C" stroke-width="3"/>
+    <path d="M1015 292V316" stroke="#2C8D7C" stroke-width="2.5"/>
+    <path d="M1015 424V448" stroke="#2C8D7C" stroke-width="2.5"/>
+    <path d="M1015 556V582" stroke="#2C8D7C" stroke-width="2.5"/>
+  </g>
+  <g fill="#2C8D7C">
+    <path d="M374 370L362 363V377L374 370Z"/>
+    <path d="M652 294L640 287V301L652 294Z"/>
+    <path d="M652 458L640 451V465L652 458Z"/>
+    <path d="M930 294L918 287V301L930 294Z"/>
+    <path d="M930 458L918 451V465L930 458Z"/>
+    <path d="M1015 316L1008 304H1022L1015 316Z"/>
+    <path d="M1015 448L1008 436H1022L1015 448Z"/>
+    <path d="M1015 582L1008 570H1022L1015 582Z"/>
+  </g>
+</svg>

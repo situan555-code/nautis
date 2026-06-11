@@ -1,0 +1,28 @@
+<svg width="720" height="960" viewBox="0 0 720 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="960" rx="28" fill="#0D0D0B"/>
+  <rect x="28" y="28" width="664" height="904" rx="20" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+  <text x="58" y="86" fill="#8B8B84" font-family="Source Code Pro, monospace" font-size="18" letter-spacing="1.6">READINESS FRAMEWORK</text>
+  <text x="58" y="122" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">What a workable Apple</text>
+  <text x="58" y="160" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">discoverability stack needs</text>
+
+  <g>
+    <rect x="58" y="216" width="604" height="136" rx="22" fill="#171715" stroke="#3B3A36"/>
+    <text x="92" y="258" fill="#AFAAA0" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.4">01 / ENTITY MODELING</text>
+    <text x="92" y="306" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">Define the objects</text>
+  </g>
+  <g>
+    <rect x="58" y="392" width="604" height="136" rx="22" fill="#16171A" stroke="#4A4A63"/>
+    <text x="92" y="434" fill="#9B9CBE" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.4">02 / ACTION DESIGN</text>
+    <text x="92" y="482" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">Define the actions</text>
+  </g>
+  <g>
+    <rect x="58" y="568" width="604" height="136" rx="22" fill="#1B1817" stroke="#6B554D"/>
+    <text x="92" y="610" fill="#C0A095" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.4">03 / ROUTING AND QA</text>
+    <text x="92" y="658" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">Test the path</text>
+  </g>
+  <g>
+    <rect x="58" y="744" width="604" height="108" rx="18" fill="#121212" stroke="#31312E"/>
+    <text x="92" y="782" fill="#8B8B84" font-family="Source Code Pro, monospace" font-size="16" letter-spacing="1.4">OUTPUT</text>
+    <text x="92" y="820" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="24" font-weight="700">Search, suggest, and route with less friction.</text>
+  </g>
+</svg>

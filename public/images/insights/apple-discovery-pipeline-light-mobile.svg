@@ -1,0 +1,55 @@
+<svg width="720" height="960" viewBox="0 0 720 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="960" rx="28" fill="#F7F5EF"/>
+  <rect x="28" y="28" width="664" height="904" rx="20" stroke="#D3CEC1" stroke-width="1.5"/>
+  <g opacity="0.5">
+    <path d="M138 170H582" stroke="#E4DED1"/>
+    <path d="M138 326H582" stroke="#E4DED1"/>
+    <path d="M138 482H582" stroke="#E4DED1"/>
+    <path d="M138 638H582" stroke="#E4DED1"/>
+    <path d="M138 794H582" stroke="#E4DED1"/>
+    <path d="M250 138V822" stroke="#E4DED1"/>
+    <path d="M470 138V822" stroke="#E4DED1"/>
+  </g>
+  <text x="66" y="88" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="18" letter-spacing="1.6">APPLE DISCOVERY PIPELINE</text>
+  <text x="66" y="124" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="32" font-weight="700">From app content to system-level</text>
+  <text x="66" y="162" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="32" font-weight="700">discovery</text>
+
+  <g>
+    <rect x="66" y="206" width="588" height="116" rx="18" fill="#FBFAF6" stroke="#D7D0C4"/>
+    <text x="96" y="244" fill="#7B746A" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">SOURCE OBJECTS</text>
+    <text x="96" y="282" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="27" font-weight="700">Products / Appointments / Orders</text>
+  </g>
+  <g>
+    <rect x="66" y="366" width="588" height="116" rx="18" fill="#F4F2FF" stroke="#B8B9F7"/>
+    <text x="96" y="404" fill="#6A6CC1" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">SYSTEM MODELING</text>
+    <text x="96" y="442" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">App Entities</text>
+    <text x="96" y="470" fill="#4E4D67" font-family="Outfit, Arial, sans-serif" font-size="19">Name what exists inside the app</text>
+  </g>
+  <g>
+    <rect x="66" y="526" width="588" height="116" rx="18" fill="#FFF1EA" stroke="#D4A48D"/>
+    <text x="96" y="564" fill="#98593D" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">ACTION LAYER</text>
+    <text x="96" y="602" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">App Intents</text>
+    <text x="96" y="630" fill="#614C43" font-family="Outfit, Arial, sans-serif" font-size="19">Name what users can do next</text>
+  </g>
+  <g>
+    <rect x="66" y="686" width="272" height="116" rx="18" fill="#F5F8FA" stroke="#C1CAD5"/>
+    <text x="92" y="724" fill="#607181" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">INDEXING</text>
+    <text x="92" y="762" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="29" font-weight="700">Spotlight</text>
+  </g>
+  <g>
+    <rect x="382" y="686" width="272" height="116" rx="18" fill="#F5F8FA" stroke="#C1CAD5"/>
+    <text x="408" y="724" fill="#607181" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">OUTPUTS</text>
+    <text x="408" y="762" fill="#131313" font-family="Outfit, Arial, sans-serif" font-size="29" font-weight="700">Siri / Search / Widgets</text>
+  </g>
+
+  <g stroke="#2C8D7C" stroke-width="3" stroke-linecap="round">
+    <path d="M360 322V364"/>
+    <path d="M360 482V524"/>
+    <path d="M360 642V684"/>
+  </g>
+  <g fill="#2C8D7C">
+    <path d="M360 364L352 350H368L360 364Z"/>
+    <path d="M360 524L352 510H368L360 524Z"/>
+    <path d="M360 684L352 670H368L360 684Z"/>
+  </g>
+</svg>

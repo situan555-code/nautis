@@ -329,7 +329,7 @@ const liveInsightCorePages = Object.fromEntries(
     return [
       `insights/${page.slug}`,
       {
-        activePage: 'insights',
+        activePage: '',
         inputName: `insights/${page.slug}/index`,
         sourcePath: `insights/${page.slug}/index.html`,
         metaTitle: page.metaTitle,

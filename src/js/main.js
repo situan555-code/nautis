@@ -16,6 +16,38 @@ import { initCalculators } from './calculators.js';
 import { initTheme } from './theme.js';
 import { initContactTracking } from './contact-tracking.js';
 
+function initCopyUrlButtons() {
+  const copyButtons = document.querySelectorAll('[data-copy-url]');
+  if (!copyButtons.length) return;
+
+  copyButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const url = button.getAttribute('data-copy-url-value') || window.location.href;
+      const originalLabel = button.textContent;
+
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(url);
+        } else {
+          const input = document.createElement('input');
+          input.value = url;
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand('copy');
+          document.body.removeChild(input);
+        }
+        button.textContent = 'Copied';
+      } catch {
+        button.textContent = 'Copy failed';
+      }
+
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+      }, 1800);
+    }, { once: false });
+  });
+}
+
 // Lightweight modules load immediately
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -24,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initAccordion();
   initContactTracking();
+  initCopyUrlButtons();
 
   const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
     if ('requestIdleCallback' in window) {
