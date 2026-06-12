@@ -297,8 +297,8 @@ const corePages = {
   },
   'ai-seo-local-business': {
     activePage: 'services',
-    pageTitle: 'AI SEO for Local Businesses',
-    pageDescription: 'AI SEO services for local businesses that want clearer search visibility across Google, maps, and AI-powered discovery systems.',
+    pageTitle: 'AI Visibility for Local Businesses',
+    pageDescription: 'AI visibility support for businesses that want clearer source material across Google, maps, search engines, and AI-powered answer systems.',
     pagePath: '/ai-seo-local-business.html',
   },
   'contact': {
