@@ -1,7 +1,7 @@
 <svg width="720" height="960" viewBox="0 0 720 960" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="720" height="960" rx="28" fill="#0D0D0B"/>
+  <rect width="720" height="960" rx="28" fill="#050506"/>
   <rect x="28" y="28" width="664" height="904" rx="20" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
-  <g opacity="0.38">
+  <g opacity="0.07">
     <path d="M138 170H582" stroke="#2D2D29"/>
     <path d="M138 326H582" stroke="#2D2D29"/>
     <path d="M138 482H582" stroke="#2D2D29"/>
@@ -15,29 +15,29 @@
   <text x="66" y="162" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="32" font-weight="700">discovery</text>
 
   <g>
-    <rect x="66" y="206" width="588" height="116" rx="18" fill="#171715" stroke="#3B3A36"/>
+    <rect x="66" y="206" width="588" height="116" rx="18" fill="#141412" stroke="#3B3A36"/>
     <text x="96" y="244" fill="#AFAAA0" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">SOURCE OBJECTS</text>
     <text x="96" y="282" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="27" font-weight="700">Products / Appointments / Orders</text>
   </g>
   <g>
-    <rect x="66" y="366" width="588" height="116" rx="18" fill="#16171A" stroke="#4A4A63"/>
+    <rect x="66" y="366" width="588" height="116" rx="18" fill="#111217" stroke="#4A4A63"/>
     <text x="96" y="404" fill="#9B9CBE" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">SYSTEM MODELING</text>
     <text x="96" y="442" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">App Entities</text>
     <text x="96" y="470" fill="#C5C4D6" font-family="Outfit, Arial, sans-serif" font-size="19">Name what exists inside the app</text>
   </g>
   <g>
-    <rect x="66" y="526" width="588" height="116" rx="18" fill="#1B1817" stroke="#6B554D"/>
+    <rect x="66" y="526" width="588" height="116" rx="18" fill="#171210" stroke="#6B554D"/>
     <text x="96" y="564" fill="#C0A095" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">ACTION LAYER</text>
     <text x="96" y="602" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="31" font-weight="700">App Intents</text>
     <text x="96" y="630" fill="#D8C9C3" font-family="Outfit, Arial, sans-serif" font-size="19">Name what users can do next</text>
   </g>
   <g>
-    <rect x="66" y="686" width="272" height="116" rx="18" fill="#151618" stroke="#51555F"/>
+    <rect x="66" y="686" width="272" height="116" rx="18" fill="#111315" stroke="#51555F"/>
     <text x="92" y="724" fill="#A7ABB5" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">INDEXING</text>
     <text x="92" y="762" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="29" font-weight="700">Spotlight</text>
   </g>
   <g>
-    <rect x="382" y="686" width="272" height="116" rx="18" fill="#151618" stroke="#51555F"/>
+    <rect x="382" y="686" width="272" height="116" rx="18" fill="#111315" stroke="#51555F"/>
     <text x="408" y="724" fill="#A7ABB5" font-family="Source Code Pro, monospace" font-size="15" letter-spacing="1.4">OUTPUTS</text>
     <text x="408" y="762" fill="#F4F1EA" font-family="Outfit, Arial, sans-serif" font-size="29" font-weight="700">Siri / Search / Widgets</text>
   </g>

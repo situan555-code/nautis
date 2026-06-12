@@ -1,7 +1,7 @@
 <svg width="720" height="960" viewBox="0 0 720 960" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="720" height="960" rx="28" fill="#F7F5EF"/>
   <rect x="28" y="28" width="664" height="904" rx="20" stroke="#D3CEC1" stroke-width="1.5"/>
-  <g opacity="0.5">
+  <g opacity="0.12">
     <path d="M138 170H582" stroke="#E4DED1"/>
     <path d="M138 326H582" stroke="#E4DED1"/>
     <path d="M138 482H582" stroke="#E4DED1"/>
