@@ -423,6 +423,24 @@ html[data-theme='light'] .advisory-page {
   color: var(--color-text-muted);
 }
 
+.advisory-inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: var(--space-6);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.advisory-inline-link:hover {
+  color: var(--color-accent);
+}
+
 .advisory-focus-card {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
@@ -2148,14 +2166,14 @@ html[data-theme='light'] .report-cta__zone--secondary {
 
 .contact-hero {
   position: relative;
-  min-height: 1180px;
+  min-height: 1500px;
   padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-20);
   overflow: hidden;
   background:
     linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
     #050506;
   background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px, auto;
 }
@@ -2326,7 +2344,7 @@ html[data-theme='light'] .report-cta__zone--secondary {
 }
 
 .contact-direct {
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
@@ -2376,8 +2394,115 @@ html[data-theme='light'] .report-cta__zone--secondary {
 }
 
 .contact-direct__card strong {
+  color: #f7f7f5;
   font-size: var(--text-base);
   line-height: 1.35;
+}
+
+.contact-form-panel {
+  margin-top: var(--space-5);
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035)),
+    rgba(18, 18, 19, 0.94);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+}
+
+.contact-form-panel__header {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.contact-form-panel__header h2 {
+  margin: 0;
+  color: #f7f7f5;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  letter-spacing: -0.04em;
+}
+
+.contact-form-panel__header p {
+  max-width: 58ch;
+  margin: 0;
+  color: rgba(247, 247, 245, 0.64);
+  line-height: 1.65;
+}
+
+.contact-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.contact-form__field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contact-form__field--full {
+  grid-column: 1 / -1;
+}
+
+.contact-form__field label {
+  color: rgba(247, 247, 245, 0.62);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-form__field input,
+.contact-form__field select,
+.contact-form__field textarea {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f7f7f5;
+  font: inherit;
+  padding: 0.95rem 1rem;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.contact-form__field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form__field input::placeholder,
+.contact-form__field textarea::placeholder {
+  color: rgba(247, 247, 245, 0.34);
+}
+
+.contact-form__field input:focus,
+.contact-form__field select:focus,
+.contact-form__field textarea:focus {
+  outline: none;
+  border-color: rgba(247, 247, 245, 0.38);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(247, 247, 245, 0.08);
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.contact-form__status {
+  min-height: 1.4em;
+  margin: 0;
+  color: rgba(247, 247, 245, 0.62);
+  font-size: var(--text-sm);
 }
 
 .contact-brand-reveal__eyebrow {
@@ -2398,8 +2523,8 @@ html[data-theme='light'] .report-cta__zone--secondary {
   background:
     linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.065) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
     #050506;
   background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px, auto;
 }
@@ -2443,13 +2568,13 @@ html[data-theme='light'] .report-cta__zone--secondary {
 
 @media (max-width: 900px) {
   .contact-hero {
-    min-height: 1100px;
+    min-height: 1480px;
   }
 }
 
 @media (max-width: 720px) {
   .contact-hero {
-    min-height: 1140px;
+    min-height: auto;
     padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-12);
   }
 
@@ -2499,6 +2624,10 @@ html[data-theme='light'] .report-cta__zone--secondary {
   .contact-direct__grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+  }
+
+  .contact-form__grid {
+    grid-template-columns: 1fr;
   }
 
   .contact-brand-reveal {
@@ -2581,6 +2710,26 @@ html[data-theme='light'] .report-cta__zone--secondary {
 }
 
 /* --- AI Visibility Service Page --- */
+.ai-visibility-page {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    var(--color-bg);
+  background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px, auto;
+}
+
+html[data-theme='light'] .ai-visibility-page {
+  background:
+    linear-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(17, 17, 17, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.025) 1px, transparent 1px),
+    var(--color-bg);
+  background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px, auto;
+}
+
 .ai-visibility-page .advisory-hero {
   min-height: min(68svh, 760px);
 }

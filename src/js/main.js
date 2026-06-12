@@ -15,6 +15,7 @@ import { initSearch } from './search.js';
 import { initCalculators } from './calculators.js';
 import { initTheme } from './theme.js';
 import { initContactTracking } from './contact-tracking.js';
+import { initContactForm } from './contact-form.js';
 
 function initCopyUrlButtons() {
   const copyButtons = document.querySelectorAll('[data-copy-url]');
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initAccordion();
   initContactTracking();
+  initContactForm();
   initCopyUrlButtons();
 
   const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
