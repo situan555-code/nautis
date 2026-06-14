@@ -24,6 +24,7 @@ export const MOBILE_CAMERA_ZOOM = 22;
 export const MOBILE_CAMERA_WIDTH_RATIO = 0.048;
 export const MOBILE_CAMERA_MIN_ZOOM = 18.5;
 export const MOBILE_CAMERA_MAX_ZOOM = 56;
+export const MOBILE_WORDMARK_POSITION = [-0.42, -1, 2.25];
 export const REDUCED_MOTION_DISABLE_ANIMATION = true;
 export const HERO_RENDER_WHEN_VISIBLE_ONLY = true;
 export const TARGET_FPS_MODE = 'on-demand';
@@ -235,6 +236,7 @@ function resolveTuning(themeName, values) {
 function getMobileTuning(tuning) {
   return {
     ...tuning,
+    wordPosition: MOBILE_WORDMARK_POSITION,
     enableAccumulativeShadows: MOBILE_ENABLE_ACCUMULATIVE_SHADOWS,
     enablePostprocessing: MOBILE_ENABLE_POSTPROCESSING,
     enableInteraction: MOBILE_ENABLE_INTERACTION,
