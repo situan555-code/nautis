@@ -99,7 +99,7 @@
 
 @media (max-width: 1180px) {
   .hero {
-    min-height: 76svh;
+    min-height: clamp(390px, 58svh, 540px);
   }
 
   .hero__scene-fallback {
@@ -112,6 +112,27 @@
 
   .hero__scene:active {
     cursor: grabbing;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: clamp(350px, 52svh, 460px);
+  }
+
+  .hero::after {
+    height: 42%;
+  }
+
+  .hero__scene-fallback {
+    padding-top: clamp(6.75rem, 18svh, 8.75rem);
+    font-size: clamp(3.25rem, 18vw, 5.5rem);
+  }
+
+  .hero__scene-fallback::before {
+    inset: 8% -22% -18%;
+    background-size: 44px 44px, 44px 44px, 176px 176px, 176px 176px;
+    transform: perspective(680px) rotateX(64deg) translateY(3.25rem);
   }
 }
 
@@ -636,6 +657,10 @@ html[data-theme='dark'] .dc-audience-card {
     padding-top: 64px;
     padding-bottom: 64px;
   }
+
+  .dc-intro {
+    padding-top: 56px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -662,7 +687,7 @@ html[data-theme='dark'] .dc-audience-card {
 
   .dc-intro__content h1 {
     max-width: 100%;
-    font-size: clamp(2.2rem, 10vw, 2.9rem);
+    font-size: clamp(2.25rem, 10.6vw, 3.1rem);
     line-height: 1.04;
   }
 

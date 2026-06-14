@@ -21,8 +21,9 @@ export const MOBILE_ENABLE_POSTPROCESSING = false;
 export const MOBILE_ENABLE_INTERACTION = false;
 export const MOBILE_HERO_MEDIA_QUERY = '(max-width: 1180px)';
 export const MOBILE_CAMERA_ZOOM = 22;
-export const MOBILE_CAMERA_MIN_ZOOM = 18;
-export const MOBILE_CAMERA_MAX_ZOOM = 48;
+export const MOBILE_CAMERA_WIDTH_RATIO = 0.048;
+export const MOBILE_CAMERA_MIN_ZOOM = 18.5;
+export const MOBILE_CAMERA_MAX_ZOOM = 56;
 export const REDUCED_MOTION_DISABLE_ANIMATION = true;
 export const HERO_RENDER_WHEN_VISIBLE_ONLY = true;
 export const TARGET_FPS_MODE = 'on-demand';
@@ -385,7 +386,8 @@ function ResponsiveCamera({ isMobile }) {
   useEffect(() => {
     const minZoom = isMobile ? MOBILE_CAMERA_MIN_ZOOM : CAMERA_MIN_ZOOM;
     const maxZoom = isMobile ? MOBILE_CAMERA_MAX_ZOOM : CAMERA_MAX_ZOOM;
-    camera.zoom = Math.min(Math.max(size.width * CAMERA_WIDTH_RATIO, minZoom), maxZoom);
+    const widthRatio = isMobile ? MOBILE_CAMERA_WIDTH_RATIO : CAMERA_WIDTH_RATIO;
+    camera.zoom = Math.min(Math.max(size.width * widthRatio, minZoom), maxZoom);
     camera.updateProjectionMatrix();
   }, [camera, isMobile, size.width]);
 

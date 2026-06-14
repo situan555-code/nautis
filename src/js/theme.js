@@ -25,10 +25,6 @@ function setToggleState(theme) {
   document.querySelectorAll('[data-theme-toggle]').forEach((toggle) => {
     toggle.setAttribute('aria-pressed', String(isLight));
     toggle.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} theme`);
-
-    if (toggle.classList.contains('nav__mobile-theme-toggle')) {
-      toggle.textContent = `${isLight ? 'Dark' : 'Light'} Theme`;
-    }
   });
 }
 
