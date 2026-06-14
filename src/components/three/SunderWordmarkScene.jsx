@@ -15,10 +15,12 @@ export const MAX_DPR = 1.5;
 export const ENABLE_POSTPROCESSING = false;
 export const ENABLE_TRANSMISSION = true;
 export const MOBILE_ENABLE_3D = true;
-export const MOBILE_MAX_DPR = 1;
+export const MOBILE_MAX_DPR = 1.75;
 export const MOBILE_ENABLE_ACCUMULATIVE_SHADOWS = false;
 export const MOBILE_ENABLE_POSTPROCESSING = false;
-export const MOBILE_ENABLE_INTERACTION = false;
+export const MOBILE_ENABLE_INTERACTION = true;
+export const MOBILE_AUTO_ROTATE = true;
+export const MOBILE_AUTO_ROTATE_SPEED = 0.08;
 export const MOBILE_HERO_MEDIA_QUERY = '(max-width: 1180px)';
 export const MOBILE_CAMERA_ZOOM = 22;
 export const MOBILE_CAMERA_WIDTH_RATIO = 0.048;
@@ -237,6 +239,7 @@ function getMobileTuning(tuning) {
   return {
     ...tuning,
     wordPosition: MOBILE_WORDMARK_POSITION,
+    autoRotate: MOBILE_AUTO_ROTATE,
     enableAccumulativeShadows: MOBILE_ENABLE_ACCUMULATIVE_SHADOWS,
     enablePostprocessing: MOBILE_ENABLE_POSTPROCESSING,
     enableInteraction: MOBILE_ENABLE_INTERACTION,
@@ -441,6 +444,7 @@ function Scene({ tuning, isMobile, onReady, onFallback }) {
       {isMobile && <MobilePerformanceGuard onFallback={onFallback} />}
       <OrbitControls
         autoRotate={tuning.autoRotate}
+        autoRotateSpeed={isMobile ? MOBILE_AUTO_ROTATE_SPEED : 2}
         zoomSpeed={0.25}
         minZoom={CAMERA_MIN_ZOOM}
         maxZoom={CAMERA_MAX_ZOOM}
