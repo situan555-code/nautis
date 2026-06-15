@@ -159,7 +159,7 @@
 .process-steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1rem, 2.4vw, 1.85rem);
   position: relative;
   margin: 0;
   padding: 0;
@@ -172,34 +172,36 @@
 
 .process-step {
   min-width: 0;
-  padding: clamp(1.35rem, 2.25vw, 1.85rem);
+  padding: clamp(1.45rem, 2.4vw, 2.05rem);
   text-align: left;
   position: relative;
   z-index: 1;
   list-style: none;
-  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent);
-  border-radius: 24px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  border-radius: 26px;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--color-bg-card) 96%, var(--color-text-primary) 4%), var(--color-bg-card));
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-text-primary) 7%, transparent);
+    linear-gradient(180deg, color-mix(in srgb, var(--color-bg-card) 97%, var(--color-text-primary) 3%), var(--color-bg-card));
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-text-primary) 7%, transparent),
+    0 18px 42px color-mix(in srgb, #000 16%, transparent);
 }
 
 .process-step__number {
   width: auto;
   height: auto;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  border-radius: 0;
+  background: transparent;
+  border: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 var(--space-5);
-  padding: 0.42rem 0.72rem;
+  margin: 0 0 var(--space-4);
+  padding: 0;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--color-text-secondary);
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
 }
 
 .process-step__title {
@@ -449,10 +451,13 @@ html[data-theme='light'] .advisory-page {
 .advisory-offering-card,
 .advisory-data-card,
 .advisory-focus-card {
-  background: color-mix(in srgb, var(--color-bg-card) 92%, transparent);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-bg-card) 97%, var(--color-text-primary) 3%), var(--color-bg-card));
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  border-radius: 26px;
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-text-primary) 7%, transparent),
+    0 20px 55px color-mix(in srgb, #000 14%, transparent);
 }
 
 .advisory-view-card,
@@ -624,8 +629,8 @@ html[data-theme='light'] .advisory-focus-card__visual {
 .advisory-source-row {
   margin: var(--space-6) 0;
   padding: var(--space-5);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+  border-radius: 22px;
   background: var(--color-bg-card);
 }
 
@@ -649,19 +654,11 @@ html[data-theme='light'] .advisory-focus-card__visual {
   padding: var(--space-8);
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    var(--color-bg-card);
-  background-size: 28px 28px;
+  background: var(--color-bg-card);
 }
 
 html[data-theme='light'] .advisory-data-card {
-  background:
-    linear-gradient(rgba(17, 17, 17, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 17, 17, 0.055) 1px, transparent 1px),
-    var(--color-bg-card);
-  background-size: 28px 28px;
+  background: var(--color-bg-card);
 }
 
 .advisory-data-card::after {
@@ -1804,6 +1801,7 @@ html[data-theme='light'] .report-table {
   text-align: left;
   min-width: 0;
   box-sizing: border-box;
+  background: var(--report-table-surface);
 }
 
 .report-table th {
@@ -1853,10 +1851,12 @@ html[data-theme='light'] .report-table {
   box-sizing: border-box;
   padding: clamp(1.35rem, 2.2vw, 2rem);
   border: 1px solid color-mix(in srgb, var(--report-frame-strong) 38%, transparent);
-  border-radius: 24px;
+  border-radius: 26px;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--report-panel-soft) 96%, var(--color-text-primary) 4%), var(--report-panel));
-  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+    linear-gradient(180deg, color-mix(in srgb, var(--report-panel-soft) 97%, var(--color-text-primary) 3%), var(--report-panel));
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--color-text-primary) 6%, transparent),
+    0 18px 48px color-mix(in srgb, #000 14%, transparent);
   overflow: hidden;
 }
 
@@ -2128,6 +2128,7 @@ html[data-theme='light'] .report-cta__zone--secondary {
     border: 0;
     border-radius: 0;
     background: transparent;
+    box-shadow: none;
   }
 
   .report-table,
@@ -2939,23 +2940,38 @@ html[data-theme='light'] .report-cta__zone--secondary {
 
 /* --- AI Visibility Service Page --- */
 .ai-visibility-page {
+  --report-frame-line: rgba(255, 255, 255, 0.055);
+  --report-frame-strong: rgba(255, 255, 255, 0.22);
+  --report-panel: #0a0a0a;
+  --report-panel-soft: #0f0f0f;
+  --report-table-surface: #070707;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 50% 5%, color-mix(in srgb, var(--color-text-primary) 7%, transparent), transparent 31rem),
+    linear-gradient(color-mix(in srgb, var(--color-text-primary) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text-primary) 5%, transparent) 1px, transparent 1px),
     var(--color-bg);
-  background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px, auto;
+  background-size: auto, 96px 96px, 96px 96px;
 }
 
 html[data-theme='light'] .ai-visibility-page {
+  --report-frame-line: rgba(17, 17, 17, 0.08);
+  --report-frame-strong: rgba(17, 17, 17, 0.2);
+  --report-panel: #f4f1ea;
+  --report-panel-soft: #eeeae0;
+  --report-table-surface: #f2efe7;
   background:
-    linear-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 17, 17, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(17, 17, 17, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 17, 17, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 50% 5%, color-mix(in srgb, var(--color-text-primary) 5%, transparent), transparent 31rem),
+    linear-gradient(color-mix(in srgb, var(--color-text-primary) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text-primary) 5%, transparent) 1px, transparent 1px),
     var(--color-bg);
-  background-size: 56px 56px, 56px 56px, 224px 224px, 224px 224px, auto;
+  background-size: auto, 96px 96px, 96px 96px;
+}
+
+.ai-visibility-page .report-table-wrap,
+.ai-visibility-page .report-table,
+.ai-visibility-page .report-table th,
+.ai-visibility-page .report-table td {
+  background: var(--report-table-surface);
 }
 
 .ai-visibility-page .advisory-hero {
