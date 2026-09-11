@@ -11,7 +11,7 @@ export function initContactForm() {
 
     const formData = new FormData(form);
     const valueFor = (name) => (formData.get(name) || '').toString().trim();
-    const email = form.getAttribute('action')?.replace(/^mailto:/, '') || 'hello@sunderandco.com';
+    const email = form.getAttribute('action')?.replace(/^mailto:/, '') || 'meet@sunderandco.com';
     const name = [valueFor('First name'), valueFor('Last name')].filter(Boolean).join(' ');
     const company = valueFor('Company');
     const subjectName = company || name || 'New project inquiry';

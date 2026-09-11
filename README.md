@@ -60,5 +60,5 @@ The prebuild step runs `scripts/optimize-models.js`. If `src/raw-models/` is emp
 
 ## Contact
 
-- Email: hello@sunderandco.com
+- Email: meet@sunderandco.com
 - Site: https://www.sunderandco.com
