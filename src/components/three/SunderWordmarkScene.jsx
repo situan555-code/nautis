@@ -62,18 +62,18 @@ export const CAMERA_WIDTH_RATIO = 0.041;
 export const CAMERA_MIN_ZOOM = 40;
 export const CAMERA_MAX_ZOOM = 140;
 
-export const GRID_NUMBER = 23;
-export const GRID_CELL_SIZE = 2;
+export const GRID_NUMBER = 13;
+export const GRID_CELL_SIZE = 1.25;
 export const GRID_DIVISIONS = GRID_NUMBER - 1;
 export const GRID_SIZE = GRID_CELL_SIZE * GRID_DIVISIONS;
-export const GRID_CROSS_EVERY = 1;
-export const GRID_CROSS_SIZE = 0.5;
-export const GRID_LINE_WIDTH = 0.026;
+export const GRID_CROSS_EVERY = 4;
+export const GRID_CROSS_SIZE = 0.22;
+export const GRID_LINE_WIDTH = 0.018;
 export const GRID_MINOR_COLOR = 'gridColor';
 export const GRID_MAJOR_COLOR = 'gridHelperColor';
 export const GRID_CROSS_COLOR = 'gridCrossColor';
 export const GRID_POSITION_Y = -1.02;
-export const GRID_OPACITY = 1;
+export const GRID_OPACITY = 0.72;
 export const GRID_POSITION = [0, GRID_POSITION_Y, 0];
 
 // High-quality reference values from the pmndrs epoxy demo:
