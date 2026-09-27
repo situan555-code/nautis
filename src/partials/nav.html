@@ -5,7 +5,7 @@
 <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
   <div class="nav__inner">
     <a href="/index.html" class="nav__logo" aria-label="{{site.name}} Home">
-      {{site.name}}
+      <span class="shadcn-island nav__logo-reveal" data-island="nav-wordmark">{{site.name}}</span>
     </a>
     <ul class="nav__links">
       <li><a href="/index.html" class="nav__link {{#if (eq activePage 'home')}}is-active{{/if}}" >Home</a></li>
@@ -13,6 +13,7 @@
         <button class="nav__link {{#if (eq activePage 'services')}}is-active{{/if}}" style="cursor: pointer;">Services ▾</button>
         <ul class="nav__dropdown">
           <li><a href="/services-creative.html" class="nav__dropdown-link">Sunder Creative</a></li>
+          <li><a href="/configurator/" class="nav__dropdown-link">Configurators &amp; 3D</a></li>
           <li><a href="/advisory/" class="nav__dropdown-link">Sunder Advisory</a></li>
           <li><span class="nav__dropdown-link nav__dropdown-link--disabled" aria-disabled="true">Sunder Technology</span></li>
         </ul>
@@ -38,6 +39,7 @@
     <div class="nav__mobile-group" aria-label="Services">
       <span class="nav__mobile-section-label">Services</span>
       <a href="/services-creative.html" class="nav__mobile-link nav__mobile-link--sub">Sunder Creative</a>
+      <a href="/configurator/" class="nav__mobile-link nav__mobile-link--sub">Configurators &amp; 3D</a>
       <a href="/advisory/" class="nav__mobile-link nav__mobile-link--sub">Sunder Advisory</a>
       <span class="nav__mobile-link nav__mobile-link--sub nav__mobile-link--disabled" aria-disabled="true">Sunder Technology</span>
     </div>
@@ -47,6 +49,32 @@
     <a href="/insights/" class="nav__mobile-link">Insights</a>
     <a href="/contact.html" class="btn btn--primary nav__mobile-cta">Start a Project</a>
   </div>
+  <script>
+    (function () {
+      var mount = document.querySelector('#main-nav .nav__logo-reveal');
+      if (!mount || mount.querySelector('.nav-wordmark')) return;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        mount.setAttribute('data-island-state', 'mounted');
+        return;
+      }
+      var text = (mount.textContent || '').trim();
+      if (!text) return;
+      var words = text.split(/\s+/);
+      var wrap = document.createElement('span');
+      wrap.className = 'nav-wordmark';
+      wrap.setAttribute('aria-hidden', 'true');
+      words.forEach(function (word, index) {
+        var span = document.createElement('span');
+        span.className = 'nav-wordmark__word';
+        span.textContent = (index > 0 ? ' ' : '') + word;
+        wrap.appendChild(span);
+      });
+      mount.textContent = '';
+      mount.appendChild(wrap);
+      mount.setAttribute('data-island-state', 'mounted');
+    })();
+  </script>
 </nav>
 
 {{> search-modal }}

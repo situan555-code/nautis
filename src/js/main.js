@@ -60,6 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCopyUrlButtons();
 
+  const shadcnIslandMounts = document.querySelectorAll('[data-island]');
+  if (shadcnIslandMounts.length) {
+    import('./islands/mount-shadcn-islands.js')
+      .then(({ initShadcnIslands }) => initShadcnIslands())
+      .catch(() => {
+        shadcnIslandMounts.forEach((mount) => {
+          mount.dataset.islandState = 'error';
+        });
+      });
+  }
+
   const runWhenIdle = (callback, timeout = 2000, fallbackDelay = 1200) => {
     if ('requestIdleCallback' in window) {
       requestIdleCallback(callback, { timeout });

@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import handlebars from 'vite-plugin-handlebars';
 import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
@@ -102,7 +103,7 @@ function createArticleSchema(article, canonicalUrl, pagePath) {
   return `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
 }
 
-function buildPageSchema({ pagePath, title, description, serviceName, serviceDescription, breadcrumbs }) {
+function buildPageSchema({ pagePath, title, description, serviceName, serviceDescription, breadcrumbs, extraGraph = [], webpageExtra = {} }) {
   const pageUrl = `${SITE_URL}${pagePath}`;
   const graph = [
     {
@@ -137,6 +138,7 @@ function buildPageSchema({ pagePath, title, description, serviceName, serviceDes
       provider: {
         '@id': ORGANIZATION_ID,
       },
+      ...webpageExtra,
     },
     {
       '@type': 'Service',
@@ -164,6 +166,10 @@ function buildPageSchema({ pagePath, title, description, serviceName, serviceDes
       })),
     },
   ];
+
+  if (extraGraph.length) {
+    graph.push(...extraGraph);
+  }
 
   return `<script type="application/ld+json">
 ${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2)}
@@ -201,6 +207,7 @@ const liveInsightPages = liveInsightFiles.map(file =>
 );
 const directoryPageSlugs = [
   'advisory',
+  'configurator',
   'industries/home-furnishings-ai-visibility',
   'insights',
   ...liveInsightPages.map(page => `insights/${page.slug}`),
@@ -241,6 +248,96 @@ const corePages = {
       breadcrumbs: [
         { name: 'Home', path: '/' },
         { name: 'Sunder Advisory', path: '/advisory/' },
+      ],
+    }),
+  },
+  'configurator': {
+    activePage: 'services',
+    inputName: 'configurator/index',
+    sourcePath: 'configurator/index.html',
+    metaTitle: '3D Configurators & Interactive Product Work | Sunder & Co.',
+    pageTitle: '3D Configurators & Interactive Product Work',
+    pageDescription: 'Furniture-led 3D configurators and interactive scenes for finishes, fabrics, and room scale, plus other browser-based 3D when a flat page is not enough.',
+    ogImage: 'https://www.sunderandco.com/images/configurator/og.jpg',
+    pagePath: '/configurator/',
+    pageSchema: buildPageSchema({
+      pagePath: '/configurator/',
+      title: '3D Configurators & Interactive Product Work | Sunder & Co.',
+      description: 'Furniture-led 3D configurators and interactive scenes for finishes, fabrics, and room scale, plus other browser-based 3D when a flat page is not enough.',
+      serviceName: '3D Configurators & Interactive Product Work',
+      serviceDescription: 'Browser-based 3D configurators and interactive product scenes, led by furniture finishes, fabrics, hardware, and room scale, and open to other products when a flat page is not enough.',
+      breadcrumbs: [
+        { name: 'Home', path: '/' },
+        { name: '3D Configurators', path: '/configurator/' },
+      ],
+      webpageExtra: {
+        mentions: {
+          '@id': 'https://www.sunderandco.com/configurator/#examples',
+        },
+      },
+      extraGraph: [
+        {
+          '@type': 'ItemList',
+          '@id': 'https://www.sunderandco.com/configurator/#examples',
+          name: 'Example configurator experiences',
+          description: 'Example browser-based 3D configurator experiences Sunder builds. These are not product SKUs.',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              item: {
+                '@type': 'CreativeWork',
+                name: 'Modular sectional',
+                description: 'Fabric, chaise side, and how it sits in a room.',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@type': 'CreativeWork',
+                name: 'Dining table',
+                description: 'Top, base, and an extension leaf.',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              item: {
+                '@type': 'CreativeWork',
+                name: 'Upholstered bed',
+                description: 'Headboard height and textile.',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              item: {
+                '@type': 'CreativeWork',
+                name: 'Sideboard',
+                description: 'Case finish and hardware.',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 5,
+              item: {
+                '@type': 'CreativeWork',
+                name: 'Outdoor lounge',
+                description: 'Frame, sling, and cushion.',
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 6,
+              item: {
+                '@type': 'CreativeWork',
+                name: 'Beyond furniture',
+                description: 'The same kind of scene for a product that is not a sofa.',
+              },
+            },
+          ],
+        },
       ],
     }),
   },
@@ -382,7 +479,13 @@ Object.entries(pages).forEach(([slug, data]) => {
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   plugins: [
+    tailwindcss(),
     react(),
     Sitemap({
       hostname: SITE_URL,

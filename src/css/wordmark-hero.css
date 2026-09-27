@@ -1,0 +1,167 @@
+/* ============================================================
+   WORDMARK HERO — shared by home and /configurator/
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--hero-bg);
+  padding-top: var(--nav-height);
+  isolation: isolate;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: var(--hero-scene-fade);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__scene {
+  --hero-scroll-progress: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  cursor: grab;
+  touch-action: pan-y;
+  opacity: calc(1 - (var(--hero-scroll-progress) * 0.32));
+  transform-origin: center bottom;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.hero__scene:active {
+  cursor: grabbing;
+}
+
+.hero__scene canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sunder-wordmark-root {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sunder-wordmark-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.hero__scene-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(0.32rem, 1vw, 0.72rem);
+  padding-top: clamp(10rem, 22vh, 16rem);
+  font-family: var(--font-brand);
+  font-size: clamp(5rem, 18vw, 15rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  color: var(--hero-wordmark-color);
+  text-shadow: var(--hero-wordmark-shadow);
+  opacity: 0.78;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.hero__scene-fallback::before {
+  content: '';
+  position: absolute;
+  left: 34%;
+  right: 34%;
+  top: 54%;
+  bottom: 18%;
+  background-image:
+    linear-gradient(var(--hero-grid-secondary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-secondary) 1px, transparent 1px),
+    linear-gradient(var(--hero-grid-primary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-primary) 1px, transparent 1px);
+  background-size: 18px 18px, 18px 18px, 72px 72px, 72px 72px;
+  transform: perspective(900px) rotateX(68deg) translateY(1.5rem);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 58%, transparent);
+  pointer-events: none;
+}
+
+.hero__scene[data-scene-ready='true'] .hero__scene-fallback {
+  opacity: 0;
+}
+
+.hero__fallback-word,
+.hero__fallback-dot {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__fallback-dot {
+  width: clamp(0.52rem, 1.5vw, 1.25rem);
+  height: clamp(0.52rem, 1.5vw, 1.25rem);
+  margin-top: clamp(3.2rem, 10.8vw, 9rem);
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: var(--hero-wordmark-shadow);
+}
+
+@media (max-width: 1180px) {
+  .hero {
+    min-height: clamp(390px, 58svh, 540px);
+  }
+
+  .hero__scene-fallback {
+    font-size: clamp(3.5rem, 14vw, 8rem);
+  }
+
+  .hero__scene {
+    cursor: default;
+  }
+
+  .hero__scene:active {
+    cursor: grabbing;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: clamp(350px, 52svh, 460px);
+  }
+
+  .hero::after {
+    height: 42%;
+  }
+
+  .hero__scene-fallback {
+    padding-top: clamp(6.75rem, 18svh, 8.75rem);
+    font-size: clamp(3.25rem, 18vw, 5.5rem);
+  }
+
+  .hero__scene-fallback::before {
+    left: 24%;
+    right: 24%;
+    top: 56%;
+    bottom: 16%;
+    background-size: 16px 16px, 16px 16px, 64px 64px, 64px 64px;
+    transform: perspective(720px) rotateX(66deg) translateY(1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scene {
+    transform: none;
+  }
+
+  .hero__scene-fallback {
+    animation: none;
+  }
+}
