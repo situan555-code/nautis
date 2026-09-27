@@ -52,6 +52,13 @@ export function initShadcnIslands(root = document) {
       return;
     }
 
+    // The nav mark is built by the inline script before first paint.
+    // Mounting it again with createRoot would restart the fade.
+    if (name === 'nav-wordmark' && mount.querySelector('.nav-wordmark, .nav-wordmark--settled')) {
+      mount.dataset.islandState = 'mounted';
+      return;
+    }
+
     const props = readProps(mount);
     mount.dataset.islandState = 'loading';
 

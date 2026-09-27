@@ -49,6 +49,32 @@
     <a href="/insights/" class="nav__mobile-link">Insights</a>
     <a href="/contact.html" class="btn btn--primary nav__mobile-cta">Start a Project</a>
   </div>
+  <script>
+    (function () {
+      var mount = document.querySelector('#main-nav .nav__logo-reveal');
+      if (!mount || mount.querySelector('.nav-wordmark')) return;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        mount.setAttribute('data-island-state', 'mounted');
+        return;
+      }
+      var text = (mount.textContent || '').trim();
+      if (!text) return;
+      var words = text.split(/\s+/);
+      var wrap = document.createElement('span');
+      wrap.className = 'nav-wordmark';
+      wrap.setAttribute('aria-hidden', 'true');
+      words.forEach(function (word, index) {
+        var span = document.createElement('span');
+        span.className = 'nav-wordmark__word';
+        span.textContent = (index > 0 ? ' ' : '') + word;
+        wrap.appendChild(span);
+      });
+      mount.textContent = '';
+      mount.appendChild(wrap);
+      mount.setAttribute('data-island-state', 'mounted');
+    })();
+  </script>
 </nav>
 
 {{> search-modal }}
