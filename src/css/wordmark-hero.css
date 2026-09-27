@@ -79,16 +79,16 @@
 .hero__scene-fallback::before {
   content: '';
   position: absolute;
-  left: 18%;
-  right: 18%;
-  top: 42%;
-  bottom: 8%;
+  left: 34%;
+  right: 34%;
+  top: 54%;
+  bottom: 18%;
   background-image:
     linear-gradient(var(--hero-grid-secondary) 1px, transparent 1px),
     linear-gradient(90deg, var(--hero-grid-secondary) 1px, transparent 1px),
     linear-gradient(var(--hero-grid-primary) 1px, transparent 1px),
     linear-gradient(90deg, var(--hero-grid-primary) 1px, transparent 1px);
-  background-size: 28px 28px, 28px 28px, 112px 112px, 112px 112px;
+  background-size: 18px 18px, 18px 18px, 72px 72px, 72px 72px;
   transform: perspective(900px) rotateX(68deg) translateY(1.5rem);
   transform-origin: center top;
   mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 58%, transparent);
@@ -147,11 +147,11 @@
   }
 
   .hero__scene-fallback::before {
-    left: 8%;
-    right: 8%;
-    top: 46%;
-    bottom: 6%;
-    background-size: 22px 22px, 22px 22px, 88px 88px, 88px 88px;
+    left: 24%;
+    right: 24%;
+    top: 56%;
+    bottom: 16%;
+    background-size: 16px 16px, 16px 16px, 64px 64px, 64px 64px;
     transform: perspective(720px) rotateX(66deg) translateY(1rem);
   }
 }
