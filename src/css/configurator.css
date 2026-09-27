@@ -121,6 +121,24 @@
   color: var(--color-text-primary);
 }
 
+[data-slot='expandable-card-content'] {
+  max-height: min(90vh, calc(100dvh - 1.5rem));
+}
+
+[data-slot='expandable-card-content'] > div {
+  max-height: inherit;
+}
+
+@media (max-width: 700px) {
+  [data-slot='expandable-card-content'] {
+    top: calc(var(--nav-height) + 0.75rem);
+    bottom: 0.75rem;
+    transform: translateX(-50%);
+    max-height: calc(100dvh - var(--nav-height) - 1.5rem);
+    overflow-y: auto;
+  }
+}
+
 @media (max-width: 1100px) {
   .configurator-work-static {
     grid-template-columns: repeat(2, minmax(0, 1fr));

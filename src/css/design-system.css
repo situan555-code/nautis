@@ -440,10 +440,7 @@
     background: transparent;
   }
 
-  #main-nav .nav__logo .nav-wordmark__ghost {
-    color: color-mix(in srgb, var(--color-text-primary) 35%, transparent);
-  }
-
+  #main-nav .nav__logo .nav-wordmark__ghost,
   #main-nav .nav__logo .nav-wordmark__solid {
     color: var(--color-text-primary);
   }
