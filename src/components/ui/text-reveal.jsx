@@ -1,41 +1,51 @@
-import { motion, useReducedMotion } from 'motion/react';
+import { useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * Small one-shot reveal for the existing nav logo.
- * Each word starts readable and finishes fully opaque. It does not wait on page scroll.
+ * One-shot word build for the nav logo.
+ * Each word is a single inline layer. Opacity runs in CSS so a React
+ * re-render cannot restart it, and nothing translates the bar.
  */
+const settledMarks = new Set();
+
+function prefersReducedMotion() {
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+}
+
 export function TextReveal({ children, className }) {
+  const reduced = prefersReducedMotion();
+  const play = useRef(null);
+
   if (typeof children !== 'string') {
     throw new Error('TextReveal: children must be a string');
   }
 
-  const words = children.split(' ');
-  const shouldReduceMotion = useReducedMotion();
+  if (play.current === null) {
+    play.current = !reduced && !settledMarks.has(children);
+    if (play.current) settledMarks.add(children);
+  }
 
-  if (shouldReduceMotion) {
+  if (reduced || !play.current) {
     return (
-      <span aria-hidden="true" className={cn(className)}>
+      <span aria-hidden="true" className={cn('nav-wordmark nav-wordmark--settled', className)}>
         {children}
       </span>
     );
   }
 
+  const words = children.trim().split(/\s+/);
+
   return (
-    <span
-      aria-hidden="true"
-      className={cn('sh:inline-flex sh:flex-nowrap sh:items-baseline', className)}
-    >
+    <span aria-hidden="true" className={cn('nav-wordmark', className)}>
       {words.map((word, index) => (
-        <motion.span
-          key={`${word}-${index}`}
-          className="nav-wordmark__word sh:mr-[0.28em] sh:inline-block sh:text-foreground sh:last:mr-0"
-          initial={{ opacity: 0.45, y: 3 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.05 + index * 0.09, ease: 'easeOut' }}
-        >
+        <span key={`${word}-${index}`} className="nav-wordmark__word">
+          {index > 0 ? ' ' : null}
           {word}
-        </motion.span>
+        </span>
       ))}
     </span>
   );
