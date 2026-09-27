@@ -102,6 +102,11 @@ html[data-theme='dark'] .dc-audience-card {
   padding-bottom: 100px;
 }
 
+/* No home hero yet. The intro is the first block, so it has to clear the fixed nav. */
+.dc-intro {
+  padding-top: calc(var(--nav-height) + 4.5rem);
+}
+
 .dc-intro > .container,
 .dc-services > .container,
 .dc-gap > .container,
@@ -511,7 +516,7 @@ html[data-theme='dark'] .dc-audience-card {
   }
 
   .dc-intro {
-    padding-top: 56px;
+    padding-top: calc(var(--nav-height) + 2rem);
   }
 }
 

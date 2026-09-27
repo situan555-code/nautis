@@ -2,9 +2,8 @@ import { motion, useReducedMotion } from 'motion/react';
 import { cn } from '@/lib/utils';
 
 /**
- * Small one-shot word reveal for the nav logo.
- * Ghost + solid layers stay full foreground so the mark is never blank or half-shown.
- * Scroll-linked opacity is not used: a 200vh/scroll variant hides the logo until you move.
+ * Small one-shot reveal for the existing nav logo.
+ * Each word starts readable and finishes fully opaque. It does not wait on page scroll.
  */
 export function TextReveal({ children, className }) {
   if (typeof children !== 'string') {
@@ -28,26 +27,16 @@ export function TextReveal({ children, className }) {
       className={cn('sh:inline-flex sh:flex-nowrap sh:items-baseline', className)}
     >
       {words.map((word, index) => (
-        <Word key={`${word}-${index}`} index={index}>
+        <motion.span
+          key={`${word}-${index}`}
+          className="nav-wordmark__word sh:mr-[0.28em] sh:inline-block sh:text-foreground sh:last:mr-0"
+          initial={{ opacity: 0.45, y: 3 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.05 + index * 0.09, ease: 'easeOut' }}
+        >
           {word}
-        </Word>
+        </motion.span>
       ))}
-    </span>
-  );
-}
-
-function Word({ children, index }) {
-  return (
-    <span className="nav-wordmark__word sh:relative sh:mr-[0.28em] sh:inline-block sh:last:mr-0">
-      <span className="nav-wordmark__ghost sh:text-foreground">{children}</span>
-      <motion.span
-        className="nav-wordmark__solid sh:absolute sh:inset-0 sh:text-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.35, delay: 0.08 + index * 0.1, ease: 'easeOut' }}
-      >
-        {children}
-      </motion.span>
     </span>
   );
 }

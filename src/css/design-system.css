@@ -440,8 +440,7 @@
     background: transparent;
   }
 
-  #main-nav .nav__logo .nav-wordmark__ghost,
-  #main-nav .nav__logo .nav-wordmark__solid {
+  #main-nav .nav__logo .nav-wordmark__word {
     color: var(--color-text-primary);
   }
 
