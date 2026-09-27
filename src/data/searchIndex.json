@@ -58,8 +58,8 @@
   {
     "title": "Custom Interactive Work",
     "description": "Interactive tools, 3D demos, configurator concepts, and browser-based experiences for memorable customer-facing projects.",
-    "category": "Contact",
-    "url": "/contact.html",
+    "category": "Configurators & 3D",
+    "url": "/configurator/",
     "keywords": ["interactive", "3d", "configurator", "browser experience", "webgl"]
   },
   {

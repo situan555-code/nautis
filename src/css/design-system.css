@@ -430,6 +430,24 @@
     color: var(--color-accent);
   }
 
+  #main-nav .nav__logo .nav__logo-reveal {
+    display: inline-flex;
+    align-items: baseline;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    background: transparent;
+  }
+
+  #main-nav .nav__logo .nav-wordmark__ghost {
+    color: color-mix(in srgb, var(--color-text-primary) 35%, transparent);
+  }
+
+  #main-nav .nav__logo .nav-wordmark__solid {
+    color: var(--color-text-primary);
+  }
+
   .nav__links {
     display: flex;
     align-items: center;

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{> head }}
+  <link rel="stylesheet" href="/css/wordmark-hero.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/configurator.css">
+</head>
+<body>
+  {{> gtm-noscript }}
+
+  {{> nav activePage="services" }}
+
+  <main id="main-content" class="configurator-page">
+    <section class="hero" id="hero">
+      <div class="hero__scene" id="sunder-wordmark-hero" aria-hidden="true">
+        <div class="hero__scene-fallback">
+          <span class="hero__fallback-word">Sunder</span><span class="hero__fallback-dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section configurator-intro" aria-labelledby="configurator-heading">
+      <div class="container">
+        <span class="label">Configurators &amp; 3D</span>
+        <h1 id="configurator-heading">3D configurators and interactive product work, led by furniture.</h1>
+        <p class="lead">Sunder builds browser-based configurators and 3D product scenes. Furniture is the focus: finishes, fabrics, hardware, and how a piece sits in a room. The same work covers other products when a flat page cannot show them.</p>
+        <div class="configurator-actions">
+          <a href="/contact.html" class="btn btn--primary btn--lg">Start a Project</a>
+          <a href="#work" class="btn btn--secondary btn--lg">See the work</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section configurator-offer" id="offer" aria-labelledby="offer-heading">
+      <div class="container container--sm configurator-copy">
+        <span class="label">The Offer</span>
+        <h2 id="offer-heading">One page for the work, not a page per product.</h2>
+        <p>This URL is the offer. Sunder builds 3D configurators and interactive product scenes. Finishes, fabrics, and individual pieces do not get their own routes.</p>
+        <p><a href="/industries/home-furnishings-ai-visibility/">Home furnishings AI visibility</a> is where Sunder reviews whether a configurator can be read by search and AI. This page is where Sunder’s own build work lives.</p>
+      </div>
+    </section>
+
+    <section class="section configurator-work" id="work" aria-labelledby="work-heading">
+      <div class="container">
+        <span class="label">Example Experiences</span>
+        <h2 id="work-heading">Furniture first, and one case that is not furniture.</h2>
+        <p class="lead">These cards are examples of the scenes Sunder builds. They are not products for sale and they do not have their own URLs.</p>
+
+        <div class="configurator-work-static">
+          <article class="configurator-example">
+            <img src="/images/configurator/sectional-room.webp" alt="A low modern sectional in a lived-in living room, morning light, with a fabric swatch resting on the cushion." width="1600" height="1066">
+            <div class="configurator-example__body">
+              <h3>Modular sectional</h3>
+              <p class="configurator-example__lede">Fabric, chaise side, and how it sits in a room.</p>
+              <p class="configurator-example__change">The visitor changes fabric, which end the chaise is on, and how many seats. The scene shows the piece at room scale.</p>
+              <p class="configurator-example__options">The named options are fabric, chaise side, seat count, and leg finish.</p>
+            </div>
+          </article>
+
+          <article class="configurator-example">
+            <img src="/images/configurator/dining-table-finish.webp" alt="An oak dining table with the extension leaf half open, mixed chairs, and an unlabeled finish sample leaning against a chair." width="1600" height="1066">
+            <div class="configurator-example__body">
+              <h3>Dining table</h3>
+              <p class="configurator-example__lede">Top, base, and an extension leaf.</p>
+              <p class="configurator-example__change">The visitor changes the wood, the base, and whether the leaf is in, with chairs at the scale of the top.</p>
+              <p class="configurator-example__options">The named options are top material, base, extension, and chair count.</p>
+            </div>
+          </article>
+
+          <article class="configurator-example">
+            <img src="/images/configurator/upholstered-bed-textile.webp" alt="An upholstered bed with a tall linen headboard and a second textile draped at the foot, in afternoon light." width="1600" height="1066">
+            <div class="configurator-example__body">
+              <h3>Upholstered bed</h3>
+              <p class="configurator-example__lede">Headboard height and textile.</p>
+              <p class="configurator-example__change">The visitor changes the headboard profile, the cloth, and the bed size.</p>
+              <p class="configurator-example__options">The named options are headboard, textile, and size.</p>
+            </div>
+          </article>
+
+          <article class="configurator-example">
+            <img src="/images/configurator/sideboard-hardware.webp" alt="A walnut sideboard with one door open and two different metal pulls, against a plaster wall." width="1600" height="1066">
+            <div class="configurator-example__body">
+              <h3>Sideboard</h3>
+              <p class="configurator-example__lede">Case finish and hardware.</p>
+              <p class="configurator-example__change">The visitor changes the case finish, the door style, and the pull.</p>
+              <p class="configurator-example__options">The named options are finish, doors, and hardware.</p>
+            </div>
+          </article>
+
+          <article class="configurator-example">
+            <img src="/images/configurator/outdoor-lounge-frame.webp" alt="A powder-coated outdoor sofa on a porch with a sling seat and loose cushions, in late daylight." width="1600" height="1066">
+            <div class="configurator-example__body">
+              <h3>Outdoor lounge</h3>
+              <p class="configurator-example__lede">Frame, sling, and cushion.</p>
+              <p class="configurator-example__change">The visitor changes the frame color, the sling, and the cushion on a porch-scale piece.</p>
+              <p class="configurator-example__options">The named options are frame, sling, and cushion.</p>
+            </div>
+          </article>
+
+          <article class="configurator-example">
+            <img src="/images/configurator/machined-object.webp" alt="A single machined metal fitting on a clean workbench, photographed as a product still with no logo." width="1600" height="1066">
+            <div class="configurator-example__body">
+              <h3>Beyond furniture</h3>
+              <p class="configurator-example__lede">The same kind of scene for a product that is not a sofa.</p>
+              <p class="configurator-example__change">The visitor turns, scales, and finishes one machined object in the browser. The page is furniture-led. It is not furniture-only. This object does not get its own URL.</p>
+              <p class="configurator-example__options">The named options are material, finish, and scale.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="shadcn-island configurator-work-island" data-island="configurator-cards"></div>
+      </div>
+    </section>
+
+    <section class="section configurator-readable" id="readable" aria-labelledby="readable-heading">
+      <div class="container container--sm configurator-copy">
+        <span class="label">Crawlable Summary</span>
+        <h2 id="readable-heading">The choices stay in the HTML.</h2>
+        <p>Option names belong in the page, not only in the scene: fabric, chaise side, seat count, leg finish, top material, base, extension, chair count, headboard, textile, size, case finish, doors, hardware, frame, sling, cushion, material, and scale.</p>
+        <p>A client-only configurator with no crawlable summary is the failure mode the <a href="/industries/home-furnishings-ai-visibility/">home furnishings AI visibility audit</a> describes. This page should not be that failure mode.</p>
+      </div>
+    </section>
+
+    <section class="section configurator-related" id="related" aria-labelledby="related-heading">
+      <div class="container container--sm">
+        <span class="label">Nearby Work</span>
+        <h2 id="related-heading">Where it connects.</h2>
+        <ul class="configurator-related-list">
+          <li><a href="/services-creative.html#content">Sunder Creative, 3D &amp; Motion Graphics</a></li>
+          <li><a href="/about.html#expertise">About, Web Development &amp; Spatial Commerce</a></li>
+          <li><a href="/industries/home-furnishings-ai-visibility/">Home furnishings AI visibility audit</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta-banner section configurator-start" id="start" aria-labelledby="start-heading">
+      <div class="container">
+        <span class="label">Next Step</span>
+        <h2 id="start-heading">Start with one product.</h2>
+        <p>One product, a defined set of options, and a crawlable summary. Not a full catalog.</p>
+        <div class="configurator-actions">
+          <a href="/contact.html" class="btn btn--primary btn--lg">Start a Project</a>
+          <a href="mailto:meet@sunderandco.com" class="btn btn--secondary btn--lg">Email meet@sunderandco.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{> footer }}
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
