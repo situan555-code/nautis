@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
 import handlebars from 'vite-plugin-handlebars';
 import react from '@vitejs/plugin-react';
 import Sitemap from 'vite-plugin-sitemap';
@@ -382,7 +383,13 @@ Object.entries(pages).forEach(([slug, data]) => {
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   plugins: [
+    tailwindcss(),
     react(),
     Sitemap({
       hostname: SITE_URL,

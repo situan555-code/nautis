@@ -771,3 +771,12 @@ html[data-theme='dark'] .dc-audience-card {
 .page-content {
   padding-top: 0; /* Hero handles its own spacing */
 }
+
+/* Reference shadcn island. Layout only; component styles come from the island bundle. */
+.shadcn-island-anchor {
+  display: flex;
+  justify-content: flex-end;
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+  padding-bottom: var(--space-8);
+}
