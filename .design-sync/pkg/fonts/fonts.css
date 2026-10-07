@@ -1,0 +1,16 @@
+/* Outfit + Source Code Pro, latin subset, from Google Fonts (SIL OFL 1.1).
+   The site loads the same families from fonts.googleapis.com (src/partials/head.html). */
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("./outfit-latin-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("./source-code-pro-latin-var.woff2") format("woff2");
+}

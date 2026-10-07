@@ -1,0 +1,7 @@
+{
+  "name": "sunder-and-co",
+  "version": "1.0.0",
+  "private": true,
+  "description": "design-sync wrapper: the Sunder & Co. site's real React component and stylesheets for claude.ai/design. Not a published package.",
+  "module": "./index.js"
+}

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "paths": {
+      "scheduler": ["./node_modules/scheduler/index.js"]
+    }
+  }
+}
