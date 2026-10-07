@@ -1,0 +1,30 @@
+{
+  "projectId": "081b012c-48f8-4f71-9235-1d4988aa33af",
+  "shape": "package",
+  "pkg": "sunder-and-co",
+  "globalName": "SunderCo",
+  "buildCmd": "node .design-sync/pkg/build.mjs",
+  "entry": ".design-sync/pkg/index.js",
+  "srcDir": "../../src/components/three",
+  "cssEntry": "sunder.css",
+  "extraFonts": [
+    "fonts/fonts.css"
+  ],
+  "componentSrcMap": {
+    "SunderWordmarkScene": "../../src/components/three/SunderWordmarkScene.jsx"
+  },
+  "dtsPropsFor": {
+    "SunderWordmarkScene": "/** Pause rendering when off-screen. */\n  isVisible?: boolean;\n  /** Mobile camera, DPR and interaction tuning. */\n  isMobile?: boolean;\n  /** Freeze animation for prefers-reduced-motion. */\n  reducedMotion?: boolean;\n  /** Called once the scene has rendered its first frame. */\n  onReady?: () => void;\n  /** Called when WebGL/performance checks fail; keep the static fallback. */\n  onFallback?: () => void;"
+  },
+  "docsMap": {
+    "SunderWordmarkScene": "../groups/brand.md"
+  },
+  "tsconfig": "tsconfig.json",
+  "overrides": {
+    "SunderWordmarkScene": {
+      "cardMode": "column",
+      "viewport": "1280x900"
+    }
+  },
+  "readmeHeader": ".design-sync/conventions.md"
+}
