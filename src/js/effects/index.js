@@ -1,10 +1,8 @@
 const LOADERS = {
-  decrypted: () => import('./decrypted-text.js'),
   tech: () => import('./tech-text.js'),
   particle: () => import('./particle-text.js'),
   warp: () => import('./warp-text.js'),
   'cursor-grid': () => import('./cursor-grid.js'),
-  'meta-balls': () => import('./meta-balls.js'),
 };
 
 export function initEffects() {

@@ -40,36 +40,6 @@
   opacity: 0;
 }
 
-[data-decor='meta-balls'] {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  width: auto;
-  height: auto;
-  pointer-events: none;
-}
-
-[data-decor='meta-balls'].is-static::after {
-  content: '';
-  position: absolute;
-  left: 62%;
-  top: 46%;
-  width: 72px;
-  height: 72px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: var(--color-accent);
-}
-
-@media (max-width: 800px) {
-  [data-decor='meta-balls'].is-static::after {
-    left: 50%;
-    top: 58%;
-    width: 48px;
-    height: 48px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   [data-text-effect].is-text-fx {
     color: inherit;
