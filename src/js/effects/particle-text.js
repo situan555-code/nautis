@@ -5,6 +5,7 @@ import {
   listenReduced,
   measureGlyphs,
   mountLayer,
+  prefersReducedMotion,
   readInk,
   settle,
   watchTheme,
@@ -13,20 +14,18 @@ import {
 
 const TAU = Math.PI * 2;
 
-function budgetFor(width) {
-  if (width < 420) return 340;
-  if (width < 800) return 680;
-  return 1200;
+function chooseStep(width) {
+  if (width < 420) return 3;
+  if (width < 800) return 2.5;
+  return 2;
 }
 
-function easeOut(t) {
-  return 1 - (1 - t) ** 3;
-}
-
-function sampleParticles(layout) {
+function sampleParticles(layout, step) {
   const sample = document.createElement('canvas');
-  sample.width = Math.max(1, Math.ceil(layout.width));
-  sample.height = Math.max(1, Math.ceil(layout.height));
+  const width = Math.max(1, Math.ceil(layout.width));
+  const height = Math.max(1, Math.ceil(layout.height));
+  sample.width = width;
+  sample.height = height;
   const ctx = sample.getContext('2d', { willReadFrequently: true });
   if (!ctx) return [];
   ctx.font = layout.font;
@@ -34,24 +33,28 @@ function sampleParticles(layout) {
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
   for (const glyph of layout.glyphs) ctx.fillText(glyph.char, glyph.x, glyph.top);
-  const image = ctx.getImageData(0, 0, sample.width, sample.height);
-  const narrow = layout.width < 700;
-  const step = narrow ? 4 : 3;
+  const image = ctx.getImageData(0, 0, width, height);
   const targets = [];
-  for (let y = 0; y < sample.height; y += step) {
-    for (let x = 0; x < sample.width; x += step) {
-      const alpha = image.data[(y * sample.width + x) * 4 + 3];
-      if (alpha > 48) targets.push({ x, y, weight: alpha / 255 });
+  for (let y = 0; y < height; y += step) {
+    for (let x = 0; x < width; x += step) {
+      const alpha = image.data[(Math.floor(y) * width + Math.floor(x)) * 4 + 3];
+      if (alpha > 40) targets.push({ x, y });
     }
   }
-  const cap = budgetFor(layout.width);
-  const stride = Math.max(1, Math.ceil(targets.length / cap));
-  return targets.filter((_, index) => index % stride === 0);
+  return targets;
 }
 
 function play(el) {
+  if (prefersReducedMotion()) {
+    el.dataset.textEffectState = 'settled';
+    return;
+  }
+
   const layout = measureGlyphs(el);
-  const targets = sampleParticles(layout);
+  layout.font = getComputedStyle(el).font;
+  const narrow = layout.width < 700;
+  const step = chooseStep(layout.width);
+  const targets = sampleParticles(layout, step);
   if (!targets.length) {
     el.dataset.textEffectState = 'settled';
     return;
@@ -64,86 +67,102 @@ function play(el) {
     return;
   }
 
-  const narrow = layout.width < 700;
-  const scatter = Math.min(narrow ? 42 : 88, layout.width * 0.18);
-  const duration = narrow ? 1300 : 1600;
-  const stagger = narrow ? 220 : 380;
-  const radius = narrow ? 1.15 : 1.45;
-  let dpr = cappedDpr(1.75);
+  const radius = step * 0.92;
+  const scatter = Math.min(narrow ? 72 : 140, Math.max(layout.width, layout.height) * 0.45);
+  const gatherMs = narrow ? 900 : 1100;
+  const interactive = !window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const pointer = { x: -9999, y: -9999, inside: false };
+  let dpr = cappedDpr(narrow ? 1.25 : 1.5);
   let ink = readInk(el);
   let active = true;
+  let alive = true;
   let raf = 0;
   let start = 0;
-  let settled = false;
 
   const particles = targets.map((target, index) => {
     const seed = ((index * 9301 + 49297) % 233280) / 233280;
     const angle = seed * TAU;
-    const depth = 0.45 + ((index * 17) % 100) / 100;
-    const distance = scatter * (0.35 + depth * 0.65);
+    const distance = scatter * (0.45 + seed * 0.55);
     return {
-      x: Math.min(layout.width - 1, Math.max(1, target.x + Math.cos(angle) * distance)),
-      y: Math.min(layout.height - 1, Math.max(1, target.y + Math.sin(angle) * distance)),
-      targetX: target.x,
-      targetY: target.y,
-      seed,
-      delay: seed * stagger,
+      x: target.x + Math.cos(angle) * distance,
+      y: target.y + Math.sin(angle) * distance,
+      homeX: target.x,
+      homeY: target.y,
+      delay: seed * (narrow ? 180 : 280),
     };
   });
 
   const draw = (now) => {
-    const box = el.getBoundingClientRect();
-    fitCanvas(canvas, box.width, box.height, dpr);
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    fitCanvas(canvas, layout.width, layout.height, dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, layout.width, layout.height);
     ctx.fillStyle = ink;
     ctx.beginPath();
-    let done = true;
+    const elapsed = start ? now - start : 0;
+    let formed = true;
     for (const particle of particles) {
-      const progress = settled ? 1 : Math.max(0, Math.min(1, (now - start - particle.delay) / duration));
-      if (progress < 1) done = false;
-      const eased = easeOut(progress);
-      const x = particle.x + (particle.targetX - particle.x) * eased;
-      const y = particle.y + (particle.targetY - particle.y) * eased;
+      const progress = Math.max(0, Math.min(1, (elapsed - particle.delay) / gatherMs));
+      if (progress < 1) formed = false;
+      const eased = 1 - (1 - progress) ** 3;
+      let x = particle.x + (particle.homeX - particle.x) * eased;
+      let y = particle.y + (particle.homeY - particle.y) * eased;
       if (progress >= 1) {
-        particle.x = particle.targetX;
-        particle.y = particle.targetY;
+        particle.x = particle.homeX;
+        particle.y = particle.homeY;
+        if (pointer.inside) {
+          const dx = x - pointer.x;
+          const dy = y - pointer.y;
+          const dist = Math.hypot(dx, dy) || 0.001;
+          const reach = Math.max(110, layout.fontSize * 1.35);
+          if (dist < reach) {
+            const push = (1 - dist / reach) ** 1.2 * reach * 1.05;
+            x += (dx / dist) * push;
+            y += (dy / dist) * push;
+          }
+        }
       }
-      const dot = Math.max(0.7, radius * (0.75 + particle.seed * 0.35));
-      ctx.moveTo(x + dot, y);
-      ctx.arc(x, y, dot, 0, TAU);
+      ctx.moveTo(x + radius, y);
+      ctx.arc(x, y, radius, 0, TAU);
     }
-    ctx.globalAlpha = 0.92;
     ctx.fill();
-    ctx.globalAlpha = 1;
-    return done;
+    if (formed) el.dataset.textEffectState = 'settled';
+    return formed;
   };
 
   const frame = (now) => {
     raf = 0;
+    if (!alive || !active) return;
     if (!start) start = now;
-    const done = draw(now);
-    if (done) {
-      settled = true;
-      el.dataset.textEffectState = 'settled';
-      return;
-    }
-    if (active) raf = requestAnimationFrame(frame);
+    const formed = draw(now);
+    if (!formed || pointer.inside) raf = requestAnimationFrame(frame);
   };
 
   const wake = () => {
-    if (raf || !active || settled) return;
+    if (raf || !alive || !active) return;
     raf = requestAnimationFrame(frame);
   };
 
   const stop = () => {
-    active = false;
+    if (!alive) return;
+    alive = false;
     if (raf) cancelAnimationFrame(raf);
     unbind();
     unlisten();
     untheme();
+    window.removeEventListener('pointermove', onMove);
     settle(el, canvas);
+  };
+
+  const onMove = (event) => {
+    if (!interactive || (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== 'pen')) return;
+    const rect = el.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left;
+    pointer.y = event.clientY - rect.top;
+    const inside = pointer.x >= 0 && pointer.y >= 0 && pointer.x <= rect.width && pointer.y <= rect.height;
+    if (inside !== pointer.inside || inside) {
+      pointer.inside = inside;
+      wake();
+    }
   };
 
   const unbind = bindActivity(el, (on) => {
@@ -157,18 +176,15 @@ function play(el) {
   const unlisten = listenReduced(stop);
   const untheme = watchTheme(() => {
     ink = readInk(el);
-    if (settled) draw(performance.now());
   });
-
+  window.addEventListener('pointermove', onMove, { passive: true });
   window.addEventListener(
     'resize',
     () => {
-      dpr = cappedDpr(1.75);
-      if (settled) draw(performance.now());
+      dpr = cappedDpr(narrow ? 1.25 : 1.5);
     },
     { passive: true },
   );
-
   wake();
 }
 

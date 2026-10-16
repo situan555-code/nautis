@@ -1,16 +1,14 @@
 import {
   bindActivity,
   cappedDpr,
-  cssColorToRgb,
   listenReduced,
   measureGlyphs,
   mountLayer,
+  prefersReducedMotion,
   readInk,
   settle,
   whenShown,
 } from './support.js';
-
-const INTRO_MS = 1700;
 
 const VERTEX = `#version 300 es
 in vec2 position;
@@ -22,119 +20,35 @@ void main() {
 
 const FRAGMENT = `#version 300 es
 precision highp float;
-uniform sampler2D uTextTexture;
+uniform sampler2D uText;
 uniform vec2 uResolution;
 uniform vec2 uPointer;
 uniform float uPointerActive;
 uniform float uTime;
-uniform float uWarpStrength;
-uniform float uWarpScale;
-uniform float uSpeed;
-uniform float uPointerInfluence;
-uniform float uPointerStrength;
-uniform float uRefraction;
-uniform float uChromatic;
-uniform float uRipple;
-uniform float uMotion;
-uniform float uLens;
-uniform float uIntro;
-uniform float uReveal;
-uniform float uBackdrop;
-uniform vec4 uClicks[4];
+uniform float uAmp;
 in vec2 vUv;
 out vec4 fragColor;
 
-float hash(vec2 p) {
-  p = fract(p * vec2(123.34, 456.21));
-  p += dot(p, p + 45.32);
-  return fract(p.x * p.y);
-}
-float noise(vec2 p) {
-  vec2 i = floor(p);
-  vec2 f = fract(p);
-  vec2 u = f * f * (3.0 - 2.0 * f);
-  float a = hash(i);
-  float b = hash(i + vec2(1.0, 0.0));
-  float c = hash(i + vec2(0.0, 1.0));
-  float d = hash(i + vec2(1.0, 1.0));
-  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
-}
-float fbm(vec2 p) {
-  float value = 0.0;
-  float amplitude = 0.5;
-  for (int i = 0; i < 4; i++) {
-    value += amplitude * noise(p);
-    p *= 2.02;
-    amplitude *= 0.5;
-  }
-  return value;
-}
-vec4 sampleText(vec2 uv) {
-  if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) return vec4(0.0);
-  return texture(uTextTexture, uv);
-}
 void main() {
-  vec2 uv = vUv;
+  vec2 uv = vec2(vUv.x, 1.0 - vUv.y);
   float aspect = uResolution.x / max(uResolution.y, 1.0);
-  float time = uTime * uSpeed;
-  float scale = max(uWarpScale, 0.001);
-  vec2 drift = vec2(time * 0.055, -time * 0.045);
-  float n1 = fbm(uv * scale * 3.1 + drift);
-  float n2 = fbm((uv + 19.17) * scale * 3.4 - drift.yx);
-  vec2 ambient = (vec2(n1, n2) - 0.5) * (uWarpStrength * 0.045 * uMotion + uIntro * 0.18);
-  vec2 pointerDelta = uv - uPointer;
-  vec2 aspectDelta = vec2(pointerDelta.x * aspect, pointerDelta.y);
-  float dist = length(aspectDelta);
-  float radius = max(uPointerInfluence, 0.001);
-  float t = clamp(dist / radius, 0.0, 1.0);
-  float lens = smoothstep(radius, 0.0, dist) * uPointerActive;
-  float bulge = t * (1.0 - t) * (1.0 - t) * 6.75 * uPointerActive;
-  vec2 dir = dist > 0.0001 ? vec2(aspectDelta.x / aspect, aspectDelta.y) / dist : vec2(0.0);
-  float rippleWave = sin(dist * 28.0 - time * 4.2) * 0.5 + 0.5;
-  float rippleRing = (rippleWave - 0.5) * uRipple;
-  vec2 pointerWarp = dir * rippleRing * bulge * uPointerStrength * 0.016;
-  float side = uLens > 0.5 ? -1.0 : 1.0;
-  pointerWarp -= dir * side * bulge * uPointerStrength * 0.045;
-  vec2 shock = vec2(0.0);
-  float shockLight = 0.0;
-  for (int i = 0; i < 4; i++) {
-    vec4 click = uClicks[i];
-    if (click.w <= 0.0) continue;
-    vec2 clickDelta = uv - click.xy;
-    vec2 clickAspect = vec2(clickDelta.x * aspect, clickDelta.y);
-    float clickDist = length(clickAspect);
-    float age = click.z;
-    float offset = (clickDist - age * 0.9) / (0.06 + age * 0.06);
-    float fade = 1.0 - smoothstep(0.0, 1.6, age);
-    float energy = exp(-offset * offset) * fade * smoothstep(0.0, 0.08, age) * click.w;
-    vec2 clickDir = clickDist > 0.0001 ? vec2(clickAspect.x / aspect, clickAspect.y) / clickDist : vec2(0.0);
-    shock -= clickDir * offset * energy * 0.09;
-    shockLight += energy;
-  }
-  vec2 bend = pointerWarp + shock;
-  vec2 rest = uv + ambient;
-  vec2 splitDir = ambient + bend;
-  float splitLen = length(splitDir);
-  splitDir = splitLen > 0.00001 ? splitDir / splitLen : vec2(0.7071, 0.7071);
-  vec2 split = splitDir * uRefraction * 0.16 * (0.35 + lens * 1.65 + uIntro * 3.0);
-  float dispersion = uChromatic * 0.5;
-  vec3 ink = vec3(0.0);
-  vec3 cover = vec3(0.0);
-  vec3 weight = vec3(0.0);
-  for (int i = 0; i < 7; i++) {
-    float k = 1.0 - float(i) / 3.0;
-    vec4 tap = sampleText(rest + bend * (1.0 + dispersion * k) + split * k);
-    vec3 band = vec3(max(k, 0.0), 1.0 - abs(k), max(-k, 0.0));
-    ink += tap.rgb * band;
-    cover += tap.a * band;
-    weight += band;
-  }
-  ink /= weight;
-  cover /= weight;
-  float a = max(max(cover.r, cover.g), cover.b);
-  vec3 color = ink + (a - cover) * uBackdrop;
-  color = min(color + (lens + shockLight * 0.5) * cover.g * 0.055, vec3(a));
-  fragColor = vec4(color, a) * uReveal;
+  vec2 fromPointer = uv - uPointer;
+  vec2 scaled = vec2(fromPointer.x * aspect, fromPointer.y);
+  float dist = length(scaled);
+  float reach = 0.55;
+  float lens = smoothstep(reach, 0.0, dist) * uPointerActive;
+  vec2 dir = dist > 0.0001 ? fromPointer / dist : vec2(0.0);
+  float wave = sin(uv.y * 10.0 + uTime * 1.7) * sin(uv.x * 7.0 - uTime * 1.15);
+  vec2 warp = vec2(wave * 0.28, wave) * uAmp;
+  warp += dir * lens * 0.06;
+  vec2 sampleUv = uv + warp;
+  float split = (0.004 + lens * 0.012) * uAmp * 40.0;
+  vec4 red = texture(uText, sampleUv + vec2(split, 0.0));
+  vec4 green = texture(uText, sampleUv);
+  vec4 blue = texture(uText, sampleUv - vec2(split, 0.0));
+  float alpha = max(max(red.a, green.a), blue.a);
+  vec3 color = vec3(red.r, green.g, blue.b);
+  fragColor = vec4(color, alpha);
 }`;
 
 function compile(gl, type, source) {
@@ -154,26 +68,36 @@ function raster(layout, dpr, color) {
   canvas.height = Math.max(1, Math.round(layout.height * dpr));
   const ctx = canvas.getContext('2d');
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, layout.width, layout.height);
   ctx.font = layout.font;
   ctx.fillStyle = color;
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
+  if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
   for (const glyph of layout.glyphs) ctx.fillText(glyph.char, glyph.x, glyph.top);
   return canvas;
 }
 
 function play(el) {
-  const canvas = mountLayer(el);
-  const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: false, antialias: true });
-  if (!gl) {
-    settle(el, canvas);
+  if (prefersReducedMotion()) {
+    el.dataset.textEffectState = 'settled';
     return;
   }
 
-  const vertex = compile(gl, gl.VERTEX_SHADER, VERTEX);
-  const fragment = compile(gl, gl.FRAGMENT_SHADER, FRAGMENT);
-  const program = gl.createProgram();
-  if (!vertex || !fragment || !program) {
+  const layout = measureGlyphs(el);
+  layout.font = getComputedStyle(el).font;
+  const ink = readInk(el);
+  if (!layout.glyphs.length) {
+    el.dataset.textEffectState = 'settled';
+    return;
+  }
+
+  const canvas = mountLayer(el);
+  const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: false, antialias: false });
+  const vertex = gl && compile(gl, gl.VERTEX_SHADER, VERTEX);
+  const fragment = gl && compile(gl, gl.FRAGMENT_SHADER, FRAGMENT);
+  const program = gl?.createProgram();
+  if (!gl || !vertex || !fragment || !program) {
     settle(el, canvas);
     return;
   }
@@ -195,72 +119,51 @@ function play(el) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
 
-  const loc = {};
-  const count = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
-  for (let i = 0; i < count; i += 1) {
-    const info = gl.getActiveUniform(program, i);
-    if (info) loc[info.name] = gl.getUniformLocation(program, info.name);
-  }
+  const narrow = window.innerWidth < 760;
+  const dpr = cappedDpr(narrow ? 1.15 : 1.35);
+  const image = raster(layout, dpr, ink);
+  const box = el.getBoundingClientRect();
+  canvas.width = Math.max(1, Math.round((box.width || layout.width) * dpr));
+  canvas.height = Math.max(1, Math.round((box.height || layout.height) * dpr));
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
 
-  const pointer = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5, active: 0 };
+  const loc = {
+    text: gl.getUniformLocation(program, 'uText'),
+    resolution: gl.getUniformLocation(program, 'uResolution'),
+    pointer: gl.getUniformLocation(program, 'uPointer'),
+    pointerActive: gl.getUniformLocation(program, 'uPointerActive'),
+    time: gl.getUniformLocation(program, 'uTime'),
+    amp: gl.getUniformLocation(program, 'uAmp'),
+  };
+
+  const pointer = { x: 0.5, y: 0.62, tx: 0.5, ty: 0.62, active: 0 };
   let alive = true;
   let active = true;
   let raf = 0;
   let start = 0;
   let last = 0;
-  let intro = 0;
-  const clicks = new Float32Array(16);
-
-  const upload = () => {
-    const layout = measureGlyphs(el);
-    const ink = readInk(el);
-    const dpr = cappedDpr(1.5);
-    const box = el.getBoundingClientRect();
-    if (box.width < 2 || box.height < 2 || !layout.glyphs.length) return null;
-    canvas.width = Math.max(1, Math.round(box.width * dpr));
-    canvas.height = Math.max(1, Math.round(box.height * dpr));
-    gl.viewport(0, 0, canvas.width, canvas.height);
-    const image = raster({ ...layout, width: box.width, height: box.height }, dpr, ink);
-    gl.bindTexture(gl.TEXTURE_2D, texture);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-    const { rgb } = cssColorToRgb(ink);
-    const luminance = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
-    return { luminance, width: canvas.width, height: canvas.height };
-  };
-
-  const frameInfo = upload();
 
   const draw = (now) => {
-    if (!frameInfo) return;
-    const elapsed = (now - start) * 0.001;
-    const reveal = Math.min(1, intro / 0.45);
-    const smooth = reveal * reveal * (3 - 2 * reveal);
-    const settleAmt = 1 - intro;
+    const elapsed = start ? (now - start) * 0.001 : 0;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
     gl.useProgram(program);
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.enableVertexAttribArray(0);
     gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-    gl.uniform1i(loc.uTextTexture, 0);
-    gl.uniform2f(loc.uResolution, frameInfo.width, frameInfo.height);
-    gl.uniform2f(loc.uPointer, pointer.x, pointer.y);
-    gl.uniform1f(loc.uPointerActive, pointer.active);
-    gl.uniform1f(loc.uTime, elapsed);
-    gl.uniform1f(loc.uWarpStrength, 0.08 * intro);
-    gl.uniform1f(loc.uWarpScale, 1.7);
-    gl.uniform1f(loc.uSpeed, 0.55);
-    gl.uniform1f(loc.uPointerInfluence, 0.42);
-    gl.uniform1f(loc.uPointerStrength, 0.38);
-    gl.uniform1f(loc.uRefraction, 0.018);
-    gl.uniform1f(loc.uChromatic, 0);
-    gl.uniform1f(loc.uRipple, 1);
-    gl.uniform1f(loc.uMotion, 1);
-    gl.uniform1f(loc.uLens, 0);
-    gl.uniform1f(loc.uIntro, settleAmt * settleAmt * settleAmt);
-    gl.uniform1f(loc.uReveal, smooth);
-    gl.uniform1f(loc.uBackdrop, frameInfo.luminance < 0.5 ? 1 : 0);
-    gl.uniform4fv(loc.uClicks, clicks);
+    gl.uniform1i(loc.text, 0);
+    gl.uniform2f(loc.resolution, canvas.width, canvas.height);
+    gl.uniform2f(loc.pointer, pointer.x, pointer.y);
+    gl.uniform1f(loc.pointerActive, pointer.active);
+    gl.uniform1f(loc.time, elapsed);
+    gl.uniform1f(loc.amp, narrow ? 0.03 : 0.042);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   };
 
@@ -271,35 +174,42 @@ function play(el) {
     unbind();
     unlisten();
     el.removeEventListener('pointermove', onMove);
+    el.removeEventListener('pointerleave', onLeave);
     gl.getExtension('WEBGL_lose_context')?.loseContext();
     settle(el, canvas);
   };
 
   const frame = (now) => {
     raf = 0;
-    if (!alive) return;
+    if (!alive || !active) return;
     if (!start) start = now;
-    const dt = last ? Math.min(50, now - last) : 16;
+    const dt = last ? Math.min(40, now - last) : 16;
     last = now;
-    if (active) intro = Math.min(1, intro + dt / INTRO_MS);
-    const follow = 1 - Math.exp(-dt / 140);
+    const follow = 1 - Math.exp(-dt / 90);
     pointer.x += (pointer.tx - pointer.x) * follow;
     pointer.y += (pointer.ty - pointer.y) * follow;
+    if (!pointer.active && elapsedEnough(now)) el.dataset.textEffectState = 'settled';
     draw(now);
-    if (intro >= 1) {
-      stop();
-      return;
-    }
-    if (active) raf = requestAnimationFrame(frame);
+    raf = requestAnimationFrame(frame);
   };
 
+  const elapsedEnough = (now) => start && now - start > 700;
+
   const onMove = (event) => {
-    if (event.pointerType && event.pointerType !== 'mouse') return;
+    if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
     const rect = el.getBoundingClientRect();
     if (rect.width < 2 || rect.height < 2) return;
-    pointer.tx = (event.clientX - rect.left) / rect.width;
-    pointer.ty = 1 - (event.clientY - rect.top) / rect.height;
-    pointer.active = 1;
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+    const inside = x >= 0 && y >= 0 && x <= 1 && y <= 1;
+    pointer.active = inside ? 1 : 0;
+    if (!inside) return;
+    pointer.tx = x;
+    pointer.ty = 1 - y;
+  };
+
+  const onLeave = () => {
+    pointer.active = 0;
   };
 
   const unbind = bindActivity(el, (on) => {
@@ -312,11 +222,7 @@ function play(el) {
   });
   const unlisten = listenReduced(stop);
   el.addEventListener('pointermove', onMove);
-  window.setTimeout(stop, 6000);
-  if (!frameInfo) {
-    stop();
-    return;
-  }
+  el.addEventListener('pointerleave', onLeave);
   raf = requestAnimationFrame(frame);
 }
 
