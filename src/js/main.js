@@ -5,6 +5,8 @@
  * Heavy modules (calculators, search) are deferred until user interaction or viewport visibility.
  */
 
+import '../css/effects.css';
+import { initEffects } from './effects/index.js';
 import { initNav } from './nav.js';
 import { initScrollReveal } from './scroll-reveal.js';
 import { initCounters } from './counters.js';
@@ -51,6 +53,7 @@ function initCopyUrlButtons() {
 
 // Lightweight modules load immediately
 document.addEventListener('DOMContentLoaded', () => {
+  initEffects();
   initTheme();
   initNav();
   initSmoothAnchors();
